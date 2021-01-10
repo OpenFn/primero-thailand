@@ -1,0 +1,10 @@
+{
+  "data": {
+     "record_id": "46255137-6e66-486d-b809-e1b825e840a8",
+     "record_type": "case",
+     # Whatever other attributes will be configured for this, for example:
+     "case_id_display": "SOME/READABLE/PREFIX/c063aeb",
+     "national_id": "N-NNNN-NNNNN-NN-N",
+     ...
+  }
+}
