@@ -1,0 +1,124 @@
+{
+    "id": "3e5a1131-084f-4186-8c06-44ecceab84a5",
+    "enabled": true,
+    "age": 3,
+    "sex": "female",
+    "name": "สุขสมหวัง ใจดี",
+    "status": "open",
+    "case_id": "a62401e8-d5c9-46e5-894f-a7b786bb0105",
+    "owned_by": "primero_cp",
+    "short_id": "6bb0105",
+    "workflow": "new",
+    "estimated": true,
+    "module_id": "primeromodule-cp",
+    "name_last": "ใจดี",
+    "created_at": "2020-12-16T03:35:13.490Z",
+    "created_by": "primero_cp",
+    "name_first": "สุขสมหวัง",
+    "risk_level": "high",
+    "nationality": [
+        "thailand"
+    ],
+    "record_state": true,
+    "date_of_birth": "2017-01-01",
+    "email_address": 12345678,
+    "notes_section": [],
+    "reopened_logs": [],
+    "national_id_no": 1111122222333,
+    "address_current": "123 หมู่ 1 ต.หนองหาน อ.หนอหาน จ.อุดรธานี",
+    "case_id_display": "6bb0105",
+    "last_updated_at": "2021-01-12T08:17:11.596Z",
+    "maritial_status": "single",
+    "other_agency_id": 12345678,
+    "owned_by_groups": [
+        "usergroup-primero-cp"
+    ],
+    "location_current": "TH1001",
+    "consent_reporting": true,
+    "interview_subject": "caregiver",
+    "registration_date": "2020-12-16",
+    "telephone_current": 12345678,
+    "case_plan_due_date": "2021-01-12",
+    "owned_by_agency_id": "UNICEF",
+    "registered_address": "เดียวกัน",
+    "consent_for_tracing": true,
+    "protection_concerns": [
+        "sexually_exploited"
+    ],
+    "consent_for_services": true,
+    "consent_source_other": "ไม่มี",
+    "created_organization": "UNICEF",
+    "associated_user_names": [
+        "primero_cp"
+    ],
+    "disclosure_other_orgs": true,
+    "main_diagnosis__04438ee": "sample diagnosis",
+    "urgent_protection_concern": true,
+    "consent_assent_obtained_by": "นายสุข",
+    "record_in_scope": true,
+    "flag_count": 0,
+    "alert_count": 0,
+    "photo": null,
+    "recorded_audio": [],
+    "upload_bia_document": [],
+    "other_documents": [],
+    "upload_bid_document": [],
+    "photos": [],
+    "incident_details": [
+        {
+            "age": 3,
+            "cp_sex": "female",
+            "status": "open",
+            "owned_by": "primero_cp",
+            "short_id": "84e11ed",
+            "module_id": "primeromodule-cp",
+            "posted_at": "2020-12-16T12:22:01.417Z",
+            "created_at": "2020-12-16T12:20:01.936Z",
+            "created_by": "primero_cp",
+            "flag_count": 0,
+            "alert_count": 0,
+            "incident_id": "c749b9f8-1dfb-4ce9-9552-10f7b84e11ed",
+            "other_id_no": null,
+            "record_state": true,
+            "incident_code": "84e11ed",
+            "other_id_type": null,
+            "cp_nationality": [
+                "thailand"
+            ],
+            "national_id_no": 1111122222333,
+            "case_id_display": "6bb0105",
+            "last_updated_at": "2020-12-16T12:22:01.420Z",
+            "last_updated_by": "primero_cp",
+            "maritial_status": "single",
+            "owned_by_groups": [
+                "usergroup-primero-cp"
+            ],
+            "record_in_scope": true,
+            "cp_incident_date": "2020-12-14",
+            "full_name_b0d909e": "Kevin",
+            "unique_identifier": "c749b9f8-1dfb-4ce9-9552-10f7b84e11ed",
+            "owned_by_agency_id": "UNICEF",
+            "owned_by_full_name": "CP Worker",
+            "risk_level_a1a1603": null,
+            "created_by_full_name": "CP Worker",
+            "created_organization": "UNICEF",
+            "date_of_first_report": "2020-12-16",
+            "associated_user_names": [
+                "primero_cp"
+            ],
+            "associated_user_groups": [
+                "usergroup-primero-cp"
+            ],
+            "associated_user_agencies": [
+                "UNICEF"
+            ],
+            "cp_incident_violence_type": "physical_assault",
+            "patient_occupation_caaf41d": null,
+            "relation_to_the_patient_c84be7d": "brother",
+            "patient_educational_status_d348762": null,
+            "patient_disability__if_any__51932af": null,
+            "type_of_place_where_the_incident_occurred_4145aa8": "stadium",
+            "unique_id": "35f42dbb-1d4e-4bcd-a418-2732b7a1ae21"
+        }
+    ]
+}
