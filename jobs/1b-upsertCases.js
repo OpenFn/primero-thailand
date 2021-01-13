@@ -1,10 +1,12 @@
 alterState(state => {
   const maritalMap = {
     1: 'single',
-    2: 'married_cohabitating',
+    2: 'married',
     3: 'widowed',
-    4: 'divorced_separated',
-    5: 'divorced_separated',
+    4: 'divorced',
+    5: 'separated',
+    6: 'monk',
+    7: 'unknown',
   };
 
   const nationalityMap = {
@@ -199,9 +201,9 @@ each(
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
-      registered_address: '', // precision ?
+      registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
       telephone_current: patient.telephone,
-      insurance_type_2d79b49: patient.pttype, // precision ?
+      insurance_type_2d79b49: patient.pttype,
     };
     console.log(data);
     return upsertCase(
