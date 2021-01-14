@@ -1,27 +1,24 @@
-alterState(state => {
-  return post(
-    `${state.configuration.url}/Users/login`,
-    {
-      headers: { 'content-type': 'application/json' },
-      body: {
-        email: state.configuration.email,
-        password: state.configuration.password,
-      },
+post(
+  `${state.configuration.url}/Users/login`,
+  {
+    headers: { 'content-type': 'application/json' },
+    body: {
+      email: state.configuration.email,
+      password: state.configuration.password,
     },
-    state => {
-      return { ...state, access_token: state.data.id };
-    }
-  )(state);
-});
+    strictSSL: false,
+  },
+  state => {
+    return { ...state, access_token: state.data.body.id };
+  }
+);
 
-alterState(state => {   
-  const { access_token } = state.data;
-  return get(
-    `${state.configuration.url}/vPatients?access_token=${access_token}`,
-    {},
-    state => {
-      // mappings in hre
-      return state;
-    }
-  )(state);
-});
+get(
+  `${state.configuration.url}/vPatients?access_token=${state.access_token}`,
+  { strictSSL: false },
+  state => {
+    // mappings in hre
+    console.log(state.data);
+    return state;
+  }
+)(state);
