@@ -23,9 +23,12 @@ Login:
 curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
 ```
 Get patient: 
+{% raw %}
 ```
-curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%}22}}'
+curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
 ```
+{% endraw %}
+
 Behavior: 
 1. [sample record](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample.json)
 2. [no record found](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample_no_record_found.json)
