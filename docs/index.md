@@ -18,7 +18,7 @@ _**Flow 2: Primero --> Child Shield**_
 * Primero: [API v2](https://github.com/primeroIMS/primero/blob/development_v2/app/controllers/api/README.md)
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
 Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
-Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
+Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22%}}'
 Behavior: 
 1. [sample record](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample.json)
 2. [no record found](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample_no_record_found.json)
