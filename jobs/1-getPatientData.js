@@ -14,3 +14,13 @@ post(
   }
 );
 
+get(
+  `${state.configuration.url}/vPatients?access_token=${state.access_token}`,
+  { strictSSL: false },
+  state => {
+    // mappings in hre
+    console.log(state.data);
+    return state;
+  }
+);
+
