@@ -24,7 +24,7 @@ curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --dat
 ```
 Get patient: 
 ```
-curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22 | escape}}'
+curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22 | escape }}'
 ```
 Behavior: 
 1. [sample record](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample.json)
