@@ -27,7 +27,7 @@ post(
         strictSSL: false,
       },
       state => {
-        // console.log(state.data);
+        console.log(state.data);
         return state;
       }
     )(state);
