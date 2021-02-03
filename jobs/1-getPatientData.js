@@ -28,7 +28,7 @@ post(
       },
       state => {
         console.log(state.data);
-        return state;
+        return { ...state, case_id: state.references[0].case_id };
       }
     )(state);
   }

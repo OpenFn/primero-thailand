@@ -185,7 +185,7 @@ each(
       11
     )}-${patient.cid.substring(11, 13)}`;
     const data = {
-      case_id: 'a094ae8b-3fdf-4f86-8462-5c8877adb9c3',
+      case_id: state.case_id,
       national_id_no,
       other_agency_id: '',
       name_last: patient.lname,
