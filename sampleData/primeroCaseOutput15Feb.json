@@ -94,7 +94,7 @@
     "address_current": "Current address info",
     "case_id_display": "e6a2866",
     "chronic_illness": "unknown",
-    "last_updated_at": "2021-02-15T11:26:11.359Z",
+    "last_updated_at": "2021-02-15T11:35:44.687Z",
     "maritial_status": "married__unregistered__",
     "owned_by_groups": [
         "usergroup-primero-cp"
@@ -242,12 +242,14 @@
     "protection_concerns": [
         "sexually_exploited"
     ],
+    "co_morbidity_d3dfab2": "co-morbidity",
     "consent_for_services": true,
     "created_organization": "UNICEF",
     "physical_abuse_issue": true,
     "associated_user_names": [
         "primero_cp"
     ],
+    "complications_123ecae": "complications",
     "disclosure_other_orgs": true,
     "if_no__please_specify": "y",
     "involved_in_sex_trade": "unknown",
@@ -290,6 +292,7 @@
     "reporting_date_d36d4ae": "2021-01-27",
     "contact_details_aa1dbe6": 888888,
     "main_diagnosis__04438ee": "Severe psychological distress",
+    "other_diagnosis_a692bec": "other",
     "caregiver_s_disabilities": false,
     "if_yes__please_specify_1": "no",
     "if_yes__please_specify_2": "no",
@@ -312,6 +315,7 @@
     "if_yes__please_specify_19": "n",
     "if_yes__please_specify_20": "n",
     "if_yes__please_specify_21": "n",
+    "protection_concerns_other": "no",
     "urgent_protection_concern": true,
     "consent_assent_obtained_by": "oscc",
     "preliminary_observations_2": [
@@ -347,6 +351,8 @@
     "reproductive_health_information": "rhi",
     "third_witness_full_name_5afea19": "witness 3",
     "who_is_the_patient_living_with_": "dad",
+    "external_cause_of_injury_8451818": "external",
+    "operation_room_procedure_bb7cffa": "procedure",
     "second_witness_full_name_6c35a74": "witness 2",
     "caregiver_s_substance_abuse_issue": false,
     "report_registration_number_b868e09": 123,
