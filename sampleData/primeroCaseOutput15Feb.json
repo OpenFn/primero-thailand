@@ -94,7 +94,7 @@
     "address_current": "Current address info",
     "case_id_display": "e6a2866",
     "chronic_illness": "unknown",
-    "last_updated_at": "2021-02-15T12:32:53.370Z",
+    "last_updated_at": "2021-02-15T13:20:46.264Z",
     "maritial_status": "married__unregistered__",
     "other_agency_id": "123-23",
     "owned_by_groups": [
@@ -322,6 +322,7 @@
     "protection_concerns_other": "no",
     "urgent_protection_concern": true,
     "consent_assent_obtained_by": "oscc",
+    "if_other__please_specify_1": "other",
     "if_other__please_specify_2": "other",
     "preliminary_observations_2": [
         {
@@ -345,6 +346,8 @@
             "social_problems_identified_1": []
         }
     ],
+    "service_department_87cec18": "dept",
+    "service_place_code_98d0a58": "code",
     "vaccinations_are_up_to_date": true,
     "caregiver_s_economic_issue_s": false,
     "gambling_issue_in_the_family": true,
