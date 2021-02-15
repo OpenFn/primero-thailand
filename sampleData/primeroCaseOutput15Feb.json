@@ -26,7 +26,7 @@
         "thailand"
     ],
     "family_notes": "info",
-    "occupation_1": "pre_school",
+    "occupation_1": "out_of_school___unemployed",
     "record_state": true,
     "date_of_birth": "2017-01-01",
     "family_status": [
@@ -94,7 +94,7 @@
     "address_current": "Current address info",
     "case_id_display": "e6a2866",
     "chronic_illness": "unknown",
-    "last_updated_at": "2021-02-15T11:35:44.687Z",
+    "last_updated_at": "2021-02-15T12:20:53.233Z",
     "maritial_status": "married__unregistered__",
     "owned_by_groups": [
         "usergroup-primero-cp"
@@ -219,6 +219,7 @@
     "interview_subject": "caregiver",
     "registration_date": "2021-01-27",
     "telephone_current": 79778778,
+    "additional_details": "details",
     "owned_by_agency_id": "UNICEF",
     "registered_address": "same (or is it)",
     "witnesses__6c0a33c": [
@@ -242,6 +243,7 @@
     "protection_concerns": [
         "sexually_exploited"
     ],
+    "additional_details_1": "more details",
     "co_morbidity_d3dfab2": "co-morbidity",
     "consent_for_services": true,
     "created_organization": "UNICEF",
@@ -290,6 +292,7 @@
     "if_not__please_specify": "y",
     "if_yes__please_specify": "no",
     "reporting_date_d36d4ae": "2021-01-27",
+    "school_level_attained_": "high_school___vocational_education",
     "contact_details_aa1dbe6": 888888,
     "main_diagnosis__04438ee": "Severe psychological distress",
     "other_diagnosis_a692bec": "other",
@@ -318,6 +321,7 @@
     "protection_concerns_other": "no",
     "urgent_protection_concern": true,
     "consent_assent_obtained_by": "oscc",
+    "if_other__please_specify_2": "other",
     "preliminary_observations_2": [
         {
             "date_7": "2021-02-10",
@@ -352,9 +356,11 @@
     "third_witness_full_name_5afea19": "witness 3",
     "who_is_the_patient_living_with_": "dad",
     "external_cause_of_injury_8451818": "external",
+    "if_out_of_school__specify_reason": "temporarily_suspended",
     "operation_room_procedure_bb7cffa": "procedure",
     "second_witness_full_name_6c35a74": "witness 2",
     "caregiver_s_substance_abuse_issue": false,
+    "if_working__please_specify_5c0dd61": "working",
     "report_registration_number_b868e09": 123,
     "nutritional_conditions_are_adequate": true,
     "entertainment_venues_near_the_household": false,
