@@ -1,0 +1,372 @@
+{
+    "id": "2d96e0c3-190b-4f80-9d90-a9ba4b701b32",
+    "enabled": true,
+    "age": 4,
+    "sex": "female",
+    "name": "Pedro test27jan",
+    "status": "open",
+    "case_id": "8e19c592-d6e6-428a-8253-82cede6a2866",
+    "owned_by": "primero_cp",
+    "short_id": "e6a2866",
+    "workflow": "new",
+    "estimated": true,
+    "module_id": "primeromodule-cp",
+    "name_last": "test27jan",
+    "created_at": "2021-01-27T09:14:20.571Z",
+    "created_by": "primero_cp",
+    "name_first": "Pedro",
+    "risk_level": "high",
+    "alert_count": 0,
+    "nationality": [
+        "thailand"
+    ],
+    "occupation_1": "pre_school",
+    "record_state": true,
+    "date_of_birth": "2017-01-01",
+    "new_pregnancy": [
+        {
+            "unique_id": "3fd90c9a-c4c0-4d8a-b227-d2c4d67e791d",
+            "date_of_report": "2021-01-29",
+            "support_needed": [],
+            "support_needed_1": [],
+            "specify_mental_issue": [],
+            "specify_physical_issue": [],
+            "current_gestational_week": 6,
+            "specify_contraception_problem": [],
+            "reason_for_unexpected_pregnancy": [],
+            "factors_for_pregnancy_termination": [],
+            "specify_family_social_economic_issues": [],
+            "patient_decision_after_being_provided_with_alternative_counseling": "terminate_pregnancy_883239"
+        }
+    ],
+    "notes_section": [],
+    "reopened_logs": [],
+    "agency_75fac1e": "National police",
+    "national_id_no": 1234567890,
+    "case_id_display": "e6a2866",
+    "last_updated_at": "2021-02-10T10:53:50.436Z",
+    "owned_by_groups": [
+        "usergroup-primero-cp"
+    ],
+    "location_current": "TH410102",
+    "physical_check_2": [
+        {
+            "vdrl": null,
+            "sperm": null,
+            "date_6": "2021-02-10",
+            "hcv_ab": null,
+            "hiv_ab": null,
+            "hbv_ab_ag": null,
+            "unique_id": "65e4a777-87e9-4830-aa49-32ffcaaaca36",
+            "full_name_5": null,
+            "description_1": null,
+            "hymen_details": null,
+            "cervix_details": null,
+            "pregnancy_test": null,
+            "uterus_details": null,
+            "vagina_details": null,
+            "acid_phosphates": null,
+            "doctor_s_opinion": null,
+            "patient_s_height": null,
+            "patient_s_weight": 20,
+            "discharge_details": null,
+            "introitus_details": null,
+            "anti_hiv_medication": null,
+            "scrotal_sac_f93e04a": null,
+            "labia_minora_details": null,
+            "hymen_details_3538ed4": null,
+            "penis_details_79f31be": null,
+            "vag__parasite_cff1803": null,
+            "vag__smeargram_strain": null,
+            "general_observations_2": null,
+            "genitalia_observations": null,
+            "anus_and_rectum_eaf3784": null,
+            "immediate_treatment_plan": null,
+            "laboratory_exams_results": null,
+            "general_description_b738274": null,
+            "general_examination_results": "general examination results",
+            "if_abnormal__please_specify": null,
+            "if_abnormal__please_specify_1": null,
+            "if_abnormal__please_specify_2": null,
+            "if_abnormal__please_specify_3": null,
+            "urethra_and_discharge_60eb64e": null,
+            "if_teared__please_estimate_date": null,
+            "pregnancy_prevention_medication": null,
+            "date_of_last_period_menstruation": null,
+            "male_genitalia_observation_95b8e5e": null,
+            "anti_infectious_diseases_medication": null,
+            "if_abnormal__please_specify_899040a": null,
+            "if_abnormal__please_specify_ab4be7b": null,
+            "if_abnormal__please_specify_d03f913": null,
+            "if_abnormal__please_specify_f3f0782": null,
+            "other_exams_results__please_specify": null,
+            "if_positive__please_specify_location_s": null,
+            "general_description_of_genitalia_examination": null,
+            "description_of_physical_examination_observations_1": "Description of physical examination observations data"
+        }
+    ],
+    "position_9401fd4": "Captain",
+    "consent_reporting": true,
+    "full_name_ab6062c": "Police officer",
+    "interview_subject": "caregiver",
+    "registration_date": "2021-01-27",
+    "owned_by_agency_id": "UNICEF",
+    "witnesses__6c0a33c": [
+        {
+            "unique_id": "a347d717-fdcf-4957-95e1-140136e8b43f",
+            "full_name_1dde243": "Witness 1",
+            "testimony__cec1e35": "jkbcjscnldsvdsmv;msvc;mcmmsa;ma",
+            "relation_to_the_child_37c30dc": "uncle"
+        },
+        {
+            "unique_id": "fc5fb7fd-73a6-496c-82c6-bae782a13221",
+            "full_name_1dde243": "Witness 2",
+            "testimony__cec1e35": "kjbkjbkj",
+            "relation_to_the_child_37c30dc": "neighbour"
+        }
+    ],
+    "assessment_due_date": "2021-02-03",
+    "consent_for_tracing": true,
+    "date_of_first_abuse": "2021-02-01",
+    "protection_concerns": [
+        "sexually_exploited"
+    ],
+    "consent_for_services": true,
+    "created_organization": "UNICEF",
+    "associated_user_names": [
+        "primero_cp"
+    ],
+    "disclosure_other_orgs": true,
+    "family_details_section": [
+        {
+            "relation": "mother",
+            "unique_id": "f28cbca5-99ba-4eba-8998-392a72a3a64e",
+            "national_id": 987654321,
+            "occupation_3": "house_keeping",
+            "relation_age": 31,
+            "relation_name": "Maria",
+            "relation_language": [],
+            "relation_religion": [],
+            "relation_nationality": [
+                "thailand"
+            ],
+            "relation_is_caregiver": true,
+            "relation_date_of_birth": "1990-01-01",
+            "relation_location_current": "TH410103",
+            "is_this_person_living_in_the_same_household_as_the_patient_": true
+        },
+        {
+            "relation": "father",
+            "unique_id": "fec6f690-c544-4fcb-8911-69e92c2a9685",
+            "occupation_3": "official___state_enterprise",
+            "relation_age": 41,
+            "relation_name": "Jose",
+            "relation_language": [],
+            "relation_religion": [],
+            "relation_nationality": [
+                "thailand"
+            ],
+            "relation_is_caregiver": true,
+            "relation_date_of_birth": "1980-01-01",
+            "is_this_person_living_in_the_same_household_as_the_patient_": true
+        }
+    ],
+    "reporting_date_d36d4ae": "2021-01-27",
+    "contact_details_aa1dbe6": 888888,
+    "main_diagnosis__04438ee": "Severe psychological distress",
+    "urgent_protection_concern": true,
+    "consent_assent_obtained_by": "oscc",
+    "preliminary_observations_2": [
+        {
+            "date_7": "2021-02-10",
+            "unique_id": "b6406a59-84c7-4f9f-b738-6bcb4b07cb8a",
+            "home_visit_required__2": true,
+            "initial_observations_4": "fvfv",
+            "immediate_actions_needed_1": "cvdv",
+            "social_problems_identified_1": [
+                "0101___communication_problems_improper_communication_unable_to_communicate_the_needs_of_each_party_unclear_communication_regularly_quarreling_sarcastic__abusive__abusive__vulgar__coercive_orders_the_bossy__indifferent__doesn_t_talk_to_each_other__not_interested_in_each_other"
+            ]
+        }
+    ],
+    "evidence_found__if_any__3fd5115": "fvf",
+    "first_witness_full_name_0b40b4c": "witness 1",
+    "third_witness_full_name_5afea19": "witness 3",
+    "second_witness_full_name_6c35a74": "witness 2",
+    "report_registration_number_b868e09": 123,
+    "first_witness_relation_with_the_child_9b03928": "colleague_employer_employee",
+    "third_witness_relation_with_the_child_e1fc431": "stranger",
+    "second_witness_relation_with_the_child_2bad141": "other",
+    "information_of_the_violation_scene_and_environment_arena_3f38c3e": "fvfv",
+    "information_of_the_situation_conditions_for_why_service_s__need_to_be_provided_to_the_child_7fccfd7": "fvfvfa",
+    "please_provide_information_for_how_do_you_know_that_service_s__need_to_be_provided_to_the_child_327a72e": "dwdfdvcds",
+    "record_in_scope": true,
+    "flag_count": 1,
+    "photo": null,
+    "recorded_audio": [],
+    "other_documents": [],
+    "photos": [],
+    "incident_details": [
+        {
+            "age": 4,
+            "cp_sex": "female",
+            "status": "open",
+            "owned_by": "primero_cp",
+            "short_id": "c6c627f",
+            "module_id": "primeromodule-cp",
+            "posted_at": "2021-01-27T09:24:05.930Z",
+            "unique_id": "3f141053-5f49-43e5-8749-729f5328e2d1",
+            "created_at": "2021-01-27T09:23:23.307Z",
+            "created_by": "primero_cp",
+            "flag_count": 0,
+            "alert_count": 0,
+            "incident_id": "f3ea6e58-2c01-4ab3-9525-33683c6c627f",
+            "other_id_no": null,
+            "record_state": true,
+            "incident_code": "c6c627f",
+            "other_id_type": null,
+            "cp_nationality": [
+                "thailand"
+            ],
+            "national_id_no": 1234567890,
+            "case_id_display": "e6a2866",
+            "last_updated_at": "2021-01-27T09:27:23.895Z",
+            "last_updated_by": "primero_cp",
+            "maritial_status": null,
+            "owned_by_groups": [
+                "usergroup-primero-cp"
+            ],
+            "perpetrator_sex": "male",
+            "record_in_scope": true,
+            "cp_incident_date": "2021-01-06",
+            "owned_by_location": "TH",
+            "stimulant_130c931": [
+                "amphetamines___narcotics"
+            ],
+            "unique_identifier": "f3ea6e58-2c01-4ab3-9525-33683c6c627f",
+            "owned_by_agency_id": "UNICEF",
+            "owned_by_full_name": "CP Worker",
+            "risk_level_a1a1603": null,
+            "environment_d5e45d9": [
+                "risk___secluded_area"
+            ],
+            "cp_incident_location": "TH410105",
+            "created_by_full_name": "CP Worker",
+            "created_organization": "UNICEF",
+            "date_of_first_report": "2021-01-27",
+            "mental_issue_cec0b79": [
+                "none_of_the_above"
+            ],
+            "associated_user_names": [
+                "primero_cp"
+            ],
+            "associated_user_groups": [
+                "usergroup-primero-cp"
+            ],
+            "physical_issue_75d50ce": [
+                "none_of_the_above"
+            ],
+            "cp_incident_abuser_name": "cenas",
+            "economic_issues_804b1fd": [
+                "jobless"
+            ],
+            "sender_s_gender_1dea842": "male",
+            "associated_user_agencies": [
+                "UNICEF"
+            ],
+            "cp_incident_violence_type": "sexual_assault",
+            "patient_occupation_caaf41d": "pre_school",
+            "cp_incident_perpetrator_age": 55,
+            "sender_s_occupation_5f6568d": "working",
+            "relation_within_family_7239ecc": [
+                "physical_abuse_within_family"
+            ],
+            "sender_s_contact_details_cad289d": 999999999,
+            "cp_incident_perpetrator_occupation": "jobless",
+            "patient_educational_status_d348762": null,
+            "cp_incident_perpetrator_nationality": "thailand",
+            "patient_disability__if_any__51932af": null,
+            "cp_incident_perpetrator_relationship": "family_friend_neighbor",
+            "cp_incident_perpetrator_marital_status": "divorced_separated",
+            "type_of_place_where_the_incident_occurred_4145aa8": "home_of_the_perpetrator_"
+        },
+        {
+            "age": 4,
+            "cp_sex": "female",
+            "status": "open",
+            "owned_by": "primero_cp",
+            "short_id": "74cc69a",
+            "module_id": "primeromodule-cp",
+            "posted_at": "2021-01-27T09:26:05.200Z",
+            "created_at": "2021-01-27T09:24:20.433Z",
+            "created_by": "primero_cp",
+            "flag_count": 0,
+            "alert_count": 0,
+            "incident_id": "d036bd1c-6965-4a43-b144-89d4474cc69a",
+            "other_id_no": null,
+            "record_state": true,
+            "incident_code": "74cc69a",
+            "other_id_type": null,
+            "cp_nationality": [
+                "thailand"
+            ],
+            "national_id_no": 1234567890,
+            "case_id_display": "e6a2866",
+            "last_updated_at": "2021-01-27T09:26:05.202Z",
+            "last_updated_by": "primero_cp",
+            "maritial_status": null,
+            "owned_by_groups": [
+                "usergroup-primero-cp"
+            ],
+            "perpetrator_sex": "male",
+            "record_in_scope": true,
+            "cp_incident_date": "2021-01-13",
+            "owned_by_location": "TH",
+            "stimulant_130c931": [
+                "alcohol"
+            ],
+            "unique_identifier": "d036bd1c-6965-4a43-b144-89d4474cc69a",
+            "owned_by_agency_id": "UNICEF",
+            "owned_by_full_name": "CP Worker",
+            "risk_level_a1a1603": null,
+            "cp_incident_location": "TH410105",
+            "created_by_full_name": "CP Worker",
+            "created_organization": "UNICEF",
+            "date_of_first_report": "2021-01-27",
+            "mental_issue_cec0b79": [
+                "none_of_the_above"
+            ],
+            "associated_user_names": [
+                "primero_cp"
+            ],
+            "associated_user_groups": [
+                "usergroup-primero-cp"
+            ],
+            "physical_issue_75d50ce": [
+                "none_of_the_above"
+            ],
+            "cp_incident_abuser_name": "jorge",
+            "economic_issues_804b1fd": [
+                "poor"
+            ],
+            "sender_s_gender_1dea842": "male",
+            "associated_user_agencies": [
+                "UNICEF"
+            ],
+            "cp_incident_violence_type": "physical_assault",
+            "patient_occupation_caaf41d": "pre_school",
+            "cp_incident_perpetrator_age": 41,
+            "sender_s_occupation_5f6568d": "working",
+            "relation_within_family_7239ecc": [
+                "physical_abuse_within_family"
+            ],
+            "cp_incident_perpetrator_occupation": "military",
+            "patient_educational_status_d348762": null,
+            "cp_incident_perpetrator_nationality": "thailand",
+            "patient_disability__if_any__51932af": null,
+            "cp_incident_perpetrator_relationship": "primary_caregiver",
+            "cp_incident_perpetrator_marital_status": "married__unregistered__",
+            "type_of_place_where_the_incident_occurred_4145aa8": "home_of_the_patient",
+            "unique_id": "61c09d4f-4ec7-4c5d-a6e9-48e9b3d485cc"
+        }
+    ]
+}
