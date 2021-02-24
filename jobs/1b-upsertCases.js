@@ -185,6 +185,8 @@ each(
       11
     )}-${patient.cid.substring(11, 13)}`;
     const data = {
+      mark_synced: true, //harcode as true to disable sync button
+      mark_synced_url: "https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee",
       record_id: state.record_id, //upserting by record_id now
       //case_id: state.case_id,
       national_id_no,
@@ -202,7 +204,7 @@ each(
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
-      registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
+      //registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
       telephone_current: patient.telephone,
       insurance_type_2d79b49: patient.pttype,
     };
