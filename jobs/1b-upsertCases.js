@@ -185,7 +185,8 @@ each(
       11
     )}-${patient.cid.substring(11, 13)}`;
     const data = {
-      case_id: state.case_id,
+      record_id: state.record_id, //upserting by record_id now
+      //case_id: state.case_id,
       national_id_no,
       other_agency_id: '',
       name_last: patient.lname,
@@ -208,7 +209,7 @@ each(
     console.log(data);
     return upsertCase(
       {
-        externalIds: ['case_id'],
+        externalIds: ['record_id'],
         data,
       },
       state => {
