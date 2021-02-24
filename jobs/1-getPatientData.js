@@ -28,7 +28,8 @@ post(
       },
       state => {
         console.log(state.data);
-        return { ...state, case_id: state.references[0].data.case_id };
+         console.log(state.references[0]);
+        return { ...state, case_id: state.references[0].case_id };
       }
     )(state);
   }
