@@ -213,7 +213,7 @@ each(
       11
     )}-${patient.cid.substring(11, 13)}`;
 
-    const data = {
+    let data = {
       mark_synced: true, //harcode as true to disable sync button
       mark_synced_url:
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
@@ -237,7 +237,7 @@ each(
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
       //registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
-      telephone_current: patient.telephone,
+      // telephone_current: patient.telephone,
       insurance_type_2d79b49: patient.pttype,
       // ====================================================================
 
@@ -270,14 +270,34 @@ each(
     data['physical_check_2'] = physical_check_2;
     // ====================================================================
 
-    /* const diagType = {
+    // CONCLUSION =========================================================
+    const diagType = {
       1: 'main_diagnosis__04438ee',
       2: 'co_morbidity_d3dfab2',
       3: 'complications_123ecae',
       4: 'other_diagnosis_a692bec',
       5: 'external_cause_of_injury_8451818',
-    }; */
-    // data[diagType.]
+    };
+    const diagnosisObj = {};
+    patient.interventions.forEach(intervention => {
+      const { diagnosis } = intervention.activities;
+      if (diagnosis)
+        diagnosis.forEach(diag => {
+          const { diagtype, icd10 } = diag;
+          if (diagnosisObj[diagType[diagtype]]) {
+            if (!diagnosisObj[diagType[diagtype]].includes(icd10)) {
+              diagnosisObj[diagType[diagtype]] = `${
+                diagnosisObj[diagType[diagtype]]
+              } ${icd10},`;
+            }
+          } else {
+            diagnosisObj[diagType[diagtype]] = `${icd10},`;
+          }
+        });
+    });
+    // ====================================================================
+
+    data = { ...data, ...diagnosisObj };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
 
