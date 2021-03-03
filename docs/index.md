@@ -7,7 +7,8 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 Summarize...
 
 _**Flow 1: MOPH referrals --> Primero**_
-* User Story 1: Referring MOPH cases from HIS and Child Shield systems to Primero...
+* User Story 1: When a case worker registers a new case in Primero, they want to consult the patient's details stored in HIS. The case worker clicks the Sync button in Primero to initiate a real-time sync with HIS. The patient's data is displayed in Primero in the relevant forms.
+* User Story 2: When a case worker consults an existing case in Primero, they want to access the patient's details stored in HIS. The case worker clicks the Sync button in Primero to initiate a real-time sync with HIS. The patient's updated data is displayed in Primero in the relevant forms.
 
 _**Flow 2: Primero --> Child Shield**_
 * User Story 1: Sending Primero updates back to Child Shield...
