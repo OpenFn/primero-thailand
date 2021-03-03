@@ -4,7 +4,6 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 ### Note! Commits to 'master' branch will deploy automatically to live integration on OpenFn.org. 
 
 ## (1) Functional Requirements
-Summarize...
 
 _**Flow 1: MOPH referrals --> Primero**_
 * User Story 1: When a case worker registers a new case in Primero, they want to consult the patient's details stored in HIS. The case worker clicks the Sync button in Primero to initiate a real-time sync with HIS. The patient's data is displayed in Primero in the relevant forms.
