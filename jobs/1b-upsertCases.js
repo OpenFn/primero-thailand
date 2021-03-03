@@ -2,7 +2,7 @@ alterState(state => {
   const maritalMap = {
     1: 'single',
     2: 'married',
-    3: 'widowed',
+    3: 'widow',
     4: 'divorced',
     5: 'separated',
     6: 'monk',
@@ -170,13 +170,41 @@ alterState(state => {
     989: 'People without state registration',
     999: 'Unknown / Unspecified',
   };
-  return { ...state, maritalMap, nationalityMap };
+
+  const educateMap = {
+    0: 'dropped_out_of_school',
+    1: 'kindergarten',
+    2: 'primary_school',
+    3: 'junior_high_school',
+    4: 'high_school___vocational_education',
+    5: 'bachelor',
+    6: 'higher_than_bachelor',
+    9: 'no_information',
+  };
+
+  return { ...state, maritalMap, nationalityMap, educateMap };
 });
 
 each(
   '$.data[*]',
   alterState(state => {
+    const calculateAge = dob => {
+      const diff = Date.now() - dob.getTime();
+      const age_dt = new Date(diff);
+
+      return Math.abs(age_dt.getUTCFullYear() - 1970);
+    };
+
     const patient = state.data;
+
+    const recentIntervention = patient.interventions.reduce((prev, curr) => {
+      return prev.vstdate > curr.vstdate ? prev : curr;
+    });
+
+    const vstDateTime = recentIntervention.vsttime
+      ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
+      : `${recentIntervention.vstdate}`;
+
     const national_id_no = `${patient.cid.substring(
       0,
       2
@@ -184,17 +212,21 @@ each(
       6,
       11
     )}-${patient.cid.substring(11, 13)}`;
+
     const data = {
       mark_synced: true, //harcode as true to disable sync button
-      mark_synced_url: "https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee",
+      mark_synced_url:
+        'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
       record_id: state.record_id, //upserting by record_id now
       //case_id: state.case_id,
+
+      // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
-      other_agency_id: '',
+      other_agency_id: recentIntervention.hn,
       name_last: patient.lname,
       name_first: patient.fname,
       date_of_birth: patient.birthday,
-      age: patient.age_y,
+      age: calculateAge(new Date(patient.birthday)),
       sex:
         patient.sex === '1'
           ? 'Male'
@@ -207,8 +239,48 @@ each(
       //registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
       telephone_current: patient.telephone,
       insurance_type_2d79b49: patient.pttype,
+      // ====================================================================
+
+      // EDUCATION AND CAREER ===============================================
+      school_level_attained_: state.educateMap[patient.educate],
+      if_working__please_specify_5c0dd61: patient.occupation,
+      // ====================================================================
+
+      // DEPARTEMENT IDENTIFICATION =========================================
+      service_department_87cec18: recentIntervention.main_dep,
+      service_place_code_98d0a58: patient.hcode,
+      outpatient_number: recentIntervention.vn,
+      case_detected_by: recentIntervention.spclty,
+      date_and_time_of_visit_to_the_hospital: new Date(
+        vstDateTime
+      ).toISOString(),
+      // ====================================================================
     };
-    console.log(data);
+    // PHYSICAL EXAMINATION IDENTIFICATION ================================
+    const physical_check_2 = [];
+    patient.interventions.forEach(intervention => {
+      const { assessment } = intervention.activities;
+      physical_check_2.push({
+        patient_s_weight: assessment ? assessment[0].bw : '',
+        patient_s_height: assessment ? assessment[0].height : '',
+        date_6: intervention.vstdate,
+        department_d8ec3cb: intervention.main_dep,
+      });
+    });
+    data['physical_check_2'] = physical_check_2;
+    // ====================================================================
+
+    /* const diagType = {
+      1: 'main_diagnosis__04438ee',
+      2: 'co_morbidity_d3dfab2',
+      3: 'complications_123ecae',
+      4: 'other_diagnosis_a692bec',
+      5: 'external_cause_of_injury_8451818',
+    }; */
+    // data[diagType.]
+
+    console.log('Upserting case', JSON.stringify(data, null, 2));
+
     return upsertCase(
       {
         externalIds: ['record_id'],
