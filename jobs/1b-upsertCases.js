@@ -257,7 +257,7 @@ each(
       // ====================================================================
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
-   /* const physical_check_2 = [];
+    const physical_check_2 = [];
     patient.interventions.forEach(intervention => {
       const { assessment } = intervention.activities;
       physical_check_2.push({
@@ -297,7 +297,7 @@ each(
     }); 
     // ====================================================================
 
-    data = { ...data, ...diagnosisObj }; */
+    data = { ...data, ...diagnosisObj };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
 
