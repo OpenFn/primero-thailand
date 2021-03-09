@@ -13,6 +13,7 @@ post(
   state => {
     const access_token = state.data.body.id;
     console.log('Authentication done...');
+    console.log(state.references[0].national_id)
     // operation 2 is a get, using the token, to get people
     filter = {
       where: { cid: state.references[0].national_id },
