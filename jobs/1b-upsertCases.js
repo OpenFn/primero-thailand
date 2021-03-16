@@ -213,6 +213,15 @@ each(
       11
     )}-${patient.cid.substring(11, 13)}`;
 
+    const address = [
+      patient.addrpart,
+      patient.moopart,
+      patient.road,
+      patient.tmbpart,
+      patient.amppart,
+      patient.chwpart,
+    ];
+
     let data = {
       mark_synced: true, //harcode as true to disable sync button
       mark_synced_url:
@@ -236,8 +245,8 @@ each(
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
-      //registered_address: `${patient.roomno}, ${patient.condo}, ${patient.houseno},${patient.soisub}, ${patient.soimain}, ${patient.road}, ${patient.villaname}, ${patient.village}, ${patient.tambon}, ${patient.ampur}, ${patient.changwat}`,
-      // telephone_current: patient.telephone,
+      registered_address: address.filter(x => x).join(', '),
+      telephone_current: patient.hometel,
       insurance_type_2d79b49: patient.pttype,
       // ====================================================================
 
@@ -294,7 +303,7 @@ each(
             diagnosisObj[diagType[diagtype]] = `${icd10},`;
           }
         });
-    }); 
+    });
     // ====================================================================
 
     data = { ...data, ...diagnosisObj };
