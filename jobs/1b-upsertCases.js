@@ -182,7 +182,12 @@ alterState(state => {
     9: 'no_information',
   };
 
-  return { ...state, maritalMap, nationalityMap, educateMap };
+  return {
+    ...state,
+    maritalMap,
+    nationalityMap,
+    educateMap,
+  };
 });
 
 each(
@@ -267,15 +272,47 @@ each(
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
     const physical_check_2 = [];
+    const labOrderType = {
+      '0602203': 'pregnancy_test_21c37e2',
+      '0350408': 'sperm_check_2612983',
+      '0490615': 'acid_phosphates_118c999',
+      '0743299': 'hiv_ab_8c67abf',
+      '0749100': 'hiv_ab_8c67abf',
+      '0749300': 'hiv_ab_8c67abf',
+      '0320277': 'vag__smeargram_strain_fce21b2',
+      '0794298': 'vag__parasite_7504774',
+      '0721298': 'vdrl_aa8c121',
+      '0749303': 'hbv_ab__ag_f13b335',
+      '0741699': 'hcv_ab_945585c',
+      '0749103': 'hcv_ab_945585c',
+    };
+    const labOrderResultObj = {};
+
     patient.interventions.forEach(intervention => {
-      const { assessment } = intervention.activities;
-      physical_check_2.push({
+      const { assessment, laboratory } = intervention.activities;
+      const assessmentObj = {
         patient_s_weight: assessment ? assessment[0].bw : '',
         patient_s_height: assessment ? assessment[0].height : '',
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
-      });
+      };
+      if (laboratory) {
+        laboratory.forEach(lab => {
+          const {
+            provis_labcode,
+            lab_order_result,
+            lab_items_unit,
+            lab_items_normal_value_ref,
+          } = lab;
+
+          labOrderResultObj[
+            labOrderType[provis_labcode]
+          ] = `${lab_order_result} ${lab_items_unit} (${lab_items_normal_value_ref})`;
+        });
+      }
+      physical_check_2.push({ ...assessmentObj, ...labOrderResultObj });
     });
+
     data['physical_check_2'] = physical_check_2;
     // ====================================================================
 
@@ -293,7 +330,9 @@ each(
       if (diagnosis)
         diagnosis.forEach(diag => {
           const { diagtype, icd10 } = diag;
+          // if there is anything in the diagnosisObj we are building
           if (diagnosisObj[diagType[diagtype]]) {
+            // ... if that thing doest not include the current icd10
             if (!diagnosisObj[diagType[diagtype]].includes(icd10)) {
               diagnosisObj[diagType[diagtype]] = `${
                 diagnosisObj[diagType[diagtype]]
