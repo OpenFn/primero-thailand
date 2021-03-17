@@ -3,66 +3,81 @@
         "team": [
             "",
             ""
-        ),
+        ],
         "place": [
             "",
             ""
-        ),
+        ],
         "participants": [
             "child"
-        ),
+        ],
         "date": {
             "child": "2020-01-01"
-        ),
+        },
         "forms": [
             {
-                "description": "Quality of life assessment form of children (For children aged 2-6 years) ",
+                "description": "Quality of life assessment form of children (For children aged 2-6 years} ",
                 "items": {
                     "choiceItems": {
-                        "options": [ 
-                            {"value": "3", "description": "All true", "image": "i1.png"},
-                            {"value": "2", "description": "Mostly true", "image": "i4.png"},
-                            {"value": "1", "description": "Partially true", "image": "i2.png"},
-                            {"value": "0", "description": "Not true", "image": "i3.png"}
-                        ),
+                        "options": [
+                            {
+                                "value": "3",
+                                "description": "All true",
+                                "image": "i1.png"
+                            },
+                            {
+                                "value": "2",
+                                "description": "Mostly true",
+                                "image": "i4.png"
+                            },
+                            {
+                                "value": "1",
+                                "description": "Partially true",
+                                "image": "i2.png"
+                            },
+                            {
+                                "value": "0",
+                                "description": "Not true",
+                                "image": "i3.png"
+                            }
+                        ],
                         "items": [
                             {
                                 "description": "1. I like myself",
                                 "choice": ""
-                            ),
+                            },
                             {
                                 "description": "2. I am happy to eat with my family",
                                 "choice": ""
-                            ),
+                            },
                             {
-                                "description": "3. I feel warm. And safe when with (Specify the name of the PLH trainee) ",
+                                "description": "3. I feel warm. And safe when with (Specify the name of the PLH trainee} ",
                                 "choice": ""
-                            ),
+                            },
                             {
                                 "description": "4. I share stuff, snacks and toys with siblings, friends and others.",
                                 "choice": ""
-                            ),
+                            },
                             {
-                                "description": "5. I love that (name of PLH participants) play with me.",
+                                "description": "5. I love that (name of PLH participants} play with me.",
                                 "choice": ""
-                            ),
+                            },
                             {
                                 "description": "6. I want to help others who are suffering, sick or poor",
                                 "choice": ""
-                            ),
+                            },
                             {
-                                "description": "7. I obey (specify the name of the PLH participants) and perform functions such as going to bed at the time of homework, playing on the phone for a while. As recommended by you ",
+                                "description": "7. I obey (specify the name of the PLH participants} and perform functions such as going to bed at the time of homework, playing on the phone for a while. As recommended by you ",
                                 "choice": ""
-                            ),
+                            },
                             {
                                 "description": "8. I do my duties such as showering, dressing, housework, reading without warning.",
                                 "choice": ""
-                            )
-                        )
-                    )
-                )
-            )
-            
-        )
-    )
-)}
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
