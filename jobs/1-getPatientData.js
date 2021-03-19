@@ -12,7 +12,6 @@ post(
   },
   state => {
     const access_token = state.data.body.id;
-    console.log('first post', JSON.stringify(state.references[0], null, 2));
     console.log('Authentication done...');
     // operation 2 is a get, using the token, to get people
     const filter = {
@@ -20,6 +19,7 @@ post(
       include: 'interventions',
       limit: 1,
     };
+    console.log('filter', JSON.stringify(filter, null, 2));
     return get(
       `${state.configuration.url}/people`,
       {
