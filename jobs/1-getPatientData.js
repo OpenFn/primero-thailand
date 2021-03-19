@@ -16,7 +16,7 @@ post(
     console.log(state.references[0])
     // operation 2 is a get, using the token, to get people
     filter = {
-      where: { cid: state.references[0].national_id },
+      where: { cid: state.references[0].national_id_no },
       include: 'interventions',
       limit: 1,
     };
