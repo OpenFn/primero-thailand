@@ -15,7 +15,7 @@ post(
     console.log('Authentication done...');
     // operation 2 is a get, using the token, to get people
     const filter = {
-      where: { cid: state.references[0].national_id_no },
+      where: { cid: state.references[0].data.national_id_no },
       include: 'interventions',
       limit: 1,
     };
