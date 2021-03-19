@@ -14,7 +14,7 @@ post(
     const access_token = state.data.body.id;
     console.log('Authentication done...');
     // operation 2 is a get, using the token, to get people
-    filter = {
+    const filter = {
       where: { cid: state.references[0].national_id_no },
       include: 'interventions',
       limit: 1,
