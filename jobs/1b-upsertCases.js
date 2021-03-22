@@ -346,7 +346,6 @@ each(
     // ====================================================================
 
     data = { ...data, ...diagnosisObj };
-    console.log("data to be upserted: ", data)
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
 
