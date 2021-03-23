@@ -16,6 +16,8 @@ _**Flow 2: Primero --> Child Shield**_
 ## (2) System APIs
 **APIs** implemented:
 * Primero: [API v2](https://github.com/primeroIMS/primero/blob/development_v2/app/controllers/api/README.md)
+The API uses `Basic authentication` for login and the `record_id` for upserting cases.
+
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
 Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
 Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
