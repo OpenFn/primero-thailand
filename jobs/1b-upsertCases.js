@@ -324,6 +324,9 @@ each(
       4: 'other_diagnosis_a692bec',
       5: 'external_cause_of_injury_8451818',
     };
+    const trimDiagType = diagtype => {
+      return diagtype.length === 2 ? diagtype[1] : diagtype;
+    };
     const diagnosisObj = {};
     patient.interventions.forEach(intervention => {
       const { diagnosis } = intervention.activities;
@@ -331,15 +334,17 @@ each(
         diagnosis.forEach(diag => {
           const { diagtype, icd10 } = diag;
           // if there is anything in the diagnosisObj we are building
-          if (diagnosisObj[diagType[diagtype]]) {
+          if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
             // ... if that thing doest not include the current icd10
-            if (!diagnosisObj[diagType[diagtype]].includes(icd10)) {
-              diagnosisObj[diagType[diagtype]] = `${
-                diagnosisObj[diagType[diagtype]]
+            if (
+              !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(icd10)
+            ) {
+              diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
+                diagnosisObj[diagType[trimDiagType(diagtype)]]
               } ${icd10},`;
             }
           } else {
-            diagnosisObj[diagType[diagtype]] = `${icd10},`;
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${icd10},`;
           }
         });
     });
@@ -348,8 +353,8 @@ each(
     data = { ...data, ...diagnosisObj };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
-
-    return upsertCase(
+    return state;
+    /* return upsertCase(
       {
         externalIds: ['record_id'],
         data,
@@ -358,6 +363,6 @@ each(
         console.log(state.data);
         return state;
       }
-    )(state);
+    )(state); */
   })
 );
