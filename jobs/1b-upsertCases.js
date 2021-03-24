@@ -295,6 +295,7 @@ each(
         patient_s_height: assessment ? assessment[0].height : '',
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
+        unique_id: `${intervention.vstdate}${intervention.main_dept}${patient.cid}`,
       };
       if (laboratory) {
         laboratory.forEach(lab => {
@@ -316,6 +317,11 @@ each(
     data['physical_check_2'] = physical_check_2;
     // ====================================================================
 
+    // UNEXPECTED PREGNANCY================================================
+    const new_pregnancy = []; // holding until more specs in sample data
+
+    // ====================================================================
+
     // CONCLUSION =========================================================
     const diagType = {
       1: 'main_diagnosis__04438ee',
@@ -328,32 +334,30 @@ each(
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
     const diagnosisObj = {};
-    patient.interventions.forEach(intervention => {
-      const { diagnosis } = intervention.activities;
-      if (diagnosis)
-        diagnosis.forEach(diag => {
-          const { diagtype, icd10 } = diag;
-          // if there is anything in the diagnosisObj we are building
-          if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
-            // ... if that thing doest not include the current icd10
-            if (
-              !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(icd10)
-            ) {
-              diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
-                diagnosisObj[diagType[trimDiagType(diagtype)]]
-              } ${icd10},`;
-            }
-          } else {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${icd10},`;
+    // patient.interventions.forEach(intervention => {
+    const { diagnosis } = recentIntervention.activities;
+    if (diagnosis)
+      diagnosis.forEach(diag => {
+        const { diagtype, icd10 } = diag;
+        // if there is anything in the diagnosisObj we are building
+        if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
+          // ... if that thing doest not include the current icd10
+          if (!diagnosisObj[diagType[trimDiagType(diagtype)]].includes(icd10)) {
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
+              diagnosisObj[diagType[trimDiagType(diagtype)]]
+            } ${icd10},`;
           }
-        });
-    });
+        } else {
+          diagnosisObj[diagType[trimDiagType(diagtype)]] = `${icd10},`;
+        }
+      });
+    // });
     // ====================================================================
 
     data = { ...data, ...diagnosisObj };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
-    //return state;
+    // return state;
     return upsertCase(
       {
         externalIds: ['record_id'],
