@@ -353,8 +353,8 @@ each(
     data = { ...data, ...diagnosisObj };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
-    return state;
-    /* return upsertCase(
+    //return state;
+    return upsertCase(
       {
         externalIds: ['record_id'],
         data,
@@ -363,6 +363,6 @@ each(
         console.log(state.data);
         return state;
       }
-    )(state); */
+    )(state);
   })
 );
