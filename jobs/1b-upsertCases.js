@@ -295,7 +295,7 @@ each(
         patient_s_height: assessment ? assessment[0].height : '',
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
-        unique_id: `${intervention.vstdate}${intervention.main_dept}${patient.cid}`,
+        unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
       };
       if (laboratory) {
         laboratory.forEach(lab => {
