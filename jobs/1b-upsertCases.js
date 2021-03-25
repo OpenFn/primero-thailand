@@ -272,6 +272,7 @@ each(
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
     const physical_check_2 = [];
+    const new_pregnancy = [];
     const labOrderType = {
       '0602203': 'pregnancy_test_21c37e2',
       '0350408': 'sperm_check_2612983',
@@ -289,15 +290,30 @@ each(
     const labOrderResultObj = {};
 
     patient.interventions.forEach(intervention => {
-      const { assessment, laboratory } = intervention.activities;
+      const { assessment, laboratory, anc } = intervention.activities;
+
       const assessmentObj = {
-        patient_s_weight: assessment ? assessment[0].bw : '',
-        patient_s_height: assessment ? assessment[0].height : '',
+        patient_s_weight:
+          assessment && assessment.length > 0 ? assessment[0].bw : '',
+        patient_s_height:
+          assessment && assessment.length > 0 ? assessment[0].height : '',
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
       };
-      if (laboratory) {
+
+      // UNEXPECTED PREGNANCY================================================
+      if (anc && anc.length > 0) {
+        anc.forEach(ancElement => {
+          const ancObj = {
+            current_gestational_week: ancElement.ga,
+          };
+          new_pregnancy.push(ancObj);
+        });
+      }
+      // ====================================================================
+
+      if (laboratory && laboratory.length > 0) {
         laboratory.forEach(lab => {
           const {
             provis_labcode,
@@ -315,11 +331,7 @@ each(
     });
 
     data['physical_check_2'] = physical_check_2;
-    // ====================================================================
-
-    // UNEXPECTED PREGNANCY================================================
-    const new_pregnancy = []; // holding until more specs in sample data
-
+    data['new_pregnancy'] = new_pregnancy;
     // ====================================================================
 
     // CONCLUSION =========================================================
