@@ -21,7 +21,7 @@ post(
     };
     console.log('filter', JSON.stringify(filter, null, 2));
     return get(
-      `${state.configuration.url}/people`,
+      `${state.configuration.url}/people/findOne`,
       {
         query: { filter, access_token },
         // https: newAgent({ rejectUnauthorized: false }),
