@@ -297,6 +297,10 @@ each(
           assessment && assessment.length > 0 ? assessment[0].bw : '',
         patient_s_height:
           assessment && assessment.length > 0 ? assessment[0].height : '',
+        date_of_last_period_menstruation:
+          anc && anc.length > 0 ? anc[0].lmp : '',
+        general_examination_results:
+          assessment && assessment.length > 0 ? assessment[0].pe : '',
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
