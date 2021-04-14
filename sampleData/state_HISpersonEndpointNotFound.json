@@ -1,0 +1,10 @@
+{
+    "error": {
+        "statusCode": 404,
+        "name": "Error",
+        "message": "Unknown \"person\" id \"undefined\".",
+        "status": 404,
+        "code": "MODEL_NOT_FOUND",
+        "stack": "Error: Unknown \"person\" id \"undefined\".\n    at Function.convertNullToNotFoundError (/root/loopback/lbprimero/node_modules/loopback/lib/persisted-model.js:91:19)\n    at invokeRestAfter (/root/loopback/lbprimero/node_modules/strong-remoting/lib/rest-adapter.js:532:25)\n    at /root/loopback/lbprimero/node_modules/strong-remoting/node_modules/async/dist/async.js:2948:28\n    at replenish (/root/loopback/lbprimero/node_modules/strong-remoting/node_modules/async/dist/async.js:440:21)\n    at iterateeCallback (/root/loopback/lbprimero/node_modules/strong-remoting/node_modules/async/dist/async.js:424:21)\n    at /root/loopback/lbprimero/node_modules/strong-remoting/node_modules/async/dist/async.js:321:20\n    at /root/loopback/lbprimero/node_modules/strong-remoting/node_modules/async/dist/async.js:2953:17\n    at interceptInvocationErrors (/root/loopback/lbprimero/node_modules/strong-remoting/lib/remote-objects.js:731:22)\n    at /root/loopback/lbprimero/node_modules/async/dist/async.js:473:16\n    at replenish (/root/loopback/lbprimero/node_modules/async/dist/async.js:1006:25)\n    at iterateeCallback (/root/loopback/lbprimero/node_modules/async/dist/async.js:995:17)\n    at /root/loopback/lbprimero/node_modules/async/dist/async.js:969:16\n    at /root/loopback/lbprimero/node_modules/async/dist/async.js:473:16\n    at replenish (/root/loopback/lbprimero/node_modules/async/dist/async.js:1006:25)\n    at iterateeCallback (/root/loopback/lbprimero/node_modules/async/dist/async.js:995:17)\n    at /root/loopback/lbprimero/node_modules/async/dist/async.js:969:16"
+    }
+}
