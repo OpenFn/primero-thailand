@@ -182,16 +182,24 @@ alterState(state => {
     9: 'no_information',
   };
 
+  let people = [];
+  if (Array.isArray(state.data)) {
+    people = Array.from(state.data);
+  } else {
+    people.push(state.data);
+  }
+
   return {
     ...state,
     maritalMap,
+    people,
     nationalityMap,
     educateMap,
   };
 });
 
 each(
-  '$.data[*]',
+  '$.people[*]',
   alterState(state => {
     const calculateAge = dob => {
       const diff = Date.now() - dob.getTime();
@@ -200,7 +208,6 @@ each(
       return Math.abs(age_dt.getUTCFullYear() - 1970);
     };
 
-    console.log('data', state.data);
     const patient = state.data;
 
     const recentIntervention = patient.interventions.reduce((prev, curr) => {
