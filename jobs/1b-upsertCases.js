@@ -200,6 +200,7 @@ each(
       return Math.abs(age_dt.getUTCFullYear() - 1970);
     };
 
+    console.log('data', state.data);
     const patient = state.data;
 
     const recentIntervention = patient.interventions.reduce((prev, curr) => {
