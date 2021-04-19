@@ -318,7 +318,8 @@ each(
       if (anc && anc.length > 0) {
         anc.forEach(ancElement => {
           const ancObj = {
-            current_gestational_week: ancElement.ga,
+            current_gestational_week: ancElement.ga_week,
+            date_of_report: ancElement.date,
           };
           new_pregnancy.push(ancObj);
         });
