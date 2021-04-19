@@ -1,6 +1,6 @@
 alterState(state => {
   const data = {
-    mark_synced: '', // TO BE DEFINED
+    mark_synced: true,
     mark_synced_url:
       'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
     record_id: state.record_id, //upserting by record_id now
