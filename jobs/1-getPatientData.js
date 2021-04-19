@@ -11,11 +11,16 @@ post(
     strictSSL: false,
   },
   state => {
+    const formatNationalId = national_id_no => {
+      return typeof national_id_no === 'string'
+        ? national_id_no.replace(/-/g, '')
+        : national_id_no;
+    };
     const access_token = state.data.body.id;
     console.log('Authentication done...');
     // operation 2 is a get, using the token, to get people
     const filter = {
-      where: { cid: state.references[0].data.national_id_no },
+      where: { cid: formatNationalId(state.references[0].data.national_id_no) },
       include: 'interventions',
       limit: 1,
     };
@@ -29,7 +34,7 @@ post(
       },
       state => {
         console.log(state.data);
-         console.log(state.references[0]);
+        console.log(state.references[0]);
         return { ...state, record_id: state.references[0].data.record_id };
       }
     )(state);
