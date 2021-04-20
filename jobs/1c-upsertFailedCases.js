@@ -1,4 +1,5 @@
 alterState(state => {
+  console.log(state.data);
   const data = {
     mark_synced: true,
     mark_synced_url:
