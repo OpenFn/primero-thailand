@@ -4,13 +4,10 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 ### Note! Commits to 'master' branch will deploy automatically to live integration on OpenFn.org. 
 
 ## (1) Functional Requirements
-Summarize...
+The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
 
 _**Flow 1: MOPH referrals --> Primero**_
-* User Story 1: Referring MOPH cases from HIS and Child Shield systems to Primero...
-
-_**Flow 2: Primero --> Child Shield**_
-* User Story 1: Sending Primero updates back to Child Shield...
+* User Story 1: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
 
 
 ## (2) System APIs
@@ -20,7 +17,7 @@ The API uses `Basic authentication` for login and the `record_id` for upserting 
 
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
 Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
-Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/VPatients?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
+Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/people/findOne?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
 Behavior: 
 1. [sample record](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample.json)
 2. [no record found](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample_no_record_found.json)
@@ -29,23 +26,22 @@ Behavior:
 * [language-primero](https://github.com/OpenFn/language-primero)
 
 ## (3) Data Flows
-Summarize....
+Data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_1accc509-6ef6-42fd-87a9-5828cb0b33be?viewport_loc=-41%2C20%2C2280%2C1161%2C0_0).
 
 _**Flow 1: MOPH referrals --> Primero**_
-1. To list OpenFn jobs... 
-
-_**Flow 2: Primero cases --> Child Shield**_
-1. To list OpenFn jobs...
+1. `1. Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
+2. `2. Update Cases in Primero` send fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
+3. `3. Upsert Failed Cases` In case no matching patient is found in HIS, this job only re-enables the Sync button in Primero without updating the case.
 
 
 ## (4) Flow Triggers
-### Trigger Type: Timer
+### Trigger Type: Event
 
-Event- or timer-based? 
+HIS <> Primero sync is launched when OpenFn receives a sync request notification from Primero.
 
 ### Integration Assumptions 
 1. **Data Sharing**: ... 
-2. **Unique Identifiers**: ...
+2. **Unique Identifiers**: `nationa_id` for identifyin patients in HIS, `record_id` for identifying Primero cases.
 3. **Services**: ...
 4. **Primero Case Owner Assignment**: ... 
 
