@@ -49,7 +49,7 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 3. **Services**: ...
 4. **Primero Case Owner Assignment**: ... -->
 
-## (5) Data Flow Mappings & Transformations
+## (5) Data Element Mappings & Transformations
 [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
 
 ## (6) Change Management
