@@ -5,10 +5,10 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 
 ## (1) Functional Requirements
 The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
+![Solution](./solution-overview.png)
 
 _**Flow 1: MOPH referrals --> Primero**_
-* User Story 1: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
-
+* Key User Story: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
 
 ## (2) System APIs
 **APIs** implemented:
