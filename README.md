@@ -40,10 +40,14 @@ _**Flow 1: MOPH referrals --> Primero**_
 HIS <> Primero sync is launched when OpenFn receives a sync request notification from Primero.
 
 ### Integration Assumptions 
-1. **Data Sharing**: ... 
+[TO UPDATE]
+1. This integration was configured according to the mapping specifications finalized in April 2021. HIS data migration is still in progress at this stage, so we expect there to be additional data points to map in the future. 
+2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
+3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `SYNC` button. 
+<!--1. **Data Sharing**: ... 
 2. **Unique Identifiers**: `nationa_id` for identifyin patients in HIS, `record_id` for identifying Primero cases.
 3. **Services**: ...
-4. **Primero Case Owner Assignment**: ... 
+4. **Primero Case Owner Assignment**: ... -->
 
 ## (5) Data Flow Mappings & Transformations
 [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
@@ -51,9 +55,8 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
 1. If login credentials are changed for either system, the relevant **Credential** must be updated in OpenFn.org. 
-2. If system changes are made to any of the **fields** referenced in the [field mappings](), the OpenFn jobs should be reviewed and tested to confirm no impact on the integration. 
-3. If the list of available  **Services** in either system changes, then the Services Map should be reviewed in the [mapping document](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) to confirm no updates are required in the OpenFn jobs. 
-4. ...
+2. If system changes are made to any of the **fields** referenced in the [field mappings](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing), the OpenFn jobs should be reviewed and tested to confirm no impact on the integration. 
+3. If the list of available  **Services** in either system changes, then the Services Map should be reviewed in the [mapping document](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) to confirm no updates are required in the OpenFn jobs.
 
 ## (7) Administration
 ### Provisioning, Hosting, & Maintenance
@@ -61,13 +64,13 @@ This integration is hosted on [OpenFn.org](https://openfn.org/projects) with Pri
 
 ### Support 
 Primero system administrators will be responsible for ongoing integration monitoring and management.
-- Primero System Administrators:
-- MOPH System Administrators:
+- Primero System Administrators: [TO UPDATE]
+- MOPH System Administrators: [TO UPDATE]
 
 Contact support@openfn.org with any questions or troubleshooting support. 
 
 ### Training Materials
-- To list materials...
+[TO UPDATE]
 
 
 ## Support Checklist
