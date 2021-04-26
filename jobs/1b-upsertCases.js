@@ -236,7 +236,7 @@ each(
     ];
 
     let data = {
-      mark_synced: true, //harcode as true to disable sync button
+      mark_synced_status: 'synced', //harcode as synced to enable sync button
       mark_synced_url:
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
       record_id: state.record_id, //upserting by record_id now
