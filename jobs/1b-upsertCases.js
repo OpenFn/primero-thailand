@@ -264,8 +264,8 @@ each(
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
-      school_level_attained_: state.educateMap[patient.aducate],
-      if_working__please_specify_5c0dd61: patient.occupation,
+      school_level_attained_: state.educateMap[patient.education_name],
+      if_working__please_specify_5c0dd61: patient.occupation_name,
       // ====================================================================
 
       // DEPARTEMENT IDENTIFICATION =========================================
