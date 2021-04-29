@@ -1,4 +1,6 @@
 alterState(state => {
+   state.configuration = {};
+  console.log(state);
   const data = {
     mark_synced: true,
     mark_synced_url:
