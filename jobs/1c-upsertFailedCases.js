@@ -3,7 +3,7 @@ alterState(state => {
 
   let status = 'failed';
   for (elt of error)
-    if (elt.includes('MODEL_NOT_FOUND')) {
+    if (String(elt).includes('MODEL_NOT_FOUND')) {
       status = 'not_found';
     }
 
