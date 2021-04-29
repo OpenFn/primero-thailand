@@ -253,8 +253,8 @@ each(
         patient.sex === '1'
           ? 'Male'
           : patient.sex === '2'
-          ? 'Female '
-          : 'Alternative gender',
+            ? 'Female '
+            : 'Alternative gender',
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
@@ -312,6 +312,7 @@ each(
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
+        source_of_information_44cac9a: 'his' //Source of Information
       };
 
       // UNEXPECTED PREGNANCY================================================
@@ -320,6 +321,7 @@ each(
           const ancObj = {
             current_gestational_week: ancElement.ga_week,
             date_of_report: ancElement.date,
+            source_of_information_647b9db: 'his' //Source of Information
           };
           new_pregnancy.push(ancObj);
         });
@@ -368,9 +370,8 @@ each(
         if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
           // ... if that thing doest not include the current icd10
           if (!diagnosisObj[diagType[trimDiagType(diagtype)]].includes(icd10)) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
-              diagnosisObj[diagType[trimDiagType(diagtype)]]
-            } ${icd10},`;
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diagnosisObj[diagType[trimDiagType(diagtype)]]
+              } ${icd10},`;
           }
         } else {
           diagnosisObj[diagType[trimDiagType(diagtype)]] = `${icd10},`;
