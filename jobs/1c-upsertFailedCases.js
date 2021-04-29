@@ -1,5 +1,5 @@
 alterState(state => {
-  console.log(JSON.parse(state.error));
+  console.log(state.error);
   const data = {
     mark_synced: true,
     mark_synced_url:
