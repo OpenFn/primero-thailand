@@ -33,8 +33,8 @@ post(
         strictSSL: false,
       },
       state => {
-        console.log(JSON.stringify(state.data, null, 2)); 
-        console.log(state.references[0]);
+        console.log(JSON.stringify(state.data, null, 4)); 
+        /*console.log(state.references[0]);*/
         return { ...state, record_id: state.references[0].data.record_id };
       }
     )(state);
