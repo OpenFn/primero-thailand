@@ -271,7 +271,7 @@ each(
       // DEPARTEMENT IDENTIFICATION =========================================
       service_department_87cec18: recentIntervention.main_dep,
       service_place_code_98d0a58: patient.hcode,
-      outpatient_number: recentIntervention.vn,
+      outpatient_number: recentIntervention.vn, //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
       case_detected_by: recentIntervention.spclty,
       date_and_time_of_visit_to_the_hospital: new Date(
         vstDateTime
