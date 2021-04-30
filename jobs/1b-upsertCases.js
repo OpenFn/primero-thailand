@@ -350,9 +350,8 @@ each(
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
-      registered_address: address.filter(x => x).join(', '),
-      telephone_current: patient.hometel,
-      insurance_type_2d79b49: patient.pttype,
+      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      telephone_current: patient.hometel,
+      insurance_type_2d79b49: patient.pttype_name,
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
