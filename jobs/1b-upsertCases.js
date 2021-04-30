@@ -10,6 +10,98 @@ alterState(state => {
   };
 
   const nationalityMap = {
+    002: 'Portugal',
+    003: 'Dutch',
+    004: 'Germany',
+    005: 'France',
+    006: 'Denmark',
+    007: 'Sweden',
+    008: 'Switzerland',
+    009: 'Italy',
+    010: 'Norway',
+    011: 'Austria',
+    012: 'Irish',
+    013: 'Finland',
+    014: 'Belgium',
+    015: 'Spain',
+    016: 'Russia',
+    017: 'Poland',
+    018: 'Czech Republic',
+    019: 'Hungary',
+    020: 'Greece',
+    021: 'Yugoslavs',
+    022: 'Luxembourg',
+    023: 'Vatican City (Holy See)',
+    024: 'Malta',
+    025: 'Lisu',
+    026: 'Bulgaria',
+    027: 'Romania',
+    028: 'Cyprus',
+    029: 'American',
+    030: 'Canada',
+    031: 'Mexico',
+    032: 'Cuba',
+    033: 'Argentina',
+    034: 'Brazil',
+    035: 'Chile',
+    036: 'Akha',
+    037: 'Columbia',
+    038: 'Lois',
+    039: 'Peru',
+    040: 'Panama',
+    041: 'Uruguay',
+    042: 'Venezuela',
+    043: 'Puerto Rico',
+    044: 'China',
+    045: 'India',
+    046: 'Vietnam',
+    047: 'Japan',
+    048: 'Myanmar',
+    049: 'Philippines',
+    050: 'Malaysia',
+    051: 'Indonesia',
+    052: 'Pakistan',
+    053: 'South Korea',
+    054: 'Singapore',
+    055: 'Nepal',
+    056: 'Laos',
+    057: 'Cambodia',
+    058: 'Sri Lanka',
+    059: 'Saudi Arabia',
+    060: 'Israel',
+    061: 'Lebanon',
+    062: 'Iran',
+    063: 'Turkey',
+    064: 'Bangladesh',
+    065: 'Withdrawn from nationality',
+    066: 'Syria',
+    067: 'Iraq',
+    068: 'Kuwait',
+    069: 'Brunei',
+    070: 'South Africa',
+    071: 'Karens',
+    072: 'Lahu',
+    073: 'Kenya',
+    074: 'Egypt',
+    075: 'Ethiopia',
+    076: 'Nigeria',
+    077: 'United Arab Emirates',
+    078: 'Guinea',
+    079: 'Australia',
+    080: 'New Zealand',
+    081: 'Papua New Guinea',
+    082: 'Hmong',
+    083: 'Bohemians',
+    086: 'Chinese Yunnan or Haw',
+    087: 'China (formerly the Chinese. , Former Chinese national)',
+    088: 'Burmese IDPs',
+    089: 'Immigrants from Cambodia',
+    090: 'Lao (Lao immigrants)',
+    091: 'Cambodian refugees',
+    096: 'Stateless',
+    097: 'other',
+    098: 'Not Thai nationality',
+    099: 'Thailand',
     100: 'Afghanistan',
     101: 'Bahrain',
     102: 'Bhutan',
@@ -253,14 +345,13 @@ each(
         patient.sex === '1'
           ? 'Male'
           : patient.sex === '2'
-          ? 'Female '
-          : 'Alternative gender',
+            ? 'Female '
+            : 'Alternative gender',
       maritial_status: state.maritalMap[patient.marrystatus],
       nationality: state.nationalityMap[patient.nationality],
       address_current: patient.informaddr,
-      registered_address: address.filter(x => x).join(', '),
-      telephone_current: patient.hometel,
-      insurance_type_2d79b49: patient.pttype,
+      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      telephone_current: patient.hometel,
+      insurance_type_2d79b49: patient.pttype_name,
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
@@ -271,7 +362,7 @@ each(
       // DEPARTEMENT IDENTIFICATION =========================================
       service_department_87cec18: recentIntervention.main_dep,
       service_place_code_98d0a58: patient.hcode,
-      outpatient_number: recentIntervention.vn,
+      outpatient_number: recentIntervention.vn, //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
       case_detected_by: recentIntervention.spclty,
       date_and_time_of_visit_to_the_hospital: new Date(
         vstDateTime
@@ -312,6 +403,7 @@ each(
         date_6: intervention.vstdate,
         department_d8ec3cb: intervention.main_dep,
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
+        source_of_information_44cac9a: 'his' //Source of Information
       };
 
       // UNEXPECTED PREGNANCY================================================
@@ -320,6 +412,7 @@ each(
           const ancObj = {
             current_gestational_week: ancElement.ga_week,
             date_of_report: ancElement.date,
+            source_of_information_647b9db: 'his' //Source of Information
           };
           new_pregnancy.push(ancObj);
         });
@@ -369,9 +462,8 @@ each(
         if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
           // ... if that thing doest not include the current icd10
           if (!diagnosisObj[diagType[trimDiagType(diagtype)]].includes(icd10)) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
-              diagnosisObj[diagType[trimDiagType(diagtype)]]
-            } ${icd10},`;
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diagnosisObj[diagType[trimDiagType(diagtype)]]
+              } ${icd10},`;
           }
         } else {
           diagnosisObj[diagType[trimDiagType(diagtype)]] = `${icd10},`;
