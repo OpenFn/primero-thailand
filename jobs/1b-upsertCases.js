@@ -335,9 +335,10 @@ each(
             lab_items_normal_value_ref,
           } = lab;
 
-          labOrderResultObj[
-            labOrderType[provis_labcode]
-          ] = `${lab_order_result} ${lab_items_unit} (${lab_items_normal_value_ref})`;
+          if (labOrderType[provis_labcode] !== undefined)
+            labOrderResultObj[
+              labOrderType[provis_labcode]
+            ] = `${lab_order_result} ${lab_items_unit} (${lab_items_normal_value_ref})`;
         });
       }
       physical_check_2.push({ ...assessmentObj, ...labOrderResultObj });
