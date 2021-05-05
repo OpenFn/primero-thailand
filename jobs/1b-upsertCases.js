@@ -329,7 +329,8 @@ each(
 
     let data = {
       mark_synced_status: 'synced',
-      mark_synced_url: //TODO: Move to credentials
+      //TODO: Move to credentials
+      mark_synced_url:
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
       record_id: state.record_id,
 
@@ -344,31 +345,47 @@ each(
         patient.sex === '1'
           ? 'Male'
           : patient.sex === '2'
-            ? 'Female '
-            : 'Alternative gender',
-      maritial_status: patient.marrystatus ? state.maritalMap[patient.marrystatus] : '',
-      nationality: patient.nationality ? state.nationalityMap[patient.nationality] : '',
+          ? 'Female '
+          : 'Alternative gender',
+      maritial_status: patient.marrystatus
+        ? state.maritalMap[patient.marrystatus]
+        : '',
+      nationality: patient.nationality
+        ? state.nationalityMap[patient.nationality]
+        : '',
       address_current: patient.informaddr ? patient.informaddr : '',
-      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      
-      telephone_current: patient.hometel ? (patient.hometel !== '+' ? patient.hometel : '') : '',
+      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map
+      telephone_current: patient.hometel
+        ? patient.hometel !== '+'
+          ? patient.hometel
+          : ''
+        : '',
       insurance_type_2d79b49: patient.pttype_name ? patient.pttype_name : '',
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
-      school_level_attained_: patient.educate ? state.educateMap[patient.educate] : '',
-      if_working__please_specify_5c0dd61: patient.occupation_name ? patient.occupation_name : '',
+      school_level_attained_: patient.educate
+        ? state.educateMap[patient.educate]
+        : '',
+      if_working__please_specify_5c0dd61: patient.occupation_name
+        ? patient.occupation_name
+        : '',
       // ====================================================================
 
       // DEPARTEMENT IDENTIFICATION =========================================
-      service_department_87cec18: recentIntervention.main_dep ? recentIntervention.main_dep : '',
+      service_department_87cec18: recentIntervention.main_dep
+        ? recentIntervention.main_dep
+        : '',
       service_place_code_98d0a58: patient.hcode ? patient.hcode : '',
       outpatient_number: recentIntervention.vn
         ? `${recentIntervention.vn.substring(
-          0,
-          2
-        )}-${recentIntervention.vn.substring(2)}`
+            0,
+            2
+          )}-${recentIntervention.vn.substring(2)}`
         : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
-      case_detected_by: recentIntervention.spclty ? recentIntervention.spclty : '',
+      case_detected_by: recentIntervention.spclty
+        ? recentIntervention.spclty
+        : '',
       date_and_time_of_visit_to_the_hospital: new Date(
         vstDateTime
       ).toISOString(),
@@ -392,6 +409,8 @@ each(
       '0749103': 'hcv_ab_945585c',
     };
     const labOrderResultObj = {};
+    for (type in labOrderType)
+      console.log((labOrderResultObj[labOrderType[type]] = ''));
 
     patient.interventions.forEach(intervention => {
       const { assessment, laboratory, anc } = intervention.activities;
@@ -416,7 +435,9 @@ each(
         anc.forEach(ancElement => {
           const ancObj = {
             unique_id: `${ancElement.date}${ancElement.ga_week}`,
-            current_gestational_week: ancElement.ga_week ? ancElement.ga_week : '',
+            current_gestational_week: ancElement.ga_week
+              ? ancElement.ga_week
+              : '',
             date_of_report: ancElement.date ? ancElement.date : '',
             source_of_information_647b9db: 'his', //Source of Information
           };
@@ -455,10 +476,11 @@ each(
       4: 'other_diagnosis_a692bec',
       5: 'external_cause_of_injury_8451818',
     };
+    const diagnosisObj = {};
+    for (type in diagType) console.log((diagnosisObj[diagType[type]] = ''));
     const trimDiagType = diagtype => {
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
-    const diagnosisObj = {};
     // patient.interventions.forEach(intervention => {
     const { diagnosis } = recentIntervention.activities;
     if (diagnosis)
@@ -467,9 +489,12 @@ each(
         // if there is anything in the diagnosisObj we are building
         if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
           // ... if that thing doest not include the current diag_name
-          if (!diagnosisObj[diagType[trimDiagType(diagtype)]].includes(diag_name)) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diagnosisObj[diagType[trimDiagType(diagtype)]]
-              } ${diag_name},`;
+          if (
+            !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(diag_name)
+          ) {
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
+              diagnosisObj[diagType[trimDiagType(diagtype)]]
+            } ${diag_name},`;
           }
         } else {
           diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diag_name},`;
