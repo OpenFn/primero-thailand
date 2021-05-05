@@ -310,13 +310,14 @@ each(
       ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
       : `${recentIntervention.vstdate}`;
 
-    const national_id_no = `${patient.cid.substring(
-      0,
-      2
-    )}-${patient.cid.substring(2, 6)}-${patient.cid.substring(
-      6,
-      11
-    )}-${patient.cid.substring(11, 13)}`;
+    const national_id_no = `${patient.cid}`; //Remove national_id formatting 
+    // const national_id_no = `${patient.cid.substring(
+    //   0,
+    //   2
+    // )}-${patient.cid.substring(2, 6)}-${patient.cid.substring(
+    //   6,
+    //   11
+    // )}-${patient.cid.substring(11, 13)}`;
 
     const address = [
       patient.addrpart,
@@ -345,8 +346,8 @@ each(
         patient.sex === '1'
           ? 'Male'
           : patient.sex === '2'
-          ? 'Female '
-          : 'Alternative gender',
+            ? 'Female '
+            : 'Alternative gender',
       maritial_status: patient.marrystatus
         ? state.maritalMap[patient.marrystatus]
         : '',
@@ -379,9 +380,9 @@ each(
       service_place_code_98d0a58: patient.hcode ? patient.hcode : '',
       outpatient_number: recentIntervention.vn
         ? `${recentIntervention.vn.substring(
-            0,
-            2
-          )}-${recentIntervention.vn.substring(2)}`
+          0,
+          2
+        )}-${recentIntervention.vn.substring(2)}`
         : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
       case_detected_by: recentIntervention.spclty
         ? recentIntervention.spclty
