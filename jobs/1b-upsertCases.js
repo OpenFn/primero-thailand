@@ -409,8 +409,7 @@ each(
       '0749103': 'hcv_ab_945585c',
     };
     const labOrderResultObj = {};
-    for (type in labOrderType)
-      console.log((labOrderResultObj[labOrderType[type]] = ''));
+    for (type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
 
     patient.interventions.forEach(intervention => {
       const { assessment, laboratory, anc } = intervention.activities;
@@ -477,7 +476,7 @@ each(
       5: 'external_cause_of_injury_8451818',
     };
     const diagnosisObj = {};
-    for (type in diagType) console.log((diagnosisObj[diagType[type]] = ''));
+    for (type in diagType) diagnosisObj[diagType[type]] = '';
     const trimDiagType = diagtype => {
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
