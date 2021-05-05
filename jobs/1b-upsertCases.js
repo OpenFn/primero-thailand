@@ -349,7 +349,8 @@ each(
       maritial_status: patient.marrystatus ? state.maritalMap[patient.marrystatus] : '',
       nationality: patient.nationality ? state.nationalityMap[patient.nationality] : '',
       address_current: patient.informaddr ? patient.informaddr : '',
-      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      telephone_current: patient.hometel,
+      //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      
+      telephone_current: patient.hometel ? (patient.hometel !== '+' ? patient.hometel : '') : '',
       insurance_type_2d79b49: patient.pttype_name ? patient.pttype_name : '',
       // ====================================================================
 
@@ -415,8 +416,8 @@ each(
         anc.forEach(ancElement => {
           const ancObj = {
             unique_id: `${ancElement.date}${ancElement.ga_week}`,
-            current_gestational_week: ancElement.ga_week,
-            date_of_report: ancElement.date,
+            current_gestational_week: ancElement.ga_week ? ancElement.ga_week : '',
+            date_of_report: ancElement.date ? ancElement.date : '',
             source_of_information_647b9db: 'his', //Source of Information
           };
           new_pregnancy.push(ancObj);
