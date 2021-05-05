@@ -485,19 +485,22 @@ each(
     const { diagnosis } = recentIntervention.activities;
     if (diagnosis)
       diagnosis.forEach(diag => {
-        const { diagtype, diag_name } = diag;
+        const { diagtype, diag_name, icd10 } = diag;
         // if there is anything in the diagnosisObj we are building
         if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
           // ... if that thing doest not include the current diag_name
           if (
             !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(diag_name)
           ) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
-              diagnosisObj[diagType[trimDiagType(diagtype)]]
-            } ${diag_name},`;
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = [
+              diagnosisObj[diagType[trimDiagType(diagtype)]],
+              `${icd10} ${diag_name}`,
+            ].join(', ');
           }
         } else {
-          diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diag_name},`;
+          diagnosisObj[
+            diagType[trimDiagType(diagtype)]
+          ] = `${icd10} ${diag_name}`;
         }
       });
     // });
