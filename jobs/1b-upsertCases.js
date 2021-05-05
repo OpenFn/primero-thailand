@@ -328,47 +328,46 @@ each(
     ];
 
     let data = {
-      mark_synced_status: 'synced', //harcode as synced to enable sync button
-      mark_synced_url:
+      mark_synced_status: 'synced',
+      mark_synced_url: //TODO: Move to credentials
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
-      record_id: state.record_id, //upserting by record_id now
-      //case_id: state.case_id,
+      record_id: state.record_id,
 
       // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
-      other_agency_id: recentIntervention.hn,
+      other_agency_id: recentIntervention.hn ? ecentIntervention.hn : '',
       name_last: patient.lname,
       name_first: patient.fname,
-      date_of_birth: patient.birthday,
+      date_of_birth: patient.birthday ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
       sex:
         patient.sex === '1'
           ? 'Male'
           : patient.sex === '2'
-          ? 'Female '
-          : 'Alternative gender',
-      maritial_status: state.maritalMap[patient.marrystatus],
-      nationality: state.nationalityMap[patient.nationality],
-      address_current: patient.informaddr,
+            ? 'Female '
+            : 'Alternative gender',
+      maritial_status: patient.marrystatus ? state.maritalMap[patient.marrystatus] : '',
+      nationality: patient.nationality ? state.nationalityMap[patient.nationality] : '',
+      address_current: patient.informaddr ? patient.informaddr : '',
       //registered_address: address.filter(x => x).join(', '), //Request to remove, only map      telephone_current: patient.hometel,
-      insurance_type_2d79b49: patient.pttype_name,
+      insurance_type_2d79b49: patient.pttype_name ? patient.pttype_name : '',
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
-      school_level_attained_: state.educateMap[patient.educate],
-      if_working__please_specify_5c0dd61: patient.occupation_name,
+      school_level_attained_: patient.educate ? state.educateMap[patient.educate] : '',
+      if_working__please_specify_5c0dd61: patient.occupation_name ? patient.occupation_name : '',
       // ====================================================================
 
       // DEPARTEMENT IDENTIFICATION =========================================
-      service_department_87cec18: recentIntervention.main_dep,
-      service_place_code_98d0a58: patient.hcode,
+      service_department_87cec18: recentIntervention.main_dep ? recentIntervention.main_dep : '',
+      service_place_code_98d0a58: patient.hcode ? patient.hcode : '',
       outpatient_number: recentIntervention.vn
         ? `${recentIntervention.vn.substring(
-            0,
-            2
-          )}-${recentIntervention.vn.substring(2)}`
-        : undefined, //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
-      case_detected_by: recentIntervention.spclty,
+          0,
+          2
+        )}-${recentIntervention.vn.substring(2)}`
+        : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
+      case_detected_by: recentIntervention.spclty ? recentIntervention.spclty : '',
       date_and_time_of_visit_to_the_hospital: new Date(
         vstDateTime
       ).toISOString(),
@@ -405,8 +404,8 @@ each(
           anc && anc.length > 0 ? anc[0].lmp : '',
         general_examination_results:
           assessment && assessment.length > 0 ? assessment[0].pe : '',
-        date_6: intervention.vstdate,
-        department_d8ec3cb: intervention.main_dep,
+        date_6: intervention.vstdate ? intervention.vstdate : '',
+        department_d8ec3cb: intervention.main_dep ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
         source_of_information_44cac9a: 'his', //Source of Information
       };
@@ -468,9 +467,8 @@ each(
         if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
           // ... if that thing doest not include the current diag_name
           if (!diagnosisObj[diagType[trimDiagType(diagtype)]].includes(diag_name)) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${
-              diagnosisObj[diagType[trimDiagType(diagtype)]]
-            } ${diag_name},`;
+            diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diagnosisObj[diagType[trimDiagType(diagtype)]]
+              } ${diag_name},`;
           }
         } else {
           diagnosisObj[diagType[trimDiagType(diagtype)]] = `${diag_name},`;
