@@ -337,12 +337,12 @@ each(
 
       // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
-      other_agency_id: recentIntervention.hn ? recentIntervention.hn : '',
+      other_agency_id: recentIntervention.hn && recentIntervention.hn !== '' ? recentIntervention.hn : '',
       name_last: patient.lname,
       name_first: patient.fname,
       date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
-      sex: sex_name,
+      sex: sex_name && sex_name !== '' ? sex_name : '',
       // sex:
       //   patient.sex === '1'
       //     ? 'Male'
@@ -418,6 +418,8 @@ each(
       const { assessment, laboratory, anc } = intervention.activities;
 
       const assessmentObj = {
+        description_of_physical_examination_observations_1:
+          assessment && assessment.length > 0 ? (assessment[0].physicalexam && assessment[0].physicalexam !== '' ? assessment[0].physicalexam : '') : '',
         patient_s_weight:
           assessment && assessment.length > 0 ? (assessment[0].bw && assessment[0].bw !== '' ? assessment[0].bw : '') : '',
         patient_s_height:
@@ -430,6 +432,13 @@ each(
         department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
         source_of_information_44cac9a: 'his', //Source of Information
+        pe_gen_text:
+          assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
+        hymen_details_3538ed4:
+          assessment && assessment.length > 0 ? (assessment[0].hymen && assessment[0].hymen !== '' ? assessment[0].hymen : '') : '',
+        general_description_of_genitalia_examination:
+          assessment && assessment.length > 0 ? (assessment[0].genitalia && assessment[0].genitalia !== '' ? assessment[0].genitalia : '') : ''
+
       };
 
       // UNEXPECTED PREGNANCY================================================
