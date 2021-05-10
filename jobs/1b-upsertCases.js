@@ -340,56 +340,58 @@ each(
       other_agency_id: recentIntervention.hn ? recentIntervention.hn : '',
       name_last: patient.lname,
       name_first: patient.fname,
-      date_of_birth: patient.birthday ? patient.birthday : '',
+      date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
-      sex:
-        patient.sex === '1'
-          ? 'Male'
-          : patient.sex === '2'
-            ? 'Female '
-            : 'Alternative gender',
-      maritial_status: patient.marrystatus
+      sex: sex_name,
+      // sex:
+      //   patient.sex === '1'
+      //     ? 'Male'
+      //     : patient.sex === '2'
+      //       ? 'Female '
+      //       : 'Alternative gender',
+      maritial_status: patient.marrystatus && patient.marrystatus !== ''
         ? state.maritalMap[patient.marrystatus]
         : '',
-      nationality: patient.nationality
+      nationality: patient.nationality && patient.nationality !== ''
         ? state.nationalityMap[patient.nationality]
         : '',
-      address_current: patient.informaddr ? patient.informaddr : '',
+      address_current: patient.informaddr && patient.informaddr !== '' ? patient.informaddr : '',
       //registered_address: address.filter(x => x).join(', '), //Request to remove, only map
-      telephone_current: patient.hometel
+      telephone_current: patient.hometel && patient.hometel !== ''
         ? patient.hometel !== '+'
           ? patient.hometel
           : ''
         : '',
-      insurance_type_2d79b49: patient.pttype_name ? patient.pttype_name : '',
+      insurance_type_2d79b49: patient.pttype_name && patient.pttype_name !== '' ? patient.pttype_name : '',
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
-      school_level_attained_: patient.educate
+      school_level_attained_: patient.educate & patient.educate !== ''
         ? state.educateMap[patient.educate]
         : '',
-      if_working__please_specify_5c0dd61: patient.occupation_name
+      if_working__please_specify_5c0dd61: patient.occupation_name && patient.occupation_name !== ''
         ? patient.occupation_name
         : '',
       // ====================================================================
 
       // DEPARTEMENT IDENTIFICATION =========================================
-      service_department_87cec18: recentIntervention.main_dep
+      service_department_87cec18: recentIntervention.main_dep && recentIntervention.main_dep !== ''
         ? recentIntervention.main_dep
         : '',
-      service_place_code_98d0a58: patient.hcode ? patient.hcode : '',
-      outpatient_number: recentIntervention.vn
+      service_place_code_98d0a58: patient.hcode && patient.hcode !== '' ? patient.hcode : '',
+      outpatient_number: recentIntervention.vn && recentIntervention.vn !== ''
         ? `${recentIntervention.vn.substring(
           0,
           2
         )}-${recentIntervention.vn.substring(2)}`
         : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
-      case_detected_by: recentIntervention.spclty
+      case_detected_by: recentIntervention.spclty && recentIntervention.spclty !== ''
         ? recentIntervention.spclty
         : '',
-      date_and_time_of_visit_to_the_hospital: new Date(
-        vstDateTime
-      ).toISOString(),
+      date_and_time_of_visit_to_the_hospital: vstDateTime && vstDateTime !== '' ?
+        new Date(
+          vstDateTime
+        ).toISOString() : '',
       // ====================================================================
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
@@ -417,15 +419,15 @@ each(
 
       const assessmentObj = {
         patient_s_weight:
-          assessment && assessment.length > 0 ? assessment[0].bw : '',
+          assessment && assessment.length > 0 ? (assessment[0].bw && assessment[0].bw !== '' ? assessment[0].bw : '') : '',
         patient_s_height:
-          assessment && assessment.length > 0 ? assessment[0].height : '',
+          assessment && assessment.length > 0 ? (assessment[0].height && assessment[0].height !== '' ? assessment[0].height : '') : '',
         date_of_last_period_menstruation:
-          anc && anc.length > 0 ? anc[0].lmp : '',
+          anc && anc.length > 0 ? (assessment[0].lmp && assessment[0].lmp !== '' ? assessment[0].lmp : '') : '',
         general_examination_results:
-          assessment && assessment.length > 0 ? assessment[0].pe : '',
-        date_6: intervention.vstdate ? intervention.vstdate : '',
-        department_d8ec3cb: intervention.main_dep ? intervention.main_dep : '',
+          assessment && assessment.length > 0 ? (assessment[0].pe && assessment[0].pe !== '' ? assessment[0].pe : '') : '',
+        date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
+        department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
         source_of_information_44cac9a: 'his', //Source of Information
       };
@@ -435,10 +437,10 @@ each(
         anc.forEach(ancElement => {
           const ancObj = {
             unique_id: `${ancElement.date}${ancElement.ga_week}`,
-            current_gestational_week: ancElement.ga_week
+            current_gestational_week: ancElement.ga_week && ancElement.ga_week !== ''
               ? ancElement.ga_week
               : '',
-            date_of_report: ancElement.date ? ancElement.date : '',
+            date_of_report: ancElement.date && ancElement.date !== '' ? ancElement.date : '',
             source_of_information_647b9db: 'his', //Source of Information
           };
           new_pregnancy.push(ancObj);
