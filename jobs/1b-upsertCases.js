@@ -431,9 +431,6 @@ each(
         date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
         department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
-        date_of_last_period_menstruation: '',
-        general_examination_results: '',
-        description_of_physical_examination_observations_1: '',
         source_of_information_44cac9a: 'his', //Source of Information
         pe_gen_text:
           assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
