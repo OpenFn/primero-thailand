@@ -423,7 +423,7 @@ each(
         patient_s_height:
           assessment && assessment.length > 0 ? (assessment[0].height && assessment[0].height !== '' ? assessment[0].height : '') : '',
         date_of_last_period_menstruation:
-          anc && anc.length > 0 ? (assessment[0].lmp && assessment[0].lmp !== '' ? assessment[0].lmp : '') : '',
+          anc && anc.length > 0 ? (anc[0].lmp && anc[0].lmp !== '' ? anc[0].lmp : '') : '',
         general_examination_results:
           assessment && assessment.length > 0 ? (assessment[0].pe && assessment[0].pe !== '' ? assessment[0].pe : '') : '',
         date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
