@@ -342,7 +342,7 @@ each(
       name_first: patient.fname,
       date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
-      sex: sex_name && sex_name !== '' ? sex_name : '',
+      sex: patient.sex_name && patient.sex_name !== '' ? patient.sex_name : '',
       // sex:
       //   patient.sex === '1'
       //     ? 'Male'
