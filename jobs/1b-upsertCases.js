@@ -437,7 +437,10 @@ each(
         hymen_details_3538ed4:
           assessment && assessment.length > 0 ? (assessment[0].hymen && assessment[0].hymen !== '' ? assessment[0].hymen : '') : '',
         general_description_of_genitalia_examination:
-          assessment && assessment.length > 0 ? (assessment[0].genitalia && assessment[0].genitalia !== '' ? assessment[0].genitalia : '') : ''
+          assessment && assessment.length > 0 ? (assessment[0].genitalia && assessment[0].genitalia !== '' ? assessment[0].genitalia : '') : '',
+        labia_minora_details: '',
+        introitus_details: '',
+        if_abnormal__please_specify: ''
 
       };
 
