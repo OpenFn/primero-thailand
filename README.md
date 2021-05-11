@@ -54,7 +54,8 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 ## (5) Data Element Mappings & Transformations
 1. [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
 
-2. 
+2. `Physical examination` subforms are uniquely identified by `vstdate + main_dep + cid`.
+3. `Unexpected pregnancy` subforms are uniquely identified by `date + ga_week`.
 
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
