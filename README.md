@@ -45,7 +45,6 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 1. This integration was configured according to the mapping specifications finalized in April 2021. HIS data migration is still in progress at this stage, so we expect there to be additional data points to map in the future. 
 2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
 3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `SYNC` button. 
-4. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
 <!--1. **Data Sharing**: ... 
 2. **Unique Identifiers**: `national_id` for identifying patients in HIS, `record_id` for identifying Primero cases.
 3. **Services**: ...
@@ -53,9 +52,9 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 
 ## (5) Data Element Mappings & Transformations
 1. [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
-
-2. `Physical examination` subforms are uniquely identified by `vstdate + main_dep + cid`.
-3. `Unexpected pregnancy` subforms are uniquely identified by `date + ga_week`.
+2. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
+3. `Physical examination` subforms are uniquely identified by `vstdate + main_dep + cid`.
+4. `Unexpected pregnancy` subforms are uniquely identified by `date + ga_week`.
 
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
@@ -66,6 +65,12 @@ System administrators are responsible for identifying if changes may impact the 
 ## (7) Administration
 ### Provisioning, Hosting, & Maintenance
 This integration is hosted on [OpenFn.org](https://openfn.org/projects) with Primero SaaS. OpenFn will provide ongoing maintenance support. 
+
+### Error handling
+The sync can have 3 statutes in Primero:
+1. **Synced**: the data transfer was successful and HIS data is displayed in Primero
+2. **Not found**: the `national ID` was not found in HIS, no data is added to Primero
+3. **Failed**: an error occured during the process, no data is added to Primero
 
 ### Support 
 Primero system administrators will be responsible for ongoing integration monitoring and management.
