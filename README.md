@@ -4,7 +4,7 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 ### Note! Commits to 'master' branch will deploy automatically to live integration on OpenFn.org. 
 
 ## (1) Functional Requirements
-The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
+The Interoperability Solution enables Primero case workers to consult historicalperson_deformed_type_name patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
 ![Solution](./solution-overview.png)
 
 _**Flow 1: MOPH referrals --> Primero**_
@@ -45,13 +45,16 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 1. This integration was configured according to the mapping specifications finalized in April 2021. HIS data migration is still in progress at this stage, so we expect there to be additional data points to map in the future. 
 2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
 3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `SYNC` button. 
+4. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
 <!--1. **Data Sharing**: ... 
-2. **Unique Identifiers**: `nationa_id` for identifyin patients in HIS, `record_id` for identifying Primero cases.
+2. **Unique Identifiers**: `national_id` for identifying patients in HIS, `record_id` for identifying Primero cases.
 3. **Services**: ...
 4. **Primero Case Owner Assignment**: ... -->
 
 ## (5) Data Element Mappings & Transformations
-[See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
+1. [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
+
+2. 
 
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
