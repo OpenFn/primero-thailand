@@ -337,7 +337,8 @@ each(
 
       // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
-      other_agency_id: recentIntervention.hn && recentIntervention.hn !== '' ? recentIntervention.hn : '',
+      other_agency_id: patient.hn ? patient.hcode + '/' + patient.hn : '',
+      //other_agency_id: recentIntervention.hn && recentIntervention.hn !== '' ? recentIntervention.hn : '',
       name_last: patient.lname,
       name_first: patient.fname,
       date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
