@@ -433,7 +433,7 @@ each(
         department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
         source_of_information_44cac9a: 'his', //Source of Information
-        pe_gen_text:
+        if_teared__please_estimate_date:
           assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
         hymen_details_3538ed4:
           assessment && assessment.length > 0 ? (assessment[0].hymen && assessment[0].hymen !== '' ? assessment[0].hymen : '') : '',
@@ -441,7 +441,8 @@ each(
           assessment && assessment.length > 0 ? (assessment[0].genitalia && assessment[0].genitalia !== '' ? assessment[0].genitalia : '') : '',
         labia_minora_details: '',
         introitus_details: '',
-        if_abnormal__please_specify: ''
+        if_abnormal__please_specify: '',
+
 
       };
 
