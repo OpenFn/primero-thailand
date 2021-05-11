@@ -432,18 +432,16 @@ each(
         date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
         department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
         unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
-        source_of_information_44cac9a: 'his', //Source of Information
+        source_of_information_44cac9a: 'his',
         if_teared__please_estimate_date:
           assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
-        hymen_details_3538ed4:
-          assessment && assessment.length > 0 ? (assessment[0].hymen && assessment[0].hymen !== '' ? assessment[0].hymen : '') : '',
-        general_description_of_genitalia_examination:
-          assessment && assessment.length > 0 ? (assessment[0].genitalia && assessment[0].genitalia !== '' ? assessment[0].genitalia : '') : '',
+        // NOTE: Mappings not confirmed or availbale in HIS as of May 2021 ========================================
+        hymen_details_3538ed4: '',
+        general_description_of_genitalia_examination: '',
         labia_minora_details: '',
         introitus_details: '',
         if_abnormal__please_specify: '',
-
-
+        // ================================================================================ // 
       };
 
       // UNEXPECTED PREGNANCY================================================
