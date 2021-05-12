@@ -1,4 +1,5 @@
 alterState(state => {
+  console.log(state);
   const error = state.error;
 
   let status = 'failed';
