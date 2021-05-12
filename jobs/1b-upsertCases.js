@@ -431,7 +431,7 @@ each(
           assessment && assessment.length > 0 ? (assessment[0].pe && assessment[0].pe !== '' ? assessment[0].pe : '') : '',
         date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
         department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
-        unique_id: `${intervention.vstdate}${intervention.main_dep}${patient.cid}`,
+        unique_id: `${intervention.id}${patient.cid}`,
         source_of_information_44cac9a: 'his',
         if_teared__please_estimate_date:
           assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
