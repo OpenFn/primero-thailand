@@ -24,6 +24,7 @@ Behavior:
 
 **OpenFn language-packages** (API adaptors) implemented: 
 * [language-primero](https://github.com/OpenFn/language-primero)
+* [language-http](https://github.com/OpenFn/language-http)
 
 ## (3) Data Flows
 Data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_1accc509-6ef6-42fd-87a9-5828cb0b33be?viewport_loc=-41%2C20%2C2280%2C1161%2C0_0).
