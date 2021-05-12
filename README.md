@@ -27,7 +27,7 @@ Behavior:
 * [language-http](https://github.com/OpenFn/language-http)
 
 ## (3) Data Flows
-The data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_1accc509-6ef6-42fd-87a9-5828cb0b33be?viewport_loc=-41%2C20%2C2280%2C1161%2C0_0).
+The data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
 
 _**Flow 1: MOPH referrals --> Primero**_
 1. `1. Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
