@@ -17,7 +17,7 @@ The API uses `Basic authentication` for login and the `record_id` for upserting 
 
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
 Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
-Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/people/findOne?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}}'
+Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/people/findOne?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}, %20%22include%22:%20%22interventions%22}'
 Behavior: 
 1. [sample record](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample.json)
 2. [no record found](https://github.com/OpenFn/unicef-thailand/blob/master/sample_data/HISsample_no_record_found.json)
@@ -27,7 +27,7 @@ Behavior:
 * [language-http](https://github.com/OpenFn/language-http)
 
 ## (3) Data Flows
-Data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_1accc509-6ef6-42fd-87a9-5828cb0b33be?viewport_loc=-41%2C20%2C2280%2C1161%2C0_0).
+The data flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_1accc509-6ef6-42fd-87a9-5828cb0b33be?viewport_loc=-41%2C20%2C2280%2C1161%2C0_0).
 
 _**Flow 1: MOPH referrals --> Primero**_
 1. `1. Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
@@ -61,7 +61,7 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
 1. If login credentials are changed for either system, the relevant **Credential** must be updated in OpenFn.org. 
 2. If system changes are made to any of the **fields** referenced in the [field mappings](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing), the OpenFn jobs should be reviewed and tested to confirm no impact on the integration. 
-3. If the list of available  **Services** in either system changes, then the Services Map should be reviewed in the [mapping document](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) to confirm no updates are required in the OpenFn jobs.
+3. If the list of available  **Forms** in either system changes, then the mapping should be reviewed in the [mapping document](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) to confirm no updates are required in the OpenFn jobs.
 
 ## (7) Administration
 ### Provisioning, Hosting, & Maintenance
@@ -81,10 +81,10 @@ Primero system administrators will be responsible for ongoing integration monito
 Contact support@openfn.org with any questions or troubleshooting support. 
 
 ### Training Materials
-[TO UPDATE]
+1. Open Function - Thailand Primero IO Training for Administrators (English/Thai) [slides](https://docs.google.com/presentation/d/1-_TdK61T_BDaWtwv3EWnFvfka6kc1mgK/edit#slide=id.p1)
 
 
 ## Support Checklist
 - [ ] OpenFn Admin users & access levels confirmed? 
-- [ ] OpenFn Admin training
+- [x] OpenFn Admin training
 - [ ] Support POCs identified for each connected system? 
