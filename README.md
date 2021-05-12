@@ -34,7 +34,9 @@ _**Flow 1: MOPH referrals --> Primero**_
 2. `2. Update Cases in Primero` send fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
 3. `3. Upsert Failed Cases` In case no matching patient is found in HIS, this job only re-enables the Sync button in Primero without updating the case. If any other error occured during the HIS sycn, it will send fail status to re-enable the sync button with a `Sync failed` message.
 
-![Data Flow](./primero-his-integration-flow.png)
+![Integration Flow](./primero-his-integration-flow-phase1.png)
+
+Integration with the Child Shield System is TBD and will be separately designed and implemented in the second phase of the Interoperability.
 
 ## (4) Flow Triggers
 ### Trigger Type: Event
