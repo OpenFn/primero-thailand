@@ -36,7 +36,7 @@ _**Flow 1: MOPH referrals --> Primero**_
 
 ![Integration Flow](./primero-his-integration-flow-phase1.png)
 
-Integration with the Child Shield System is TBD and will be separately designed and implemented in the second phase of the Interoperability.
+_**Note:**_ Integration with the Child Shield System is TBD and will be separately designed and implemented in the second phase of the Interoperability.
 
 ## (4) Flow Triggers
 ### Trigger Type: Event
