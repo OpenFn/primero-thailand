@@ -1,6 +1,5 @@
 alterState(state => {
-  console.log(state);
-  const error = state.error;
+  const error = state.error || {};
 
   let status = 'failed';
   for (elt of error)
