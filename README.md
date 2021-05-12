@@ -83,7 +83,7 @@ Primero system administrators will be responsible for ongoing integration monito
 Contact support@openfn.org with any questions or troubleshooting support. 
 
 ### Training Materials
-1. Open Function - Thailand Primero IO Training for Administrators (English/Thai) [slides](https://docs.google.com/presentation/d/1-_TdK61T_BDaWtwv3EWnFvfka6kc1mgK/edit#slide=id.p1)
+1. [Open Function - Thailand Primero IO Training for Administrators (English/Thai) slides](https://docs.google.com/presentation/d/1-_TdK61T_BDaWtwv3EWnFvfka6kc1mgK/edit#slide=id.p1)
 
 
 ## Support Checklist
