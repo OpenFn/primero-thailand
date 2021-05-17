@@ -76,9 +76,10 @@ The sync can have 3 statutes in Primero:
 3. **Failed**: an error occured during the process, no data is added to Primero
 
 ### Support 
-Primero system administrators will be responsible for ongoing integration monitoring and management.
-- Primero System Administrators: [TO UPDATE]
-- MOPH System Administrators: [TO UPDATE]
+Primero system administrators will be responsible for ongoing integration monitoring and management.  
+
+Primero System Administrators: Mohan Masarangi Magar <mmmagar@unicef.org> and Tippawan Yaiya <tyaiya@unicef.org>  
+MOPH System Administrators: Kumpha Brohmsena < king.nkp@gmail.com>, Watcharawan Teerawat < pinklotus1818@hotmail.com>, Choorug Lao-Akra < choorug@yahoo.co.uk>
 
 Contact support@openfn.org with any questions or troubleshooting support. 
 
