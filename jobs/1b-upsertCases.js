@@ -1,14 +1,4 @@
 alterState(state => {
-  const maritalMap = {
-    1: 'single',
-    2: 'married',
-    3: 'widow',
-    4: 'divorced',
-    5: 'separated',
-    6: 'monk',
-    7: 'unknown',
-  };
-
   const nationalityMap = {
     002: 'Portugal',
     003: 'Dutch',
@@ -283,7 +273,6 @@ alterState(state => {
 
   return {
     ...state,
-    maritalMap,
     people,
     nationalityMap,
     educateMap,
@@ -350,8 +339,8 @@ each(
       //     : patient.sex === '2'
       //       ? 'Female '
       //       : 'Alternative gender',
-      maritial_status: patient.marrystatus && patient.marrystatus !== ''
-        ? state.maritalMap[patient.marrystatus]
+      maritial_status: patient.marrystatus_name && patient.marrystatus_name !== ''
+        ? patient.marrystatus_name
         : '',
       nationality: patient.nationality && patient.nationality !== ''
         ? state.nationalityMap[patient.nationality]
