@@ -430,6 +430,8 @@ each(
         labia_minora_details: '',
         introitus_details: '',
         if_abnormal__please_specify: '',
+        person_deformed_type_name: '',
+        operation_room_procedure_bb7cffa: ''
         // ================================================================================ // 
       };
 
