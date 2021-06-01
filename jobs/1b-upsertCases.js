@@ -350,7 +350,7 @@ each(
           ? 'male'
           : patient.sex === '2'
             ? 'female '
-            : 'Alternative gender',
+            : '',
       maritial_status: patient.marrystatus && patient.marrystatus !== ''
         ? state.maritalMap[patient.marrystatus]
         : '',
