@@ -85,6 +85,7 @@ Contact support@openfn.org with any questions or troubleshooting support.
 
 ### Training Materials
 1. [Open Function - Thailand Primero IO Training for Administrators (English/Thai) slides](https://docs.google.com/presentation/d/1-_TdK61T_BDaWtwv3EWnFvfka6kc1mgK/edit#slide=id.p1)
+2. [Open Function - Thailand Primero IO Training for Administrators Video](https://drive.google.com/file/d/1ESGnWMC77IbWog9rRKwTw4qalu0kwiCq/view?usp=sharing)
 
 
 ## Support Checklist
