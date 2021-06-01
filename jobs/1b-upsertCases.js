@@ -1,4 +1,15 @@
 alterState(state => {
+  
+  const maritalMap = {
+    1: 'single',
+    2: 'married_cohabitating',
+    3: 'widowed',
+    4: 'divorced_separated',
+    5: 'seperated_595fb0b',
+    6: 'monk_792c197',
+    7: 'unknown_270da62',
+  };
+  
   const nationalityMap = {
     100: 'afghanistan',
     036: 'akha_77e13cf',
@@ -273,6 +284,7 @@ alterState(state => {
 
   return {
     ...state,
+    maritalMap,
     people,
     nationalityMap,
     educateMap,
@@ -332,15 +344,15 @@ each(
       name_first: patient.fname,
       date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
-      sex: patient.sex_name && patient.sex_name !== '' ? patient.sex_name : '',
-      // sex:
-      //   patient.sex === '1'
-      //     ? 'Male'
-      //     : patient.sex === '2'
-      //       ? 'Female '
-      //       : 'Alternative gender',
-      maritial_status: patient.marrystatus_name && patient.marrystatus_name !== ''
-        ? patient.marrystatus_name
+      // sex: patient.sex_name && patient.sex_name !== '' ? patient.sex_name : '',
+      sex:
+        patient.sex === '1'
+          ? 'male'
+          : patient.sex === '2'
+            ? 'female '
+            : 'Alternative gender',
+      maritial_status: patient.marrystatus && patient.marrystatus !== ''
+        ? state.maritalMap[patient.marrystatus]
         : '',
       nationality: patient.nationality && patient.nationality !== ''
         ? state.nationalityMap[patient.nationality]
