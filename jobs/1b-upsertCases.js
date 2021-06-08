@@ -394,6 +394,8 @@ each(
         new Date(
           vstDateTime
         ).toISOString() : '',
+      if_yes__please_specify: '',
+      operation_room_procedure_bb7cffa: ''
       // ====================================================================
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
@@ -441,9 +443,7 @@ each(
         general_description_of_genitalia_examination: '',
         labia_minora_details: '',
         introitus_details: '',
-        if_abnormal__please_specify: '',
-        if_yes__please_specify: '',
-        operation_room_procedure_bb7cffa: ''
+        if_abnormal__please_specify: ''
         // ================================================================================ // 
       };
 
