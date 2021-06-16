@@ -309,9 +309,12 @@ each(
           })
         : [];
 
-    const vstDateTime = recentIntervention.vsttime
-      ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
-      : `${recentIntervention.vstdate}`;
+    const vstDateTime =
+      recentIntervention.length > 0
+        ? recentIntervention.vsttime
+          ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
+          : `${recentIntervention.vstdate}`
+        : null;
 
     const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
@@ -544,27 +547,31 @@ each(
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
     // patient.interventions.forEach(intervention => {
-    const { diagnosis } = recentIntervention.activities;
-    if (diagnosis)
-      diagnosis.forEach(diag => {
-        const { diagtype, diag_name, icd10 } = diag;
-        // if there is anything in the diagnosisObj we are building
-        if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
-          // ... if that thing doest not include the current diag_name
-          if (
-            !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(diag_name)
-          ) {
-            diagnosisObj[diagType[trimDiagType(diagtype)]] = [
-              diagnosisObj[diagType[trimDiagType(diagtype)]],
-              `${icd10} ${diag_name}`,
-            ].join(', ');
+    if (recentIntervention.length > 0) {
+      const { diagnosis } = recentIntervention.activities;
+      if (diagnosis)
+        diagnosis.forEach(diag => {
+          const { diagtype, diag_name, icd10 } = diag;
+          // if there is anything in the diagnosisObj we are building
+          if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
+            // ... if that thing doest not include the current diag_name
+            if (
+              !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(
+                diag_name
+              )
+            ) {
+              diagnosisObj[diagType[trimDiagType(diagtype)]] = [
+                diagnosisObj[diagType[trimDiagType(diagtype)]],
+                `${icd10} ${diag_name}`,
+              ].join(', ');
+            }
+          } else {
+            diagnosisObj[
+              diagType[trimDiagType(diagtype)]
+            ] = `${icd10} ${diag_name}`;
           }
-        } else {
-          diagnosisObj[
-            diagType[trimDiagType(diagtype)]
-          ] = `${icd10} ${diag_name}`;
-        }
-      });
+        });
+    }
     // });
     // ====================================================================
 
