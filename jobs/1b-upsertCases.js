@@ -1,5 +1,4 @@
 alterState(state => {
-  
   const maritalMap = {
     1: 'single',
     2: 'married_cohabitating',
@@ -9,7 +8,7 @@ alterState(state => {
     6: 'monk_792c197',
     7: 'unknown_270da62',
   };
-  
+
   const nationalityMap = {
     100: 'afghanistan',
     036: 'akha_77e13cf',
@@ -303,15 +302,18 @@ each(
 
     const patient = state.data;
 
-    const recentIntervention = patient.interventions.reduce((prev, curr) => {
-      return prev.vstdate > curr.vstdate ? prev : curr;
-    });
+    const recentIntervention =
+      patient.interventions.length > 0
+        ? patient.interventions.reduce((prev, curr) => {
+            return prev.vstdate > curr.vstdate ? prev : curr;
+          })
+        : [];
 
     const vstDateTime = recentIntervention.vsttime
       ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
       : `${recentIntervention.vstdate}`;
 
-    const national_id_no = `${patient.cid}`; //Remove national_id formatting 
+    const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
     //   0,
     //   2
@@ -342,60 +344,71 @@ each(
       //other_agency_id: recentIntervention.hn && recentIntervention.hn !== '' ? recentIntervention.hn : '',
       name_last: patient.lname,
       name_first: patient.fname,
-      date_of_birth: patient.birthday && patient.birthday !== '' ? patient.birthday : '',
+      date_of_birth:
+        patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
       // sex: patient.sex_name && patient.sex_name !== '' ? patient.sex_name : '',
-      sex:
-        patient.sex === '1'
-          ? 'male'
-          : patient.sex === '2'
-            ? 'female '
-            : '',
-      maritial_status: patient.marrystatus && patient.marrystatus !== ''
-        ? state.maritalMap[patient.marrystatus]
-        : '',
-      nationality: patient.nationality && patient.nationality !== ''
-        ? state.nationalityMap[patient.nationality]
-        : '',
-      address_current: patient.informaddr && patient.informaddr !== '' ? patient.informaddr : '',
+      sex: patient.sex === '1' ? 'male' : patient.sex === '2' ? 'female ' : '',
+      maritial_status:
+        patient.marrystatus && patient.marrystatus !== ''
+          ? state.maritalMap[patient.marrystatus]
+          : '',
+      nationality:
+        patient.nationality && patient.nationality !== ''
+          ? state.nationalityMap[patient.nationality]
+          : '',
+      address_current:
+        patient.informaddr && patient.informaddr !== ''
+          ? patient.informaddr
+          : '',
       //registered_address: address.filter(x => x).join(', '), //Request to remove, only map
-      telephone_current: patient.hometel && patient.hometel !== ''
-        ? patient.hometel !== '+'
-          ? patient.hometel
-          : ''
-        : '',
-      insurance_type_2d79b49: patient.pttype_name && patient.pttype_name !== '' ? patient.pttype_name : '',
+      telephone_current:
+        patient.hometel && patient.hometel !== ''
+          ? patient.hometel !== '+'
+            ? patient.hometel
+            : ''
+          : '',
+      insurance_type_2d79b49:
+        patient.pttype_name && patient.pttype_name !== ''
+          ? patient.pttype_name
+          : '',
       // ====================================================================
 
       // EDUCATION AND CAREER ===============================================
-      school_level_attained_: patient.educate & patient.educate !== ''
-        ? state.educateMap[patient.educate]
-        : '',
-      if_working__please_specify_5c0dd61: patient.occupation_name && patient.occupation_name !== ''
-        ? patient.occupation_name
-        : '',
+      school_level_attained_:
+        patient.educate & (patient.educate !== '')
+          ? state.educateMap[patient.educate]
+          : '',
+      if_working__please_specify_5c0dd61:
+        patient.occupation_name && patient.occupation_name !== ''
+          ? patient.occupation_name
+          : '',
       // ====================================================================
 
       // DEPARTEMENT IDENTIFICATION =========================================
-      service_department_87cec18: recentIntervention.main_dep && recentIntervention.main_dep !== ''
-        ? recentIntervention.main_dep
-        : '',
-      service_place_code_98d0a58: patient.hcode && patient.hcode !== '' ? patient.hcode : '',
-      outpatient_number: recentIntervention.vn && recentIntervention.vn !== ''
-        ? `${recentIntervention.vn.substring(
-          0,
-          2
-        )}-${recentIntervention.vn.substring(2)}`
-        : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
-      case_detected_by: recentIntervention.spclty_name && recentIntervention.spclty_name !== ''
-        ? recentIntervention.spclty_name
-        : '',
-      date_and_time_of_visit_to_the_hospital: vstDateTime && vstDateTime !== '' ?
-        new Date(
-          vstDateTime
-        ).toISOString() : '',
+      service_department_87cec18:
+        recentIntervention.main_dep && recentIntervention.main_dep !== ''
+          ? recentIntervention.main_dep
+          : '',
+      service_place_code_98d0a58:
+        patient.hcode && patient.hcode !== '' ? patient.hcode : '',
+      outpatient_number:
+        recentIntervention.vn && recentIntervention.vn !== ''
+          ? `${recentIntervention.vn.substring(
+              0,
+              2
+            )}-${recentIntervention.vn.substring(2)}`
+          : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
+      case_detected_by:
+        recentIntervention.spclty_name && recentIntervention.spclty_name !== ''
+          ? recentIntervention.spclty_name
+          : '',
+      date_and_time_of_visit_to_the_hospital:
+        vstDateTime && vstDateTime !== ''
+          ? new Date(vstDateTime).toISOString()
+          : '',
       if_yes__please_specify: '',
-      operation_room_procedure_bb7cffa: ''
+      operation_room_procedure_bb7cffa: '',
       // ====================================================================
     };
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
@@ -423,28 +436,58 @@ each(
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
-          assessment && assessment.length > 0 ? (assessment[0].physicalexam && assessment[0].physicalexam !== '' ? assessment[0].physicalexam : '') : '',
+          assessment && assessment.length > 0
+            ? assessment[0].physicalexam && assessment[0].physicalexam !== ''
+              ? assessment[0].physicalexam
+              : ''
+            : '',
         patient_s_weight:
-          assessment && assessment.length > 0 ? (assessment[0].bw && assessment[0].bw !== '' ? assessment[0].bw : '') : '',
+          assessment && assessment.length > 0
+            ? assessment[0].bw && assessment[0].bw !== ''
+              ? assessment[0].bw
+              : ''
+            : '',
         patient_s_height:
-          assessment && assessment.length > 0 ? (assessment[0].height && assessment[0].height !== '' ? assessment[0].height : '') : '',
+          assessment && assessment.length > 0
+            ? assessment[0].height && assessment[0].height !== ''
+              ? assessment[0].height
+              : ''
+            : '',
         date_of_last_period_menstruation:
-          anc && anc.length > 0 ? (anc[0].lmp && anc[0].lmp !== '' ? anc[0].lmp : '') : '',
+          anc && anc.length > 0
+            ? anc[0].lmp && anc[0].lmp !== ''
+              ? anc[0].lmp
+              : ''
+            : '',
         general_examination_results:
-          assessment && assessment.length > 0 ? (assessment[0].pe && assessment[0].pe !== '' ? assessment[0].pe : '') : '',
-        date_6: intervention.vstdate && intervention.vstdate !== '' ? intervention.vstdate : '',
-        department_d8ec3cb: intervention.main_dep && intervention.main_dep !== '' ? intervention.main_dep : '',
+          assessment && assessment.length > 0
+            ? assessment[0].pe && assessment[0].pe !== ''
+              ? assessment[0].pe
+              : ''
+            : '',
+        date_6:
+          intervention.vstdate && intervention.vstdate !== ''
+            ? intervention.vstdate
+            : '',
+        department_d8ec3cb:
+          intervention.main_dep && intervention.main_dep !== ''
+            ? intervention.main_dep
+            : '',
         unique_id: `${intervention.id}${patient.cid}`,
         source_of_information_44cac9a: 'his',
         if_teared__please_estimate_date:
-          assessment && assessment.length > 0 ? (assessment[0].pe_gen_text && assessment[0].pe_gen_text !== '' ? assessment[0].pe_gen_text : '') : '',
+          assessment && assessment.length > 0
+            ? assessment[0].pe_gen_text && assessment[0].pe_gen_text !== ''
+              ? assessment[0].pe_gen_text
+              : ''
+            : '',
         // NOTE: Mappings not confirmed or availbale in HIS as of May 2021 ========================================
         hymen_details_3538ed4: '',
         general_description_of_genitalia_examination: '',
         labia_minora_details: '',
         introitus_details: '',
-        if_abnormal__please_specify: ''
-        // ================================================================================ // 
+        if_abnormal__please_specify: '',
+        // ================================================================================ //
       };
 
       // UNEXPECTED PREGNANCY================================================
@@ -452,10 +495,12 @@ each(
         anc.forEach(ancElement => {
           const ancObj = {
             unique_id: `${ancElement.date}${ancElement.ga_week}`,
-            current_gestational_week: ancElement.ga_week && ancElement.ga_week !== ''
-              ? ancElement.ga_week
-              : '',
-            date_of_report: ancElement.date && ancElement.date !== '' ? ancElement.date : '',
+            current_gestational_week:
+              ancElement.ga_week && ancElement.ga_week !== ''
+                ? ancElement.ga_week
+                : '',
+            date_of_report:
+              ancElement.date && ancElement.date !== '' ? ancElement.date : '',
             source_of_information_647b9db: 'his', //Source of Information
           };
           new_pregnancy.push(ancObj);
