@@ -408,7 +408,7 @@ each(
       date_and_time_of_visit_to_the_hospital:
         vstDateTime && vstDateTime !== ''
           ? new Date(vstDateTime).toISOString()
-          : '',
+          : null,
       if_yes__please_specify: '',
       operation_room_procedure_bb7cffa: '',
       // ====================================================================
@@ -447,20 +447,20 @@ each(
           assessment && assessment.length > 0
             ? assessment[0].bw && assessment[0].bw !== ''
               ? assessment[0].bw
-              : ''
-            : '',
+              : null
+            : null,
         patient_s_height:
           assessment && assessment.length > 0
             ? assessment[0].height && assessment[0].height !== ''
               ? assessment[0].height
-              : ''
-            : '',
+              : null
+            : null,
         date_of_last_period_menstruation:
           anc && anc.length > 0
             ? anc[0].lmp && anc[0].lmp !== ''
               ? anc[0].lmp
-              : ''
-            : '',
+              : null
+            : null,
         general_examination_results:
           assessment && assessment.length > 0
             ? assessment[0].pe && assessment[0].pe !== ''
