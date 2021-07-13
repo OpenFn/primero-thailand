@@ -402,7 +402,7 @@ each(
               2
             )}-${recentIntervention.vn.substring(2)}`
           : '', //TODO: If value defined, return format NN-NNNNNNN where first 2 digits + '-' + remaining string
-      case_detected_by:
+      case_detected_by_b4272cd:
         recentIntervention.spclty_name && recentIntervention.spclty_name !== ''
           ? recentIntervention.spclty_name
           : '',
