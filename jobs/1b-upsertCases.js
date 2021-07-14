@@ -379,7 +379,7 @@ each(
 
       // EDUCATION AND CAREER ===============================================
       school_level_attained_:
-        patient.educate & (patient.educate !== '')
+        patient.educate && (patient.educate !== '')
           ? state.educateMap[patient.educate]
           : '',
       if_working__please_specify_5c0dd61:
@@ -432,10 +432,19 @@ each(
       '0749103': 'hcv_ab_945585c',
     };
     const labOrderResultObj = {};
-    for (type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
+    for (let type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
 
     patient.interventions.forEach(intervention => {
       const { assessment, laboratory, anc } = intervention.activities;
+
+      let unique_id = `${intervention.id}${patient.cid.substring(0, 8)}`;
+      unique_id = `${unique_id.substring(0, 8)}-${unique_id.substring(
+        8,
+        12
+      )}-${unique_id.substring(12, 16)}-${unique_id.substring(
+        16,
+        20
+      )}-${unique_id.substring(20)}`;
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
@@ -476,7 +485,7 @@ each(
           intervention.main_dep && intervention.main_dep !== ''
             ? intervention.main_dep
             : '',
-        unique_id: `${intervention.id}${patient.cid}`,
+        unique_id,
         source_of_information_44cac9a: 'his',
         if_teared__please_estimate_date:
           assessment && assessment.length > 0
@@ -542,7 +551,7 @@ each(
       5: 'external_cause_of_injury_8451818',
     };
     const diagnosisObj = {};
-    for (type in diagType) diagnosisObj[diagType[type]] = '';
+    for (let type in diagType) diagnosisObj[diagType[type]] = '';
     const trimDiagType = diagtype => {
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
