@@ -585,7 +585,6 @@ each(
     // ====================================================================
 
     data = { ...data, ...diagnosisObj };
-    record_id = state.record_id;
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
     // return state;
