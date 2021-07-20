@@ -316,7 +316,7 @@ each(
           : `${recentIntervention.vstdate}`
         : null;
 
-    const national_id_no = [`${patient.cid}`]; //Remove national_id formatting
+    const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
     //   0,
     //   2
@@ -339,7 +339,7 @@ each(
       //TODO: Move to credentials
       mark_synced_url:
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
-      record_id: state.record_id,
+      //record_id: state.record_id,
 
       // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
@@ -358,8 +358,8 @@ each(
           : '',
       nationality:
         patient.nationality && patient.nationality !== ''
-          ? state.nationalityMap[patient.nationality]
-          : '',
+          ? [state.nationalityMap[patient.nationality]]
+          : [''],
       address_current:
         patient.informaddr && patient.informaddr !== ''
           ? patient.informaddr
