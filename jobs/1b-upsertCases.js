@@ -590,7 +590,7 @@ each(
     // return state;
     return upsertCase(
       {
-        externalIds: ['state.record_id'],
+        externalIds: ['record_id'],
         data,
       },
       state => {
