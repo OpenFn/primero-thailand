@@ -316,7 +316,7 @@ each(
           : `${recentIntervention.vstdate}`
         : null;
 
-    const national_id_no = `${patient.cid}`; //Remove national_id formatting
+    const national_id_no = [`${patient.cid}`]; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
     //   0,
     //   2
