@@ -339,7 +339,7 @@ each(
       //TODO: Move to credentials
       mark_synced_url:
         'https://www.openfn.org/inbox/7b080edf-4466-4041-a4b3-9dbfdf02daee',
-      //record_id: state.record_id,
+      record_id: state.record_id,
 
       // PATIENT IDENTIFICATION FORM ========================================
       national_id_no,
