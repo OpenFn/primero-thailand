@@ -510,7 +510,7 @@ each(
             current_gestational_week:
               ancElement.ga_week && ancElement.ga_week !== ''
                 ? ancElement.ga_week
-                : '',
+                : null,
             date_of_report:
               ancElement.date && ancElement.date !== '' ? ancElement.date : '',
             source_of_information_647b9db: 'his', //Source of Information
