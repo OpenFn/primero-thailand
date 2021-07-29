@@ -379,7 +379,7 @@ each(
 
       // EDUCATION AND CAREER ===============================================
       school_level_attained_:
-        patient.educate && (patient.educate !== '')
+        patient.educate && patient.educate !== ''
           ? state.educateMap[patient.educate]
           : '',
       if_working__please_specify_5c0dd61:
@@ -505,8 +505,20 @@ each(
       // UNEXPECTED PREGNANCY================================================
       if (anc && anc.length > 0) {
         anc.forEach(ancElement => {
+          let unique_id = `${ancElement.date.replace(/\-/g, '')}${
+            ancElement.ga_week
+          }${patient.cid}`;
+          unique_id = `${unique_id.substring(0, 8)}-${unique_id.substring(
+            8,
+            12
+          )}-${unique_id.substring(12, 16)}-${unique_id.substring(
+            16,
+            20
+          )}-${unique_id.substring(20)}`;
+          while (unique_id.length < 36) unique_id = unique_id + '0';
+
           const ancObj = {
-            unique_id: `${ancElement.date}${ancElement.ga_week}`,
+            unique_id,
             current_gestational_week:
               ancElement.ga_week && ancElement.ga_week !== ''
                 ? ancElement.ga_week
