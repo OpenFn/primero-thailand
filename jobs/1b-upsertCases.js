@@ -356,6 +356,7 @@ each(
         patient.marrystatus && patient.marrystatus !== ''
           ? state.maritalMap[patient.marrystatus]
           : '',
+      // Commenting out correct syntax to test 4. Primero update fail job
       // nationality:
       //   patient.nationality && patient.nationality !== ''
       //     ? [state.nationalityMap[patient.nationality]]
