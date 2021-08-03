@@ -356,10 +356,14 @@ each(
         patient.marrystatus && patient.marrystatus !== ''
           ? state.maritalMap[patient.marrystatus]
           : '',
+      // nationality:
+      //   patient.nationality && patient.nationality !== ''
+      //     ? [state.nationalityMap[patient.nationality]]
+      //     : [''],
       nationality:
         patient.nationality && patient.nationality !== ''
-          ? [state.nationalityMap[patient.nationality]]
-          : [''],
+          ? state.nationalityMap[patient.nationality]
+          : '',    
       address_current:
         patient.informaddr && patient.informaddr !== ''
           ? patient.informaddr
