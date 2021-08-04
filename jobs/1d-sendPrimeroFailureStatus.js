@@ -7,7 +7,7 @@ fn(state => {
       status = 'not_found';
     }
 
-  const data = {
+  const failure = {
     mark_synced: true,
     mark_synced_status: status,
     mark_synced_url:
@@ -17,13 +17,13 @@ fn(state => {
 
   console.log('Upserting case', JSON.stringify(data, null, 2));
 
-  return { ...state, data };
+  return { ...state, data: { failure } };
 });
 
 upsertCase(
   {
     externalIds: ['record_id'],
-    data,
+    data: dataValue('failure'),
   },
   state => {
     console.log(state.data);
