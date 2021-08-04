@@ -1,4 +1,4 @@
-alterState(state => {
+fn(state => {
   const error = state.error || '';
 
   let status = 'failed';
@@ -16,14 +16,17 @@ alterState(state => {
   };
 
   console.log('Upserting case', JSON.stringify(data, null, 2));
-  return upsertCase(
-    {
-      externalIds: ['record_id'],
-      data,
-    },
-    state => {
-      console.log(state.data);
-      return state;
-    }
-  )(state);
+
+  return { ...state, data };
 });
+
+upsertCase(
+  {
+    externalIds: ['record_id'],
+    data,
+  },
+  state => {
+    console.log(state.data);
+    return state;
+  }
+);
