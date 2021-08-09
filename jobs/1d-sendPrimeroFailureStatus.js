@@ -3,11 +3,11 @@
 // initial state for the catch job run.
 
 // Uncomment this operation to do so... ===================
-fn(state => {
-  console.log("Here's the initial state for this run:");
-  console.log({ ...state, configuration: 'REDACTED' });
-  return state;
-});
+// fn(state => {
+//   console.log("Here's the initial state for this run:");
+//   console.log({ ...state, configuration: 'REDACTED' });
+//   return state;
+// });
 // ========================================================
 
 fn(state => {
