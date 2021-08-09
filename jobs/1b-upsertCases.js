@@ -357,14 +357,14 @@ each(
           ? state.maritalMap[patient.marrystatus]
           : '',
       // To test 4. Primero update fail job: comment out 1. `nationality` and uncomment 2. 
-      nationality:
-        patient.nationality && patient.nationality !== ''
-          ? [state.nationalityMap[patient.nationality]]
-          : [''],
       // nationality:
       //   patient.nationality && patient.nationality !== ''
-      //     ? state.nationalityMap[patient.nationality]
-      //     : '',    
+      //     ? [state.nationalityMap[patient.nationality]]
+      //     : [''],
+      nationality:
+        patient.nationality && patient.nationality !== ''
+          ? state.nationalityMap[patient.nationality]
+          : '',    
       address_current:
         patient.informaddr && patient.informaddr !== ''
           ? patient.informaddr
