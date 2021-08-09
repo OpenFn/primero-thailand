@@ -30,7 +30,7 @@ fn(state => {
     // =========================================================================
   };
 
-  console.log('Upserting case', JSON.stringify(data, null, 2));
+  console.log('Upserting case', JSON.stringify(failure, null, 2));
 
   return { ...state, data: { failure } };
 });
