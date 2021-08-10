@@ -351,7 +351,7 @@ each(
         patient.birthday && patient.birthday !== '' ? patient.birthday : '',
       age: calculateAge(new Date(patient.birthday)),
       // sex: patient.sex_name && patient.sex_name !== '' ? patient.sex_name : '',
-      sex: patient.sex === '1' ? 'male' : patient.sex === '2' ? 'female ' : '',
+      sex: patient.sex === '1' ? 'male' : patient.sex === '2' ? 'female' : '',
       maritial_status:
         patient.marrystatus && patient.marrystatus !== ''
           ? state.maritalMap[patient.marrystatus]
