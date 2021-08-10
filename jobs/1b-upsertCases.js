@@ -300,6 +300,10 @@ each(
       return Math.abs(age_dt.getUTCFullYear() - 1970);
     };
 
+    const isEmpty = obj => {
+      return Object.keys(obj).length === 0;
+    };
+
     const patient = state.data;
 
     const recentIntervention =
@@ -307,14 +311,13 @@ each(
         ? patient.interventions.reduce((prev, curr) => {
             return prev.vstdate > curr.vstdate ? prev : curr;
           })
-        : [];
+        : {};
 
-    const vstDateTime =
-      recentIntervention.length > 0
-        ? recentIntervention.vsttime
-          ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
-          : `${recentIntervention.vstdate}`
-        : null;
+    const vstDateTime = !isEmpty(recentIntervention)
+      ? recentIntervention.vsttime
+        ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
+        : `${recentIntervention.vstdate}`
+      : null;
 
     const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
@@ -356,7 +359,7 @@ each(
         patient.marrystatus && patient.marrystatus !== ''
           ? state.maritalMap[patient.marrystatus]
           : '',
-      // To test 4. Primero update fail job: comment out 1. `nationality` and uncomment 2. 
+      // To test 4. Primero update fail job: comment out 1. `nationality` and uncomment 2.
       nationality:
         patient.nationality && patient.nationality !== ''
           ? [state.nationalityMap[patient.nationality]]
@@ -364,7 +367,7 @@ each(
       // nationality:
       //   patient.nationality && patient.nationality !== ''
       //     ? state.nationalityMap[patient.nationality]
-      //     : '',    
+      //     : '',
       address_current:
         patient.informaddr && patient.informaddr !== ''
           ? patient.informaddr
@@ -573,7 +576,7 @@ each(
       return diagtype.length === 2 ? diagtype[1] : diagtype;
     };
     // patient.interventions.forEach(intervention => {
-    if (recentIntervention.length > 0) {
+    if (!isEmpty(recentIntervention)) {
       const { diagnosis } = recentIntervention.activities;
       if (diagnosis)
         diagnosis.forEach(diag => {
