@@ -464,13 +464,13 @@ each(
         patient_s_weight:
           assessment && assessment.length > 0
             ? assessment[0].bw && assessment[0].bw !== ''
-              ? assessment[0].bw
+              ? Number(Math.round(assessment[0].bw))
               : null
             : null,
         patient_s_height:
           assessment && assessment.length > 0
             ? assessment[0].height && assessment[0].height !== ''
-              ? assessment[0].height
+              ? Number(Math.round(assessment[0].height))
               : null
             : null,
         date_of_last_period_menstruation:
