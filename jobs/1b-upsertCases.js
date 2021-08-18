@@ -512,10 +512,10 @@ each(
 
       // UNEXPECTED PREGNANCY================================================
       if (anc && anc.length > 0) {
-        anc.forEach(ancElement => {
-          let unique_id = `${ancElement.date.replace(/\-/g, '')}${
-            ancElement.ga_week
-          }${patient.cid}`;
+        anc.forEach((ancElement, i) => {
+          let unique_id = `${i + 1}${ancElement.date.replace(/\-/g, '')}${
+            patient.cid
+          }`;
           unique_id = `${unique_id.substring(0, 8)}-${unique_id.substring(
             8,
             12
