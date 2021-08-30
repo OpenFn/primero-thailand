@@ -57,7 +57,7 @@ HIS <> Primero sync is launched when OpenFn receives a sync request notification
 1. [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
 2. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
 3. `Physical examination` subforms are uniquely identified by `intervention ID + patient cid`.
-4. `Unexpected pregnancy` subforms are uniquely identified by `date + ga_week`.
+4. `Unexpected pregnancy` subforms are uniquely identified by `date` and position of subform in list of pregnancy subforms.
 
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
