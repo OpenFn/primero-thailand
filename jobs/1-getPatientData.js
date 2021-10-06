@@ -14,11 +14,16 @@ post(
     const formatNationalId = national_id_no => {
       return typeof national_id_no === 'string'
         ? national_id_no.replace(/-/g, '')
-        : national_id_no ? national_id_no
-        : 'UNDEFINED';
+        : national_id_no;
     };
     const access_token = state.data.body.id;
     console.log('Authentication done...');
+
+    if (!state.references[0].data.national_id_no) {
+      throw new Error(
+        `Error: Primero did not provide 'national_id_no'. Patient cannot be found.`
+      );
+    }
     // operation 2 is a get, using the token, to get people
     const filter = {
       where: { cid: formatNationalId(state.references[0].data.national_id_no) },
