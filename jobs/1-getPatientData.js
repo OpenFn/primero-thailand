@@ -14,7 +14,8 @@ post(
     const formatNationalId = national_id_no => {
       return typeof national_id_no === 'string'
         ? national_id_no.replace(/-/g, '')
-        : national_id_no;
+        : national_id_no ? national_id_no
+        : 'UNDEFINED';
     };
     const access_token = state.data.body.id;
     console.log('Authentication done...');
