@@ -488,7 +488,8 @@ each(
         date_6:
           intervention.vstdate && intervention.vstdate !== ''
             ? intervention.vstdate
-            : '',
+            : null, 
+            //: '',
         department_d8ec3cb:
           intervention.main_dep && intervention.main_dep !== ''
             ? intervention.main_dep
