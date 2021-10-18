@@ -581,27 +581,26 @@ each(
       const { diagnosis } = recentIntervention.activities;
       if (diagnosis)
         diagnosis.forEach(diag => {
-          const { diagtype, diag_name, icd10 } = diag;
-          // ignore diagtype that are not in the mapping object
-          if (diagType[trimDiagType(diagtype)]) {
-            if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
-              // if there is anything in the diagnosisObj we are building
-              // ... if that thing doest not include the current diag_name
-              if (
-                !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(
-                  diag_name
-                )
-              ) {
-                diagnosisObj[diagType[trimDiagType(diagtype)]] = [
-                  diagnosisObj[diagType[trimDiagType(diagtype)]],
-                  `${icd10} ${diag_name}`,
-                ].join(', ');
-              }
-            } else {
-              diagnosisObj[
-                diagType[trimDiagType(diagtype)]
-              ] = `${icd10} ${diag_name}`;
+          let { diagtype, diag_name, icd10 } = diag;
+          if (!diagType[trimDiagType(diagtype)]) diagtype = 4; // If diagtyp undefined map as 4
+
+          if (diagnosisObj[diagType[trimDiagType(diagtype)]]) {
+            // if there is anything in the diagnosisObj we are building
+            // ... if that thing doest not include the current diag_name
+            if (
+              !diagnosisObj[diagType[trimDiagType(diagtype)]].includes(
+                diag_name
+              )
+            ) {
+              diagnosisObj[diagType[trimDiagType(diagtype)]] = [
+                diagnosisObj[diagType[trimDiagType(diagtype)]],
+                `${icd10} ${diag_name}`,
+              ].join(', ');
             }
+          } else {
+            diagnosisObj[
+              diagType[trimDiagType(diagtype)]
+            ] = `${icd10} ${diag_name}`;
           }
         });
     }
