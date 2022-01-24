@@ -1,10 +1,11 @@
 # UNICEF Thailand Primero Interoperability
 Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand MoPH HIS and Child Shield systems for secure case referrals exchange.
+## See the full documentation site @ [https://openfn.github.io/primero-thailand/](https://openfn.github.io/primero-thailand/)
 
 ### Note! Commits to 'master' branch will deploy automatically to live integration on OpenFn.org. 
 
 ## (1) Functional Requirements
-The Interoperability Solution enables Primero case workers to consult historicalperson_deformed_type_name patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
+The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display.
 ![Solution](./solution-overview.png)
 
 _**Flow 1: MOPH referrals --> Primero**_
