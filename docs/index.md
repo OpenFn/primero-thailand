@@ -17,8 +17,10 @@ _**Flow 1: MOPH referrals --> Primero**_
 The API uses `Basic authentication` for login and the `record_id` for upserting cases.
 
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
+{% raw  %}
 Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
 Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/people/findOne?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}, %20%22include%22:%20%22interventions%22}'
+{% endraw  %}
 Behavior: 
 1. [sample record](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpoint14April.json)
 2. [no record found](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpointNotFound.json)
