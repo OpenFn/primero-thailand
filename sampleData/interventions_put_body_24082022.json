@@ -1,0 +1,13 @@
+{
+    "id": "intervention_id_from_get_request", //what to use as intervention Id ? 
+    "personId": "3411100424351", // cid
+    "activities": {
+        "primeroservice": [
+            {
+                "25-08-2022": [
+                    {}
+                ]
+            }
+        ]
+    }
+}
