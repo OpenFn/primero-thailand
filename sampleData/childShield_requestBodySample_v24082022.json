@@ -1,0 +1,40 @@
+{
+    "data": {
+        "id": "intervention_id_from_get_request_if_exists",
+        "national_id": "3411100424351",
+        "activities": {
+            "primeroservice": [
+                {
+                    "25-08-2022": [
+                        {
+                            "patient_identification": [
+                                {
+                                    "registration_date": "2022-08-24",
+                                    "case_id_display": "a30b12x"
+                                }
+                            ]
+                        },
+                        {
+                            "patient_education_and_career": [
+                                {
+                                    "email_address": "test@openfn.org",
+                                    "occupation_1": {
+                                        "pre_school": "ก่อนวันเรียน"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "physical_examination": [
+                                {
+                                    "date_7": "2022-08-24",
+                                    "description_of_physical_examination_observations_1": "comments from exam"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
