@@ -1,0 +1,26 @@
+{
+    "hcode": "10671",
+    "personId": ObjectId("60377a0b08dda916ba73874b"),
+    "ovstist": "primero",
+    "vstdate": "2022-08-08",
+    "vsttime": "20:16:36",
+    "cid": "1111111111113",
+    "hname": "รพ.อุดรธานี",
+    "activities": {
+        "primeroservice": [
+            {
+                "serviceType": "primero",
+                "25-08-2022": [{
+                    "form1": "a",
+                    "form2": "b",
+                    "form3": "c"
+                }],
+                "26-08-2022": [{
+                    "form1": "a",
+                    "form2": "b",
+                    "form3": "c",
+                    "form4": "d"
+                }]
+            }
+        ]
+    }
