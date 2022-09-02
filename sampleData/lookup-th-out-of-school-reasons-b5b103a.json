@@ -1,0 +1,52 @@
+{
+  "id": 76,
+  "unique_id": "lookup-th-out-of-school-reasons-b5b103a",
+  "name": {
+    "en": "TH out of school reasons",
+    "th": "เหตุผลของการออกจากโรงเรียนกลางคัน",
+    "ar": "",
+    "fr": ""
+  },
+  "values": [
+    {
+      "id": "never_joined",
+      "disabled": false,
+      "display_text": {
+        "ar": "",
+        "en": "Never joined",
+        "fr": "",
+        "th": "ไม่เคยเรียนหนังสือ"
+      }
+    },
+    {
+      "id": "temporarily_suspended",
+      "disabled": false,
+      "display_text": {
+        "ar": "",
+        "en": "Temporarily suspended",
+        "fr": "",
+        "th": "พักการเรียนชั่วคราว"
+      }
+    },
+    {
+      "id": "quit",
+      "disabled": false,
+      "display_text": {
+        "ar": "",
+        "en": "Quit",
+        "fr": "",
+        "th": "เลิกเรียน"
+      }
+    },
+    {
+      "id": "other",
+      "disabled": false,
+      "display_text": {
+        "ar": "",
+        "en": "Other",
+        "fr": "",
+        "th": "อื่น ๆ"
+      }
+    }
+  ]
+}
