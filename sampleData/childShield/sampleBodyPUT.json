@@ -16,8 +16,9 @@
                         "email_address": "test@openfn.org", 
                         "occupation_1": { "pre_school": "ก่อนวันเรียน" } 
                       },
-                    "form2": { "f2question": "answer"}
-                    "form3": { "f3question": "answer:"}
+                    "form2": { "f2question": "answer" },
+                    "form3": { "f3question": "answer" },
+                    "form4": { "closed": true }
                 }]
             }
         ]
