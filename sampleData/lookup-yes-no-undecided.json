@@ -1,0 +1,31 @@
+{
+  "id": 30,
+  "unique_id": "lookup-yes-no-undecided",
+  "name": {
+    "en": "Yes, No, or Undecided",
+    "th": "ใช่, ไม่ใช่, หรือไม่สามารถตัดสินใจ"
+  },
+  "values": [
+    {
+      "id": "true",
+      "display_text": {
+        "en": "Yes",
+        "th": "ใช่"
+      }
+    },
+    {
+      "id": "false",
+      "display_text": {
+        "en": "No",
+        "th": "ไม่ใช่"
+      }
+    },
+    {
+      "id": "undecided",
+      "display_text": {
+        "en": "Undecided",
+        "th": "ไม่สามารถตัดสินใจ"
+      }
+    }
+  ]
+}
