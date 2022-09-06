@@ -1,0 +1,42 @@
+{
+  "id": 1106,
+  "name": "disabilities_1",
+  "type": "radio_button",
+  "multi_select": false,
+  "form_section_id": 110,
+  "visible": true,
+  "mobile_visible": true,
+  "hide_on_view_page": false,
+  "show_on_minify_form": false,
+  "editable": true,
+  "disabled": false,
+  "display_name": {
+    "en": "Disabilities",
+    "th": "ปัญหาความพิการ",
+    "ar": "",
+    "fr": ""
+  },
+  "help_text": {
+    "en": "",
+    "th": ""
+  },
+  "guiding_questions": {
+    "en": "To help you assess whether the patient has a disability, please use the following questions - Does the patient have: 1. Difficulty seeing, even if wearing glasses? 2. Difficulty hearing, even if using a hearing aid? 3. Difficulty walking or climbing steps? 4. Difficulty remembering or concentrating? 5. Difficulty (with self-care such as) washing all over or dressing? 6. Using your usual (customary) language, do you have difficulty communicating, for example understanding or being understood? If the patient responds affirmative to one or more of the above questions, please mark as Yes - the patient has a disability. (more information on disability assessment and classification can be found here www.washingtongroup-disability.com)",
+    "th": "เพื่อช่วยในการประเมินว่าผู้ป่วยมีความพิการหรือไม่ โปรดใช้คําถามต่อไปนี้ - ผู้ป่วย: \n1. มองไม่ค่อยเห็น แม้ว่าสวมแว่นตาหรือไม่?\n2.ไม่ค่อยได้ยิน แม้ว่าใช้เครื่องช่วยฟังหรือไม่?\n3.เดินหรือปีนบันไดลำบาก หรือไม่?\n4.จดจําไม่ค่อยได้หรือไมมีสมาธิหรือไม่?\n5.ดูแลตัวเองไม่ค่อยได้ เช่น อาบน้ำหรือแต่งตัวหรือไม่?\n6. มีปัญหาในการสื่อสาร (แม้จะใช้ภาษาหลักของตน) เช่น ไม่สามารถเข้าใจ หรือทำให้ผู้อื่นเข้าใจหรือไม่?\nหากผู้ป่วยยืนยันอาการข้างต้นอย่างน้อยหนึ่งข้อ โปรดทําเครื่องหมายว่า \"ใช่ - ผู้ป่วยมีความพิการ\"\n(สามารถดูข้อมูลเพิ่มเติมเกี่ยวกับการประเมินและการจําแนกประเภทความพิการ ได้ที่นี่www.washingtongroup-disability.com)"
+  },
+  "option_strings_source": "lookup lookup-yes-no-unknown",
+  "order": 4,
+  "hidden_text_field": false,
+  "autosum_total": false,
+  "selected_value": "",
+  "link_to_path_external": true,
+  "field_tags": [],
+  "expose_unique_id": false,
+  "required": false,
+  "date_validation": "default_date_validation",
+  "date_include_time": false,
+  "matchable": false,
+  "mandatory_for_completion": false,
+  "created_at": "2021-07-02T19:07:45.853Z",
+  "updated_at": "2021-07-02T19:07:45.853Z"
+}
