@@ -2,7 +2,7 @@ fn(state => {
    const yesNoUnknownMap = {
      "true": "ใช่", 
      "false": "ไม่ใช่",
-     "undecided": "ไม่สามารถตัดสินใจ"
+     "unknown": "ไม่ทราบ"
 }; 
 
 return state;
