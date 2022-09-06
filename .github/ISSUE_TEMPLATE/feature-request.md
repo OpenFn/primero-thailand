@@ -89,3 +89,7 @@ side effects.
   "references": { "a": 1 }
 }
 ```
+## Toggl 
+
+Name of the Toggle project to log work
+
