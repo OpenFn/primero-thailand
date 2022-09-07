@@ -1,0 +1,78 @@
+{
+  "id": 267,
+  "name": "conference_case_transfer_reason",
+  "type": "select_box",
+  "multi_select": false,
+  "form_section_id": 18,
+  "visible": true,
+  "mobile_visible": true,
+  "hide_on_view_page": false,
+  "show_on_minify_form": false,
+  "editable": true,
+  "disabled": false,
+  "display_name": {
+    "en": "If the case will be transferred, please provide reason",
+    "th": "กรณีเคสจะถูกส่งมอบ กรุณาระบุสาเหตุ"
+  },
+  "guiding_questions": {
+    "en": "Another agency is better placed to manage the case due to specialised services required by child\nChild / family moving to a new location; the case will be transferred to the Child Protection Agency working in that location.\nThere are organisatonal reasons for transferring this child's case; the case will be closed and transferred to another agency.\nThe child is being relocated due to protection concerns in their family/community.\nThe child has turned 18 and the case is being transferred to a protection authority providing services to people 18 or above as the child has a physical or mental disability and requires ongoing protection.\nOther",
+    "th": "อีกหน่วยงานหนึ่งอาจอยู่ในสถานะที่สามารถจัดการเคสได้ดีกว่า เนื่องจากบริการพิเศษที่เด็กต้องการ \nกรณีเด็ก / ครอบครัวย้ายไปอยู่ที่ใหม่ เคสจะถูกส่งต่อไปยังหน่วยงานคุ้มครองเด็กที่ทำงานในพื้นที่นั้น \nมีเหตุผลขององค์กรที่ต้องส่งมอบเคสนี้ โดยจะยุติเคสและส่งมอบไปยังหน่วยงานอื่น\nมีการย้ายที่อยู่อาศัยของเด็ก เนื่องจากความกังวลด้านความปลอดภัยในครอบครัว / ชุมชน\nเด็กอายุครบ 18 ปี และได้ถูกส่งมอบให้หน่วยงานอื่นที่ทำหน้าที่คุ้มครองคนที่มีอายุ 18 ปีขึ้นไป เนื่องจากเด็กมีความบกพร่องทางร่างกายหรือจิตใจและต้องการความคุ้มครองอย่างต่อเนื่อง\nอื่น ๆ"
+  },
+  "option_strings_text": [
+    {
+      "id": "specialized_service",
+      "display_text": {
+        "en": "Specialized services required",
+        "th": "ต้องการการบริการพิเศษ"
+      }
+    },
+    {
+      "id": "new_location",
+      "display_text": {
+        "en": "Moving to new location",
+        "th": "ย้ายสถานที่อยู่ใหม่"
+      }
+    },
+    {
+      "id": "organisational_reasons",
+      "display_text": {
+        "en": "Organisational reasons",
+        "th": "เหตุผลของหน่วยงาน"
+      }
+    },
+    {
+      "id": "protection_concerns",
+      "display_text": {
+        "en": "Relocation due to protection concerns",
+        "th": "ย้ายที่อยู่อาศัยเนื่องจากประเด็นด้านการคุ้มครอง"
+      }
+    },
+    {
+      "id": "child_turned_18",
+      "display_text": {
+        "en": "Child turned 18 and requires ongoing protection",
+        "th": "เด็กอายุครบ 118 ปีและยังต้องการการคุ้มครองต่อเนื่อง"
+      }
+    },
+    {
+      "id": "other",
+      "display_text": {
+        "en": "Other",
+        "th": "อื่น ๆ"
+      }
+    }
+  ],
+  "order": 10,
+  "hidden_text_field": false,
+  "autosum_total": false,
+  "link_to_path_external": true,
+  "field_tags": [],
+  "expose_unique_id": false,
+  "required": false,
+  "date_validation": "default_date_validation",
+  "date_include_time": false,
+  "matchable": false,
+  "mandatory_for_completion": false,
+  "created_at": "2021-07-02T19:07:45.853Z",
+  "updated_at": "2021-07-02T19:07:45.853Z"
+}
