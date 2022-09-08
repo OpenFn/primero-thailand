@@ -196,6 +196,7 @@ fn(state => {
                 values: field.option_strings_text,
               }
         )
+        .flat()
     )
     .flat();
 
@@ -212,10 +213,6 @@ fn(state => {
     }
   }
 
-  //   console.log(
-  //     'uniqueExternallyDefinedOptionSets',
-  //     uniqueExternallyDefinedOptionSets
-  //   );
   return { ...state, uniqueExternallyDefinedOptionSets };
 });
 
@@ -236,31 +233,76 @@ fn(state => {
 
   const lookupTranslations = state.data.data;
 
-  const optionsValuesForStringsSource = lookupTranslations
-    .filter(lookupTranslation => {
-      if (
-        optionStringsSourceLookupNames.includes(lookupTranslation.unique_id)
-      ) {
-        console.log(`I was found ${lookupTranslation.unique_id}`);
+  // For optionStringsSourceLookupNames with existing values
+  const formsTranslationsMapping = optionStringsSourceLookupNames
+    .filter(optStringsSourceLookupName => {
+      if (optStringsSourceLookupName.values.length !== 0) {
         return true;
       } else {
-        console.log(
-          `Error: Option ${lookupTranslation.unique_id} was not found in optionStringsSourceLookupNames`
-        );
         return false;
       }
     })
-    .map(lookupTranslation => {
-      console.log(`So let's ${lookupTranslation.unique_id}`);
-      //   const idsTranslations = [];
-      //   //   Map option values id and translations
-      //   lookupTranslation.values.map(val => {
-      //     idsTranslations.push({
-      //       [val.id]: val.display_text.th,
-      //     });
-      //   });
-      //   return idsTranslations;
-    });
+    .map(optStringsSourceLookupName => {
+      let desiredMappingOutput = [];
 
-  return { ...state, optionsValuesForStringsSource };
+      optStringsSourceLookupName.values
+        .map(val => {
+          desiredMappingOutput.push({
+            [val.id]: val.display_text.th,
+          });
+        })
+        .flat();
+
+      console.log(`Meeee ${optStringsSourceLookupName.unique_id}`);
+      return {
+        [optStringsSourceLookupName.unique_id]: Object.assign(
+          {},
+          ...desiredMappingOutput
+        ),
+      };
+    })
+    .flat();
+
+  const lookupsTranslationsMapping = optionStringsSourceLookupNames
+    .map(optStringsSourceLookupName => {
+      return lookupTranslations
+        .filter(lookupTranslation => {
+          if (
+            lookupTranslation.unique_id === optStringsSourceLookupName.unique_id
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .map(lookupTranslation => {
+          console.log(
+            `So let's build a new response ${optStringsSourceLookupName.unique_id}`
+          );
+
+          let desiredMappingOutput = [];
+          // Map option values id and translations
+          lookupTranslation.values
+            .map(val => {
+              desiredMappingOutput.push({
+                [val.id]: val.display_text.th,
+              });
+            })
+            .flat();
+          return {
+            [optStringsSourceLookupName.unique_id]: Object.assign(
+              {},
+              ...desiredMappingOutput
+            ),
+          };
+        })
+        .flat();
+    })
+    .flat();
+
+  combineTranslations = formsTranslationsMapping.concat(
+    lookupsTranslationsMapping
+  );
+
+  return { combineTranslations };
 });
