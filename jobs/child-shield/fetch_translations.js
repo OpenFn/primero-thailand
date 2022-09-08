@@ -300,8 +300,9 @@ fn(state => {
     })
     .flat();
 
-  combineTranslations = formsTranslationsMapping.concat(
-    lookupsTranslationsMapping
+  combineTranslations = Object.assign(
+    {},
+    ...formsTranslationsMapping.concat(lookupsTranslationsMapping)
   );
 
   return { combineTranslations };
