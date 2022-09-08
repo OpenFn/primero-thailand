@@ -10,9 +10,11 @@ get(
         strictSSL: false,
     },
     state => {
-        return state.data
+        return state;
     }
 );
+
+
 
 // get selected fields in google sheets
 // get(
@@ -28,8 +30,9 @@ get(
 
 // Pluck the option_source_strings
 fn(state => {
-    const response_data = state.data
-    // console.log(state.fields_references)
+    const forms_data = state.data.data
+    // console.log(state.data)
+
     // Assume we have the select fields values from Google sheet
     const select_fields = [
         "location_current",
@@ -174,23 +177,22 @@ fn(state => {
 
     let option_strings_source = []
 
-    // lookup build when missing option_strings_source
+    // Building a new resonpose when missing option_strings_source
     const build_resp = field => {
         let newResp = {
             name: "",
             option_strings_text: []
         }
-        if (typeof (field.hasOwnProperty(option_strings_text))) {
+        if (typeof (field.hasOwnProperty("option_strings_text"))) {
             newResp["name"] = field.name;
             newResp["option_strings_text"] = field.option_strings_text;
         }
 
-        return rewResp;
+        return newResp;
     }
 
     // Lookup fn Search for all 139 field listed in fields tab
     // Search for the field using this path data[*].fields[*].name
-
     const lookup = fields => {
         for (var i = 0, len = fields.length; i < len; i++) {
 
@@ -199,7 +201,7 @@ fn(state => {
                 console.log(typeof (fields[i].option_strings_source))
 
                 option_strings_source.push(
-                    fields[i].option_strings_source ? fields[i].option_strings_source.replace("lookup ", "") : build_resp(fields[i])
+                    fields[i].hasOwnProperty("option_strings_source") ? fields[i].option_strings_source.replace("lookup ", "") : build_resp(fields[i])
                 )
             } else {
                 // throw new Error(
@@ -209,15 +211,82 @@ fn(state => {
                 console.log(`Error: field ${fields[i].name} not found in our current select fields`)
             }
         }
-        // console.log({ "option_strings_source": option_strings_source })
+
         return option_strings_source;
     }
 
-    response_data.forEach(data => {
+    forms_data.forEach(data => {
         lookup(data.fields)
 
     });
 
-    // return { "data": response_data, "option_strings_source": option_strings_source };
-    return { "option_strings_source": option_strings_source };
-})
+    return { ...state, "option_strings_source": option_strings_source };
+});
+
+
+// get lookups from Primero
+get(
+    `${state.configuration.url}/api/v2/lookups?per=1000000&page=1`,
+    {
+        headers: { 'content-type': 'application/json' },
+        authentication: {
+            username: state.configuration.user,
+            password: state.configuration.password
+        },
+        strictSSL: false,
+    },
+    state => {
+        return state;
+    }
+);
+
+// Generate a map of option value ids and translation
+fn(state => {
+    const lookups_data = state.data.data;
+    const optionStringsSourceLookupName = state.option_strings_source;
+
+    const allMappingOutput = [];
+    // Generate the desired mapping output
+    const mappingGenerator = data => {
+        const idsTranslations = [];
+        // Map option values id and translations
+        data.values.forEach((val) => {
+            let { id } = val;
+            let th = val.display_text.th
+            const idThMap = {
+                [id]: th
+            }
+
+            idsTranslations.push(idThMap);
+        });
+
+        allMappingOutput.push({
+            [data.id]: idsTranslations
+        });
+    }
+    // Options lookup function that check if unique_id === ${optionStringsSourceLookupName}
+    const lookup = data => {
+        for (var i = 0, len = data.length; i < len; i++) {
+
+            if (optionStringsSourceLookupName.includes(data[i].unique_id)) {
+                console.log(`Yeey!: Option was found for lookup ${data[i].unique_id}`)
+                console.log(typeof (data[i].unique_id))
+
+                mappingGenerator(data[i]);
+
+            } else {
+                // throw new Error(
+                //     `Error: Option ${data[i].unique_id} was not found in optionStringsSourceLookupName`
+                // );
+
+                console.log(`Error: Option ${data[i].unique_id} was not found in optionStringsSourceLookupName`)
+            }
+        }
+
+        return allMappingOutput;
+    }
+
+    let desiredMapOutput = lookup(lookups_data)
+
+    return { desiredMapOutput }
+});
