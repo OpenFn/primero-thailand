@@ -182,14 +182,9 @@ fn(state => {
             return false;
           }
         })
-        // TODO: does the benefit of creating objects here outweigh the
-        // TODO: ...simplicity of deduplication via set.
         .map(field =>
           field.hasOwnProperty('option_strings_source')
-            ? {
-                unique_id: field.option_strings_source.replace('lookup ', ''),
-                values: [],
-              }
+            ? field.option_strings_source.replace('lookup ', '')
             : {
                 unique_id: field.name,
                 values: field.option_strings_text,
@@ -200,17 +195,9 @@ fn(state => {
     .flat();
 
   // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
-  let uniqueExternallyDefinedOptionSets = [];
-
-  for (i = 0; i < externallyDefinedOptionSets.length; i++) {
-    if (
-      !uniqueExternallyDefinedOptionSets.find(
-        x => x.unique_id === externallyDefinedOptionSets[i].unique_id
-      )
-    ) {
-      uniqueExternallyDefinedOptionSets.push(externallyDefinedOptionSets[i]);
-    }
-  }
+  const uniqueExternallyDefinedOptionSets = [
+    ...new Set(externallyDefinedOptionSets),
+  ];
 
   return { ...state, uniqueExternallyDefinedOptionSets };
 });
@@ -221,94 +208,29 @@ get('/api/v2/lookups?per=1000000&page=1');
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
   const { uniqueExternallyDefinedOptionSets } = state;
-  // uniqueExternallyDefinedOptionSets
+  const lookups = state.data.data;
 
-  const lookupTranslations = state.data.data;
-
-  // For uniqueExternallyDefinedOptionSets with existing values
-  const formsTranslationsMapping = uniqueExternallyDefinedOptionSets
-    .filter(optStringsSourceLookupName => {
-      if (optStringsSourceLookupName.values.length !== 0) {
-        return true;
-      } else {
-        return false;
-      }
+  const translations = uniqueExternallyDefinedOptionSets
+    .map(s => {
+      if (typeof s == 'object') return s;
+      return lookups.find(l => l.unique_id === s);
     })
-    .map(optStringsSourceLookupName => {
-      let desiredMappingOutput = [];
-
-      optStringsSourceLookupName.values
-        .map(val => {
-          desiredMappingOutput.push({
-            [val.id]: val.display_text.th,
-          });
-        })
-        .flat();
-
-      console.log(`Meeee ${optStringsSourceLookupName.unique_id}`);
+    .reduce((acc, v) => {
       return {
-        [optStringsSourceLookupName.unique_id]: Object.assign(
-          {},
-          ...desiredMappingOutput
-        ),
+        ...acc,
+        [v['unique_id']]: v.values
+          .map(x => ({ [x.id]: x.display_text.th }))
+          .reduce((obj, item) => {
+            const [[k, v]] = Object.entries(item);
+            return { ...obj, [k]: v };
+          }, {}),
       };
-    })
-    .flat();
+    }, {});
 
-  const lookupsTranslationsMapping = uniqueExternallyDefinedOptionSets
-    .map(optStringsSourceLookupName => {
-      return lookupTranslations
-        .filter(lookupTranslation => {
-          if (
-            lookupTranslation.unique_id === optStringsSourceLookupName.unique_id
-          ) {
-            return true;
-          } else {
-            return false;
-          }
-        })
-        .map(lookupTranslation => {
-          console.log(
-            `So let's build a new response ${optStringsSourceLookupName.unique_id}`
-          );
-
-          let desiredMappingOutput = [];
-          // Map option values id and translations
-          lookupTranslation.values
-            .map(val => {
-              desiredMappingOutput.push({
-                [val.id]: val.display_text.th,
-              });
-            })
-            .flat();
-          return {
-            [optStringsSourceLookupName.unique_id]: Object.assign(
-              {},
-              ...desiredMappingOutput
-            ),
-          };
-        })
-        .flat();
-    })
-    .flat();
-
-  combinedTranslations = Object.assign(
-    {},
-    ...formsTranslationsMapping.concat(lookupsTranslationsMapping)
-  );
-
-  return { ...state, combinedTranslations };
+  return { ...state, translations };
 });
 
 // Post the translation to OpenFn Inbox
-fn(state => {
-  const translations = state.combinedTranslations;
-
-  return post(`${state.configuration.openFnInboxURL}`, {
-    headers: { 'content-type': 'application/json' },
-    body: {
-      ...translations,
-    },
-    strictSSL: false,
-  })(state);
+post(`${state.configuration.openFnInboxURL}`, {
+  body: state => state.translations,
 });
