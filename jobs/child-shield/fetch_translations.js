@@ -1,18 +1,21 @@
-// get forms from Primero
-get(`${state.configuration.url}/api/v2/forms`, {
-  headers: { 'content-type': 'application/json' },
-  authentication: {
-    username: state.configuration.user,
-    password: state.configuration.password,
-  },
-  strictSSL: false,
-});
+// =============================================================================
+// === THE GOOGLE SHEETS OPTION ================================================
+// // Get selected fields in google sheets
+// get(
+//   `${state.configuration.spreedsheetUrl}/${state.configuration.spreedsheetId}/values/Select%20Fields?majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=${state.configuration.googleApiKey} `
+// );
 
-// Get a list of selected externallyDefinedOptionSets (either as IDs or objects)
+// // Set selected fields to be used on Premiro job
+// fn(state => {
+//   const selectFields = state.data.values.flat();
+//   selectFields.splice(selectFields.indexOf('SELECT FIELDS '), 1);
+
+//   return { ...state, selectFields };
+// });
+// =============================================================================
+
+// Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
-  const forms = state.data.data;
-
-  // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
   const selectFields = [
     'location_current',
     'occupation_1',
@@ -154,6 +157,18 @@ fn(state => {
     'closure_reason',
   ];
 
+  return { ...state, selectFields };
+});
+
+// get forms from Primero
+get('/api/v2/forms');
+
+// Get a list of selected externallyDefinedOptionSets (as objects that either
+// HAVE or don't have values... yet.)
+fn(state => {
+  const { selectFields } = state;
+  const forms = state.data.data;
+
   const externallyDefinedOptionSets = forms
     .map(form =>
       form.fields
@@ -167,6 +182,8 @@ fn(state => {
             return false;
           }
         })
+        // TODO: does the benefit of creating objects here outweigh the
+        // TODO: ...simplicity of deduplication via set.
         .map(field =>
           field.hasOwnProperty('option_strings_source')
             ? {
@@ -199,19 +216,12 @@ fn(state => {
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
-get(`${state.configuration.url}/api/v2/lookups?per=1000000&page=1`, {
-  headers: { 'content-type': 'application/json' },
-  authentication: {
-    username: state.configuration.user,
-    password: state.configuration.password,
-  },
-  strictSSL: false,
-});
+get('/api/v2/lookups?per=1000000&page=1');
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
-  const optionStringsSourceLookupNames =
-    state.uniqueExternallyDefinedOptionSets;
+  const { uniqueExternallyDefinedOptionSets } = state;
+  // optionStringsSourceLookupNames
 
   const lookupTranslations = state.data.data;
 
