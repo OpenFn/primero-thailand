@@ -221,12 +221,12 @@ get('/api/v2/lookups?per=1000000&page=1');
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
   const { uniqueExternallyDefinedOptionSets } = state;
-  // optionStringsSourceLookupNames
+  // uniqueExternallyDefinedOptionSets
 
   const lookupTranslations = state.data.data;
 
-  // For optionStringsSourceLookupNames with existing values
-  const formsTranslationsMapping = optionStringsSourceLookupNames
+  // For uniqueExternallyDefinedOptionSets with existing values
+  const formsTranslationsMapping = uniqueExternallyDefinedOptionSets
     .filter(optStringsSourceLookupName => {
       if (optStringsSourceLookupName.values.length !== 0) {
         return true;
@@ -255,7 +255,7 @@ fn(state => {
     })
     .flat();
 
-  const lookupsTranslationsMapping = optionStringsSourceLookupNames
+  const lookupsTranslationsMapping = uniqueExternallyDefinedOptionSets
     .map(optStringsSourceLookupName => {
       return lookupTranslations
         .filter(lookupTranslation => {
