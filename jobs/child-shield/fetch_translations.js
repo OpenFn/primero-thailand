@@ -216,15 +216,17 @@ fn(state => {
       return lookups.find(l => l.unique_id === s);
     })
     .reduce((acc, v) => {
-      return {
-        ...acc,
-        [v['unique_id']]: v.values
-          .map(x => ({ [x.id]: x.display_text.th }))
-          .reduce((obj, item) => {
-            const [[k, v]] = Object.entries(item);
-            return { ...obj, [k]: v };
-          }, {}),
-      };
+      if (v) {
+        return {
+          ...acc,
+          [v.unique_id]: v.values
+            .map(x => ({ [x.id]: x.display_text.th }))
+            .reduce((obj, item) => {
+              const [[k, v]] = Object.entries(item);
+              return { ...obj, [k]: v };
+            }, {}),
+        };
+      }
     }, {});
 
   return { ...state, translations };
