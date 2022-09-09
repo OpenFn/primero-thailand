@@ -163,3 +163,16 @@ fn(state => {
 
   return { ...state, combinedTranslations };
 });
+
+// Post the translation to OpenFn Inbox
+fn(state => {
+  const translations = state.combinedTranslations;
+
+  return post(`${state.configuration.openFnInboxURL}`, {
+    headers: { 'content-type': 'application/json' },
+    body: {
+      ...translations,
+    },
+    strictSSL: false,
+  })(state);
+});
