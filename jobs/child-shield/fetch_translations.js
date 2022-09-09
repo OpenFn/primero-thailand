@@ -176,6 +176,7 @@ fn(state => {
           if (selectFields.includes(field.name)) {
             return true;
           } else {
+            // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
             console.log(
               `Error: field ${field.name} not part of specified selectFields`
             );
@@ -213,20 +214,22 @@ fn(state => {
   const translations = uniqueExternallyDefinedOptionSets
     .map(s => {
       if (typeof s == 'object') return s;
-      return lookups.find(l => l.unique_id === s);
+      const lookup = lookups.find(l => l.unique_id === s);
+      // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
+      if (!lookup) console.log(`Could not find the value for: ${s}. Remove from array.`);
+      return lookup;
     })
+    .filter(s => s)
     .reduce((acc, v) => {
-      if (v) {
-        return {
-          ...acc,
-          [v.unique_id]: v.values
-            .map(x => ({ [x.id]: x.display_text.th }))
-            .reduce((obj, item) => {
-              const [[k, v]] = Object.entries(item);
-              return { ...obj, [k]: v };
-            }, {}),
-        };
-      }
+      return {
+        ...acc,
+        [v.unique_id]: v.values
+          .map(x => ({ [x.id]: x.display_text.th }))
+          .reduce((obj, item) => {
+            const [[k, v]] = Object.entries(item);
+            return { ...obj, [k]: v };
+          }, {}),
+      };
     }, {});
 
   return { ...state, translations };
@@ -234,5 +237,6 @@ fn(state => {
 
 // Post the translation to OpenFn Inbox
 post(`${state.configuration.openFnInboxURL}`, {
+  headers: { 'x-api-key': state.configuration.xApiKey},
   body: state => state.translations,
 });
