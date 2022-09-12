@@ -1,4 +1,16 @@
 {
-    "cid": "1419902990783",
-    "doctor_name": "Aicha"
+  "activities": {
+    "primeroservice": [
+      {
+        "serviceType": "primero",
+        "2022-08-25": [
+          {
+            "formsection-patient-education-and-career-6d53ca5": {
+              "occupation_1": "pre_school"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
