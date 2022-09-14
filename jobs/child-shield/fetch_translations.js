@@ -170,52 +170,45 @@ fn(state => {
   const { selectFields } = state;
   const forms = state.data.data;
 
-  const checkselectFieldExists = (arr, str) =>
-    JSON.stringify(arr).includes(str);
+  const externallyDefinedOptionSets = selectFields
+    .map(sf => {
+      if (JSON.stringify(forms).includes(sf)) {
+        // Get forms for this selected field only
+        const sfForms = [
+          forms.find(form => JSON.stringify(form.fields).includes(sf)),
+        ];
+        const optionSets = sfForms
+          .map(form =>
+            form.fields
+              .filter(field => {
+                if (field.name === sf) return true;
+              })
+              .map(field =>
+                field.hasOwnProperty('option_strings_source')
+                  ? field.option_strings_source.replace('lookup ', '')
+                  : {
+                      unique_id: field.name,
+                      values: field.option_strings_text,
+                    }
+              )
+              .flat()
+          )
+          .flat();
 
-  let externallyDefinedOptionSets = [];
+        return optionSets;
+      } else {
+        console.log(`Error: field ${sf} was not found from the forms response`);
+        return [];
+      }
+    })
+    .flat();
 
-  selectFields.map(sf => {
-    if (checkselectFieldExists(forms, sf)) {
-      // Get forms for this selected field only
-      const sfForms = [
-        forms.find(form => JSON.stringify(form.fields).includes(sf)),
-      ];
-      let optionSets = sfForms
-        .map(form =>
-          form.fields
-            .filter(field => {
-              if (field.name === sf) return true;
-            })
-            .map(field =>
-              field.hasOwnProperty('option_strings_source')
-                ? field.option_strings_source.replace('lookup ', '')
-                : {
-                    unique_id: field.name,
-                    values: field.option_strings_text,
-                  }
-            )
-        )
-        .flat();
+  // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
+  const uniqueExternallyDefinedOptionSets = [
+    ...new Set(externallyDefinedOptionSets),
+  ];
 
-      externallyDefinedOptionSets.push(optionSets);
-
-      console.log(`SF ${sf} optionSet ${optionSets}`);
-      console.log(optionSets);
-    } else {
-      console.log(`Error: field ${sf} was not found from the forms response`);
-    }
-
-    // console.log(...externallyDefinedOptionSets.flat());
-    // console.log(externallyDefinedOptionSets);
-
-    // // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
-    // const uniqueExternallyDefinedOptionSets = [
-    //   ...new Set(externallyDefinedOptionSets),
-    // ];
-
-    // console.log(uniqueExternallyDefinedOptionSets);
-  });
+  return { ...state, uniqueExternallyDefinedOptionSets };
 
   // const externallyDefinedOptionSets = forms
   //   .map(form =>
@@ -254,39 +247,40 @@ fn(state => {
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
-// get('/api/v2/lookups?per=1000000&page=1');
+get('/api/v2/lookups?per=1000000&page=1');
 
-// // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
-// fn(state => {
-//   const { uniqueExternallyDefinedOptionSets } = state;
-//   const lookups = state.data.data;
+// Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
+fn(state => {
+  const { uniqueExternallyDefinedOptionSets } = state;
+  const lookups = state.data.data;
 
-//   const translations = uniqueExternallyDefinedOptionSets
-//     .map(s => {
-//       if (typeof s == 'object') return s;
-//       const lookup = lookups.find(l => l.unique_id === s);
-//       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-//       if (!lookup) console.log(`Could not find the value for: ${s}. Remove from array.`);
-//       return lookup;
-//     })
-//     .filter(s => s)
-//     .reduce((acc, v) => {
-//       return {
-//         ...acc,
-//         [v.unique_id]: v.values
-//           .map(x => ({ [x.id]: x.display_text.th }))
-//           .reduce((obj, item) => {
-//             const [[k, v]] = Object.entries(item);
-//             return { ...obj, [k]: v };
-//           }, {}),
-//       };
-//     }, {});
+  const translations = uniqueExternallyDefinedOptionSets
+    .map(s => {
+      if (typeof s == 'object') return s;
+      const lookup = lookups.find(l => l.unique_id === s);
+      // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
+      if (!lookup)
+        console.log(`Could not find the value for: ${s}. Remove from array.`);
+      return lookup;
+    })
+    .filter(s => s)
+    .reduce((acc, v) => {
+      return {
+        ...acc,
+        [v.unique_id]: v.values
+          .map(x => ({ [x.id]: x.display_text.th }))
+          .reduce((obj, item) => {
+            const [[k, v]] = Object.entries(item);
+            return { ...obj, [k]: v };
+          }, {}),
+      };
+    }, {});
 
-//   return { ...state, translations };
-// });
+  return { ...state, translations };
+});
 
-// // Post the translation to OpenFn Inbox
-// post(`${state.configuration.openFnInboxURL}`, {
-//   headers: { 'x-api-key': state.configuration.xApiKey},
-//   body: state => state.translations,
-// });
+// Post the translation to OpenFn Inbox
+post(`${state.configuration.openFnInboxURL}`, {
+  headers: { 'x-api-key': state.configuration.xApiKey },
+  body: state => state.translations,
+});
