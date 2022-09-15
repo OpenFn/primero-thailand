@@ -155,6 +155,7 @@ fn(state => {
     'recommend_case_closed',
     'status',
     'closure_reason',
+    'malaria',
   ];
 
   return { ...state, selectFields };
@@ -169,30 +170,37 @@ fn(state => {
   const { selectFields } = state;
   const forms = state.data.data;
 
-  const externallyDefinedOptionSets = forms
-    .map(form =>
-      form.fields
-        .filter(field => {
-          if (selectFields.includes(field.name)) {
-            return true;
-          } else {
-            // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-            console.log(
-              `Error: field ${field.name} not part of specified selectFields`
-            );
-            return false;
-          }
-        })
-        .map(field =>
-          field.hasOwnProperty('option_strings_source')
-            ? field.option_strings_source.replace('lookup ', '')
-            : {
-                unique_id: field.name,
-                values: field.option_strings_text,
-              }
-        )
-        .flat()
-    )
+  const externallyDefinedOptionSets = selectFields
+    .map(sf => {
+      if (JSON.stringify(forms).includes(sf)) {
+        // Get forms for this selected field only
+        const sfForms = [
+          forms.find(form => JSON.stringify(form.fields).includes(sf)),
+        ];
+        const optionSets = sfForms
+          .map(form =>
+            form.fields
+              .filter(field => {
+                if (field.name === sf) return true;
+              })
+              .map(field =>
+                field.hasOwnProperty('option_strings_source')
+                  ? field.option_strings_source.replace('lookup ', '')
+                  : {
+                      unique_id: field.name,
+                      values: field.option_strings_text,
+                    }
+              )
+              .flat()
+          )
+          .flat();
+
+        return optionSets;
+      } else {
+        console.log(`Error: field ${sf} was not found from the forms response`);
+        return [];
+      }
+    })
     .flat();
 
   // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
@@ -201,6 +209,41 @@ fn(state => {
   ];
 
   return { ...state, uniqueExternallyDefinedOptionSets };
+
+  // const externallyDefinedOptionSets = forms
+  //   .map(form =>
+  //     form.fields
+  //       .filter(field => {
+  //         if (selectFields.includes(field.name)) {
+  //           return true;
+  //         } else {
+  //           // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
+  //           console.log(
+  //             `Error: field ${field.name} not part of specified selectFields`
+  //           );
+  //           return false;
+  //         }
+  //       })
+  //       .map(field =>
+  //         field.hasOwnProperty('option_strings_source')
+  //           ? field.option_strings_source.replace('lookup ', '')
+  //           : {
+  //               unique_id: field.name,
+  //               values: field.option_strings_text,
+  //             }
+  //       )
+  //       .flat()
+  //   )
+  //   .flat();
+
+  // console.log(externallyDefinedOptionSets);
+
+  // // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
+  // const uniqueExternallyDefinedOptionSets = [
+  //   ...new Set(externallyDefinedOptionSets),
+  // ];
+
+  // return { ...state, uniqueExternallyDefinedOptionSets };
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
@@ -216,7 +259,8 @@ fn(state => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-      if (!lookup) console.log(`Could not find the value for: ${s}. Remove from array.`);
+      if (!lookup)
+        console.log(`Could not find the value for: ${s}. Remove from array.`);
       return lookup;
     })
     .filter(s => s)
@@ -237,6 +281,6 @@ fn(state => {
 
 // Post the translation to OpenFn Inbox
 post(`${state.configuration.openFnInboxURL}`, {
-  headers: { 'x-api-key': state.configuration.xApiKey},
+  headers: { 'x-api-key': state.configuration.xApiKey },
   body: state => state.translations,
 });
