@@ -31,7 +31,7 @@ fn(state => {
     `Test assessment_requested_on >= cursor ${'2022-08-16' >= cursor}`
   );
 
-  const validCases = cases
+  const filteredCases = cases
     .filter(
       c =>
         (c.status == 'closed' &&
@@ -41,5 +41,5 @@ fn(state => {
     )
     .flat();
 
-  return { ...state, validCases };
+  return { ...state, filteredCases };
 });
