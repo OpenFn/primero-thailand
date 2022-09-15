@@ -1,13 +1,15 @@
 // Set up a manual cursor.
 fn(state => {
-  // Fetch cases where 'last_updated_at' >= date of last sync
+  console.log('Last sync end date:', state.lastRunDateTime);
   const manualCursor = '2022-08-12T14:43:07.000Z';
   const cursor =
-    state.cursor != null && state.cursor != '' ? state.cursor : manualCursor;
+    state.lastRunDateTime != null && state.lastRunDateTime != ''
+      ? state.lastRunDateTime
+      : manualCursor;
   return { ...state, cursor };
 });
 
-// Get cases from Primero
+// Fetch cases from Primero where 'last_updated_at' >= date of last sync
 fn(state => {
   return getCases(
     {
@@ -42,4 +44,19 @@ fn(state => {
     .flat();
 
   return { ...state, filteredCases };
+});
+
+// After job completes successfully, update cursor
+fn(state => {
+  let lastRunDateTime = state.filteredCases
+    .map(c => c.last_updated_at)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+  lastRunDateTime =
+    new Date(lastRunDateTime) > new Date()
+      ? lastRunDateTime
+      : new Date().toISOString();
+
+  console.log('Next sync start date:', lastRunDateTime);
+  return { ...state, data: {}, references: [], lastRunDateTime };
 });
