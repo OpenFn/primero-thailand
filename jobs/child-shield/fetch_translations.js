@@ -259,10 +259,10 @@ fn(state => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-      if (!lookup)
+      if (!lookup) {
         console.log(`Could not find the value for: ${s}. Remove from array.`);
-        console.log(l.unique_id);
-      return lookup;
+        console.log(lookup.unique_id);
+      return lookup;}
     })
     .filter(s => s)
     .reduce((acc, v) => {
