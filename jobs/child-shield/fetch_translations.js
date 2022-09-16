@@ -261,6 +261,7 @@ fn(state => {
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
       if (!lookup)
         console.log(`Could not find the value for: ${s}. Remove from array.`);
+        console.log(l.unique_id);
       return lookup;
     })
     .filter(s => s)
