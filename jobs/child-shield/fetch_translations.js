@@ -181,7 +181,14 @@ fn(state => {
           .map(form =>
             form.fields
               .filter(field => {
-                if (field.name === sf) return true;
+                if (field.name === sf) {
+                  if (field.name === 'Location') {
+                    console.log(
+                      `For options_string_source Location, the field name is${field.name}`
+                    );
+                  }
+                  return true;
+                }
               })
               .map(field =>
                 field.hasOwnProperty('option_strings_source')
