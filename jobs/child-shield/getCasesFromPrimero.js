@@ -1,4 +1,4 @@
-// Set up a manual cursor.
+// Set up a manual cursor. GH
 fn(state => {
   console.log('Last sync end date:', state.lastRunDateTime);
   const manualCursor = '2022-08-12T14:43:07.000Z';
