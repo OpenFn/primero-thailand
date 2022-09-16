@@ -181,6 +181,16 @@ fn(state => {
           .map(form =>
             form.fields
               .filter(field => {
+                // TODO: @Mtuchi to clean up these manual console logs
+                if (field.option_strings_source == 'Agency')
+                  console.log(`Agency field name is ${field.name}`);
+                if (field.option_strings_source == 'Location')
+                  console.log(`Location field name is ${field.name}`);
+                if (field.option_strings_source == 'User')
+                  console.log(`User field name is ${field.name}`);
+                if (field.option_strings_source == 'ReportingLocation.')
+                  console.log(`ReportingLocation. field name is ${field.name}`);
+
                 if (field.name === sf) return true;
               })
               .map(field =>
@@ -259,10 +269,9 @@ fn(state => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-      if (!lookup) {
+      if (!lookup)
         console.log(`Could not find the value for: ${s}. Remove from array.`);
-        console.log(lookup.unique_id);
-      return lookup;}
+      return lookup;
     })
     .filter(s => s)
     .reduce((acc, v) => {
