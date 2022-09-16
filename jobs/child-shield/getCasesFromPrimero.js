@@ -27,7 +27,9 @@ fn(state => {
 fn(state => {
   const cases = state.data;
   const cursor = state.cursor;
-
+  
+  console.log("ALL CASES:");
+  console.log(cases);
   console.log('Last sync end date:', cursor);
   console.log(
     `Test assessment_requested_on >= cursor ${'2022-08-16' >= cursor}`
@@ -43,6 +45,8 @@ fn(state => {
     )
     .flat();
 
+  console.log("FILTERED CASES:");
+  console.log(filteredCases);
   return { ...state, filteredCases };
 });
 
