@@ -182,16 +182,19 @@ fn(state => {
             form.fields
               .filter(field => {
                 // TODO: @Mtuchi to clean up these manual console logs
-                if (field.option_strings_source == 'Agency')
-                  console.log(`Agency field name is ${field.name}`);
-                if (field.option_strings_source == 'Location')
-                  console.log(`Location field name is ${field.name}`);
-                if (field.option_strings_source == 'User')
-                  console.log(`User field name is ${field.name}`);
-                if (field.option_strings_source == 'ReportingLocation.')
-                  console.log(`ReportingLocation. field name is ${field.name}`);
 
-                if (field.name === sf) return true;
+                if (field.name === sf) {
+                  if (field.option_strings_source == 'Agency')
+                    console.log(`Agency select field is ${sf}`);
+                  if (field.option_strings_source == 'Location')
+                    console.log(`Location select field is ${sf}`);
+                  if (field.option_strings_source == 'User')
+                    console.log(`User select field is ${sf}`);
+                  if (field.option_strings_source == 'ReportingLocation')
+                    console.log(`ReportingLocation select field is ${sf}`);
+
+                  return true;
+                }
               })
               .map(field =>
                 field.hasOwnProperty('option_strings_source')
