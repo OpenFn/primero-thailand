@@ -169,51 +169,34 @@ get('/api/v2/forms');
 fn(state => {
   const { selectFields } = state;
   const forms = state.data.data;
+  const filteredForms = [];
 
-  const externallyDefinedOptionSets = selectFields
-    .map(sf => {
-      if (JSON.stringify(forms).includes(sf)) {
-        // Get forms for this selected field only
-        const sfForms = [
-          forms.find(form => JSON.stringify(form.fields).includes(sf)),
-        ];
-        const optionSets = sfForms
-          .map(form =>
-            form.fields
-              .filter(field => {
-                // TODO: @Mtuchi to clean up these manual console logs
+  // Check if we have a missing select field from forms response
+  selectFields.map(sf => {
+    if (JSON.stringify(forms).includes(sf)) {
+      // Filter missing select fields from forms
+      filteredForms.push(
+        forms.find(form => JSON.stringify(form.fields).includes(sf))
+      );
+    } else {
+      console.log(`Error: select field ${sf} not found in forms response`);
+    }
+  });
 
-                if (field.name === sf) {
-                  if (field.option_strings_source == 'Agency')
-                    console.log(`Agency select field is ${sf}`);
-                  if (field.option_strings_source == 'Location')
-                    console.log(`Location select field is ${sf}`);
-                  if (field.option_strings_source == 'User')
-                    console.log(`User select field is ${sf}`);
-                  if (field.option_strings_source == 'ReportingLocation')
-                    console.log(`ReportingLocation select field is ${sf}`);
-
-                  return true;
-                }
-              })
-              .map(field =>
-                field.hasOwnProperty('option_strings_source')
-                  ? field.option_strings_source.replace('lookup ', '')
-                  : {
-                      unique_id: field.name,
-                      values: field.option_strings_text,
-                    }
-              )
-              .flat()
-          )
-          .flat();
-
-        return optionSets;
-      } else {
-        console.log(`Error: field ${sf} was not found from the forms response`);
-        return [];
-      }
-    })
+  const externallyDefinedOptionSets = filteredForms
+    .map(form =>
+      form.fields
+        .filter(field => selectFields.includes(field.name))
+        .map(field =>
+          field.hasOwnProperty('option_strings_source')
+            ? field.option_strings_source.replace('lookup ', '')
+            : {
+                unique_id: field.name,
+                values: field.option_strings_text,
+              }
+        )
+        .flat()
+    )
     .flat();
 
   // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
@@ -221,42 +204,7 @@ fn(state => {
     ...new Set(externallyDefinedOptionSets),
   ];
 
-  return { ...state, uniqueExternallyDefinedOptionSets };
-
-  // const externallyDefinedOptionSets = forms
-  //   .map(form =>
-  //     form.fields
-  //       .filter(field => {
-  //         if (selectFields.includes(field.name)) {
-  //           return true;
-  //         } else {
-  //           // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-  //           console.log(
-  //             `Error: field ${field.name} not part of specified selectFields`
-  //           );
-  //           return false;
-  //         }
-  //       })
-  //       .map(field =>
-  //         field.hasOwnProperty('option_strings_source')
-  //           ? field.option_strings_source.replace('lookup ', '')
-  //           : {
-  //               unique_id: field.name,
-  //               values: field.option_strings_text,
-  //             }
-  //       )
-  //       .flat()
-  //   )
-  //   .flat();
-
-  // console.log(externallyDefinedOptionSets);
-
-  // // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
-  // const uniqueExternallyDefinedOptionSets = [
-  //   ...new Set(externallyDefinedOptionSets),
-  // ];
-
-  // return { ...state, uniqueExternallyDefinedOptionSets };
+  return { ...state, filteredForms, uniqueExternallyDefinedOptionSets };
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
@@ -266,14 +214,35 @@ get('/api/v2/lookups?per=1000000&page=1');
 fn(state => {
   const { uniqueExternallyDefinedOptionSets } = state;
   const lookups = state.data.data;
+  const filteredForms = state.filteredForms;
 
   const translations = uniqueExternallyDefinedOptionSets
     .map(s => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-      if (!lookup)
-        console.log(`Could not find the value for: ${s}. Remove from array.`);
+      if (!lookup) {
+        // Let's find out which field.name from forms response is missing a lookup
+        const selectFieldsForMissingLookup = filteredForms
+          .filter(form => JSON.stringify(form.fields).includes(s))
+          .map(form => {
+            return form.fields
+              .filter(field => field.option_strings_source == s)
+              .map(field => field.name)
+              .flat();
+          })
+          .flat();
+
+        const uniqueselectFieldsForMissingLookup = [
+          ...new Set(selectFieldsForMissingLookup),
+        ];
+
+        console.log(`Could not find translations for: ${s} on lookups`);
+
+        uniqueselectFieldsForMissingLookup.map(sf => {
+          console.log(`Select fields for a missing lookup :${s} is :${sf}`);
+        });
+      }
       return lookup;
     })
     .filter(s => s)
