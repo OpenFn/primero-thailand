@@ -223,18 +223,25 @@ fn(state => {
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
       if (!lookup) {
         // Let's find out which field.name from forms response is missing a lookup
-        const listofFormFieldNames = filteredForms
-          .filter(form => {
-            if (JSON.stringify(form.fields).includes(s)) {
-              return true;
-            }
+        const selectFieldsForMissingLookup = filteredForms
+          .filter(form => JSON.stringify(form.fields).includes(s))
+          .map(form => {
+            return form.fields
+              .filter(field => field.option_strings_source == s)
+              .map(field => field.name)
+              .flat();
           })
           .flat();
 
-        const uniquelistofFormFieldNames = [...new Set(listofFormFieldNames)];
+        const uniqueselectFieldsForMissingLookup = [
+          ...new Set(selectFieldsForMissingLookup),
+        ];
 
-        console.log(uniquelistofFormFieldNames);
-        console.log(`Could not find the value for: ${s}. Remove from array.`);
+        console.log(`Could not find translations for: ${s} on lookups`);
+
+        uniqueselectFieldsForMissingLookup.map(sf => {
+          console.log(`Select fields for a missing lookup :${s} is :${sf}`);
+        });
       }
       return lookup;
     })
