@@ -221,6 +221,7 @@ fn(state => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
+      // TODO: @Taylor is there a better way to optimize this logic ?
       if (!lookup) {
         // Let's find out which field.name from forms response is missing a lookup
         const selectFieldsForMissingLookup = filteredForms
@@ -240,7 +241,7 @@ fn(state => {
         console.log(`Could not find translations for: ${s} on lookups`);
 
         uniqueselectFieldsForMissingLookup.map(sf => {
-          console.log(`Select fields for a missing lookup :${s} is :${sf}`);
+          console.log(`Select field for a missing lookup :${s} is :${sf}`);
         });
       }
       return lookup;
