@@ -3,10 +3,11 @@ fn(state => {
   console.log('Last sync end date:', state.lastRunDateTime);
   const manualCursor = '2022-09-15T06:43:07.000Z';
 
-  const cursor =
-    state.lastRunDateTime != null && state.lastRunDateTime != ''
-      ? state.lastRunDateTime
-      : manualCursor;
+  // const cursor =
+  //   state.lastRunDateTime != null && state.lastRunDateTime != ''
+  //     ? state.lastRunDateTime
+  //     : manualCursor;
+  const cursor = manualCursor;
   console.log(`Cursor is at ${cursor}`);
 
   return { ...state, cursor };
