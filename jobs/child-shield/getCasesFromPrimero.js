@@ -2,10 +2,13 @@
 fn(state => {
   console.log('Last sync end date:', state.lastRunDateTime);
   const manualCursor = '2022-09-15T06:43:07.000Z';
+
   const cursor =
     state.lastRunDateTime != null && state.lastRunDateTime != ''
       ? state.lastRunDateTime
       : manualCursor;
+  console.log(`Cursor is at ${cursor}`);
+
   return { ...state, cursor };
 });
 
@@ -27,26 +30,22 @@ fn(state => {
 fn(state => {
   const cases = state.data;
   const cursor = state.cursor;
-  
-  console.log("ALL CASES:");
-  console.log(cases);
+
   console.log('Last sync end date:', cursor);
-  console.log(
-    `Test assessment_requested_on >= cursor ${'2022-08-16' >= cursor}`
-  );
 
   const filteredCases = cases
     .filter(
       c =>
         (c.status == 'closed' &&
           c.assessment_requested_on != null &&
-          c.date_closure >= cursor) ||
-        (c.status != 'closed' && c.assessment_requested_on >= cursor)
+          c.date_closure >= cursor.split('T')[0]) ||
+        (c.statuc != 'closed' &&
+          c.assessment_requested_on >= cursor.split('T')[0])
     )
     .flat();
 
-  console.log("FILTERED CASES:");
-  console.log(filteredCases);
+  console.log('FILTERED CASES:');
+  console.log(filteredCases.length);
   return { ...state, filteredCases };
 });
 
