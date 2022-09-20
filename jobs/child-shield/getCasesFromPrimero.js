@@ -46,7 +46,7 @@ fn(state => {
     .flat();
 
   console.log('FILTERED CASES:');
-  console.log(filteredCases);
+  console.log(filteredCases.services_section);
   return { ...state, filteredCases };
 });
 
