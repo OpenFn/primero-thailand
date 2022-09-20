@@ -154,8 +154,7 @@ fn(state => {
     'need_follow_up_visit',
     'recommend_case_closed',
     'status',
-    'closure_reason',
-    'malaria',
+    'closure_reason'
   ];
 
   return { ...state, selectFields };
