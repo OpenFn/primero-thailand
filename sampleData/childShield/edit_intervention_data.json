@@ -1,16 +1,10 @@
 {
-  "activities": {
-    "primeroservice": [
-      {
-        "serviceType": "primero",
-        "2022-08-25": [
-          {
-            "formsection-patient-education-and-career-6d53ca5": {
-              "occupation_1": "pre_school"
-            }
-          }
-        ]
-      }
-    ]
-  }
+    "activities.primeroservice.2022-09-16": {
+        "formsection-patient-education-and-career-6d53ca5": {
+            "occupation_1": "pre_school1"
+        },
+        "formb": {
+            "occupation_1": "pre_school2"
+        }
+    }
 }
