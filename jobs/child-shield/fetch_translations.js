@@ -259,7 +259,7 @@ fn(state => {
       };
     }, {});
 
-  return { ...state, translations };
+  return { translations };
 });
 
 // Get locations translations
