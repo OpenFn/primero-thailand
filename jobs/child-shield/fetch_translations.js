@@ -259,7 +259,7 @@ fn(state => {
       };
     }, {});
 
-  return { ...state, translations };
+  return { translations };
 });
 
 // Post the translation to OpenFn Inbox
