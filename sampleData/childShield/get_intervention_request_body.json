@@ -1,0 +1,8 @@
+{
+    "filter": {
+        "where": {
+            "cid": "2411100023065",
+            "activities.homeservice.serviceType": "ossc"
+        }
+    }
+}
