@@ -1,10 +1,20 @@
 {
-    "activities.primeroservice.2022-09-16": {
-        "formsection-patient-education-and-career-6d53ca5": {
-            "occupation_1": "pre_school1"
+  "activities.primeroservice.2022-09-16": {
+    "formsection-patient-education-and-career-6d53ca5": {
+      "email_address": "test@gmail.com"
+    },
+    "formsection-perpetrator-details-998d1e0": {
+      "occupation_1": {
+        "pre_school": "ก่อนวันเรียน"
+      },
+      "stimulant_9191303": [
+        {
+          "alcohol": "สุรา"
         },
-        "formb": {
-            "occupation_1": "pre_school2"
+        {
+          "pornography": "สื่อลามก"
         }
+      ]
     }
+  }
 }
