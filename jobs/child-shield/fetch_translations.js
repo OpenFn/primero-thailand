@@ -270,7 +270,7 @@ fn(state => {
   const locations = state.data.data;
 
   const locationsMap = locations.reduce((acc, v) => {
-    return { ...acc, [v.name.en]: v.name.th };
+    return { ...acc, [v.code]: v.name.th };
   }, {});
 
   return { ...state, locationsMap };
