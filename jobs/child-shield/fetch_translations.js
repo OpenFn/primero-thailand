@@ -1,3 +1,4 @@
+//AD TEST
 // =============================================================================
 // === THE GOOGLE SHEETS OPTION ================================================
 // // Get selected fields in google sheets
@@ -35,6 +36,7 @@ fn(state => {
     'gender_2dea3c9',
     'social_status_7c0989a',
     'occupation_c4d6420',
+    'location_of_the_incident_885fe8c',
     'sender_s_gender_b83c931',
     'sender_s_occupation_3ed671e',
     'type_of_place_where_the_incident_occurred_bdc967d',
@@ -101,6 +103,7 @@ fn(state => {
     'relation_is_alive',
     'relation_nationality',
     'occupation_3',
+    'relation_location_current',
     'reason_for_unexpected_pregnancy',
     'specify_contraception_problem',
     'specify_legal_offenses',
@@ -137,11 +140,11 @@ fn(state => {
     'service_response_type',
     'service_type',
     'service_response_timeframe',
-    //'service_implementing_agency',
-    //'service_implementing_agency_individual',
+    'service_implementing_agency',
+    'service_implementing_agency_individual',
     'service_referral',
     'service_implemented',
-    //'service_delivery_location',
+    'service_delivery_location',
     'status_of_treatment_plan_a8ca0e8',
     'protection_concerns',
     'risk_level',
@@ -259,8 +262,25 @@ fn(state => {
   return { ...state, translations };
 });
 
+// Get locations translations
+get('/api/v2/locations?per=1000000');
+
+// location translations mapping
+fn(state => {
+  const locations = state.data.data;
+
+  const locationsMap = locations.reduce((acc, v) => {
+    return { ...acc, [v.name.en]: v.name.th };
+  }, {});
+
+  return { ...state, locationsMap };
+});
+
 // Post the translation to OpenFn Inbox
 post(`${state.configuration.openFnInboxURL}`, {
   headers: { 'x-api-key': state.configuration.xApiKey },
-  body: state => state.translations,
+  body: state => {
+    const { translations, locationsMap } = state;
+    return { translations, locationsMap };
+  },
 });
