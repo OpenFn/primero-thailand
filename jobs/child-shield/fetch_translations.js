@@ -155,7 +155,7 @@ fn(state => {
     'need_follow_up_visit',
     'recommend_case_closed',
     'status',
-    'closure_reason'
+    'closure_reason',
   ];
 
   return { ...state, selectFields };
@@ -259,7 +259,21 @@ fn(state => {
       };
     }, {});
 
-  return { translations };
+  return { ...state, translations };
+});
+
+// Get locations translations
+get('/api/v2/locations?per=1000000');
+
+// location translations mapping
+fn(state => {
+  const locations = state.data.data;
+
+  const locationsMap = locations.reduce((acc, v) => {
+    return { ...acc, [v.name.en]: v.name.th };
+  }, {});
+
+  return { ...state, locationsMap };
 });
 
 // Get locations translations
