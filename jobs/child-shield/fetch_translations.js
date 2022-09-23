@@ -16,6 +16,7 @@
 
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
+  console.log('19', new Date().toISOString());
   const selectFields = [
     'location_current',
     'occupation_1',
@@ -158,6 +159,7 @@ fn(state => {
     'malaria',
   ];
 
+  console.log('20', new Date().toISOString());
   return { ...state, selectFields };
 });
 
@@ -167,11 +169,13 @@ get('/api/v2/forms');
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
+  console.log('172', new Date().toISOString());
   const { selectFields } = state;
   const forms = state.data.data;
   const filteredForms = [];
 
   // Check if we have a missing select field from forms response
+  console.log('178', new Date().toISOString());
   selectFields.map(sf => {
     if (JSON.stringify(forms).includes(sf)) {
       // Filter missing select fields from forms
@@ -182,6 +186,7 @@ fn(state => {
       console.log(`Error: select field ${sf} not found in forms response`);
     }
   });
+  console.log('189', new Date().toISOString());
 
   const externallyDefinedOptionSets = filteredForms
     .map(form =>
@@ -198,11 +203,13 @@ fn(state => {
         .flat()
     )
     .flat();
+  console.log('206', new Date().toISOString());
 
   // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
   const uniqueExternallyDefinedOptionSets = [
     ...new Set(externallyDefinedOptionSets),
   ];
+  console.log('212', new Date().toISOString());
 
   return { ...state, filteredForms, uniqueExternallyDefinedOptionSets };
 });
@@ -212,14 +219,17 @@ get('/api/v2/lookups?per=1000000&page=1');
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
+  console.log('222', new Date().toISOString());
   const { uniqueExternallyDefinedOptionSets } = state;
   const lookups = state.data.data;
   const filteredForms = state.filteredForms;
 
+  console.log('227', new Date().toISOString());
   const translations = uniqueExternallyDefinedOptionSets
     .map(s => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
+      console.log('232', new Date().toISOString());
       // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
       // TODO: @Taylor is there a better way to optimize this logic ?
       if (!lookup) {
@@ -227,6 +237,7 @@ fn(state => {
         const selectFieldsForMissingLookup = filteredForms
           .filter(form => JSON.stringify(form.fields).includes(s))
           .map(form => {
+            console.log('240', new Date().toISOString());
             return form.fields
               .filter(field => field.option_strings_source == s)
               .map(field => field.name)
@@ -234,20 +245,24 @@ fn(state => {
           })
           .flat();
 
+        console.log('248', new Date().toISOString());
         const uniqueselectFieldsForMissingLookup = [
           ...new Set(selectFieldsForMissingLookup),
         ];
 
+        console.log('253', new Date().toISOString());
         console.log(`Could not find translations for: ${s} on lookups`);
 
         uniqueselectFieldsForMissingLookup.map(sf => {
           console.log(`Select field for a missing lookup :${s} is :${sf}`);
         });
+        console.log('259', new Date().toISOString());
       }
       return lookup;
     })
     .filter(s => s)
     .reduce((acc, v) => {
+      console.log('265', new Date().toISOString());
       return {
         ...acc,
         [v.unique_id]: v.values
@@ -258,7 +273,7 @@ fn(state => {
           }, {}),
       };
     }, {});
-
+  console.log('276', new Date().toISOString());
   return { ...state, translations };
 });
 
@@ -267,12 +282,14 @@ get('/api/v2/locations?per=1000000');
 
 // location translations mapping
 fn(state => {
+  console.log('285', new Date().toISOString());
   const locations = state.data.data;
 
   const locationsMap = locations.reduce((acc, v) => {
     return { ...acc, [v.name.en]: v.name.th };
   }, {});
 
+  console.log('292', new Date().toISOString());
   return { ...state, locationsMap };
 });
 
@@ -283,4 +300,9 @@ post(`${state.configuration.openFnInboxURL}`, {
     const { translations, locationsMap } = state;
     return { translations, locationsMap };
   },
+});
+
+fn(state => {
+  console.log('305', new Date().toISOString());
+  return state;
 });
