@@ -1,5 +1,8 @@
 //To update when spec for Flow 1 , job #3 submitted
 fn(state => {
-  console.log('final state of Job2::', state.data); 
+  const { translations, locationsMap} = state;
+  
+  console.log('Lookups translations', translations); 
+  console.log('Location translations', locationsMap); 
   return state; 
 })
