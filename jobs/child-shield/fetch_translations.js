@@ -293,20 +293,6 @@ fn(state => {
   return { ...state, locationsMap };
 });
 
-// Get locations translations
-get('/api/v2/locations?per=1000000');
-
-// location translations mapping
-fn(state => {
-  const locations = state.data.data;
-
-  const locationsMap = locations.reduce((acc, v) => {
-    return { ...acc, [v.code]: v.name.th };
-  }, {});
-
-  return { ...state, locationsMap };
-});
-
 // Post the translation to OpenFn Inbox
 post(`${state.configuration.openFnInboxURL}`, {
   headers: { 'x-api-key': state.configuration.xApiKey },
