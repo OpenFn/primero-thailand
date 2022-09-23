@@ -6,18 +6,19 @@
 //   `${state.configuration.spreedsheetUrl}/${state.configuration.spreedsheetId}/values/Select%20Fields?majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=${state.configuration.googleApiKey} `
 // );
 
-// // Set selected fields to be used on Premiro job
+// Set selected fields to be used on Premiro job
 // fn(state => {
 //   const selectFields = state.data.values.flat();
 //   selectFields.splice(selectFields.indexOf('SELECT FIELDS '), 1);
 
-//   return { ...state, selectFields };
+//   const uniqueSelectFields = [...new Set(selectFields)];
+
+//   return { ...state, uniqueSelectFields };
 // });
 // =============================================================================
 
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
-  const before = new Date();
   const selectFields = [
     'location_current',
     'occupation_1',
@@ -120,15 +121,12 @@ fn(state => {
     'source_of_information_647b9db',
     'is_the_subject_given_the_benefit_of_the_doubt_',
     'assessment_method',
-    'urgent_protection_concern',
     'protection_concerns',
-    'risk_level',
     'conference_type',
     'conference_reason',
     'conference_case_status',
     'conference_case_transfer_reason',
     'relation_to_the_child_37c30dc',
-    'protection_concerns',
     'sex_check_and_evaluation',
     'physical',
     'mental',
@@ -146,9 +144,6 @@ fn(state => {
     'service_referral',
     'service_implemented',
     'service_delivery_location',
-    'status_of_treatment_plan_a8ca0e8',
-    'protection_concerns',
-    'risk_level',
     'followup_type',
     'child_was_seen',
     'reason_child_not_seen',
@@ -159,8 +154,7 @@ fn(state => {
     'closure_reason',
   ];
 
-  const uniqueSelectFields = [...new Set(selectFields)];
-  return { ...state, before, uniqueSelectFields };
+  return { ...state, selectFields };
 });
 
 // get forms from Primero
@@ -169,14 +163,14 @@ get('/api/v2/forms');
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
-  const { uniqueSelectFields } = state;
+  const { selectFields } = state;
   const forms = state.data.data;
   const fieldNames = forms
     .map(form => form.fields.map(field => field.name))
     .flat();
 
   // Check if select field exist in forms response
-  uniqueSelectFields.map(str => {
+  selectFields.map(str => {
     if (!fieldNames.includes(str))
       console.log(`Error: select field ${str} not found in forms response`);
   });
@@ -184,7 +178,7 @@ fn(state => {
   const externallyDefinedOptionSets = forms
     .map(form =>
       form.fields
-        .filter(field => uniqueSelectFields.includes(field.name))
+        .filter(field => selectFields.includes(field.name))
         .map(field =>
           field.hasOwnProperty('option_strings_source')
             ? field.option_strings_source.replace('lookup ', '')
@@ -205,7 +199,7 @@ fn(state => {
   return {
     ...state,
     forms,
-    uniqueSelectFields,
+    selectFields,
     uniqueExternallyDefinedOptionSets,
   };
 });
@@ -215,8 +209,7 @@ get('/api/v2/lookups?per=1000000&page=1');
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
-  const { uniqueExternallyDefinedOptionSets, forms, uniqueSelectFields } =
-    state;
+  const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
   const lookups = state.data.data;
 
   const translations = uniqueExternallyDefinedOptionSets
@@ -228,7 +221,7 @@ fn(state => {
         const selectFieldsForMissingLookup = forms
           .map(form => {
             return form.fields
-              .filter(field => uniqueSelectFields.includes(field.name))
+              .filter(field => selectFields.includes(field.name))
               .filter(field => field.option_strings_source == s)
               .map(field => field.name)
               .flat();
@@ -276,11 +269,6 @@ fn(state => {
     return acc;
   }, {});
 
-  const after = new Date();
-  console.log(
-    'locations.reduce (line 280) duration was:',
-    (after - state.before) / 1000
-  );
   return { translations, locationsMap };
 });
 
