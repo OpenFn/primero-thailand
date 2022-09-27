@@ -20,7 +20,7 @@
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
   const selectFields = [
-    'location_current',
+    //'location_current',
     'occupation_1',
     'if_out_of_school__specify_reason',
     'nationality_fa822dc',
@@ -38,7 +38,7 @@ fn(state => {
     'gender_2dea3c9',
     'social_status_7c0989a',
     'occupation_c4d6420',
-    'location_of_the_incident_885fe8c',
+    //'location_of_the_incident_885fe8c',
     'sender_s_gender_b83c931',
     'sender_s_occupation_3ed671e',
     'type_of_place_where_the_incident_occurred_bdc967d',
@@ -105,7 +105,7 @@ fn(state => {
     'relation_is_alive',
     'relation_nationality',
     'occupation_3',
-    'relation_location_current',
+    //'relation_location_current',
     'reason_for_unexpected_pregnancy',
     'specify_contraception_problem',
     'specify_legal_offenses',
@@ -139,11 +139,11 @@ fn(state => {
     'service_response_type',
     'service_type',
     'service_response_timeframe',
-    'service_implementing_agency',
-    'service_implementing_agency_individual',
+    //'service_implementing_agency',
+    //'service_implementing_agency_individual',
     'service_referral',
     'service_implemented',
-    'service_delivery_location',
+    //'service_delivery_location',
     'followup_type',
     'child_was_seen',
     'reason_child_not_seen',
@@ -265,7 +265,7 @@ fn(state => {
   const translations = state.translations;
 
   const locationsMap = locations.reduce((acc, curr) => {
-    acc[curr.name.en] = curr.name.th;
+    acc[curr.code] = curr.name.th;
     return acc;
   }, {});
 
