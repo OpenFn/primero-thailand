@@ -12,7 +12,13 @@
                 "basic_identity": {
                     "national_id": "answer",
                     "registration_date": "answer", 
-                    "case_id_display": "answer"
+                    "case_id_display": "answer",
+                    "physical_characteristics": "answer",
+                    "other_id_no": "answer",
+                    "other_id_type": "answer",
+                    "location_current": "answer",
+                    "address_of_accomodation__foreigners_only_": "answer",
+                    "assessment_due_date": "answer",
                 },
                 "formsection-patient-education-and-career-6d53ca5": {
                     "email_address": "test@openfn.org",
