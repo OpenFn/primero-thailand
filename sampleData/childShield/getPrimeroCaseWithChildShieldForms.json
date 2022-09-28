@@ -10,7 +10,7 @@
         "case_id": "3553ebc8-dc01-4ef8-a2db-15ddf9b65968",
         "owned_by": "primero_cp",
         "short_id": "9b65968",
-        "workflow": "service_provision",
+        "workflow": "assessment",
         "estimated": false,
         "module_id": "primeromodule-cp",
         "name_last": "Diallo",
@@ -21,10 +21,12 @@
         "nationality": [
             "thailand"
         ],
+        "other_id_no": "2821382138",
         "date_closure": "2022-08-17",
         "occupation_1": "pre_school",
         "record_state": true,
         "date_of_birth": "2014-01-01",
+        "other_id_type": "passport",
         "reopened_logs": [
             {
                 "unique_id": "f01220ac-cb64-4e35-b8db-e96ea4866033",
@@ -36,11 +38,12 @@
         "national_id_no": "435678976",
         "sexual_b54b18b": "high_b15acc5",
         "case_id_display": "9b65968",
-        "last_updated_at": "2022-09-24T02:19:55.463Z",
+        "last_updated_at": "2022-09-28T15:26:50.277Z",
         "last_updated_by": "open_function",
         "owned_by_groups": [
             "usergroup-primero-cp"
         ],
+        "location_current": "TH100109",
         "physical_dd0399d": "high_b15acc5",
         "services_section": [
             {
@@ -59,6 +62,7 @@
         "registration_date": "2022-08-17",
         "officer_id_a575aac": "435467",
         "owned_by_agency_id": "UNICEF",
+        "assessment_due_date": "2022-10-28",
         "protection_concerns": [],
         "case_status_reopened": true,
         "case_user_id_54c9fa6": "4567",
@@ -79,11 +83,12 @@
         "assessment_date_5f07c55": "2022-09-23",
         "assessment_date_a745d8b": "2022-09-23",
         "assessment_date_b5c03b8": "2022-09-23",
-        "assessment_requested_on": "2022-09-15",
+        "assessment_requested_on": "2022-09-28",
         "care_giver_user_b93a5bd": "2345",
         "sender_s_gender_b83c931": "male",
         "how_do_you_feel__0cce3d3": "not_happy_at_all_3d88bde",
         "how_do_you_feel__488a6cb": "very_happy_185f560",
+        "physical_characteristics": "mole on left cheek",
         "shout_psu_week_1_d9be098": "5_times_aabeeb5",
         "plh_caregiver_sex_965ffd1": "female",
         "shout_psu_week_14_c252c64": "5_times_aabeeb5",
