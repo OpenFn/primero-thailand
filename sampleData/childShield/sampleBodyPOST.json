@@ -17,7 +17,7 @@
                     "other_id_no": "2821382138",
                     "other_id_type": "passport",
                     "location_current": {"TH100109": "Thailand:Bangkok:Khet Phra Nakhon:Khwaeng Chana Songkhram"},
-                    "address_of_accomodation__foreigners_only_": undefined,
+                    "address_of_accomodation__foreigners_only_": null,
                     "assessment_due_date": "2022-10-28",
                 },
                 "formsection-patient-education-and-career-6d53ca5": {
