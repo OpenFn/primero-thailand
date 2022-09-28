@@ -7,20 +7,19 @@
     "cid": "1111111111113",
     "hname": "รพ.อุดรธานี",
     "activities": {
-        "primeroservice": [
-            {
-                "serviceType": "primero",
-                "25-08-2022": [{
-                    "form1": "a",
-                    "form2": "b",
-                    "form3": "c"
-                }]
-                "26-08-2022": [{
-                    "form1": "a",
-                    "form2": "b",
-                    "form3": "c",
-                    "form4": "d"
-                }]
+        "primeroservice": {
+            "serviceType": "primero",
+            "25-08-2022": {
+                "form1": "a",
+                "form2": "b",
+                "form3": "c"
+            },
+            "26-08-2022": {
+                "form1": "a",
+                "form2": "b",
+                "form3": "c",
+                "form4": "d"
             }
-        ]
+        }
     }
+}

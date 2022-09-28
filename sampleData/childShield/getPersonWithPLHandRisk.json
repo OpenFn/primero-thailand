@@ -1,8 +1,7 @@
 {
     "filter": {
         "where": {
-            "cid": "1471000062036",
-            "activities.primeroservice.serviceType": "primero"
+            "cid": "xxxxxxxxxxxxx"
         },
         "include": [
             {
@@ -11,6 +10,9 @@
                     "order": "vstdate DESC",
                     "limit": 50
                 }
+            },
+            {
+                "relation": "riskmodel"
             }
         ]
     }
