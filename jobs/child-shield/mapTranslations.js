@@ -1,52 +1,81 @@
+// get forms from Primero
+get('/api/v2/forms');
+
 // Build mapping specifications
 fn(state => {
-  const { cases, translations, locationsMap } = state;
-  const formMap = {
-    age_assessment: [
-      'date_of_assessment',
-      'assessment_method',
-      'age_assessed',
-      'months_20cb03a',
-      'maximum_age_assessed',
-      'months_1453205',
-      'additional_comments_1298bc4',
-      'assessed_by',
-    ],
-    assessment: [
-      'from',
-      'assessment_requested_on',
-      'case_plan_due_date',
-      'urgent_protection_concern',
-      'risk_level',
-    ],
-    assessment_update: [
-      'from',
-      'update_description',
-      'recorded_by_3',
-      'date_5',
-    ],
-    basic_identity: [
-      'from',
-      'national_id_no',
-      'registration_date',
-      'case_id_display',
-      'physical_characteristics',
-      'other_id_no',
-      'other_id_type',
-      'location_current',
-      'address_of_accomodation__foreigners_only_',
-      'assessment_due_date',
-    ],
-    closer_form: [
-      'from',
-      'status',
-      'closure_reason',
-      'closure_reason_other',
-      'date_closure',
-      'additional_comments_a0185f7',
-    ],
+  const { filteredCases, translations, locationsMap } = state;
+
+  const forms = state.data.data;
+
+  // find related lookup for this sf
+  const getLookupName = sf => {
+    const ids = forms
+      .map(form =>
+        form.fields
+          .filter(field => sf === field.name)
+          .map(field =>
+            field.hasOwnProperty('option_strings_source')
+              ? field.option_strings_source.replace('lookup ', '')
+              : {
+                  unique_id: field.name,
+                  values: field.option_strings_text,
+                }
+          )
+          .flat()
+      )
+      .flat();
+    return ids.filter((item, index) => ids.indexOf(item) === index)[0];
   };
-})(state);
+
+  console.log(translations[getLookupName('risk_level')]);
+
+  return { ...state };
+  // const formMap = {
+  //   age_assessment: [
+  //     'date_of_assessment',
+  //     'assessment_method',
+  //     'age_assessed',
+  //     'months_20cb03a',
+  //     'maximum_age_assessed',
+  //     'months_1453205',
+  //     'additional_comments_1298bc4',
+  //     'assessed_by',
+  //   ],
+  //   assessment: [
+  //     'from',
+  //     'assessment_requested_on',
+  //     'case_plan_due_date',
+  //     'urgent_protection_concern',
+  //     'risk_level',
+  //   ],
+  //   assessment_update: [
+  //     'from',
+  //     'update_description',
+  //     'recorded_by_3',
+  //     'date_5',
+  //   ],
+  //   basic_identity: [
+  //     'from',
+  //     'national_id_no',
+  //     'registration_date',
+  //     'case_id_display',
+  //     'physical_characteristics',
+  //     'other_id_no',
+  //     'other_id_type',
+  //     'location_current',
+  //     'address_of_accomodation__foreigners_only_',
+  //     'assessment_due_date',
+  //   ],
+  //   closer_form: [
+  //     'from',
+  //     'status',
+  //     'closure_reason',
+  //     'closure_reason_other',
+  //     'date_closure',
+  //     'additional_comments_a0185f7',
+  //   ],
+  // };
+});
 
 // operation 1 is a post, to get an access token
 post(`${state.configuration.url}/Users/login`, {
@@ -54,7 +83,7 @@ post(`${state.configuration.url}/Users/login`, {
   headers: { 'content-type': 'application/json' },
   body: {
     email: state.configuration.email,
-    password: state.configuration.password,
+    password: state.configuration.pwd,
   },
 });
 
