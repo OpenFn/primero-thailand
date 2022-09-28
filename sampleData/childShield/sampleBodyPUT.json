@@ -7,19 +7,25 @@
     "vsttime": "20:16:36",
     "hname": "รพ.อุดรธานี",
     "activities": {
-        "primeroservice": [
-            {
-                "serviceType": "primero",
-                "25-08-2022": [{
-                    "formsection-patient-education-and-career-6d53ca5": 
-                      {
-                        "email_address": "test@openfn.org", 
-                        "occupation_1": { "pre_school": "ก่อนวันเรียน" } 
-                      },
-                    "form2": { "f2question": "answer" },
-                    "form3": { "f3question": "answer" },
-                    "form4": { "closed": true }
-                }]
+        "primeroservice": {
+            "serviceType": "primero",
+            "25-08-2022": {
+                "formsection-patient-education-and-career-6d53ca5": {
+                    "email_address": "test@openfn.org",
+                    "occupation_1": {
+                        "pre_school": "ก่อนวันเรียน"
+                    }
+                },
+                "form2": {
+                    "f2question": "answer"
+                },
+                "form3": {
+                    "f3question": "answer"
+                },
+                "form4": {
+                    "closed": true
+                }
             }
-        ]
+        }
     }
+}
