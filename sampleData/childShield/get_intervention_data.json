@@ -1,10 +1,8 @@
 {
     "filter": {
         "where": {
-
             "cid": "1419902990783",
-            "activities.homeservice.serviceType": "ossc"
-            
+            "activities.primeroservice.serviceType": "primero"
         }
     }
 }
