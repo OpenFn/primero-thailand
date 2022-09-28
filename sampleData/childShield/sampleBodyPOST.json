@@ -9,6 +9,11 @@
         "primeroservice": {
             "serviceType": "primero",
             "24-08-2022": {
+                "basic_identity": {
+                    "national_id": "answer",
+                    "registration_date": "answer", 
+                    "case_id_display": "answer"
+                },
                 "formsection-patient-education-and-career-6d53ca5": {
                     "email_address": "test@openfn.org",
                     "occupation_1": {
