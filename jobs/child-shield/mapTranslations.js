@@ -1,10 +1,56 @@
-// import cases from '../../tmp/mapTranslations/cases';
-// import translations from '../../tmp/mapTranslations/translations';
-// import locationsMap from '../../tmp/mapTranslations/locationsMap';
+// Build mapping specifications
+fn(state => {
+  const { cases, translations, locationsMap } = state;
+  const formMap = {
+    age_assessment: [
+      'date_of_assessment',
+      'assessment_method',
+      'age_assessed',
+      'months_20cb03a',
+      'maximum_age_assessed',
+      'months_1453205',
+      'additional_comments_1298bc4',
+      'assessed_by',
+    ],
+    assessment: [
+      'from',
+      'assessment_requested_on',
+      'case_plan_due_date',
+      'urgent_protection_concern',
+      'risk_level',
+    ],
+    assessment_update: [
+      'from',
+      'update_description',
+      'recorded_by_3',
+      'date_5',
+    ],
+    basic_identity: [
+      'from',
+      'national_id_no',
+      'registration_date',
+      'case_id_display',
+      'physical_characteristics',
+      'other_id_no',
+      'other_id_type',
+      'location_current',
+      'address_of_accomodation__foreigners_only_',
+      'assessment_due_date',
+    ],
+    closer_form: [
+      'from',
+      'status',
+      'closure_reason',
+      'closure_reason_other',
+      'date_closure',
+      'additional_comments_a0185f7',
+    ],
+  };
+})(state);
 
 // operation 1 is a post, to get an access token
 post(`${state.configuration.url}/Users/login`, {
-  strictSSL: false,
+  agentOptions: { rejectUnauthorized: false },
   headers: { 'content-type': 'application/json' },
   body: {
     email: state.configuration.email,
@@ -18,7 +64,7 @@ fn(state => {
       ? national_id_no.replace(/-/g, '')
       : national_id_no;
   };
-  const access_token = state.data.body.id;
+  const access_token = state.data.id;
   console.log('Authentication done...');
 
   //   const nationalIds = cases.map(cs => cs.national_id_no);
@@ -46,11 +92,11 @@ fn(state => {
     `${state.configuration.url}/interventions/findOne`,
     {
       query: { filter, access_token },
-      strictSSL: false,
+      agentOptions: { rejectUnauthorized: false },
     },
     state => {
       console.log(JSON.stringify(state.data, null, 4));
-      return { ...state, record_id: state.references[0].data.record_id };
+      // return { ...state, record_id: state.references[0].data.record_id };
     }
   )(state);
 });
