@@ -27,12 +27,15 @@ post(
     // operation 2 is a get, using the token, to get people
     const filter = {
       where: { cid: formatNationalId(state.references[0].data.national_id_no) },
-      include: {
+      include: [
+      {
         relation: 'interventions',
         scope: {
           order: 'vstdate DESC',
           limit: 50,
         },
+        { relation: 'riskmodel' } 
+      ]
       },
       limit: 1,
     };
