@@ -292,14 +292,14 @@ get('/api/v2/locations?per=1000000');
 // location translations mapping
 fn(state => {
   const locations = state.data.data;
-  const { translations, sfToLookupMap } = state;
+  const { filteredCases, translations, sfToLookupMap } = state;
 
   const locationsMap = locations.reduce((acc, curr) => {
     acc[curr.code] = curr.name.th;
     return acc;
   }, {});
 
-  return { translations, locationsMap, sfToLookupMap };
+  return { filteredCases, translations, locationsMap, sfToLookupMap };
 });
 
 // Post the translation to OpenFn Inbox
