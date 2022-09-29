@@ -196,10 +196,40 @@ fn(state => {
     ...new Set(externallyDefinedOptionSets),
   ];
 
+  // select fields lookup mapping
+  const sfToLookupMap = forms
+    .map(form =>
+      form.fields
+        .filter(field => selectFields.includes(field.name))
+        .map(field =>
+          field.hasOwnProperty('option_strings_source')
+            ? {
+                [field.name]: field.option_strings_source.replace(
+                  'lookup ',
+                  ''
+                ),
+              }
+            : {
+                [field.name]: {
+                  unique_id: field.name,
+                  values: field.option_strings_text,
+                },
+              }
+        )
+        .flat()
+    )
+    .flat()
+    .map(sf => sf)
+    .reduce((acc, curr) => {
+      const [[k, v]] = Object.entries(curr);
+      return { ...acc, [k]: v };
+    }, {});
+
   return {
     ...state,
     forms,
     selectFields,
+    sfToLookupMap,
     uniqueExternallyDefinedOptionSets,
   };
 });
@@ -262,14 +292,14 @@ get('/api/v2/locations?per=1000000');
 // location translations mapping
 fn(state => {
   const locations = state.data.data;
-  const translations = state.translations;
+  const { translations, sfToLookupMap } = state;
 
   const locationsMap = locations.reduce((acc, curr) => {
     acc[curr.code] = curr.name.th;
     return acc;
   }, {});
 
-  return { translations, locationsMap };
+  return { translations, locationsMap, sfToLookupMap };
 });
 
 // Post the translation to OpenFn Inbox
