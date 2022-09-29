@@ -1,0 +1,19 @@
+{
+    "filter": {
+        "where": {
+            "cid": "xxxxxxxxxxxxx"
+        },
+        "include": [
+            {
+                "relation": "interventions",
+                "scope": {
+                    "order": "vstdate DESC",
+                    "limit": 50
+                }
+            },
+            {
+                "relation": "riskmodel"
+            }
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "filter": {
+        "where": {
+            "cid": "1471000062036",
+            "activities.primeroservice.serviceType": "primero"
+        },
+        "include": [
+            {
+                "relation": "interventions",
+                "scope": {
+                    "order": "vstdate DESC",
+                    "limit": 50
+                }
+            }
+        ]
+    }
+}

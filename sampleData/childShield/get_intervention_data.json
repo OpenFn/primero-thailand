@@ -1,8 +1,8 @@
 {
     "filter": {
         "where": {
-
-        "cid": "1419902990783"
+            "cid": "1419902990783",
+            "activities.primeroservice.serviceType": "primero"
         }
     }
 }
