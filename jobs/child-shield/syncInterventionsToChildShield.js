@@ -754,77 +754,77 @@ fn(state => {
 
     let todayFormMap = { [todayDate]: formMap };
 
-    return get(`${state.configuration.url}/interventions/findOne`, {
-      query: { interventionsFilter, access_token },
-      agentOptions: { rejectUnauthorized: false },
-      options: { successCodes: [404] },
-    })(state).then(() => {
-      console.log(state.response.status);
-      return state;
-    });
-
     // return get(`${state.configuration.url}/interventions/findOne`, {
     //   query: { interventionsFilter, access_token },
     //   agentOptions: { rejectUnauthorized: false },
-    //   // options: { successCodes: [404] },
-    // })(state)
-    //   .then(({ data }) => {
-    //     const payload = {
-    //       [`activities.primeroservice.${todayDate}`]: formMap,
-    //     };
+    //   options: { successCodes: [404] },
+    // })(state).then(() => {
+    //   console.log(state.response.status);
+    //   return state;
+    // });
 
-    //     return patch(`${state.configuration.url}/interventions/${data.id}`, {
-    //       body: { payload },
-    //       query: { access_token },
-    //       agentOptions: { rejectUnauthorized: false },
-    //     })(state)
-    //       .then(() => {
-    //         console.log('Updated intervention...');
-    //       })
-    //       .catch(error => {
-    //         console.log('Failed to update intervention');
-    //         throw error;
-    //       });
-    //   })
-    //   .catch(error => {
-    //     console.log(`${error}, We couldn't get intervention`);
+    return get(`${state.configuration.url}/interventions/findOne`, {
+      query: { interventionsFilter, access_token },
+      agentOptions: { rejectUnauthorized: false },
+      // options: { successCodes: [404] },
+    })(state)
+      .then(({ data }) => {
+        const payload = {
+          [`activities.primeroservice.${todayDate}`]: formMap,
+        };
 
-    //     return get(`${state.configuration.url}/people/findOne`, {
-    //       query: { peopleFilter, access_token },
-    //       agentOptions: { rejectUnauthorized: false },
-    //     })(state)
-    //       .then(({ data }) => {
-    //         const payload = {
-    //           cid: data.cid,
-    //           personId: data.id,
-    //           activities: {
-    //             primeroservice: {
-    //               serviceType: 'primero',
-    //             },
-    //           },
-    //         };
+        return patch(`${state.configuration.url}/interventions/${data.id}`, {
+          body: { payload },
+          query: { access_token },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(() => {
+            console.log('Updated intervention...');
+          })
+          .catch(error => {
+            console.log('Failed to update intervention');
+            throw error;
+          });
+      })
+      .catch(error => {
+        console.log(`${error}, We couldn't get intervention`);
 
-    //         Object.assign(payload.activities.primeroservice, todayFormMap);
-    //         console.log('Person found, creating an interventions...');
+        return get(`${state.configuration.url}/people/findOne`, {
+          query: { peopleFilter, access_token },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(({ data }) => {
+            const payload = {
+              cid: data.cid,
+              personId: data.id,
+              activities: {
+                primeroservice: {
+                  serviceType: 'primero',
+                },
+              },
+            };
 
-    //         return post(`${state.configuration.url}/interventions`, {
-    //           body: { payload },
-    //           query: { access_token },
-    //           agentOptions: { rejectUnauthorized: false },
-    //         })(state)
-    //           .then(({ data }) => {
-    //             console.log('interventions created', data);
-    //           })
-    //           .catch(error => {
-    //             console.log('We could not create interventions..');
-    //             throw error;
-    //           });
-    //       })
-    //       .catch(error => {
-    //         console.log('Person does not exist');
-    //         throw error;
-    //       });
-    //   });
+            Object.assign(payload.activities.primeroservice, todayFormMap);
+            console.log('Person found, creating an interventions...');
+
+            return post(`${state.configuration.url}/interventions`, {
+              body: { payload },
+              query: { access_token },
+              agentOptions: { rejectUnauthorized: false },
+            })(state)
+              .then(({ data }) => {
+                console.log('interventions created', data);
+              })
+              .catch(error => {
+                console.log('We could not create interventions..');
+                throw error;
+              });
+          })
+          .catch(error => {
+            console.log('Person does not exist');
+            throw error;
+          });
+      });
   });
 
   const after = new Date();
