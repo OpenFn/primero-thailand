@@ -1,7 +1,27 @@
+// operation 1 is a post, to get an access token
+post(`${state.configuration.url}/Users/login`, {
+  agentOptions: { rejectUnauthorized: false },
+  headers: { 'content-type': 'application/json' },
+  body: {
+    email: state.configuration.email,
+    password: state.configuration.password,
+  },
+});
+
 //To update when spec for Flow 1 , job #3 submitted
 fn(state => {
   const { filteredCases, translations, locationsMap, sfToLookupMap } = state;
 
+  // helper function for formating national_id_no
+  const formatNationalId = national_id_no => {
+    return typeof national_id_no === 'string'
+      ? national_id_no.replace(/-/g, '')
+      : national_id_no;
+  };
+  const access_token = state.data.id;
+  console.log('Authentication done...');
+
+  let todayDate = new Date().toJSON().slice(0, 10);
   // Helper function to check for Empty string in filteredCases
   const checkEmptyStr = item => {
     const checkItem = item && item.length === 0 ? '' : item;
@@ -9,8 +29,23 @@ fn(state => {
   };
 
   const before = new Date();
-  const formsMap = filteredCases.map(cs => {
-    return {
+  filteredCases.map(cs => {
+    // interventions/findOne filter params
+    const interventionsFilter = {
+      where: {
+        cid: formatNationalId(cs.national_id_no),
+        'activities.primeroservice.serviceType': 'primero',
+      },
+    };
+
+    // people/findOne filter params
+    const peopleFilter = {
+      where: {
+        cid: formatNationalId(cs.national_id_no),
+      },
+    };
+
+    const formMap = {
       age_assessment: {
         date_of_assessment: cs.age_assessment
           ? checkEmptyStr(cs.age_assessment[0].date_of_assessment)
@@ -688,65 +723,78 @@ fn(state => {
         additional_details_1: checkEmptyStr(cs.additional_details_1),
       },
     };
+
+    let todayFormMap = { [todayDate]: formMap };
+
+    return get(`${state.configuration.url}/interventions/findOne`, {
+      query: { interventionsFilter, access_token },
+      agentOptions: { rejectUnauthorized: false },
+      options: { successCodes: [404] },
+    })(state)
+      .then(({ data }) => {
+        const payload = {
+          [`activities.primeroservice.${todayDate}`]: formMap,
+        };
+
+        return patch(`${state.configuration.url}/interventions/${data.id}`, {
+          body: { payload },
+          query: { access_token },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(() => {
+            console.log('Updated intervention...');
+          })
+          .catch(error => {
+            console.log('Failed to update intervention');
+            throw error;
+          });
+      })
+      .catch(error => {
+        console.log(`${error}, We couldn't get intervention`);
+
+        return get(`${state.configuration.url}/people/findOne`, {
+          query: { peopleFilter, access_token },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(({ data }) => {
+            const payload = {
+              cid: data.cid,
+              personId: data.id,
+              activities: {
+                primeroservice: {
+                  serviceType: 'primero',
+                },
+              },
+            };
+
+            Object.assign(payload.activities.primeroservice, todayFormMap);
+            console.log('Person found, creating an interventions...');
+
+            return post(`${state.configuration.url}/interventions`, {
+              body: { payload },
+              query: { access_token },
+              agentOptions: { rejectUnauthorized: false },
+            })(state)
+              .then(({ data }) => {
+                console.log('interventions created', data);
+              })
+              .catch(error => {
+                console.log('We could not create interventions..');
+                throw error;
+              });
+          })
+          .catch(error => {
+            console.log('Person does not exist');
+            throw error;
+          });
+      });
   });
+
   const after = new Date();
   console.log(
-    'filterdCases.map (line 12) duration was:',
+    'filterdCases.map (line 54) duration was:',
     (after - before) / 1000
   );
-  console.log('Form mapping', formsMap);
-  return { formsMap };
+
+  return { ...state };
 });
-
-// operation 1 is a post, to get an access token
-// post(`${state.configuration.url}/Users/login`, {
-//   agentOptions: { rejectUnauthorized: false },
-//   headers: { 'content-type': 'application/json' },
-//   body: {
-//     email: state.configuration.email,
-//     password: state.configuration.password,
-//   },
-// });
-
-// fn(state => {
-//   const formatNationalId = national_id_no => {
-//     return typeof national_id_no === 'string'
-//       ? national_id_no.replace(/-/g, '')
-//       : national_id_no;
-//   };
-//   const access_token = state.data.id;
-//   console.log('Authentication done...');
-
-//   //   const nationalIds = cases.map(cs => cs.national_id_no);
-//   // CIDs to test with:
-//   const nationalIdstoTest = [
-//     '1101700141411',
-//     '1067100182518',
-//     '1102900888977',
-//     '1144600547416',
-//     '1144601602121',
-//     '1144600889621',
-//   ];
-
-//   // operation 2 is a get, using the token, to get people
-//   const filter = {
-//     filter: {
-//       where: {
-//         cid: formatNationalId(nationalIdstoTest[0]),
-//         'activities.primeroservice.serviceType': 'primero',
-//       },
-//     },
-//   };
-
-//   return get(
-//     `${state.configuration.url}/interventions/findOne`,
-//     {
-//       query: { filter, access_token },
-//       agentOptions: { rejectUnauthorized: false },
-//     },
-//     state => {
-//       console.log(JSON.stringify(state.data, null, 4));
-//       // return { ...state, record_id: state.references[0].data.record_id };
-//     }
-//   )(state);
-// });
