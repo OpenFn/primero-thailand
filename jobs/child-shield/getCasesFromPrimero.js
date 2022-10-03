@@ -34,6 +34,9 @@ fn(state => {
 
   console.log('Last sync end date:', cursor);
 
+  console.log('ALL CASES:');
+  console.log(JSON.stringify(cases, null, 4));
+  
   const filteredCases = cases
     .filter(
       c =>
@@ -46,7 +49,7 @@ fn(state => {
     .flat();
 
   console.log('FILTERED CASES:');
-  console.log(filteredCases);
+  console.log(JSON.stringify(filteredCases, null, 4));
   return { ...state, filteredCases };
 });
 
