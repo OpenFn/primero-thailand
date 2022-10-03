@@ -769,8 +769,6 @@ fn(state => {
             Object.assign(payload.activities.primeroservice, todayFormMap);
             console.log('Person found, creating an interventions...');
 
-            console.log(payload);
-
             return post(`${state.configuration.url}/interventions`, {
               body: { ...payload },
               query: { access_token },
