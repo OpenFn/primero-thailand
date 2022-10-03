@@ -8,34 +8,6 @@ post(`${state.configuration.url}/Users/login`, {
   },
 });
 
-// fn(state => {
-//   const doSomethingWhen404 = () => null
-//   return { ...state, doSomethingWhen404}
-// })
-
-// get(
-//   '404 URL',
-//   {
-//     agentOptions: { rejectUnauthorized: false },
-//     options: { successCodes: [404] },
-//   },
-//   state => {
-//     console.log(state.response.status);
-//     if(state.response.status === 404) {
-//       return get('url', state => {
-//         // transformation
-//         return state
-//       })
-//     }
-//     return state;
-//   }
-// );
-
-// fn(state => {
-//   console.log(state);
-//   return state;
-// });
-
 // To update when spec for Flow 1 , job #3 submitted
 fn(state => {
   const { filteredCases, translations, locationsMap, sfToLookupMap } = state;
@@ -49,7 +21,7 @@ fn(state => {
   const access_token = state.data.id;
   console.log('Authentication done...');
 
-  let todayDate = new Date().toJSON().slice(0, 10);
+  let todaysDate = new Date().toJSON().slice(0, 10);
   // Helper function to check for Empty string in filteredCases
   const checkEmptyStr = item => {
     const checkItem = item && item.length === 0 ? '' : item;
@@ -58,21 +30,6 @@ fn(state => {
 
   const before = new Date();
   filteredCases.map(cs => {
-    // interventions/findOne filter params
-    const interventionsFilter = {
-      where: {
-        cid: formatNationalId(cs.national_id_no),
-        'activities.primeroservice.serviceType': 'primero',
-      },
-    };
-
-    // people/findOne filter params
-    const peopleFilter = {
-      where: {
-        cid: formatNationalId(cs.national_id_no),
-      },
-    };
-
     const formMap = {
       age_assessment: {
         date_of_assessment: cs.age_assessment
@@ -752,25 +709,24 @@ fn(state => {
       },
     };
 
-    let todayFormMap = { [todayDate]: formMap };
-
-    // return get(`${state.configuration.url}/interventions/findOne`, {
-    //   query: { interventionsFilter, access_token },
-    //   agentOptions: { rejectUnauthorized: false },
-    //   options: { successCodes: [404] },
-    // })(state).then(() => {
-    //   console.log(state.response.status);
-    //   return state;
-    // });
+    let todayFormMap = { [todaysDate]: formMap };
 
     return get(`${state.configuration.url}/interventions/findOne`, {
-      query: { interventionsFilter, access_token },
+      query: {
+        filter: {
+          where: {
+            cid: formatNationalId(cs.national_id_no),
+            'activities.primeroservice.serviceType': 'primero',
+          },
+        },
+        access_token,
+      },
       agentOptions: { rejectUnauthorized: false },
       // options: { successCodes: [404] },
     })(state)
       .then(({ data }) => {
         const payload = {
-          [`activities.primeroservice.${todayDate}`]: formMap,
+          [`activities.primeroservice.${todaysDate}`]: formMap,
         };
 
         return patch(`${state.configuration.url}/interventions/${data.id}`, {
@@ -782,15 +738,21 @@ fn(state => {
             console.log('Updated intervention...');
           })
           .catch(error => {
-            console.log('Failed to update intervention');
-            throw error;
+            console.log(`${error},Failed to update intervention`);
           });
       })
       .catch(error => {
         console.log(`${error}, We couldn't get intervention`);
 
         return get(`${state.configuration.url}/people/findOne`, {
-          query: { peopleFilter, access_token },
+          query: {
+            filter: {
+              where: {
+                cid: formatNationalId(cs.national_id_no),
+              },
+            },
+            access_token,
+          },
           agentOptions: { rejectUnauthorized: false },
         })(state)
           .then(({ data }) => {
@@ -807,22 +769,23 @@ fn(state => {
             Object.assign(payload.activities.primeroservice, todayFormMap);
             console.log('Person found, creating an interventions...');
 
+            console.log(payload);
+
             return post(`${state.configuration.url}/interventions`, {
-              body: { payload },
+              body: { ...payload },
               query: { access_token },
               agentOptions: { rejectUnauthorized: false },
             })(state)
               .then(({ data }) => {
-                console.log('interventions created', data);
+                console.log('Interventions created...');
               })
               .catch(error => {
                 console.log('We could not create interventions..');
-                throw error;
+                // throw error;
               });
           })
           .catch(error => {
-            console.log('Person does not exist');
-            throw error;
+            console.log(`${error},Person does not exist`);
           });
       });
   });
