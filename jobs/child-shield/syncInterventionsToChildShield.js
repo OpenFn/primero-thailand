@@ -737,7 +737,7 @@ fn(state => {
           .then(() => {
             console.log("UPDATING INTERVENTION WITH THE FOLLOWING DATA")
             console.log(JSON.stringify(payload, null, 4));
-            console.log('Updated intervention...');
+            console.log('Intervention updated');
           })
           .catch(error => {
             console.log(`${error},Failed to update intervention`);
@@ -778,7 +778,7 @@ fn(state => {
             })(state)
               .then(({ data }) => {
                 console.log("CREATING INTERVENTION WITH THE FOLLOWING DATA")
-                console.log(payload)
+                console.log(JSON.stringify(payload, null, 4));
                 console.log('Interventions created...');
               })
               .catch(error => {
