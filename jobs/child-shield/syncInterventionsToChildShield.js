@@ -185,7 +185,9 @@ fn(state => {
         status_of_treatment_plan_a8ca0e8:
           translations[sfToLookupMap['status_of_treatment_plan_a8ca0e8']],
         protection_concerns: translations[sfToLookupMap['protection_concerns']],
-        risk_level: translations[sfToLookupMap['risk_level']],
+        risk_level: cs.risk_level
+          ? translations[sfToLookupMap['risk_level']][cs.risk_level]
+          : null,
       },
       followup_subform_section: {
         followup_type: translations[sfToLookupMap['followup_type']],
@@ -356,7 +358,9 @@ fn(state => {
         description: checkEmptyStr(cs.description),
       },
       closure_form: {
-        status: translations[sfToLookupMap['status']],
+        status: cs.status
+          ? translations[sfToLookupMap['status']][cs.status]
+          : null,
         closure_reason: translations[sfToLookupMap['closure_reason']],
         closure_reason_other: checkEmptyStr(cs.closure_reason_other),
         date_closure: checkEmptyStr(cs.date_closure),
