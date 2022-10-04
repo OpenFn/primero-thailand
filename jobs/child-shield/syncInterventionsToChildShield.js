@@ -28,7 +28,6 @@ fn(state => {
     return typeof item === 'undefined' ? null : checkItem;
   };
 
-  const before = new Date();
   filteredCases.map(cs => {
     const formMap = {
       age_assessment: {
@@ -156,8 +155,11 @@ fn(state => {
         relation_date_of_birth: checkEmptyStr(cs.relation_date_of_birth),
         relation_is_alive: translations[sfToLookupMap['relation_is_alive']],
         relation_death_details: checkEmptyStr(cs.relation_death_details),
-        relation_nationality:
-          translations[sfToLookupMap['relation_nationality']],
+        relation_nationality: cs.family_details_section
+          ? translations[sfToLookupMap['relation_nationality']][
+              cs.family_details_section[0].relation_nationality[0]
+            ]
+          : null,
         national_id: checkEmptyStr(cs.national_id),
         occupation_3: translations[sfToLookupMap['occupation_3']],
         relation_occupation: checkEmptyStr(cs.relation_occupation),
@@ -664,7 +666,11 @@ fn(state => {
           cs.number_of_perpetrator_1c07dd4
         ),
         name_5559215: checkEmptyStr(cs.name_5559215),
-        nationality_fa822dc: translations[sfToLookupMap['nationality_fa822dc']],
+        nationality_fa822dc: cs.nationality_fa822dc
+          ? translations[sfToLookupMap['nationality_fa822dc']][
+              cs.nationality_fa822dc
+            ]
+          : null,
         gender_4e8704a: checkEmptyStr(cs.gender_4e8704a),
         age_21cbe0d: checkEmptyStr(cs.age_21cbe0d),
         national_id_number_7dd2e74: checkEmptyStr(
@@ -735,7 +741,7 @@ fn(state => {
           agentOptions: { rejectUnauthorized: false },
         })(state)
           .then(() => {
-            console.log("UPDATING INTERVENTION WITH THE FOLLOWING DATA")
+            console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
             console.log(JSON.stringify(payload, null, 4));
             console.log('Intervention updated');
           })
@@ -777,13 +783,12 @@ fn(state => {
               agentOptions: { rejectUnauthorized: false },
             })(state)
               .then(({ data }) => {
-                console.log("CREATING INTERVENTION WITH THE FOLLOWING DATA")
-                console.log(JSON.stringify(payload, null, 4));
+                console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
+                console.log(JSON.stringify(data, null, 4));
                 console.log('Interventions created...');
               })
               .catch(error => {
-                console.log('We could not create interventions..');
-                // throw error;
+                console.log(`${error},We could not create interventions`);
               });
           })
           .catch(error => {
@@ -791,12 +796,6 @@ fn(state => {
           });
       });
   });
-
-  const after = new Date();
-  console.log(
-    'filterdCases.map (line 54) duration was:',
-    (after - before) / 1000
-  );
 
   return { ...state };
 });
