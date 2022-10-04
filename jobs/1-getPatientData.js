@@ -28,16 +28,17 @@ post(
     const filter = {
       where: { cid: formatNationalId(state.references[0].data.national_id_no) },
       include: [
-      {
-        relation: 'interventions',
-        scope: {
-          order: 'vstdate DESC',
-          limit: 50,
+        {
+          relation: 'interventions',
+          scope: {
+            order: 'vstdate DESC',
+            limit: 50,
+          },
         },
-        { relation: 'riskmodel' } 
-      ]
-      },
-      limit: 1,
+        {
+          relation: 'riskmodel',
+        },
+      ],
     };
     console.log('filter', JSON.stringify(filter, null, 2));
     return get(
