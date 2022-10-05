@@ -143,7 +143,7 @@ fn(state => {
                 )
               : null,
             conference_case_status_other: checkEmptyStr(
-              cs.conference_case_status_other
+              cdc.conference_case_status_other
             ),
             conference_case_transfer_reason: cdc.conference_case_transfer_reason
               ? objFormatter(
