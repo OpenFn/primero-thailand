@@ -28,13 +28,26 @@ fn(state => {
     return typeof item === 'undefined' ? null : checkItem;
   };
 
-  filteredCases.map(cs => {
+  const objFormatter = (obj, key) => {
+    if (Array.isArray(key)) {
+      return key.map(x => ({ [x]: obj[x] }));
+    } else {
+      return { [key]: obj[key] };
+    }
+  };
+  const temp = filteredCases.map(cs => {
+    console.log(cs.protection_concerns);
     const formMap = {
       age_assessment: {
         date_of_assessment: cs.age_assessment
           ? checkEmptyStr(cs.age_assessment[0].date_of_assessment)
           : null,
-        assessment_method: translations[sfToLookupMap['assessment_method']],
+        assessment_method: cs.age_assessment
+          ? objFormatter(
+              translations[sfToLookupMap['assessment_method']],
+              cs.age_assessment.assessment_method
+            )
+          : null,
         age_assessed: cs.age_assessment
           ? checkEmptyStr(cs.age_assessment[0].age_assessed)
           : null,
@@ -58,7 +71,12 @@ fn(state => {
         assessment_requested_on: checkEmptyStr(cs.assessment_requested_on),
         case_plan_due_date: checkEmptyStr(cs.case_plan_due_date),
         urgent_protection_concern: checkEmptyStr(cs.urgent_protection_concern),
-        risk_level: translations[sfToLookupMap['risk_level']],
+        risk_level: cs.assessment
+          ? objFormatter(
+              translations[sfToLookupMap['risk_level']],
+              cs.assessment.risk_level
+            )
+          : null,
       },
       assessment_update: {
         update_description: cs.assessment_update
@@ -86,18 +104,14 @@ fn(state => {
         ),
         assessment_due_date: checkEmptyStr(cs.assessment_due_date),
       },
-      closer_form: {
-        status: translations[sfToLookupMap['status']],
-        closure_reason: translations[sfToLookupMap['closure_reason']],
-        closure_reason_other: checkEmptyStr(cs.closure_reason_other),
-        date_closure: checkEmptyStr(cs.date_closure),
-        additional_comments_a0185f7: checkEmptyStr(
-          cs.additional_comments_a0185f7
-        ),
-      },
       conclusion: {
         urgent_protection_concern: checkEmptyStr(cs.urgent_protection_concern),
-        protection_concerns: translations[sfToLookupMap['protection_concerns']],
+        protection_concerns: cs.protection_concerns
+          ? objFormatter(
+              translations[sfToLookupMap['protection_concerns']],
+              cs.protection_concerns
+            )
+          : null,
         protection_concerns_other: checkEmptyStr(cs.protection_concerns_other),
         risk_level: translations[sfToLookupMap['risk_level']],
       },
@@ -359,9 +373,11 @@ fn(state => {
       },
       closure_form: {
         status: cs.status
-          ? translations[sfToLookupMap['status']][cs.status]
+          ? objFormatter(translations[sfToLookupMap['status']], cs.status)
           : null,
-        closure_reason: translations[sfToLookupMap['closure_reason']],
+        closure_reason: cs.closure_reason
+          ? objFormatter(translations['closure_reason'], cs.closure_reason)
+          : null,
         closure_reason_other: checkEmptyStr(cs.closure_reason_other),
         date_closure: checkEmptyStr(cs.date_closure),
         additional_comments_a0185f7: checkEmptyStr(
@@ -438,9 +454,11 @@ fn(state => {
           cs.patient_provided_with_alternative_counseling
         ),
         patient_decision_after_being_provided_with_alternative_counseling:
-          checkEmptyStr(
-            cs.patient_decision_after_being_provided_with_alternative_counseling
-          ),
+          cs.patient_decision_after_being_provided_with_alternative_counseling
+            ? translations[
+                'patient_decision_after_being_provided_with_alternative_counseling'
+              ]
+            : null,
         antenatal_care_will_be_provided_at:
           translations[sfToLookupMap['antenatal_care_will_be_provided_at']],
         if_other__please_specify_11: checkEmptyStr(
@@ -719,87 +737,88 @@ fn(state => {
       },
     };
 
+    // console.log(`formMap ${JSON.stringify(formMap, null, 4)}`);
+
     let todayFormMap = { [todaysDate]: formMap };
+    return formMap;
+    // return get(`${state.configuration.url}/interventions/findOne`, {
+    //   query: {
+    //     filter: {
+    //       where: {
+    //         cid: formatNationalId(cs.national_id_no),
+    //         'activities.primeroservice.serviceType': 'primero',
+    //       },
+    //     },
+    //     access_token,
+    //   },
+    //   agentOptions: { rejectUnauthorized: false },
+    //   // options: { successCodes: [404] },
+    // })(state)
+    //   .then(({ data }) => {
+    //     const payload = {
+    //       [`activities.primeroservice.${todaysDate}`]: formMap,
+    //     };
 
-    return get(`${state.configuration.url}/interventions/findOne`, {
-      query: {
-        filter: {
-          where: {
-            cid: formatNationalId(cs.national_id_no),
-            'activities.primeroservice.serviceType': 'primero',
-          },
-        },
-        access_token,
-      },
-      agentOptions: { rejectUnauthorized: false },
-      // options: { successCodes: [404] },
-    })(state)
-      .then(({ data }) => {
-        const payload = {
-          [`activities.primeroservice.${todaysDate}`]: formMap,
-        };
+    //     return patch(`${state.configuration.url}/interventions/${data.id}`, {
+    //       body: { payload },
+    //       query: { access_token },
+    //       agentOptions: { rejectUnauthorized: false },
+    //     })(state)
+    //       .then(() => {
+    //         console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
+    //         console.log(JSON.stringify(payload, null, 4));
+    //         console.log('Intervention updated');
+    //       })
+    //       .catch(error => {
+    //         console.log(`${error},Failed to update intervention`);
+    //       });
+    //   })
+    //   .catch(error => {
+    //     console.log(`${error}, We couldn't get intervention`);
 
-        return patch(`${state.configuration.url}/interventions/${data.id}`, {
-          body: { payload },
-          query: { access_token },
-          agentOptions: { rejectUnauthorized: false },
-        })(state)
-          .then(() => {
-            console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
-            console.log(JSON.stringify(payload, null, 4));
-            console.log('Intervention updated');
-          })
-          .catch(error => {
-            console.log(`${error},Failed to update intervention`);
-          });
-      })
-      .catch(error => {
-        console.log(`${error}, We couldn't get intervention`);
+    //     return get(`${state.configuration.url}/people/findOne`, {
+    //       query: {
+    //         filter: {
+    //           where: {
+    //             cid: formatNationalId(cs.national_id_no),
+    //           },
+    //         },
+    //         access_token,
+    //       },
+    //       agentOptions: { rejectUnauthorized: false },
+    //     })(state)
+    //       .then(({ data }) => {
+    //         const payload = {
+    //           cid: data.cid,
+    //           personId: data.id,
+    //           activities: {
+    //             primeroservice: {
+    //               serviceType: 'primero',
+    //             },
+    //           },
+    //         };
 
-        return get(`${state.configuration.url}/people/findOne`, {
-          query: {
-            filter: {
-              where: {
-                cid: formatNationalId(cs.national_id_no),
-              },
-            },
-            access_token,
-          },
-          agentOptions: { rejectUnauthorized: false },
-        })(state)
-          .then(({ data }) => {
-            const payload = {
-              cid: data.cid,
-              personId: data.id,
-              activities: {
-                primeroservice: {
-                  serviceType: 'primero',
-                },
-              },
-            };
+    //         Object.assign(payload.activities.primeroservice, todayFormMap);
+    //         console.log('Person found, creating an interventions...');
 
-            Object.assign(payload.activities.primeroservice, todayFormMap);
-            console.log('Person found, creating an interventions...');
-
-            return post(`${state.configuration.url}/interventions`, {
-              body: { ...payload },
-              query: { access_token },
-              agentOptions: { rejectUnauthorized: false },
-            })(state)
-              .then(({ data }) => {
-                console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
-                console.log(JSON.stringify(data, null, 4));
-                console.log('Interventions created...');
-              })
-              .catch(error => {
-                console.log(`${error},We could not create interventions`);
-              });
-          })
-          .catch(error => {
-            console.log(`${error},Person does not exist`);
-          });
-      });
+    //         return post(`${state.configuration.url}/interventions`, {
+    //           body: { ...payload },
+    //           query: { access_token },
+    //           agentOptions: { rejectUnauthorized: false },
+    //         })(state)
+    //           .then(({ data }) => {
+    //             console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
+    //             console.log(JSON.stringify(data, null, 4));
+    //             console.log('Interventions created...');
+    //           })
+    //           .catch(error => {
+    //             console.log(`${error},We could not create interventions`);
+    //           });
+    //       })
+    //       .catch(error => {
+    //         console.log(`${error},Person does not exist`);
+    //       });
+    //   });
   });
-
-  return { ...state };
+  return { temp };
 });
