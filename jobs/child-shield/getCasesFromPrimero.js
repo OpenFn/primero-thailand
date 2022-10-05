@@ -35,7 +35,7 @@ fn(state => {
   console.log('Last sync end date:', cursor);
 
   console.log('ALL CASES:');
-  console.log(cases.length)
+  console.log(cases.length);
   console.log(JSON.stringify(cases, null, 4));
   
   const filteredCases = cases
@@ -50,7 +50,7 @@ fn(state => {
     .flat();
 
   console.log('FILTERED CASES:');
-  console.log(filteredCases.length)
+  console.log(filteredCases.length);
   console.log(JSON.stringify(filteredCases, null, 4));
   return { ...state, filteredCases };
 });
