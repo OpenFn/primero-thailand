@@ -1067,9 +1067,9 @@ fn(state => {
           agentOptions: { rejectUnauthorized: false },
         })(state)
           .then(() => {
-            console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
-            //console.log(JSON.stringify(payload, null, 4));
-            console.log('Intervention updated');
+            console.log('INTERVENTION UPDATED WITH THE FOLLOWING DATA');
+            console.log(JSON.stringify(payload, null, 4));
+            //console.log('Intervention updated');
           })
           .catch(error => {
             console.log(`${error},Failed to update intervention`);
@@ -1109,9 +1109,9 @@ fn(state => {
               agentOptions: { rejectUnauthorized: false },
             })(state)
               .then(({ data }) => {
-                console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
-                //console.log(JSON.stringify(data, null, 4));
-                console.log('Interventions created...');
+                console.log('INTERVENTION CREATED WITH THE FOLLOWING DATA');
+                console.log(JSON.stringify(data, null, 4));
+                //console.log('Interventions created...');
               })
               .catch(error => {
                 console.log(`${error},We could not create interventions`);
