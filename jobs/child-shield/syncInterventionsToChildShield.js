@@ -1080,7 +1080,7 @@ fn((state) => {
           `${error}, We couldn't get intervention and will now try to create one if the person exists`
         );
 
-        get(`${state.configuration.url}/people/findOne`, {
+        return get(`${state.configuration.url}/people/findOne`, {
           query: {
             filter: {
               where: {
@@ -1132,7 +1132,6 @@ fn((state) => {
 
             throw safeError;
           });
-        return state;
       });
   });
   return { ...state };
