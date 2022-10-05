@@ -35,7 +35,8 @@ fn(state => {
       return { [key]: obj[key] };
     }
   };
-  const temp = filteredCases.map(cs => {
+
+  filteredCases.map(cs => {
     const formMap = {
       age_assessment:
         cs.age_assessment &&
@@ -109,55 +110,55 @@ fn(state => {
             )
           : null,
       },
-      conference_details_container: {
-        conference_date: checkEmptyStr(cs.conference_date),
-        conference_type: cs.conference_details_container
-          ? objFormatter(
-              translations['conference_type'],
-              cs.conference_details_container.conference_type
-            )
-          : null,
-        conference_type_other: checkEmptyStr(cs.conference_type_other),
-        conference_reason: cs.conference_details_container
-          ? objFormatter(
-              translations['conference_reason'],
-              cs.conference_details_container.conference_reason
-            )
-          : null,
-        conference_reason_other: checkEmptyStr(cs.conference_reason_other),
-        conference_participants: checkEmptyStr(cs.conference_participants),
-        conference_current_situation: checkEmptyStr(
-          cs.conference_current_situation
-        ),
-        conference_outcome_recommendations: checkEmptyStr(
-          cs.conference_outcome_recommendations
-        ),
-        conference_case_status:
-          cs.conference_details_container &&
-          cs.conference_details_container.conference_case_status
-            ? objFormatter(
-                translations[sfToLookupMap['conference_case_status']],
-                cs.conference_details_container.conference_case_status
-              )
-            : null,
-        conference_case_status_other: checkEmptyStr(
-          cs.conference_case_status_other
-        ),
-        conference_case_transfer_reason:
-          cs.conference_details_container &&
-          cs.conference_details_container.conference_case_transfer_reason
-            ? objFormatter(
-                translations['conference_case_transfer_reason'],
-                cs.conference_details_container.conference_case_transfer_reason
-              )
-            : null,
-        conference_case_transfer_reason_other: checkEmptyStr(
-          cs.conference_case_transfer_reason_other
-        ),
-        conference_followup_actions: checkEmptyStr(
-          cs.conference_followup_actions
-        ),
-      },
+      conference_details_container:
+        cs.conference_details_container &&
+        cs.conference_details_container
+          .map(cdc => ({
+            conference_date: checkEmptyStr(cdc.conference_date),
+            conference_type: cdc.conference_type
+              ? objFormatter(
+                  translations['conference_type'],
+                  cdc.conference_type
+                )
+              : null,
+            conference_type_other: checkEmptyStr(cdc.conference_type_other),
+            conference_reason: cdc.conference_reason
+              ? objFormatter(
+                  translations['conference_reason'],
+                  cdc.conference_reason
+                )
+              : null,
+            conference_reason_other: checkEmptyStr(cdc.conference_reason_other),
+            conference_participants: checkEmptyStr(cdc.conference_participants),
+            conference_current_situation: checkEmptyStr(
+              cdc.conference_current_situation
+            ),
+            conference_outcome_recommendations: checkEmptyStr(
+              cdc.conference_outcome_recommendations
+            ),
+            conference_case_status: cdc.conference_case_status
+              ? objFormatter(
+                  translations[sfToLookupMap['conference_case_status']],
+                  cdc.conference_case_status
+                )
+              : null,
+            conference_case_status_other: checkEmptyStr(
+              cs.conference_case_status_other
+            ),
+            conference_case_transfer_reason: cdc.conference_case_transfer_reason
+              ? objFormatter(
+                  translations['conference_case_transfer_reason'],
+                  cdc.conference_case_transfer_reason
+                )
+              : null,
+            conference_case_transfer_reason_other: checkEmptyStr(
+              cdc.conference_case_transfer_reason_other
+            ),
+            conference_followup_actions: checkEmptyStr(
+              cdc.conference_followup_actions
+            ),
+          }))
+          .flat(),
       cp_case_plan: {
         date_case_plan: checkEmptyStr(cs.date_case_plan),
         protection_concerns: cs.protection_concerns
@@ -180,7 +181,7 @@ fn(state => {
               translations[sfToLookupMap['family_status']],
               cs.family_status
             )
-          : null,
+          : checkEmptyStr(cs.family_status),
         family_notes: checkEmptyStr(cs.family_notes),
       },
       family_details_section:
@@ -189,39 +190,47 @@ fn(state => {
           .map(fds => ({
             is_this_person_living_in_the_same_household_as_patient_7d39e1d:
               checkEmptyStr(
-                cs.is_this_person_living_in_the_same_household_as_patient_7d39e1d
+                fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
               ),
-            relation: objFormatter(
-              translations[sfToLookupMap['relation']],
-              fds.relation
-            ),
-            relation_is_caregiver: checkEmptyStr(cs.relation_is_caregiver),
-            relation_name: checkEmptyStr(cs.relation_name),
-            relation_age: checkEmptyStr(cs.relation_age),
-            relation_date_of_birth: checkEmptyStr(cs.relation_date_of_birth),
-            relation_is_alive: objFormatter(
-              translations['relation_is_alive'],
-              fds.relation_is_alive
-            ),
-            relation_death_details: checkEmptyStr(cs.relation_death_details),
-            relation_nationality: objFormatter(
-              translations[sfToLookupMap['relation_nationality']],
-              fds.relation_nationality
-            ),
-            national_id: checkEmptyStr(cs.national_id),
-            occupation_3: objFormatter(
-              translations[sfToLookupMap['occupation_3']],
-              fds.occupation_3
-            ),
-            relation_occupation: checkEmptyStr(cs.relation_occupation),
-            relation_location_current: cs.relation_location_current
-              ? objFormatter(locationsMap, cs.relation_location_current)
-              : null,
+            relation: fds.relation
+              ? objFormatter(
+                  translations[sfToLookupMap['relation']],
+                  fds.relation
+                )
+              : checkEmptyStr(fds.relation),
+            relation_is_caregiver: checkEmptyStr(fds.relation_is_caregiver),
+            relation_name: checkEmptyStr(fds.relation_name),
+            relation_age: checkEmptyStr(fds.relation_age),
+            relation_date_of_birth: checkEmptyStr(fds.relation_date_of_birth),
+            relation_is_alive: fds.relation_is_alive
+              ? objFormatter(
+                  translations['relation_is_alive'],
+                  fds.relation_is_alive
+                )
+              : checkEmptyStr(fds.relation_is_alive),
+            relation_death_details: checkEmptyStr(fds.relation_death_details),
+            relation_nationality: fds.relation_nationality
+              ? objFormatter(
+                  translations[sfToLookupMap['relation_nationality']],
+                  fds.relation_nationality
+                )
+              : checkEmptyStr(fds.relation_nationality),
+            national_id: checkEmptyStr(fds.national_id),
+            occupation_3: fds.occupation_3
+              ? objFormatter(
+                  translations[sfToLookupMap['occupation_3']],
+                  fds.occupation_3
+                )
+              : checkEmptyStr(fds.occupation_3),
+            relation_occupation: checkEmptyStr(fds.relation_occupation),
+            relation_location_current: fds.relation_location_current
+              ? objFormatter(locationsMap, fds.relation_location_current)
+              : checkEmptyStr(fds.relation_location_current),
             relation_address_current: checkEmptyStr(
-              cs.relation_address_current
+              fds.relation_address_current
             ),
-            relation_telephone: checkEmptyStr(cs.relation_telephone),
-            relation_comments: checkEmptyStr(cs.relation_comments),
+            relation_telephone: checkEmptyStr(fds.relation_telephone),
+            relation_comments: checkEmptyStr(fds.relation_comments),
           }))
           .flat(),
       followup: {
@@ -259,28 +268,32 @@ fn(state => {
         cs.followup_subform_section &&
         cs.followup_subform_section
           .map(form => ({
-            followup_type: objFormatter(
-              translations[sfToLookupMap['followup_type']],
-              form.followup_type
-            ),
-            followup_date: checkEmptyStr(cs.followup_date),
-            child_was_seen: checkEmptyStr(cs.child_was_seen),
-            reason_child_not_seen: objFormatter(
-              translations['reason_child_not_seen'],
-              form.reason_child_not_seen
-            ),
+            followup_type: form.followup_type
+              ? objFormatter(
+                  translations[sfToLookupMap['followup_type']],
+                  form.followup_type
+                )
+              : checkEmptyStr(form.followup_type),
+            followup_date: checkEmptyStr(form.followup_date),
+            child_was_seen: checkEmptyStr(form.child_was_seen),
+            reason_child_not_seen: form.reason_child_not_seen
+              ? objFormatter(
+                  translations['reason_child_not_seen'],
+                  form.reason_child_not_seen
+                )
+              : checkEmptyStr(form.reason_child_not_seen),
             reason_child_not_seen_other_details: checkEmptyStr(
-              cs.reason_child_not_seen_other_details
+              form.reason_child_not_seen_other_details
             ),
-            action_taken_already: checkEmptyStr(cs.action_taken_already),
-            action_taken_date: checkEmptyStr(cs.action_taken_date),
-            action_taken_details: checkEmptyStr(cs.action_taken_details),
-            followup_comments: checkEmptyStr(cs.followup_comments),
-            need_follow_up_visit: checkEmptyStr(cs.need_follow_up_visit),
+            action_taken_already: checkEmptyStr(form.action_taken_already),
+            action_taken_date: checkEmptyStr(form.action_taken_date),
+            action_taken_details: checkEmptyStr(form.action_taken_details),
+            followup_comments: checkEmptyStr(form.followup_comments),
+            need_follow_up_visit: checkEmptyStr(form.need_follow_up_visit),
             when_follow_up_visit_should_happen: checkEmptyStr(
-              cs.when_follow_up_visit_should_happen
+              form.when_follow_up_visit_should_happen
             ),
-            recommend_case_closed: checkEmptyStr(cs.recommend_case_closed),
+            recommend_case_closed: checkEmptyStr(form.recommend_case_closed),
           }))
           .flat(),
       'formsection-age-assessment-a75187a': {
@@ -427,11 +440,15 @@ fn(state => {
       'formsection-medical-costs-and-service-fees-847e08f': {
         current_total: checkEmptyStr(cs.current_total),
       },
-      new_expense: {
-        date_1: checkEmptyStr(cs.date_1),
-        amount: checkEmptyStr(cs.amount),
-        description: checkEmptyStr(cs.description),
-      },
+      new_expense:
+        cs.new_expense &&
+        cs.new_expense
+          .map(ne => ({
+            date_1: checkEmptyStr(ne.date_1),
+            amount: checkEmptyStr(ne.amount),
+            description: checkEmptyStr(ne.description),
+          }))
+          .flat(),
       closure_form: {
         status: cs.status
           ? objFormatter(translations[sfToLookupMap['status']], cs.status)
@@ -445,91 +462,170 @@ fn(state => {
           cs.additional_comments_a0185f7
         ),
       },
-      new_formal_complaint_2: {
-        report_date_and_time_1: checkEmptyStr(cs.report_date_and_time_1),
-        case_number_code_1: checkEmptyStr(cs.case_number_code_1),
-        police_station_name_1: checkEmptyStr(cs.police_station_name_1),
-        police_focal_point: checkEmptyStr(cs.police_focal_point),
-      },
-      services_section: {
-        follow_up_date_71b7f60: checkEmptyStr(cs.follow_up_date_71b7f60),
-        service_external_referral: checkEmptyStr(cs.service_external_referral),
-        service_implementing_agency_external: checkEmptyStr(
-          cs.service_implementing_agency_external
-        ),
-        service_provider: checkEmptyStr(cs.service_provider),
-        service_delivery_location: cs.service_delivery_location
-          ? objFormatter(locationsMap, cs.service_delivery_location)
-          : null,
-        service_location: checkEmptyStr(cs.service_location),
-      },
-      services_needed: {
-        sex_check_and_evaluation: checkEmptyStr(cs.sex_check_and_evaluation),
-        physical: translations[sfToLookupMap['physical']],
-        mental: translations[sfToLookupMap['mental']],
-        social: translations[sfToLookupMap['social']],
-        physical_1: translations[sfToLookupMap['physical_1']],
-        please_specify_13: checkEmptyStr(cs.please_specify_13),
-        mental_1: translations[sfToLookupMap['mental_1']],
-        reproductive_health: translations[sfToLookupMap['reproductive_health']],
-        test_text_service_needed: checkEmptyStr(cs.test_text_service_needed),
-        if_other__please_specify_12: checkEmptyStr(
-          cs.if_other__please_specify_12
-        ),
-        laboratory_test_results: checkEmptyStr(cs.laboratory_test_results),
-        other_support_needed: checkEmptyStr(cs.other_support_needed),
-        full_name_3: checkEmptyStr(cs.full_name_3),
-        date_service_needed_by: checkEmptyStr(cs.date_service_needed_by),
-      },
-      witnesses__6c0a3: {
-        full_name_1dde243: checkEmptyStr(cs.full_name_1dde243),
-        relation_to_the_child_37c30dc:
-          translations[sfToLookupMap['relation_to_the_child_37c30dc']],
-        testimony__cec1e35: checkEmptyStr(cs.testimony__cec1e35),
-      },
-      new_pregnancy: {
-        date_of_report: checkEmptyStr(cs.date_of_report),
-        current_gestational_week: checkEmptyStr(cs.current_gestational_week),
-        reason_for_unexpected_pregnancy:
-          translations[sfToLookupMap['reason_for_unexpected_pregnancy']],
-        specify_contraception_problem:
-          translations[sfToLookupMap['specify_contraception_problem']],
-        support_needed: translations[sfToLookupMap['support_needed']],
-        if_other__please_specify_10: checkEmptyStr(
-          cs.if_other__please_specify_10
-        ),
-        specify_legal_offenses:
-          translations[sfToLookupMap['specify_legal_offenses']],
-        factors_for_pregnancy_termination:
-          translations[sfToLookupMap['factors_for_pregnancy_termination']],
-        specify_physical_issue:
-          translations[sfToLookupMap['specify_physical_issue']],
-        specify_mental_issue:
-          translations[sfToLookupMap['specify_mental_issue']],
-        specify_family_social_economic_issues:
-          translations[sfToLookupMap['specify_family_social_economic_issues']],
-        other_factors__please_detail: checkEmptyStr(
-          cs.other_factors__please_detail
-        ),
-        patient_provided_with_alternative_counseling: checkEmptyStr(
-          cs.patient_provided_with_alternative_counseling
-        ),
-        patient_decision_after_being_provided_with_alternative_counseling:
-          cs.patient_decision_after_being_provided_with_alternative_counseling
-            ? translations[
-                'patient_decision_after_being_provided_with_alternative_counseling'
-              ]
-            : null,
-        antenatal_care_will_be_provided_at:
-          translations[sfToLookupMap['antenatal_care_will_be_provided_at']],
-        if_other__please_specify_11: checkEmptyStr(
-          cs.if_other__please_specify_11
-        ),
-        support_needed_1: translations[sfToLookupMap['support_needed_1']],
-        additional_support: checkEmptyStr(cs.additional_support),
-        source_of_information_647b9db:
-          translations[sfToLookupMap['source_of_information_647b9db']],
-      },
+      new_formal_complaint_2:
+        cs.new_formal_complaint_2 &&
+        cs.new_formal_complaint_2.map(nfc2 => ({
+          report_date_and_time_1: checkEmptyStr(nfc2.report_date_and_time_1),
+          case_number_code_1: checkEmptyStr(nfc2.case_number_code_1),
+          police_station_name_1: checkEmptyStr(nfc2.police_station_name_1),
+          police_focal_point: checkEmptyStr(nfc2.police_focal_point),
+        })),
+      services_section:
+        cs.services_section &&
+        cs.services_section
+          .map(ss => ({
+            follow_up_date_71b7f60: checkEmptyStr(ss.follow_up_date_71b7f60),
+            service_external_referral: checkEmptyStr(
+              ss.service_external_referral
+            ),
+            service_implementing_agency_external: checkEmptyStr(
+              ss.service_implementing_agency_external
+            ),
+            service_provider: checkEmptyStr(ss.service_provider),
+            service_delivery_location: ss.service_delivery_location
+              ? objFormatter(locationsMap, ss.service_delivery_location)
+              : null,
+            service_location: checkEmptyStr(ss.service_location),
+          }))
+          .flat(),
+      services_needed:
+        cs.services_needed &&
+        cs.services_needed
+          .map(sn => ({
+            sex_check_and_evaluation: checkEmptyStr(
+              sn.sex_check_and_evaluation
+            ),
+            physical: objFormatter(
+              translations[sfToLookupMap['physical']],
+              sn.physical
+            ),
+            mental: objFormatter(
+              translations[sfToLookupMap['mental']],
+              sn.mental
+            ),
+            social: objFormatter(
+              translations[sfToLookupMap['social']],
+              sn.social
+            ),
+            physical_1: objFormatter(
+              translations[sfToLookupMap['physical_1']],
+              sn.physical_1
+            ),
+            please_specify_13: checkEmptyStr(sn.please_specify_13),
+            mental_1: objFormatter(
+              translations[sfToLookupMap['mental_1']],
+              sn.mental_1
+            ),
+            reproductive_health: objFormatter(
+              translations[sfToLookupMap['reproductive_health']],
+              sn.reproductive_health
+            ),
+            test_text_service_needed: checkEmptyStr(
+              sn.test_text_service_needed
+            ),
+            if_other__please_specify_12: checkEmptyStr(
+              sn.if_other__please_specify_12
+            ),
+            laboratory_test_results: checkEmptyStr(sn.laboratory_test_results),
+            other_support_needed: checkEmptyStr(sn.other_support_needed),
+            full_name_3: checkEmptyStr(sn.full_name_3),
+            date_service_needed_by: checkEmptyStr(sn.date_service_needed_by),
+          }))
+          .flat(),
+      witnesses__6c0a3:
+        cs.witnesses__6c0a3 &&
+        cs.witnesses__6c0a3
+          .map(w6 => ({
+            full_name_1dde243: checkEmptyStr(w6.full_name_1dde243),
+            relation_to_the_child_37c30dc: w6.relation_to_the_child_37c30dc
+              ? objFormatter(
+                  translations[sfToLookupMap['relation_to_the_child_37c30dc']],
+                  w6.relation_to_the_child_37c30dc
+                )
+              : checkEmptyStr(w6.relation_to_the_child_37c30dc),
+            testimony__cec1e35: checkEmptyStr(w6.testimony__cec1e35),
+          }))
+          .flat(),
+      new_pregnancy:
+        cs.new_pregnancy &&
+        cs.new_pregnancy
+          .map(np => ({
+            date_of_report: checkEmptyStr(np.date_of_report),
+            current_gestational_week: checkEmptyStr(
+              np.current_gestational_week
+            ),
+            reason_for_unexpected_pregnancy: objFormatter(
+              translations[sfToLookupMap['reason_for_unexpected_pregnancy']],
+              np.reason_for_unexpected_pregnancy
+            ),
+            specify_contraception_problem: objFormatter(
+              translations[sfToLookupMap['specify_contraception_problem']],
+              np.specify_contraception_problem
+            ),
+            support_needed: objFormatter(
+              translations[sfToLookupMap['support_needed']],
+              np.support_needed
+            ),
+            if_other__please_specify_10: checkEmptyStr(
+              np.if_other__please_specify_10
+            ),
+            specify_legal_offenses: cs.specify_legal_offenses
+              ? objFormatter(
+                  translations[sfToLookupMap['specify_legal_offenses']],
+                  cs.specify_legal_offenses
+                )
+              : checkEmptyStr(cs.specify_legal_offenses),
+            factors_for_pregnancy_termination: objFormatter(
+              translations[sfToLookupMap['factors_for_pregnancy_termination']],
+              np.factors_for_pregnancy_termination
+            ),
+            specify_physical_issue: cs.specify_physical_issue
+              ? objFormatter(
+                  translations[sfToLookupMap['specify_physical_issue']],
+                  cs.specify_physical_issue
+                )
+              : checkEmptyStr(cs.specify_physical_issue),
+            specify_mental_issue: objFormatter(
+              translations[sfToLookupMap['specify_mental_issue']],
+              np.specify_mental_issue
+            ),
+            specify_family_social_economic_issues: objFormatter(
+              translations[
+                sfToLookupMap['specify_family_social_economic_issues']
+              ],
+              np.specify_family_social_economic_issues
+            ),
+            other_factors__please_detail: checkEmptyStr(
+              np.other_factors__please_detail
+            ),
+            patient_provided_with_alternative_counseling: checkEmptyStr(
+              np.patient_provided_with_alternative_counseling
+            ),
+            patient_decision_after_being_provided_with_alternative_counseling:
+              objFormatter(
+                translations[
+                  'patient_decision_after_being_provided_with_alternative_counseling'
+                ],
+                np.patient_decision_after_being_provided_with_alternative_counseling
+              ),
+            antenatal_care_will_be_provided_at: objFormatter(
+              translations[sfToLookupMap['antenatal_care_will_be_provided_at']],
+              np.antenatal_care_will_be_provided_at
+            ),
+            if_other__please_specify_11: checkEmptyStr(
+              np.if_other__please_specify_11
+            ),
+            support_needed_1: objFormatter(
+              translations[sfToLookupMap['support_needed_1']],
+              np.support_needed_1
+            ),
+            additional_support: checkEmptyStr(np.additional_support),
+            source_of_information_647b9db: objFormatter(
+              translations[sfToLookupMap['source_of_information_647b9db']],
+              np.source_of_information_647b9db
+            ),
+          }))
+          .flat(),
       'formsection-unexpected-pregnancy-9a51ea8': {
         first_pregnancy_at_age: checkEmptyStr(cs.first_pregnancy_at_age),
         number_of_live_births_to_date: checkEmptyStr(
@@ -539,105 +635,119 @@ fn(state => {
           cs.history_of_abortion__if_any_
         ),
       },
-      physical_check_2: {
-        description_of_physical_examination_observations_1: checkEmptyStr(
-          cs.description_of_physical_examination_observations_1
-        ),
-        patient_s_weight: checkEmptyStr(cs.patient_s_weight),
-        patient_s_height: checkEmptyStr(cs.patient_s_height),
-        date_of_last_period_menstruation: checkEmptyStr(
-          cs.date_of_last_period_menstruation
-        ),
-        general_examination_results: checkEmptyStr(
-          cs.general_examination_results
-        ),
-        general_description_of_genitalia_examination: checkEmptyStr(
-          cs.general_description_of_genitalia_examination
-        ),
-        labia_minora_details: checkEmptyStr(cs.labia_minora_details),
-        introitus_details: checkEmptyStr(cs.introitus_details),
-        hymen_details_3538ed4: checkEmptyStr(cs.hymen_details_3538ed4),
-        if_teared__please_estimate_date: checkEmptyStr(
-          cs.if_teared__please_estimate_date
-        ),
-        vagina_details: checkEmptyStr(cs.vagina_details),
-        if_abnormal__please_specify: checkEmptyStr(
-          cs.if_abnormal__please_specify
-        ),
-        If_abnormal__please_specify_1: checkEmptyStr(
-          cs.If_abnormal__please_specify_1
-        ),
-        discharge_details: checkEmptyStr(cs.discharge_details),
-        if_abnormal__please_specify_2: checkEmptyStr(
-          cs.if_abnormal__please_specify_2
-        ),
-        uterus_details: checkEmptyStr(cs.uterus_details),
-        if_abnormal__please_specify_3: checkEmptyStr(
-          cs.if_abnormal__please_specify_3
-        ),
-        general_description_b738274: checkEmptyStr(
-          cs.general_description_b738274
-        ),
-        penis_details_79f31be: checkEmptyStr(cs.penis_details_79f31be),
-        if_abnormal__please_specify_d03f913: checkEmptyStr(
-          cs.if_abnormal__please_specify_d03f913
-        ),
-        urethra_and_discharge_60eb64e: checkEmptyStr(
-          cs.urethra_and_discharge_60eb64e
-        ),
-        if_abnormal__please_specify_f3f0782: checkEmptyStr(
-          cs.if_abnormal__please_specify_f3f0782
-        ),
-        scrotal_sac_f93e04a: checkEmptyStr(cs.scrotal_sac_f93e04a),
-        if_abnormal__please_specify_899040a: checkEmptyStr(
-          cs.if_abnormal__please_specify_899040a
-        ),
-        anus_and_rectum_eaf3784: checkEmptyStr(cs.anus_and_rectum_eaf3784),
-        if_abnormal__please_specify_ab4be7b: checkEmptyStr(
-          cs.if_abnormal__please_specify_ab4be7b
-        ),
-        pregnancy_test_21c37e2: checkEmptyStr(cs.pregnancy_test_21c37e2),
-        sperm_check_2612983: checkEmptyStr(cs.sperm_check_2612983),
-        if_positive__please_specify_location_s: checkEmptyStr(
-          cs.if_positive__please_specify_location_s
-        ),
-        acid_phosphates_118c999: checkEmptyStr(cs.acid_phosphates_118c999),
-        hiv_ab_8c67abf: checkEmptyStr(cs.hiv_ab_8c67abf),
-        vag__smeargram_strain_fce21b2: checkEmptyStr(
-          cs.vag__smeargram_strain_fce21b2
-        ),
-        vag__parasite_7504774: checkEmptyStr(cs.vag__parasite_7504774),
-        vdrl_aa8c121: checkEmptyStr(cs.vdrl_aa8c121),
-        hbv_ab__ag_f13b335: checkEmptyStr(cs.hbv_ab__ag_f13b335),
-        hcv_ab_945585c: checkEmptyStr(cs.hcv_ab_945585c),
-        other_exams_results__please_specify: checkEmptyStr(
-          cs.other_exams_results__please_specify
-        ),
-        date_6: checkEmptyStr(cs.date_6),
-        department_d8ec3cb: checkEmptyStr(cs.department_d8ec3cb),
-        description_1: checkEmptyStr(cs.description_1),
-        immediate_treatment_plan: checkEmptyStr(cs.immediate_treatment_plan),
-        pregnancy_prevention_medication: checkEmptyStr(
-          cs.pregnancy_prevention_medication
-        ),
-        anti_infectious_diseases_medication: checkEmptyStr(
-          cs.anti_infectious_diseases_medication
-        ),
-        anti_hiv_medication: checkEmptyStr(cs.anti_hiv_medication),
-        source_of_information_44cac9a:
-          translations[sfToLookupMap['source_of_information_44cac9a']],
-      },
-      preliminary_observations_2: {
-        initial_observations_4: checkEmptyStr(cs.initial_observations_4),
-        social_problems_identified_1:
-          translations[sfToLookupMap['social_problems_identified_1']],
-        immediate_actions_needed_1: checkEmptyStr(
-          cs.immediate_actions_needed_1
-        ),
-        home_visit_required__2: checkEmptyStr(cs.home_visit_required__2),
-        full_name_6: checkEmptyStr(cs.full_name_6),
-        date_7: checkEmptyStr(cs.date_7),
-      },
+      physical_check_2:
+        cs.physical_check_2 &&
+        cs.physical_check_2
+          .map(pc2 => ({
+            description_of_physical_examination_observations_1: checkEmptyStr(
+              pc2.description_of_physical_examination_observations_1
+            ),
+            patient_s_weight: checkEmptyStr(pc2.patient_s_weight),
+            patient_s_height: checkEmptyStr(pc2.patient_s_height),
+            date_of_last_period_menstruation: checkEmptyStr(
+              pc2.date_of_last_period_menstruation
+            ),
+            general_examination_results: checkEmptyStr(
+              pc2.general_examination_results
+            ),
+            general_description_of_genitalia_examination: checkEmptyStr(
+              pc2.general_description_of_genitalia_examination
+            ),
+            labia_minora_details: checkEmptyStr(pc2.labia_minora_details),
+            introitus_details: checkEmptyStr(pc2.introitus_details),
+            hymen_details_3538ed4: checkEmptyStr(pc2.hymen_details_3538ed4),
+            if_teared__please_estimate_date: checkEmptyStr(
+              pc2.if_teared__please_estimate_date
+            ),
+            vagina_details: checkEmptyStr(pc2.vagina_details),
+            if_abnormal__please_specify: checkEmptyStr(
+              pc2.if_abnormal__please_specify
+            ),
+            If_abnormal__please_specify_1: checkEmptyStr(
+              pc2.If_abnormal__please_specify_1
+            ),
+            discharge_details: checkEmptyStr(pc2.discharge_details),
+            if_abnormal__please_specify_2: checkEmptyStr(
+              pc2.if_abnormal__please_specify_2
+            ),
+            uterus_details: checkEmptyStr(pc2.uterus_details),
+            if_abnormal__please_specify_3: checkEmptyStr(
+              pc2.if_abnormal__please_specify_3
+            ),
+            general_description_b738274: checkEmptyStr(
+              pc2.general_description_b738274
+            ),
+            penis_details_79f31be: checkEmptyStr(pc2.penis_details_79f31be),
+            if_abnormal__please_specify_d03f913: checkEmptyStr(
+              pc2.if_abnormal__please_specify_d03f913
+            ),
+            urethra_and_discharge_60eb64e: checkEmptyStr(
+              pc2.urethra_and_discharge_60eb64e
+            ),
+            if_abnormal__please_specify_f3f0782: checkEmptyStr(
+              pc2.if_abnormal__please_specify_f3f0782
+            ),
+            scrotal_sac_f93e04a: checkEmptyStr(pc2.scrotal_sac_f93e04a),
+            if_abnormal__please_specify_899040a: checkEmptyStr(
+              pc2.if_abnormal__please_specify_899040a
+            ),
+            anus_and_rectum_eaf3784: checkEmptyStr(pc2.anus_and_rectum_eaf3784),
+            if_abnormal__please_specify_ab4be7b: checkEmptyStr(
+              pc2.if_abnormal__please_specify_ab4be7b
+            ),
+            pregnancy_test_21c37e2: checkEmptyStr(pc2.pregnancy_test_21c37e2),
+            sperm_check_2612983: checkEmptyStr(pc2.sperm_check_2612983),
+            if_positive__please_specify_location_s: checkEmptyStr(
+              pc2.if_positive__please_specify_location_s
+            ),
+            acid_phosphates_118c999: checkEmptyStr(pc2.acid_phosphates_118c999),
+            hiv_ab_8c67abf: checkEmptyStr(pc2.hiv_ab_8c67abf),
+            vag__smeargram_strain_fce21b2: checkEmptyStr(
+              pc2.vag__smeargram_strain_fce21b2
+            ),
+            vag__parasite_7504774: checkEmptyStr(pc2.vag__parasite_7504774),
+            vdrl_aa8c121: checkEmptyStr(pc2.vdrl_aa8c121),
+            hbv_ab__ag_f13b335: checkEmptyStr(pc2.hbv_ab__ag_f13b335),
+            hcv_ab_945585c: checkEmptyStr(pc2.hcv_ab_945585c),
+            other_exams_results__please_specify: checkEmptyStr(
+              pc2.other_exams_results__please_specify
+            ),
+            date_6: checkEmptyStr(pc2.date_6),
+            department_d8ec3cb: checkEmptyStr(pc2.department_d8ec3cb),
+            description_1: checkEmptyStr(pc2.description_1),
+            immediate_treatment_plan: checkEmptyStr(
+              pc2.immediate_treatment_plan
+            ),
+            pregnancy_prevention_medication: checkEmptyStr(
+              pc2.pregnancy_prevention_medication
+            ),
+            anti_infectious_diseases_medication: checkEmptyStr(
+              pc2.anti_infectious_diseases_medication
+            ),
+            anti_hiv_medication: checkEmptyStr(pc2.anti_hiv_medication),
+            source_of_information_44cac9a: objFormatter(
+              translations[sfToLookupMap['source_of_information_44cac9a']],
+              pc2.source_of_information_44cac9a
+            ),
+          }))
+          .flat(),
+      preliminary_observations_2:
+        cs.preliminary_observations_2 &&
+        cs.preliminary_observations_2
+          .map(po2 => ({
+            initial_observations_4: checkEmptyStr(po2.initial_observations_4),
+            social_problems_identified_1: objFormatter(
+              translations[sfToLookupMap['social_problems_identified_1']],
+              po2.social_problems_identified_1
+            ),
+            immediate_actions_needed_1: checkEmptyStr(
+              po2.immediate_actions_needed_1
+            ),
+            home_visit_required__2: checkEmptyStr(po2.home_visit_required__2),
+            full_name_6: checkEmptyStr(po2.full_name_6),
+            date_7: checkEmptyStr(po2.date_7),
+          }))
+          .flat(),
       'formsection-incident-details-fe05aa4': {
         date_of_incident_creation_e497d33: checkEmptyStr(
           cs.date_of_incident_creation_e497d33
@@ -698,85 +808,155 @@ fn(state => {
         if_other__please_specify_047c1fb: checkEmptyStr(
           cs.if_other__please_specify_047c1fb
         ),
-        specify_sexual_abuse_16d36f7:
+        specify_sexual_abuse_16d36f7: objFormatter(
           translations[sfToLookupMap['specify_sexual_abuse_16d36f7']],
+          cs.specify_sexual_abuse_16d36f7
+        ),
         please_specify_7832f40: checkEmptyStr(cs.please_specify_7832f40),
         specify_physical_interaction_d13d273:
-          translations[sfToLookupMap['specify_physical_interaction_d13d273']],
+          cs.specify_physical_interaction_d13d273
+            ? objFormatter(
+                translations[
+                  sfToLookupMap['specify_physical_interaction_d13d273']
+                ],
+                cs.specify_physical_interaction_d13d273
+              )
+            : checkEmptyStr(cs.specify_physical_interaction_d13d273),
         sexual_intercourse_a1585d0: checkEmptyStr(
           cs.sexual_intercourse_a1585d0
         ),
         if_no_physical_touch__please_specify_1159dde:
-          translations[
-            sfToLookupMap['if_no_physical_touch__please_specify_1159dde']
-          ],
+          cs.if_no_physical_touch__please_specify_1159dde
+            ? objFormatter(
+                translations[
+                  sfToLookupMap['if_no_physical_touch__please_specify_1159dde']
+                ],
+                cs.if_no_physical_touch__please_specify_1159dde
+              )
+            : checkEmptyStr(cs.if_no_physical_touch__please_specify_1159dde),
         if_other__please_specify_e99bdbc: checkEmptyStr(
           cs.if_other__please_specify_e99bdbc
         ),
-        specify_mental_abuse_6182644:
-          translations[sfToLookupMap['specify_mental_abuse_6182644']],
+        specify_mental_abuse_6182644: cs.specify_mental_abuse_6182644
+          ? objFormatter(
+              translations[sfToLookupMap['specify_mental_abuse_6182644']],
+              cs.specify_mental_abuse_6182644
+            )
+          : checkEmptyStr(cs.specify_mental_abuse_6182644),
         if_other__please_specify_fbd4f87: checkEmptyStr(
           cs.if_other__please_specify_fbd4f87
         ),
-        specify_neglect_9b8a22b:
-          translations[sfToLookupMap['specify_neglect_9b8a22b']],
+        specify_neglect_9b8a22b: cs.specify_neglect_9b8a22b
+          ? objFormatter(
+              translations[sfToLookupMap['specify_neglect_9b8a22b']],
+              cs.specify_neglect_9b8a22b
+            )
+          : checkEmptyStr(cs.specify_neglect_9b8a22b),
         if_other__please_specify_d212f17: checkEmptyStr(
           cs.if_other__please_specify_d212f17
         ),
-        specify_exploitation_ef65c2e:
-          translations[sfToLookupMap['specify_exploitation_ef65c2e']],
+        specify_exploitation_ef65c2e: cs.specify_exploitation_ef65c2e
+          ? objFormatter(
+              translations[sfToLookupMap['specify_exploitation_ef65c2e']],
+              cs.specify_exploitation_ef65c2e
+            )
+          : checkEmptyStr(cs.specify_exploitation_ef65c2e),
         if_other__please_specify_9b6ad5d: checkEmptyStr(
           cs.if_other__please_specify_9b6ad5d
         ),
-        specify_human_trafficking_dca84dd:
-          translations[sfToLookupMap['specify_human_trafficking_dca84dd']],
+        specify_human_trafficking_dca84dd: cs.specify_human_trafficking_dca84dd
+          ? objFormatter(
+              translations[sfToLookupMap['specify_human_trafficking_dca84dd']],
+              cs.specify_human_trafficking_dca84dd
+            )
+          : checkEmptyStr(cs.specify_human_trafficking_dca84dd),
         if_other__please_specify_ed0cad3: checkEmptyStr(
           cs.if_other__please_specify_ed0cad3
         ),
-        stimulant_a4096c2: translations[sfToLookupMap['stimulant_a4096c2']],
-        relation_within_family_a6c45fd:
-          translations[sfToLookupMap['relation_within_family_a6c45fd']],
-        economic_issue_a445217:
-          translations[sfToLookupMap['economic_issue_a445217']],
-        physical_issue_2e9f1c6:
-          translations[sfToLookupMap['physical_issue_2e9f1c6']],
-        mental_issue_4785ece:
-          translations[sfToLookupMap['mental_issue_4785ece']],
+        stimulant_a4096c2: cs.stimulant_a4096c2
+          ? objFormatter(
+              translations[sfToLookupMap['stimulant_a4096c2']],
+              cs.stimulant_a4096c2
+            )
+          : checkEmptyStr(cs.stimulant_a4096c2),
+        relation_within_family_a6c45fd: cs.relation_within_family_a6c45fd
+          ? objFormatter(
+              translations[sfToLookupMap['relation_within_family_a6c45fd']],
+              cs.relation_within_family_a6c45fd
+            )
+          : checkEmptyStr(cs.relation_within_family_a6c45fd),
+        economic_issue_a445217: cs.economic_issue_a445217
+          ? objFormatter(
+              translations[sfToLookupMap['economic_issue_a445217']],
+              cs.economic_issue_a445217
+            )
+          : checkEmptyStr(cs.economic_issue_a445217),
+        physical_issue_2e9f1c6: cs.physical_issue_2e9f1c6
+          ? objFormatter(
+              translations[sfToLookupMap['physical_issue_2e9f1c6']],
+              cs.physical_issue_2e9f1c6
+            )
+          : checkEmptyStr(cs.physical_issue_2e9f1c6),
+        mental_issue_4785ece: cs.mental_issue_4785ece
+          ? objFormatter(
+              translations[sfToLookupMap['mental_issue_4785ece']],
+              cs.mental_issue_4785ece
+            )
+          : checkEmptyStr(cs.mental_issue_4785ece),
         other_contributing_factors__please_specify_f276d39: checkEmptyStr(
           cs.other_contributing_factors__please_specify_f276d39
         ),
         full_name_0aff4ee: checkEmptyStr(cs.full_name_0aff4ee),
       },
-      other_perpetrator_details_f80fc4e: {
-        name_f5a1eac: checkEmptyStr(cs.name_f5a1eac),
-        relationship_with_the_abused_365fcd1:
-          translations[sfToLookupMap['relationship_with_the_abused_365fcd1']],
-        national_id_number_a822f83: checkEmptyStr(
-          cs.national_id_number_a822f83
-        ),
-        type_of_other_id_document_64e3ffc: checkEmptyStr(
-          cs.type_of_other_id_document_64e3ffc
-        ),
-        number_of_other_id_document_cddbddb: checkEmptyStr(
-          cs.number_of_other_id_document_cddbddb
-        ),
-        gender_2dea3c9: checkEmptyStr(cs.gender_2dea3c9),
-        age_6587e58: checkEmptyStr(cs.age_6587e58),
-        social_status_7c0989a:
-          translations[sfToLookupMap['social_status_7c0989a']],
-        occupation_c4d6420: translations[sfToLookupMap['occupation_c4d6420']],
-        contact_details_b98ed09: checkEmptyStr(cs.contact_details_b98ed09),
-      },
+      other_perpetrator_details_f80fc4e:
+        cs.other_perpetrator_details_f80fc4e &&
+        cs.other_perpetrator_details_f80fc4e
+          .map(opd => ({
+            name_f5a1eac: checkEmptyStr(opd.name_f5a1eac),
+            relationship_with_the_abused_365fcd1:
+              opd.relationship_with_the_abused_365fcd1
+                ? objFormatter(
+                    translations[
+                      sfToLookupMap['relationship_with_the_abused_365fcd1']
+                    ],
+                    opd.relationship_with_the_abused_365fcd1
+                  )
+                : checkEmptyStr(opd.relationship_with_the_abused_365fcd1),
+            national_id_number_a822f83: checkEmptyStr(
+              opd.national_id_number_a822f83
+            ),
+            type_of_other_id_document_64e3ffc: checkEmptyStr(
+              opd.type_of_other_id_document_64e3ffc
+            ),
+            number_of_other_id_document_cddbddb: checkEmptyStr(
+              opd.number_of_other_id_document_cddbddb
+            ),
+            gender_2dea3c9: checkEmptyStr(opd.gender_2dea3c9),
+            age_6587e58: checkEmptyStr(opd.age_6587e58),
+            social_status_7c0989a: opd.social_status_7c0989a
+              ? objFormatter(
+                  translations[sfToLookupMap['social_status_7c0989a']],
+                  opd.social_status_7c0989a
+                )
+              : checkEmptyStr(opd.social_status_7c0989a),
+            occupation_c4d6420: opd.occupation_c4d6420
+              ? objFormatter(
+                  translations[sfToLookupMap['occupation_c4d6420']],
+                  opd.occupation_c4d6420
+                )
+              : checkEmptyStr(opd.occupation_c4d6420),
+            contact_details_b98ed09: checkEmptyStr(opd.contact_details_b98ed09),
+          }))
+          .flat(),
       'formsection-perpetrator-details-998d1e0': {
         number_of_perpetrator_1c07dd4: checkEmptyStr(
           cs.number_of_perpetrator_1c07dd4
         ),
         name_5559215: checkEmptyStr(cs.name_5559215),
-        nationality_fa822dc: cs.nationality_fa822dc
-          ? translations[sfToLookupMap['nationality_fa822dc']][
-              cs.nationality_fa822dc
-            ]
-          : null,
+        nationality_fa822dc: objFormatter(
+          translations[sfToLookupMap['nationality_fa822dc']],
+          cs.nationality_fa822dc
+        ),
         gender_4e8704a: checkEmptyStr(cs.gender_4e8704a),
         age_21cbe0d: checkEmptyStr(cs.age_21cbe0d),
         national_id_number_7dd2e74: checkEmptyStr(
@@ -788,121 +968,159 @@ fn(state => {
         number_of_other_id_document_09a5601: checkEmptyStr(
           cs.number_of_other_id_document_09a5601
         ),
-        relationship_with_the_abused_eb757fc:
+        relationship_with_the_abused_eb757fc: objFormatter(
           translations[sfToLookupMap['relationship_with_the_abused_eb757fc']],
-        social_status_6c1074a:
-          translations[sfToLookupMap['social_status_6c1074a']],
-        occupation_09639f9: translations[sfToLookupMap['occupation_09639f9']],
+          cs.relationship_with_the_abused_eb757fc
+        ),
+        social_status_6c1074a: cs.social_status_6c1074a
+          ? objFormatter(
+              translations[sfToLookupMap['social_status_6c1074a']],
+              cs.social_status_6c1074a
+            )
+          : checkEmptyStr(cs.social_status_6c1074a),
+        occupation_09639f9: cs.occupation_09639f9
+          ? objFormatter(
+              translations[sfToLookupMap['occupation_09639f9']],
+              cs.occupation_09639f9
+            )
+          : checkEmptyStr(cs.occupation_09639f9),
         contact_details_31b6f3b: checkEmptyStr(cs.contact_details_31b6f3b),
-        stimulant_9191303: translations[sfToLookupMap['stimulant_9191303']],
-        relation_within_family_41a62f4:
+        stimulant_9191303: cs.stimulant_9191303
+          ? objFormatter(
+              translations[sfToLookupMap['stimulant_9191303']],
+              cs.stimulant_9191303
+            )
+          : checkEmptyStr(cs.stimulant_9191303),
+        relation_within_family_41a62f4: objFormatter(
           translations[sfToLookupMap['relation_within_family_41a62f4']],
-        environment_3c4fc2b: translations[sfToLookupMap['environment_3c4fc2b']],
-        economic_issues_84c5b46:
-          translations[sfToLookupMap['economic_issues_84c5b46']],
-        physical_issue_1f182e4:
-          translations[sfToLookupMap['physical_issue_1f182e4']],
-        mental_issue_5607d21:
+          cs.relation_within_family_41a62f4
+        ),
+        environment_3c4fc2b: objFormatter(
+          translations[sfToLookupMap['environment_3c4fc2b']],
+          cs.environment_3c4fc2b
+        ),
+        economic_issues_84c5b46: cs.economic_issues_84c5b46
+          ? objFormatter(
+              translations[sfToLookupMap['economic_issues_84c5b46']],
+              cs.economic_issues_84c5b46
+            )
+          : checkEmptyStr(cs.economic_issues_84c5b46),
+        physical_issue_1f182e4: cs.physical_issue_1f182e4
+          ? objFormatter(
+              translations[sfToLookupMap['physical_issue_1f182e4']],
+              cs.physical_issue_1f182e4
+            )
+          : checkEmptyStr(cs.physical_issue_1f182e4),
+        mental_issue_5607d21: objFormatter(
           translations[sfToLookupMap['mental_issue_5607d21']],
+          cs.mental_issue_5607d21
+        ),
         other_contributing_factors__please_specify_53bc483: checkEmptyStr(
           cs.other_contributing_factors__please_specify_53bc483
         ),
       },
       'formsection-patient-education-and-career-6d53ca5': {
         email_address: checkEmptyStr(cs.email_address),
-        occupation_1: translations[sfToLookupMap['occupation_1']],
+        occupation_1: cs.occupation_1
+          ? objFormatter(
+              translations[sfToLookupMap['occupation_1']],
+              cs.occupation_1
+            )
+          : checkEmptyStr(cs.occupation_1),
         if_other__please_specify_2: checkEmptyStr(
           cs.if_other__please_specify_2
         ),
-        if_out_of_school__specify_reason:
+        if_out_of_school__specify_reason: objFormatter(
           translations[sfToLookupMap['if_out_of_school__specify_reason']],
+          cs.if_out_of_school__specify_reason
+        ),
         additional_details: checkEmptyStr(cs.additional_details),
         additional_details_1: checkEmptyStr(cs.additional_details_1),
       },
     };
 
-    // console.log(`formMap ${JSON.stringify(formMap, null, 4)}`);
+    console.log(`formMap ${JSON.stringify(formMap, null, 4)}`);
 
     let todayFormMap = { [todaysDate]: formMap };
-    return formMap;
-    // return get(`${state.configuration.url}/interventions/findOne`, {
-    //   query: {
-    //     filter: {
-    //       where: {
-    //         cid: formatNationalId(cs.national_id_no),
-    //         'activities.primeroservice.serviceType': 'primero',
-    //       },
-    //     },
-    //     access_token,
-    //   },
-    //   agentOptions: { rejectUnauthorized: false },
-    //   // options: { successCodes: [404] },
-    // })(state)
-    //   .then(({ data }) => {
-    //     const payload = {
-    //       [`activities.primeroservice.${todaysDate}`]: formMap,
-    //     };
 
-    //     return patch(`${state.configuration.url}/interventions/${data.id}`, {
-    //       body: { payload },
-    //       query: { access_token },
-    //       agentOptions: { rejectUnauthorized: false },
-    //     })(state)
-    //       .then(() => {
-    //         console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
-    //         console.log(JSON.stringify(payload, null, 4));
-    //         console.log('Intervention updated');
-    //       })
-    //       .catch(error => {
-    //         console.log(`${error},Failed to update intervention`);
-    //       });
-    //   })
-    //   .catch(error => {
-    //     console.log(`${error}, We couldn't get intervention`);
+    return get(`${state.configuration.url}/interventions/findOne`, {
+      query: {
+        filter: {
+          where: {
+            cid: formatNationalId(cs.national_id_no),
+            'activities.primeroservice.serviceType': 'primero',
+          },
+        },
+        access_token,
+      },
+      agentOptions: { rejectUnauthorized: false },
+      // options: { successCodes: [404] },
+    })(state)
+      .then(({ data }) => {
+        const payload = {
+          [`activities.primeroservice.${todaysDate}`]: formMap,
+        };
 
-    //     return get(`${state.configuration.url}/people/findOne`, {
-    //       query: {
-    //         filter: {
-    //           where: {
-    //             cid: formatNationalId(cs.national_id_no),
-    //           },
-    //         },
-    //         access_token,
-    //       },
-    //       agentOptions: { rejectUnauthorized: false },
-    //     })(state)
-    //       .then(({ data }) => {
-    //         const payload = {
-    //           cid: data.cid,
-    //           personId: data.id,
-    //           activities: {
-    //             primeroservice: {
-    //               serviceType: 'primero',
-    //             },
-    //           },
-    //         };
+        return patch(`${state.configuration.url}/interventions/${data.id}`, {
+          body: { ...payload },
+          query: { access_token },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(() => {
+            console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
+            console.log(JSON.stringify(payload, null, 4));
+            console.log('Intervention updated');
+          })
+          .catch(error => {
+            console.log(`${error},Failed to update intervention`);
+          });
+      })
+      .catch(error => {
+        console.log(`${error}, We couldn't get intervention`);
 
-    //         Object.assign(payload.activities.primeroservice, todayFormMap);
-    //         console.log('Person found, creating an interventions...');
+        return get(`${state.configuration.url}/people/findOne`, {
+          query: {
+            filter: {
+              where: {
+                cid: formatNationalId(cs.national_id_no),
+              },
+            },
+            access_token,
+          },
+          agentOptions: { rejectUnauthorized: false },
+        })(state)
+          .then(({ data }) => {
+            const payload = {
+              cid: data.cid,
+              personId: data.id,
+              activities: {
+                primeroservice: {
+                  serviceType: 'primero',
+                },
+              },
+            };
 
-    //         return post(`${state.configuration.url}/interventions`, {
-    //           body: { ...payload },
-    //           query: { access_token },
-    //           agentOptions: { rejectUnauthorized: false },
-    //         })(state)
-    //           .then(({ data }) => {
-    //             console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
-    //             console.log(JSON.stringify(data, null, 4));
-    //             console.log('Interventions created...');
-    //           })
-    //           .catch(error => {
-    //             console.log(`${error},We could not create interventions`);
-    //           });
-    //       })
-    //       .catch(error => {
-    //         console.log(`${error},Person does not exist`);
-    //       });
-    //   });
+            Object.assign(payload.activities.primeroservice, todayFormMap);
+            console.log('Person found, creating an interventions...');
+
+            return post(`${state.configuration.url}/interventions`, {
+              body: { ...payload },
+              query: { access_token },
+              agentOptions: { rejectUnauthorized: false },
+            })(state)
+              .then(({ data }) => {
+                console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
+                console.log(JSON.stringify(data, null, 4));
+                console.log('Interventions created...');
+              })
+              .catch(error => {
+                console.log(`${error},We could not create interventions`);
+              });
+          })
+          .catch(error => {
+            console.log(`${error},Person does not exist`);
+          });
+      });
   });
-  return { temp };
+  return { ...state };
 });
