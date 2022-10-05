@@ -1119,8 +1119,17 @@ fn(state => {
           })
           .catch(error => {
             console.log(`${error},Person does not exist`);
-            return error;
+            const safeError = error;
+            safeError.config = '***';
+            safeError.request = '***';
+            safeError.response = {
+              ...safeError.response,
+              config: '***',
+              request: '***',
+            };
+          throw safeError;
           });
+        return state;
       });
   });
   return { ...state };
