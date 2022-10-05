@@ -1119,7 +1119,7 @@ fn(state => {
           })
           .catch(error => {
             console.log(`${error},Person does not exist`);
-            throw error;
+            return throw error;
           });
       });
   });
