@@ -1076,7 +1076,7 @@ fn(state => {
           });
       })
       .catch(error => {
-        console.log(`${error}, We couldn't get intervention`);
+        console.log(`${error}, We couldn't get intervention and will now try to create one if the person exists`);
 
         return get(`${state.configuration.url}/people/findOne`, {
           query: {
