@@ -1039,7 +1039,7 @@ fn(state => {
       },
     };
 
-    console.log(`formMap ${JSON.stringify(formMap, null, 4)}`);
+    //console.log(`formMap ${JSON.stringify(formMap, null, 4)}`);
 
     let todayFormMap = { [todaysDate]: formMap };
 
@@ -1068,7 +1068,7 @@ fn(state => {
         })(state)
           .then(() => {
             console.log('UPDATING INTERVENTION WITH THE FOLLOWING DATA');
-            console.log(JSON.stringify(payload, null, 4));
+            //console.log(JSON.stringify(payload, null, 4));
             console.log('Intervention updated');
           })
           .catch(error => {
@@ -1110,7 +1110,7 @@ fn(state => {
             })(state)
               .then(({ data }) => {
                 console.log('CREATING INTERVENTION WITH THE FOLLOWING DATA');
-                console.log(JSON.stringify(data, null, 4));
+                //console.log(JSON.stringify(data, null, 4));
                 console.log('Interventions created...');
               })
               .catch(error => {
