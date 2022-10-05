@@ -1128,6 +1128,7 @@ fn(state => {
               request: '***',
             };
           throw safeError;
+          break;
           });
         return state;
       });
