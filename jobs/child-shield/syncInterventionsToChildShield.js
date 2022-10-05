@@ -1118,8 +1118,8 @@ fn(state => {
               });
           })
           .catch(error => {
-            // console.log(`${error},Person does not exist`);
-            return new Error(`${error},Person does not exist`)
+            console.log(`${error},Person does not exist`);
+            return error;
           });
       });
   });
