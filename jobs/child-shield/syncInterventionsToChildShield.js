@@ -1,7 +1,7 @@
 // operation 1 is a post, to get an access token
 post(`${state.configuration.url}/Users/login`, {
   agentOptions: { rejectUnauthorized: false },
-  headers: { 'content-type': 'application/json' },
+  headers: { "content-type": "application/json" },
   body: {
     email: state.configuration.email,
     password: state.configuration.password,
@@ -9,43 +9,43 @@ post(`${state.configuration.url}/Users/login`, {
 });
 
 // To update when spec for Flow 1 , job #3 submitted
-fn(state => {
+fn((state) => {
   const { filteredCases, translations, locationsMap, sfToLookupMap } = state;
 
   // helper function for formating national_id_no
-  const formatNationalId = national_id_no => {
-    return typeof national_id_no === 'string'
-      ? national_id_no.replace(/-/g, '')
+  const formatNationalId = (national_id_no) => {
+    return typeof national_id_no === "string"
+      ? national_id_no.replace(/-/g, "")
       : national_id_no;
   };
   const access_token = state.data.id;
-  console.log('Authentication done...');
+  console.log("Authentication done...");
 
   let todaysDate = new Date().toJSON().slice(0, 10);
   // Helper function to check for Empty string in filteredCases
-  const checkEmptyStr = item => {
-    const checkItem = item && item.length === 0 ? '' : item;
-    return typeof item === 'undefined' ? null : checkItem;
+  const checkEmptyStr = (item) => {
+    const checkItem = item && item.length === 0 ? "" : item;
+    return typeof item === "undefined" ? null : checkItem;
   };
 
   const objFormatter = (obj, key) => {
     if (Array.isArray(key)) {
-      return key.map(x => ({ [x]: obj[x] }));
+      return key.map((x) => ({ [x]: obj[x] }));
     } else {
       return { [key]: obj[key] };
     }
   };
 
-  filteredCases.map(cs => {
+  filteredCases.map((cs) => {
     const formMap = {
       age_assessment:
         cs.age_assessment &&
         cs.age_assessment
-          .map(age => ({
+          .map((age) => ({
             date_of_assessment: checkEmptyStr(age.date_of_assessment),
             assessment_method: age.assessment_method
               ? objFormatter(
-                  translations[sfToLookupMap['assessment_method']],
+                  translations[sfToLookupMap["assessment_method"]],
                   age.assessment_method
                 )
               : null,
@@ -65,7 +65,7 @@ fn(state => {
         urgent_protection_concern: checkEmptyStr(cs.urgent_protection_concern),
         risk_level: cs.risk_level
           ? objFormatter(
-              translations[sfToLookupMap['risk_level']],
+              translations[sfToLookupMap["risk_level"]],
               cs.risk_level
             )
           : null,
@@ -73,7 +73,7 @@ fn(state => {
       assessment_update:
         cs.assessment_update &&
         cs.assessment_update
-          .map(assess => ({
+          .map((assess) => ({
             update_description: checkEmptyStr(assess.update_description),
             recorded_by_3: checkEmptyStr(assess.recorded_by_3),
             date_5: checkEmptyStr(assess.date_5),
@@ -98,14 +98,14 @@ fn(state => {
         urgent_protection_concern: checkEmptyStr(cs.urgent_protection_concern),
         protection_concerns: cs.protection_concerns
           ? objFormatter(
-              translations[sfToLookupMap['protection_concerns']],
+              translations[sfToLookupMap["protection_concerns"]],
               cs.protection_concerns
             )
           : null,
         protection_concerns_other: checkEmptyStr(cs.protection_concerns_other),
         risk_level: cs.risk_level
           ? objFormatter(
-              translations[sfToLookupMap['risk_level']],
+              translations[sfToLookupMap["risk_level"]],
               cs.risk_level
             )
           : null,
@@ -113,18 +113,18 @@ fn(state => {
       conference_details_subform:
         cs.conference_details_subform &&
         cs.conference_details_subform
-          .map(cdc => ({
+          .map((cdc) => ({
             conference_date: checkEmptyStr(cdc.conference_date),
             conference_type: cdc.conference_type
               ? objFormatter(
-                  translations['conference_type'],
+                  translations["conference_type"],
                   cdc.conference_type
                 )
               : null,
             conference_type_other: checkEmptyStr(cdc.conference_type_other),
             conference_reason: cdc.conference_reason
               ? objFormatter(
-                  translations['conference_reason'],
+                  translations["conference_reason"],
                   cdc.conference_reason
                 )
               : null,
@@ -138,7 +138,7 @@ fn(state => {
             ),
             conference_case_status: cdc.conference_case_status
               ? objFormatter(
-                  translations[sfToLookupMap['conference_case_status']],
+                  translations[sfToLookupMap["conference_case_status"]],
                   cdc.conference_case_status
                 )
               : null,
@@ -147,7 +147,7 @@ fn(state => {
             ),
             conference_case_transfer_reason: cdc.conference_case_transfer_reason
               ? objFormatter(
-                  translations['conference_case_transfer_reason'],
+                  translations["conference_case_transfer_reason"],
                   cdc.conference_case_transfer_reason
                 )
               : null,
@@ -163,7 +163,7 @@ fn(state => {
         date_case_plan: checkEmptyStr(cs.date_case_plan),
         protection_concerns: cs.protection_concerns
           ? objFormatter(
-              translations[sfToLookupMap['protection_concerns']],
+              translations[sfToLookupMap["protection_concerns"]],
               cs.protection_concerns
             )
           : null,
@@ -178,7 +178,7 @@ fn(state => {
         ),
         family_status: cs.family_status
           ? objFormatter(
-              translations[sfToLookupMap['family_status']],
+              translations[sfToLookupMap["family_status"]],
               cs.family_status
             )
           : checkEmptyStr(cs.family_status),
@@ -187,14 +187,14 @@ fn(state => {
       family_details_section:
         cs.family_details_section &&
         cs.family_details_section
-          .map(fds => ({
+          .map((fds) => ({
             is_this_person_living_in_the_same_household_as_patient_7d39e1d:
               checkEmptyStr(
                 fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
               ),
             relation: fds.relation
               ? objFormatter(
-                  translations[sfToLookupMap['relation']],
+                  translations[sfToLookupMap["relation"]],
                   fds.relation
                 )
               : checkEmptyStr(fds.relation),
@@ -204,21 +204,21 @@ fn(state => {
             relation_date_of_birth: checkEmptyStr(fds.relation_date_of_birth),
             relation_is_alive: fds.relation_is_alive
               ? objFormatter(
-                  translations['relation_is_alive'],
+                  translations["relation_is_alive"],
                   fds.relation_is_alive
                 )
               : checkEmptyStr(fds.relation_is_alive),
             relation_death_details: checkEmptyStr(fds.relation_death_details),
             relation_nationality: fds.relation_nationality
               ? objFormatter(
-                  translations[sfToLookupMap['relation_nationality']],
+                  translations[sfToLookupMap["relation_nationality"]],
                   fds.relation_nationality
                 )
               : checkEmptyStr(fds.relation_nationality),
             national_id: checkEmptyStr(fds.national_id),
             occupation_3: fds.occupation_3
               ? objFormatter(
-                  translations[sfToLookupMap['occupation_3']],
+                  translations[sfToLookupMap["occupation_3"]],
                   fds.occupation_3
                 )
               : checkEmptyStr(fds.occupation_3),
@@ -247,19 +247,19 @@ fn(state => {
         ),
         status_of_treatment_plan_a8ca0e8: cs.status_of_treatment_plan_a8ca0e8
           ? objFormatter(
-              translations[sfToLookupMap['status_of_treatment_plan_a8ca0e8']],
+              translations[sfToLookupMap["status_of_treatment_plan_a8ca0e8"]],
               cs.status_of_treatment_plan_a8ca0e8
             )
           : null,
         protection_concerns: cs.protection_concerns
           ? objFormatter(
-              translations[sfToLookupMap['protection_concerns']],
+              translations[sfToLookupMap["protection_concerns"]],
               cs.protection_concerns
             )
           : null,
         risk_level: cs.risk_level
           ? objFormatter(
-              translations[sfToLookupMap['risk_level']],
+              translations[sfToLookupMap["risk_level"]],
               cs.risk_level
             )
           : null,
@@ -267,10 +267,10 @@ fn(state => {
       followup_subform_section:
         cs.followup_subform_section &&
         cs.followup_subform_section
-          .map(form => ({
+          .map((form) => ({
             followup_type: form.followup_type
               ? objFormatter(
-                  translations[sfToLookupMap['followup_type']],
+                  translations[sfToLookupMap["followup_type"]],
                   form.followup_type
                 )
               : checkEmptyStr(form.followup_type),
@@ -278,7 +278,7 @@ fn(state => {
             child_was_seen: checkEmptyStr(form.child_was_seen),
             reason_child_not_seen: form.reason_child_not_seen
               ? objFormatter(
-                  translations['reason_child_not_seen'],
+                  translations["reason_child_not_seen"],
                   form.reason_child_not_seen
                 )
               : checkEmptyStr(form.reason_child_not_seen),
@@ -296,7 +296,7 @@ fn(state => {
             recommend_case_closed: checkEmptyStr(form.recommend_case_closed),
           }))
           .flat(),
-      'formsection-age-assessment-a75187a': {
+      "formsection-age-assessment-a75187a": {
         age_declared_by_the_child: checkEmptyStr(cs.age_declared_by_the_child),
         date_2: checkEmptyStr(cs.date_2),
         the_age_assessment_process_have_determined_that_the_subject_s_age_is_estimated_to_be:
@@ -316,12 +316,12 @@ fn(state => {
           cs.additional_comments_dc86e91
         ),
       },
-      'formsection-department-identification-e9cf45f': {
+      "formsection-department-identification-e9cf45f": {
         if_other__please_specify_1: checkEmptyStr(
           cs.if_other__please_specify_1
         ),
       },
-      'formsection-health-assessment-29sep-d35aedb': {
+      "formsection-health-assessment-29sep-d35aedb": {
         full_name_4: checkEmptyStr(cs.full_name_4),
         date_4: checkEmptyStr(cs.date_4),
         disabilities_1: checkEmptyStr(cs.disabilities_1),
@@ -427,7 +427,7 @@ fn(state => {
         ),
         if_yes__please_specify_22: checkEmptyStr(cs.if_yes__please_specify_22),
       },
-      'formsection-cp-act-be-2546-report-699f528': {
+      "formsection-cp-act-be-2546-report-699f528": {
         reporting_date_d36d4ae: checkEmptyStr(cs.reporting_date_d36d4ae),
         report_registration_number_b868e09: checkEmptyStr(
           cs.report_registration_number_b868e09
@@ -437,13 +437,13 @@ fn(state => {
         agency_75fac1e: checkEmptyStr(cs.agency_75fac1e),
         contact_details_aa1dbe6: checkEmptyStr(cs.contact_details_aa1dbe6),
       },
-      'formsection-medical-costs-and-service-fees-847e08f': {
+      "formsection-medical-costs-and-service-fees-847e08f": {
         current_total: checkEmptyStr(cs.current_total),
       },
       new_expense:
         cs.new_expense &&
         cs.new_expense
-          .map(ne => ({
+          .map((ne) => ({
             date_1: checkEmptyStr(ne.date_1),
             amount: checkEmptyStr(ne.amount),
             description: checkEmptyStr(ne.description),
@@ -451,10 +451,10 @@ fn(state => {
           .flat(),
       closure_form: {
         status: cs.status
-          ? objFormatter(translations[sfToLookupMap['status']], cs.status)
+          ? objFormatter(translations[sfToLookupMap["status"]], cs.status)
           : null,
         closure_reason: cs.closure_reason
-          ? objFormatter(translations['closure_reason'], cs.closure_reason)
+          ? objFormatter(translations["closure_reason"], cs.closure_reason)
           : null,
         closure_reason_other: checkEmptyStr(cs.closure_reason_other),
         date_closure: checkEmptyStr(cs.date_closure),
@@ -464,7 +464,7 @@ fn(state => {
       },
       new_formal_complaint_2:
         cs.new_formal_complaint_2 &&
-        cs.new_formal_complaint_2.map(nfc2 => ({
+        cs.new_formal_complaint_2.map((nfc2) => ({
           report_date_and_time_1: checkEmptyStr(nfc2.report_date_and_time_1),
           case_number_code_1: checkEmptyStr(nfc2.case_number_code_1),
           police_station_name_1: checkEmptyStr(nfc2.police_station_name_1),
@@ -473,7 +473,7 @@ fn(state => {
       services_section:
         cs.services_section &&
         cs.services_section
-          .map(ss => ({
+          .map((ss) => ({
             follow_up_date_71b7f60: checkEmptyStr(ss.follow_up_date_71b7f60),
             service_external_referral: checkEmptyStr(
               ss.service_external_referral
@@ -491,33 +491,33 @@ fn(state => {
       services_needed:
         cs.services_needed &&
         cs.services_needed
-          .map(sn => ({
+          .map((sn) => ({
             sex_check_and_evaluation: checkEmptyStr(
               sn.sex_check_and_evaluation
             ),
             physical: objFormatter(
-              translations[sfToLookupMap['physical']],
+              translations[sfToLookupMap["physical"]],
               sn.physical
             ),
             mental: objFormatter(
-              translations[sfToLookupMap['mental']],
+              translations[sfToLookupMap["mental"]],
               sn.mental
             ),
             social: objFormatter(
-              translations[sfToLookupMap['social']],
+              translations[sfToLookupMap["social"]],
               sn.social
             ),
             physical_1: objFormatter(
-              translations[sfToLookupMap['physical_1']],
+              translations[sfToLookupMap["physical_1"]],
               sn.physical_1
             ),
             please_specify_13: checkEmptyStr(sn.please_specify_13),
             mental_1: objFormatter(
-              translations[sfToLookupMap['mental_1']],
+              translations[sfToLookupMap["mental_1"]],
               sn.mental_1
             ),
             reproductive_health: objFormatter(
-              translations[sfToLookupMap['reproductive_health']],
+              translations[sfToLookupMap["reproductive_health"]],
               sn.reproductive_health
             ),
             test_text_service_needed: checkEmptyStr(
@@ -535,11 +535,11 @@ fn(state => {
       witnesses__6c0a33c:
         cs.witnesses__6c0a33c &&
         cs.witnesses__6c0a33c
-          .map(w6 => ({
+          .map((w6) => ({
             full_name_1dde243: checkEmptyStr(w6.full_name_1dde243),
             relation_to_the_child_37c30dc: w6.relation_to_the_child_37c30dc
               ? objFormatter(
-                  translations[sfToLookupMap['relation_to_the_child_37c30dc']],
+                  translations[sfToLookupMap["relation_to_the_child_37c30dc"]],
                   w6.relation_to_the_child_37c30dc
                 )
               : checkEmptyStr(w6.relation_to_the_child_37c30dc),
@@ -549,21 +549,21 @@ fn(state => {
       new_pregnancy:
         cs.new_pregnancy &&
         cs.new_pregnancy
-          .map(np => ({
+          .map((np) => ({
             date_of_report: checkEmptyStr(np.date_of_report),
             current_gestational_week: checkEmptyStr(
               np.current_gestational_week
             ),
             reason_for_unexpected_pregnancy: objFormatter(
-              translations[sfToLookupMap['reason_for_unexpected_pregnancy']],
+              translations[sfToLookupMap["reason_for_unexpected_pregnancy"]],
               np.reason_for_unexpected_pregnancy
             ),
             specify_contraception_problem: objFormatter(
-              translations[sfToLookupMap['specify_contraception_problem']],
+              translations[sfToLookupMap["specify_contraception_problem"]],
               np.specify_contraception_problem
             ),
             support_needed: objFormatter(
-              translations[sfToLookupMap['support_needed']],
+              translations[sfToLookupMap["support_needed"]],
               np.support_needed
             ),
             if_other__please_specify_10: checkEmptyStr(
@@ -571,27 +571,27 @@ fn(state => {
             ),
             specify_legal_offenses: np.specify_legal_offenses
               ? objFormatter(
-                  translations[sfToLookupMap['specify_legal_offenses']],
+                  translations[sfToLookupMap["specify_legal_offenses"]],
                   np.specify_legal_offenses
                 )
               : checkEmptyStr(np.specify_legal_offenses),
             factors_for_pregnancy_termination: objFormatter(
-              translations[sfToLookupMap['factors_for_pregnancy_termination']],
+              translations[sfToLookupMap["factors_for_pregnancy_termination"]],
               np.factors_for_pregnancy_termination
             ),
             specify_physical_issue: np.specify_physical_issue
               ? objFormatter(
-                  translations[sfToLookupMap['specify_physical_issue']],
+                  translations[sfToLookupMap["specify_physical_issue"]],
                   np.specify_physical_issue
                 )
               : checkEmptyStr(np.specify_physical_issue),
             specify_mental_issue: objFormatter(
-              translations[sfToLookupMap['specify_mental_issue']],
+              translations[sfToLookupMap["specify_mental_issue"]],
               np.specify_mental_issue
             ),
             specify_family_social_economic_issues: objFormatter(
               translations[
-                sfToLookupMap['specify_family_social_economic_issues']
+                sfToLookupMap["specify_family_social_economic_issues"]
               ],
               np.specify_family_social_economic_issues
             ),
@@ -604,29 +604,29 @@ fn(state => {
             patient_decision_after_being_provided_with_alternative_counseling:
               objFormatter(
                 translations[
-                  'patient_decision_after_being_provided_with_alternative_counseling'
+                  "patient_decision_after_being_provided_with_alternative_counseling"
                 ],
                 np.patient_decision_after_being_provided_with_alternative_counseling
               ),
             antenatal_care_will_be_provided_at: objFormatter(
-              translations[sfToLookupMap['antenatal_care_will_be_provided_at']],
+              translations[sfToLookupMap["antenatal_care_will_be_provided_at"]],
               np.antenatal_care_will_be_provided_at
             ),
             if_other__please_specify_11: checkEmptyStr(
               np.if_other__please_specify_11
             ),
             support_needed_1: objFormatter(
-              translations[sfToLookupMap['support_needed_1']],
+              translations[sfToLookupMap["support_needed_1"]],
               np.support_needed_1
             ),
             additional_support: checkEmptyStr(np.additional_support),
             source_of_information_647b9db: objFormatter(
-              translations[sfToLookupMap['source_of_information_647b9db']],
+              translations[sfToLookupMap["source_of_information_647b9db"]],
               np.source_of_information_647b9db
             ),
           }))
           .flat(),
-      'formsection-unexpected-pregnancy-9a51ea8': {
+      "formsection-unexpected-pregnancy-9a51ea8": {
         first_pregnancy_at_age: checkEmptyStr(cs.first_pregnancy_at_age),
         number_of_live_births_to_date: checkEmptyStr(
           cs.number_of_live_births_to_date
@@ -638,7 +638,7 @@ fn(state => {
       physical_check_2:
         cs.physical_check_2 &&
         cs.physical_check_2
-          .map(pc2 => ({
+          .map((pc2) => ({
             description_of_physical_examination_observations_1: checkEmptyStr(
               pc2.description_of_physical_examination_observations_1
             ),
@@ -726,7 +726,7 @@ fn(state => {
             ),
             anti_hiv_medication: checkEmptyStr(pc2.anti_hiv_medication),
             source_of_information_44cac9a: objFormatter(
-              translations[sfToLookupMap['source_of_information_44cac9a']],
+              translations[sfToLookupMap["source_of_information_44cac9a"]],
               pc2.source_of_information_44cac9a
             ),
           }))
@@ -734,10 +734,10 @@ fn(state => {
       preliminary_observations_2:
         cs.preliminary_observations_2 &&
         cs.preliminary_observations_2
-          .map(po2 => ({
+          .map((po2) => ({
             initial_observations_4: checkEmptyStr(po2.initial_observations_4),
             social_problems_identified_1: objFormatter(
-              translations[sfToLookupMap['social_problems_identified_1']],
+              translations[sfToLookupMap["social_problems_identified_1"]],
               po2.social_problems_identified_1
             ),
             immediate_actions_needed_1: checkEmptyStr(
@@ -748,12 +748,12 @@ fn(state => {
             date_7: checkEmptyStr(po2.date_7),
           }))
           .flat(),
-      'formsection-incident-details-fe05aa4': {
+      "formsection-incident-details-fe05aa4": {
         date_of_incident_creation_e497d33: checkEmptyStr(
           cs.date_of_incident_creation_e497d33
         ),
       },
-      'formsection-incident-details-fe05aa3': {
+      "formsection-incident-details-fe05aa3": {
         date_of_abuse_6e0107e: checkEmptyStr(cs.date_of_abuse_6e0107e),
         location_of_the_incident_885fe8c: cs.location_of_the_incident_885fe8c
           ? objFormatter(locationsMap, cs.location_of_the_incident_885fe8c)
@@ -763,13 +763,13 @@ fn(state => {
         ),
         sender_s_gender_b83c931: cs.sender_s_gender_b83c931
           ? objFormatter(
-              translations[sfToLookupMap['sender_s_gender_b83c931']],
+              translations[sfToLookupMap["sender_s_gender_b83c931"]],
               cs.sender_s_gender_b83c931
             )
           : null,
         sender_s_occupation_3ed671e: cs.sender_s_occupation_3ed671e
           ? objFormatter(
-              translations[sfToLookupMap['sender_s_occupation_3ed671e']],
+              translations[sfToLookupMap["sender_s_occupation_3ed671e"]],
               cs.sender_s_occupation_3ed671e
             )
           : null,
@@ -784,7 +784,7 @@ fn(state => {
             ? objFormatter(
                 translations[
                   sfToLookupMap[
-                    'type_of_place_where_the_incident_occurred_bdc967d'
+                    "type_of_place_where_the_incident_occurred_bdc967d"
                   ]
                 ],
                 cs.type_of_place_where_the_incident_occurred_bdc967d
@@ -795,13 +795,13 @@ fn(state => {
         ),
         type_of_abuse_431f2ba: cs.type_of_abuse_431f2ba
           ? objFormatter(
-              translations[sfToLookupMap['type_of_abuse_431f2ba']],
+              translations[sfToLookupMap["type_of_abuse_431f2ba"]],
               cs.type_of_abuse_431f2ba
             )
           : null,
         specify_physical_abuse_4867f38: cs.specify_physical_abuse_4867f38
           ? objFormatter(
-              translations[sfToLookupMap['specify_physical_abuse_4867f38']],
+              translations[sfToLookupMap["specify_physical_abuse_4867f38"]],
               cs.specify_physical_abuse_4867f38
             )
           : null,
@@ -809,7 +809,7 @@ fn(state => {
           cs.if_other__please_specify_047c1fb
         ),
         specify_sexual_abuse_16d36f7: objFormatter(
-          translations[sfToLookupMap['specify_sexual_abuse_16d36f7']],
+          translations[sfToLookupMap["specify_sexual_abuse_16d36f7"]],
           cs.specify_sexual_abuse_16d36f7
         ),
         please_specify_7832f40: checkEmptyStr(cs.please_specify_7832f40),
@@ -817,7 +817,7 @@ fn(state => {
           cs.specify_physical_interaction_d13d273
             ? objFormatter(
                 translations[
-                  sfToLookupMap['specify_physical_interaction_d13d273']
+                  sfToLookupMap["specify_physical_interaction_d13d273"]
                 ],
                 cs.specify_physical_interaction_d13d273
               )
@@ -829,7 +829,7 @@ fn(state => {
           cs.if_no_physical_touch__please_specify_1159dde
             ? objFormatter(
                 translations[
-                  sfToLookupMap['if_no_physical_touch__please_specify_1159dde']
+                  sfToLookupMap["if_no_physical_touch__please_specify_1159dde"]
                 ],
                 cs.if_no_physical_touch__please_specify_1159dde
               )
@@ -839,7 +839,7 @@ fn(state => {
         ),
         specify_mental_abuse_6182644: cs.specify_mental_abuse_6182644
           ? objFormatter(
-              translations[sfToLookupMap['specify_mental_abuse_6182644']],
+              translations[sfToLookupMap["specify_mental_abuse_6182644"]],
               cs.specify_mental_abuse_6182644
             )
           : checkEmptyStr(cs.specify_mental_abuse_6182644),
@@ -848,7 +848,7 @@ fn(state => {
         ),
         specify_neglect_9b8a22b: cs.specify_neglect_9b8a22b
           ? objFormatter(
-              translations[sfToLookupMap['specify_neglect_9b8a22b']],
+              translations[sfToLookupMap["specify_neglect_9b8a22b"]],
               cs.specify_neglect_9b8a22b
             )
           : checkEmptyStr(cs.specify_neglect_9b8a22b),
@@ -857,7 +857,7 @@ fn(state => {
         ),
         specify_exploitation_ef65c2e: cs.specify_exploitation_ef65c2e
           ? objFormatter(
-              translations[sfToLookupMap['specify_exploitation_ef65c2e']],
+              translations[sfToLookupMap["specify_exploitation_ef65c2e"]],
               cs.specify_exploitation_ef65c2e
             )
           : checkEmptyStr(cs.specify_exploitation_ef65c2e),
@@ -866,7 +866,7 @@ fn(state => {
         ),
         specify_human_trafficking_dca84dd: cs.specify_human_trafficking_dca84dd
           ? objFormatter(
-              translations[sfToLookupMap['specify_human_trafficking_dca84dd']],
+              translations[sfToLookupMap["specify_human_trafficking_dca84dd"]],
               cs.specify_human_trafficking_dca84dd
             )
           : checkEmptyStr(cs.specify_human_trafficking_dca84dd),
@@ -875,31 +875,31 @@ fn(state => {
         ),
         stimulant_a4096c2: cs.stimulant_a4096c2
           ? objFormatter(
-              translations[sfToLookupMap['stimulant_a4096c2']],
+              translations[sfToLookupMap["stimulant_a4096c2"]],
               cs.stimulant_a4096c2
             )
           : checkEmptyStr(cs.stimulant_a4096c2),
         relation_within_family_a6c45fd: cs.relation_within_family_a6c45fd
           ? objFormatter(
-              translations[sfToLookupMap['relation_within_family_a6c45fd']],
+              translations[sfToLookupMap["relation_within_family_a6c45fd"]],
               cs.relation_within_family_a6c45fd
             )
           : checkEmptyStr(cs.relation_within_family_a6c45fd),
         economic_issue_a445217: cs.economic_issue_a445217
           ? objFormatter(
-              translations[sfToLookupMap['economic_issue_a445217']],
+              translations[sfToLookupMap["economic_issue_a445217"]],
               cs.economic_issue_a445217
             )
           : checkEmptyStr(cs.economic_issue_a445217),
         physical_issue_2e9f1c6: cs.physical_issue_2e9f1c6
           ? objFormatter(
-              translations[sfToLookupMap['physical_issue_2e9f1c6']],
+              translations[sfToLookupMap["physical_issue_2e9f1c6"]],
               cs.physical_issue_2e9f1c6
             )
           : checkEmptyStr(cs.physical_issue_2e9f1c6),
         mental_issue_4785ece: cs.mental_issue_4785ece
           ? objFormatter(
-              translations[sfToLookupMap['mental_issue_4785ece']],
+              translations[sfToLookupMap["mental_issue_4785ece"]],
               cs.mental_issue_4785ece
             )
           : checkEmptyStr(cs.mental_issue_4785ece),
@@ -911,13 +911,13 @@ fn(state => {
       other_perpetrator_details_f80fc4e:
         cs.other_perpetrator_details_f80fc4e &&
         cs.other_perpetrator_details_f80fc4e
-          .map(opd => ({
+          .map((opd) => ({
             name_f5a1eac: checkEmptyStr(opd.name_f5a1eac),
             relationship_with_the_abused_365fcd1:
               opd.relationship_with_the_abused_365fcd1
                 ? objFormatter(
                     translations[
-                      sfToLookupMap['relationship_with_the_abused_365fcd1']
+                      sfToLookupMap["relationship_with_the_abused_365fcd1"]
                     ],
                     opd.relationship_with_the_abused_365fcd1
                   )
@@ -935,26 +935,26 @@ fn(state => {
             age_6587e58: checkEmptyStr(opd.age_6587e58),
             social_status_7c0989a: opd.social_status_7c0989a
               ? objFormatter(
-                  translations[sfToLookupMap['social_status_7c0989a']],
+                  translations[sfToLookupMap["social_status_7c0989a"]],
                   opd.social_status_7c0989a
                 )
               : checkEmptyStr(opd.social_status_7c0989a),
             occupation_c4d6420: opd.occupation_c4d6420
               ? objFormatter(
-                  translations[sfToLookupMap['occupation_c4d6420']],
+                  translations[sfToLookupMap["occupation_c4d6420"]],
                   opd.occupation_c4d6420
                 )
               : checkEmptyStr(opd.occupation_c4d6420),
             contact_details_b98ed09: checkEmptyStr(opd.contact_details_b98ed09),
           }))
           .flat(),
-      'formsection-perpetrator-details-998d1e0': {
+      "formsection-perpetrator-details-998d1e0": {
         number_of_perpetrator_1c07dd4: checkEmptyStr(
           cs.number_of_perpetrator_1c07dd4
         ),
         name_5559215: checkEmptyStr(cs.name_5559215),
         nationality_fa822dc: objFormatter(
-          translations[sfToLookupMap['nationality_fa822dc']],
+          translations[sfToLookupMap["nationality_fa822dc"]],
           cs.nationality_fa822dc
         ),
         gender_4e8704a: checkEmptyStr(cs.gender_4e8704a),
@@ -969,61 +969,61 @@ fn(state => {
           cs.number_of_other_id_document_09a5601
         ),
         relationship_with_the_abused_eb757fc: objFormatter(
-          translations[sfToLookupMap['relationship_with_the_abused_eb757fc']],
+          translations[sfToLookupMap["relationship_with_the_abused_eb757fc"]],
           cs.relationship_with_the_abused_eb757fc
         ),
         social_status_6c1074a: cs.social_status_6c1074a
           ? objFormatter(
-              translations[sfToLookupMap['social_status_6c1074a']],
+              translations[sfToLookupMap["social_status_6c1074a"]],
               cs.social_status_6c1074a
             )
           : checkEmptyStr(cs.social_status_6c1074a),
         occupation_09639f9: cs.occupation_09639f9
           ? objFormatter(
-              translations[sfToLookupMap['occupation_09639f9']],
+              translations[sfToLookupMap["occupation_09639f9"]],
               cs.occupation_09639f9
             )
           : checkEmptyStr(cs.occupation_09639f9),
         contact_details_31b6f3b: checkEmptyStr(cs.contact_details_31b6f3b),
         stimulant_9191303: cs.stimulant_9191303
           ? objFormatter(
-              translations[sfToLookupMap['stimulant_9191303']],
+              translations[sfToLookupMap["stimulant_9191303"]],
               cs.stimulant_9191303
             )
           : checkEmptyStr(cs.stimulant_9191303),
         relation_within_family_41a62f4: objFormatter(
-          translations[sfToLookupMap['relation_within_family_41a62f4']],
+          translations[sfToLookupMap["relation_within_family_41a62f4"]],
           cs.relation_within_family_41a62f4
         ),
         environment_3c4fc2b: objFormatter(
-          translations[sfToLookupMap['environment_3c4fc2b']],
+          translations[sfToLookupMap["environment_3c4fc2b"]],
           cs.environment_3c4fc2b
         ),
         economic_issues_84c5b46: cs.economic_issues_84c5b46
           ? objFormatter(
-              translations[sfToLookupMap['economic_issues_84c5b46']],
+              translations[sfToLookupMap["economic_issues_84c5b46"]],
               cs.economic_issues_84c5b46
             )
           : checkEmptyStr(cs.economic_issues_84c5b46),
         physical_issue_1f182e4: cs.physical_issue_1f182e4
           ? objFormatter(
-              translations[sfToLookupMap['physical_issue_1f182e4']],
+              translations[sfToLookupMap["physical_issue_1f182e4"]],
               cs.physical_issue_1f182e4
             )
           : checkEmptyStr(cs.physical_issue_1f182e4),
         mental_issue_5607d21: objFormatter(
-          translations[sfToLookupMap['mental_issue_5607d21']],
+          translations[sfToLookupMap["mental_issue_5607d21"]],
           cs.mental_issue_5607d21
         ),
         other_contributing_factors__please_specify_53bc483: checkEmptyStr(
           cs.other_contributing_factors__please_specify_53bc483
         ),
       },
-      'formsection-patient-education-and-career-6d53ca5': {
+      "formsection-patient-education-and-career-6d53ca5": {
         email_address: checkEmptyStr(cs.email_address),
         occupation_1: cs.occupation_1
           ? objFormatter(
-              translations[sfToLookupMap['occupation_1']],
+              translations[sfToLookupMap["occupation_1"]],
               cs.occupation_1
             )
           : checkEmptyStr(cs.occupation_1),
@@ -1031,7 +1031,7 @@ fn(state => {
           cs.if_other__please_specify_2
         ),
         if_out_of_school__specify_reason: objFormatter(
-          translations[sfToLookupMap['if_out_of_school__specify_reason']],
+          translations[sfToLookupMap["if_out_of_school__specify_reason"]],
           cs.if_out_of_school__specify_reason
         ),
         additional_details: checkEmptyStr(cs.additional_details),
@@ -1048,7 +1048,7 @@ fn(state => {
         filter: {
           where: {
             cid: formatNationalId(cs.national_id_no),
-            'activities.primeroservice.serviceType': 'primero',
+            "activities.primeroservice.serviceType": "primero",
           },
         },
         access_token,
@@ -1067,18 +1067,20 @@ fn(state => {
           agentOptions: { rejectUnauthorized: false },
         })(state)
           .then(() => {
-            console.log('INTERVENTION UPDATED WITH THE FOLLOWING DATA');
+            console.log("INTERVENTION UPDATED WITH THE FOLLOWING DATA");
             console.log(JSON.stringify(payload, null, 4));
             //console.log('Intervention updated');
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(`${error},Failed to update intervention`);
           });
       })
-      .catch(error => {
-        console.log(`${error}, We couldn't get intervention and will now try to create one if the person exists`);
+      .catch((error) => {
+        console.log(
+          `${error}, We couldn't get intervention and will now try to create one if the person exists`
+        );
 
-        return get(`${state.configuration.url}/people/findOne`, {
+        get(`${state.configuration.url}/people/findOne`, {
           query: {
             filter: {
               where: {
@@ -1095,13 +1097,13 @@ fn(state => {
               personId: data.id,
               activities: {
                 primeroservice: {
-                  serviceType: 'primero',
+                  serviceType: "primero",
                 },
               },
             };
 
             Object.assign(payload.activities.primeroservice, todayFormMap);
-            console.log('Person found, creating an interventions...');
+            console.log("Person found, creating an interventions...");
 
             return post(`${state.configuration.url}/interventions`, {
               body: { ...payload },
@@ -1109,26 +1111,26 @@ fn(state => {
               agentOptions: { rejectUnauthorized: false },
             })(state)
               .then(({ data }) => {
-                console.log('INTERVENTION CREATED WITH THE FOLLOWING DATA');
+                console.log("INTERVENTION CREATED WITH THE FOLLOWING DATA");
                 console.log(JSON.stringify(data, null, 4));
                 //console.log('Interventions created...');
               })
-              .catch(error => {
+              .catch((error) => {
                 console.log(`${error},We could not create interventions`);
               });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(`${error},Person does not exist`);
             const safeError = error;
-            safeError.config = '***';
-            safeError.request = '***';
+            safeError.config = "***";
+            safeError.request = "***";
             safeError.response = {
               ...safeError.response,
-              config: '***',
-              request: '***',
+              config: "***",
+              request: "***",
             };
-          throw safeError;
-          break;
+
+            throw safeError;
           });
         return state;
       });
