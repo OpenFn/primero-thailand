@@ -110,9 +110,9 @@ fn(state => {
             )
           : null,
       },
-      conference_details_container:
-        cs.conference_details_container &&
-        cs.conference_details_container
+      conference_details_subform:
+        cs.conference_details_subform &&
+        cs.conference_details_subform
           .map(cdc => ({
             conference_date: checkEmptyStr(cdc.conference_date),
             conference_type: cdc.conference_type
@@ -532,9 +532,9 @@ fn(state => {
             date_service_needed_by: checkEmptyStr(sn.date_service_needed_by),
           }))
           .flat(),
-      witnesses__6c0a3:
-        cs.witnesses__6c0a3 &&
-        cs.witnesses__6c0a3
+      witnesses__6c0a33c:
+        cs.witnesses__6c0a33c &&
+        cs.witnesses__6c0a33c
           .map(w6 => ({
             full_name_1dde243: checkEmptyStr(w6.full_name_1dde243),
             relation_to_the_child_37c30dc: w6.relation_to_the_child_37c30dc
@@ -569,22 +569,22 @@ fn(state => {
             if_other__please_specify_10: checkEmptyStr(
               np.if_other__please_specify_10
             ),
-            specify_legal_offenses: cs.specify_legal_offenses
+            specify_legal_offenses: np.specify_legal_offenses
               ? objFormatter(
                   translations[sfToLookupMap['specify_legal_offenses']],
-                  cs.specify_legal_offenses
+                  np.specify_legal_offenses
                 )
-              : checkEmptyStr(cs.specify_legal_offenses),
+              : checkEmptyStr(np.specify_legal_offenses),
             factors_for_pregnancy_termination: objFormatter(
               translations[sfToLookupMap['factors_for_pregnancy_termination']],
               np.factors_for_pregnancy_termination
             ),
-            specify_physical_issue: cs.specify_physical_issue
+            specify_physical_issue: np.specify_physical_issue
               ? objFormatter(
                   translations[sfToLookupMap['specify_physical_issue']],
-                  cs.specify_physical_issue
+                  np.specify_physical_issue
                 )
-              : checkEmptyStr(cs.specify_physical_issue),
+              : checkEmptyStr(np.specify_physical_issue),
             specify_mental_issue: objFormatter(
               translations[sfToLookupMap['specify_mental_issue']],
               np.specify_mental_issue
@@ -663,8 +663,8 @@ fn(state => {
             if_abnormal__please_specify: checkEmptyStr(
               pc2.if_abnormal__please_specify
             ),
-            If_abnormal__please_specify_1: checkEmptyStr(
-              pc2.If_abnormal__please_specify_1
+            if_abnormal__please_specify_1: checkEmptyStr(
+              pc2.if_abnormal__please_specify_1
             ),
             discharge_details: checkEmptyStr(pc2.discharge_details),
             if_abnormal__please_specify_2: checkEmptyStr(
