@@ -298,7 +298,15 @@ fn(state => {
     return acc;
   }, {});
 
-  return { filteredCases, translations, locationsMap, sfToLookupMap };
+  return {
+    filteredCases,
+    translations,
+    locationsMap,
+    sfToLookupMap,
+    interventionToBeCreated: [],
+    interventionsToBeUpdate: [],
+    notFoundInterventions: [],
+  };
 });
 
 // Post the translation to OpenFn Inbox
