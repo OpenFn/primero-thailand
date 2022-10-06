@@ -313,11 +313,10 @@ each(
           })
         : {};
 
-    const vstDateTime = !isEmpty(recentIntervention)
-      ? recentIntervention.vsttime
-        ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
-        : `${recentIntervention.vstdate}`
-      : null;
+    const ifvstTime = recentIntervention.vsttime
+      ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
+      : `${recentIntervention.vstdate}`;
+    const vstDateTime = !isEmpty(recentIntervention) ? ifvstTime : null;
 
     const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
