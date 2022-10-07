@@ -80,6 +80,8 @@ fn(state => {
     const payload = {
       [`activities.primeroservice.${todaysDate}`]: formMap,
     };
+
+    console.log('Updating interventions ::', JSON.stringify(payload, null, 2));
     return patch(`${state.configuration.url}/interventions/${id}`, {
       body: { ...payload },
       query: { access_token },
@@ -102,6 +104,7 @@ fn(state => {
 
     Object.assign(payload.activities.primeroservice, todayFormMap);
 
+    console.log('Creating interventions ::', JSON.stringify(payload, null, 2));
     return post(`${state.configuration.url}/interventions`, {
       body: { ...payload },
       query: { access_token },
@@ -112,7 +115,7 @@ fn(state => {
         console.log(JSON.stringify(data, null, 4));
       })
       .catch(error => {
-        console.log(`${error},We could not create interventions`);
+        console.log(`${error} ...We could not create interventions`);
       });
   };
 
