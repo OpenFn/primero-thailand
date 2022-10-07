@@ -336,52 +336,121 @@ each(
       patient.chwpart,
     ];
 
-    // const magicallyGetValueFromQuestionName = (name, type) => {
-    //   const response = magicallyFindResponse(name);
-
-    //   if ((type = 'checkbox'))
-    //     return response.answersList.find(a => a.checked === true).score;
-    //   if ((type = 'other'))
-    //     return response.answerList.find(a => a.otherProp).score;
-    //   // else...
-    //   return response.answerList;
-    // };
-    // const magicallyGetValueFromQuestionName = question => {
-    //   let arrayOfQuestionare = [];
-    // };
-
-    const mappingSpec = [
-      {
-        source: '1. ฉันชอบตัวเอง',
-        destination: 'i_feel_happy_with_myself_d73ec12',
-        type: 'string',
-        options: {
-          2: 'all_true_5a417ab',
-          1: 'partially_true_35fa7e6',
-          0: 'not_true_5c4d297',
+    const sharedAnswer = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            2: 'all_true_5a417ab',
+            1: 'partially_true_35fa7e6',
+            0: 'not_true_5c4d297',
+          },
+          th: {
+            เป็นจริงทั้งหมด: 'all_true_5a417ab',
+            เป็นจริงบางส่วน: 'partially_true_35fa7e6',
+            ไม่จริงเลย: 'not_true_5c4d297',
+          },
+          en: {
+            'All true': 'all_true_5a417ab',
+            'Partially true': 'partially_true_35fa7e6',
+            'Not true': 'not_true_5c4d297',
+          },
         },
-        answers: ['เป็นจริงทั้งหมด', 'เป็นจริงบางส่วน', 'ไม่จริงเลย'],
+      },
+    };
+
+    const mappingSpecForPLH = [
+      {
+        source: {
+          type: 'date',
+          description: 'CQ1 First assessment date',
+          value: {
+            questionnaire_code: 'CQ1',
+          },
+        },
+        destination: {
+          type: 'date',
+          value: 'assessment_date_a745d8b',
+          week: 1,
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'CQ1',
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: '1. ฉันชอบตัวเอง',
+        },
+        destination: {
+          type: 'varchar',
+          week: 14,
+          value: 'i_feel_happy_with_myself_d73ec12',
+        },
+        ...sharedAnswer,
+      },
+      {
+        source: {
+          type: 'select',
+          value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
+        },
+        destination: {
+          type: 'varchar',
+          week: 14,
+          value: 'i_feel_happy_when_i_am_having_dinner_with_my_family_f8a8d82',
+        },
+        ...sharedAnswer,
       },
     ];
-
-    const getValueFromQuestionName = (questionnaireArray, question) =>
-      questionnaireArray.reduce((a, item) => {
-        if (a) return a;
-        if (item.question === question) return item;
-        if (item['questionsList'])
-          return getValueFromQuestionName(item['questionsList'], question);
-      }, null);
 
     const magicallyBuildMapping = activities => {
       const questionnaires = activities
         .map(activity => activity.questionnaire)
         .flat();
 
-      mappingSpec.map(item => {
-        // find question
-        const qn = getValueFromQuestionName(questionnaires, item.source);
-        console.log(qn);
-      });
+      const getQuestionnaireByWeek = week => {
+        return questionnaires.reduce((prev, curr) => {
+          if (week === 14) {
+            return prev.date > curr.date ? prev : curr;
+          }
+          if (week === 1) {
+            return prev.date > curr.date ? curr : prev;
+          }
+        });
+      };
+
+      return mappingSpecForPLH
+        .map(item => {
+          switch (item.answers.type) {
+            case 'select':
+              // find question
+              const question = getQuestionnaireByWeek(
+                item.destination.week
+              ).questionsList.filter(qn => qn.question === item.source.value);
+
+              const answer = Array.isArray(question[0].answersList)
+                ? question[0].answersList.filter(ans => ans.checked === true)[0]
+                    .answer
+                : question[0].answersList;
+              return {
+                [item.destination.value]: item.answers.value.th[answer],
+              };
+            // break;
+            case 'date':
+              return {
+                [item.destination.value]: getQuestionnaireByWeek(
+                  item.destination.week
+                ).date,
+              };
+            // break;
+            default:
+          }
+        })
+        .flat();
     };
 
     let data = {
@@ -502,8 +571,9 @@ each(
         20
       )}-${unique_id.substring(20)}`;
 
-      // const riskModelPLHMap = magicallyBuildMapping(intervention.activities);
-      magicallyBuildMapping(homeservice);
+      const mappingForPLH = magicallyBuildMapping(homeservice);
+
+      console.log(mappingForPLH);
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
