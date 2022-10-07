@@ -336,6 +336,54 @@ each(
       patient.chwpart,
     ];
 
+    // const magicallyGetValueFromQuestionName = (name, type) => {
+    //   const response = magicallyFindResponse(name);
+
+    //   if ((type = 'checkbox'))
+    //     return response.answersList.find(a => a.checked === true).score;
+    //   if ((type = 'other'))
+    //     return response.answerList.find(a => a.otherProp).score;
+    //   // else...
+    //   return response.answerList;
+    // };
+    // const magicallyGetValueFromQuestionName = question => {
+    //   let arrayOfQuestionare = [];
+    // };
+
+    const mappingSpec = [
+      {
+        source: '1. ฉันชอบตัวเอง',
+        destination: 'i_feel_happy_with_myself_d73ec12',
+        type: 'string',
+        options: {
+          2: 'all_true_5a417ab',
+          1: 'partially_true_35fa7e6',
+          0: 'not_true_5c4d297',
+        },
+        answers: ['เป็นจริงทั้งหมด', 'เป็นจริงบางส่วน', 'ไม่จริงเลย'],
+      },
+    ];
+
+    const getValueFromQuestionName = (questionnaireArray, question) =>
+      questionnaireArray.reduce((a, item) => {
+        if (a) return a;
+        if (item.question === question) return item;
+        if (item['questionsList'])
+          return getValueFromQuestionName(item['questionsList'], question);
+      }, null);
+
+    const magicallyBuildMapping = activities => {
+      const questionnaires = activities
+        .map(activity => activity.questionnaire)
+        .flat();
+
+      mappingSpec.map(item => {
+        // find question
+        const qn = getValueFromQuestionName(questionnaires, item.source);
+        console.log(qn);
+      });
+    };
+
     let data = {
       mark_synced_status: 'synced',
       //TODO: Move to credentials
@@ -442,7 +490,8 @@ each(
     for (let type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
 
     patient.interventions.forEach(intervention => {
-      const { assessment, laboratory, anc } = intervention.activities;
+      const { assessment, laboratory, anc, homeservice } =
+        intervention.activities;
 
       let unique_id = `${intervention.id}${patient.cid.substring(0, 8)}`;
       unique_id = `${unique_id.substring(0, 8)}-${unique_id.substring(
@@ -452,6 +501,9 @@ each(
         16,
         20
       )}-${unique_id.substring(20)}`;
+
+      // const riskModelPLHMap = magicallyBuildMapping(intervention.activities);
+      magicallyBuildMapping(homeservice);
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
