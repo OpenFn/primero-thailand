@@ -1,0 +1,42 @@
+{
+  "__query_params": {},
+  "data": {
+    "age": 9,
+    "alert_count": 0,
+    "associated_user_names": [
+      "open_function"
+    ],
+    "case_id": "882367ae-0845-4421-8129-644ad936e31d",
+    "case_id_display": "936e31d",
+    "consent_for_services": true,
+    "created_at": "2022-10-10T16:21:14.554Z",
+    "created_by": "open_function",
+    "created_organization": "UNICEF",
+    "disclosure_other_orgs": true,
+    "hostname": "demo-care-thai-kids.primero.org",
+    "last_updated_at": "2022-10-10T16:21:14.555Z",
+    "last_updated_by": "open_function",
+    "module_id": "primeromodule-cp",
+    "national_id_no": "1111111111113",
+    "owned_by": "open_function",
+    "owned_by_agency_id": "UNICEF",
+    "owned_by_groups": [
+      "usergroup-udonthani-province-b05f1b1",
+      "usergroup-sakhon-nakhon-province-4e415f2",
+      "usergroup-udonthani-ban-dung-district-hospital-d123763",
+      "usergroup-r8udonthaninong-han-district-hospital-57e2113",
+      "usergroup-r8sakhon-nakhonsawang-dandin-district-hospital-4a5d3cc",
+      "usergroup-r8nongkai-provincial-hospital-1a98d01"
+    ],
+    "record_id": "6b586706-d63d-430f-8baa-7f066706bf3e",
+    "record_in_scope": false,
+    "record_state": true,
+    "record_type": "case",
+    "registration_date": "2022-10-10",
+    "reopened_logs": [],
+    "sex": "male",
+    "short_id": "936e31d",
+    "status": "open",
+    "workflow": "new"
+  }
+}
