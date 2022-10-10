@@ -336,7 +336,7 @@ each(
       patient.chwpart,
     ];
 
-    const sharedAnswer = {
+    const sharedAnswerCQ1 = {
       answers: {
         type: 'select',
         value: {
@@ -359,19 +359,196 @@ each(
       },
     };
 
+    const sharedAnswerAUQUEI_CQ2 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'not_happy_at_all_3d88bde',
+            1: 'unhappy_4d6e375',
+            2: 'happy_1c1406e',
+            3: 'very_happy_185f560',
+          },
+          th: {
+            '1) ไม่มีความสุขเลย': 'not_happy_at_all_3d88bde',
+            '2) ไม่มีความสุข': 'unhappy_4d6e375',
+            '3) มีความสุข': 'happy_1c1406e',
+            '4) มีความสุขมาก': 'very_happy_185f560',
+          },
+          en: {
+            'Not happy at all': 'not_happy_at_all_3d88bde',
+            Unhappy: 'unhappy_4d6e375',
+            Happy: 'happy_1c1406e',
+            'Very Happy': 'very_happy_185f560',
+          },
+        },
+      },
+    };
+
+    const sharedAnswerAUQUEI_CQ2_0 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'never_6cd6605',
+            1: 'once_in_a_while_14725b7',
+            2: 'often_cdd2705',
+            3: 'very_often_dac14dd',
+          },
+          th: {
+            ไม่เคยเลย: 'never_6cd6605',
+            นานๆครั้ง: 'once_in_a_while_14725b7',
+            บ่อยครั้ง: 'often_cdd2705',
+            บ่อยมาก: 'very_often_dac14dd',
+          },
+          en: {
+            Never: 'never_6cd6605',
+            'Once in a while': 'once_in_a_while_14725b7',
+            Often: 'often_cdd2705',
+            'Very Often': 'very_often_dac14dd',
+          },
+        },
+      },
+    };
+
+    const sharedAnswerPSu1 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'never_06e1b0e',
+            1: 'very_rarely_0226291',
+            2: 'rarely_1b2f16d',
+            3: 'sometime_e587428',
+            4: 'often_c9d1aa7',
+            5: 'very_often_00602e0',
+            6: 'always_08bfba1',
+          },
+          en: {
+            Never: 'never_06e1b0e',
+            'Very Rarely': 'very_rarely_0226291',
+            Rarely: 'rarely_1b2f16d',
+            Sometime: 'sometime_e587428',
+            Often: 'often_c9d1aa7',
+            'Very Often': 'very_often_00602e0',
+            Always: 'always_08bfba1',
+          },
+        },
+      },
+    };
+    const sharedAnswerPSu1_0 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'not_true_3691b29',
+            1: 'somewhat_true_1677715',
+            2: 'very_true_5d3a5a9',
+          },
+          en: {
+            'Not true': 'not_true_3691b29',
+            'Somewhat true': 'somewhat_true_1677715',
+            'very true': 'very_true_5d3a5a9',
+          },
+          th: {
+            ไม่จริง: 'not_true_3691b29',
+            ค่อนข้างจริง: 'somewhat_true_1677715',
+            จริงมาก: 'very_true_5d3a5a9',
+          },
+        },
+      },
+    };
+    const sharedAnswerPSu1_1 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'never_0e6461d',
+            1: '1_time_cd59eca',
+            2: '2_times_76c438b',
+            3: '3_times_af5df7c',
+            4: '4_times_393b94d',
+            5: '5_times_aabeeb5',
+            6: '6_times_47383b9',
+            7: '7_times_9ec7602',
+            8: '8_times__bf866db',
+          },
+          en: {
+            Never: 'never_0e6461d',
+            '1 time': '1_time_cd59eca',
+            '2 times': '2_times_76c438b',
+            '3 times': '3_times_af5df7c',
+            '4 times': '4_times_393b94d',
+            '5 times': '5_times_aabeeb5',
+            '6 times': '6_times_47383b9',
+            '7 times': '7_times_9ec7602',
+            '8 times': '8_times__bf866db',
+          },
+        },
+      },
+    };
+    const sharedAnswerPSu1_2 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'rarely_or_none_of_the_time__less_than_1_day__72643c5',
+            1: 'some_or_a_little_of_the_time__1_2_days__7e55e94',
+            2: 'occasionally_or_a_moderate_amount_of_time__3_4_days__b151d67',
+            3: 'most_or_all_of_the_time__5_7_days__bc0689e',
+          },
+        },
+      },
+    };
+
+    const sharedAnswerPSu1_3 = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            1: 'never_0845f9b',
+            2: 'hardly_ever_f0c0dd8',
+            3: 'sometimes_42c6b49',
+            4: 'most_of_the_time_f19d4dc',
+            5: 'almost_everyday_5b25027',
+          },
+          en: {
+            score: {
+              Never: 'never_0845f9b',
+              'Hardly ever': 'hardly_ever_f0c0dd8',
+              Sometimes: 'sometimes_42c6b49',
+              'Most of the time': 'most_of_the_time_f19d4dc',
+              'Almost everyday': 'almost_everyday_5b25027',
+            },
+          },
+        },
+      },
+    };
+
+    const sharedAnswerTrueorFalse = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'false',
+            1: 'true',
+          },
+        },
+      },
+    };
+
     const mappingSpecForPLH = [
       {
         source: {
           type: 'date',
           description: 'CQ1 First assessment date',
-          value: {
-            questionnaire_code: 'CQ1',
-          },
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value: '',
         },
         destination: {
           type: 'date',
           value: 'assessment_date_a745d8b',
-          week: 1,
         },
         answers: {
           type: 'date',
@@ -384,26 +561,1493 @@ each(
       {
         source: {
           type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
           value: '1. ฉันชอบตัวเอง',
         },
         destination: {
           type: 'varchar',
-          week: 14,
+
           value: 'i_feel_happy_with_myself_d73ec12',
         },
-        ...sharedAnswer,
+        ...sharedAnswerCQ1,
       },
       {
         source: {
           type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
           value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
         },
         destination: {
           type: 'varchar',
-          week: 14,
           value: 'i_feel_happy_when_i_am_having_dinner_with_my_family_f8a8d82',
         },
-        ...sharedAnswer,
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value:
+            '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_feel_warm_and_safe_when_i_stay_with__name_of_primary_caregiver_in_plh_programme___30306e2',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          week: 1,
+          questionnaire_code: 'CQ1',
+          value:
+            '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'i_share_things__snacks_and_toys_with_my_siblings__friends_and_others_b3c2f20',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          week: 1,
+          questionnaire_code: 'CQ1',
+          value:
+            '5. ฉันชอบที่ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] เล่นกับฉัน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_feel_happy_when_i_play_with__name_of_primary_caregiver_in_plh_programme___8a1d3f8',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_want_to_help_others_who_are_suffering__sick_or_poor__5ddb0f5',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value:
+            '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_obey__name_of_primary_caregiver_in_plh_programme__and_perform_duties_such_as_going_to_bed_on_time__doing_homework__playing_on_the_phone_at_times__as_he_she_suggest_26850a9',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value:
+            '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_do_my_duties__such_as_taking_a_shower__getting_dressed__doing_housework__and_reading__without_anyone_being_warned__5f7cb0d',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '1. บางครั้งเธอรู้สึก ... (จากภาพด้านล่าง ขอให้เลือกเพียงคำตอบเดียว และระบุเหตุผลด้วยว่าเพราะอะไรจึงรู้สึกเช่นนั้น)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_do_you_feel__0cce3d3',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value: 'จากภาพที่เลือกด้านบนนั้น จงบอกว่าเพราะอะไรจึงรู้สึกเช่นนั้น',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plase_describe_the_reason_from_above_question_51a384e',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '2. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_not_happy_at_all__5db4bc0',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_unhappy__ce672d4',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมaายเลข 3 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_happy__ccb0fd7',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value: '5. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุขมาก (ตามภาพหมายเลข 4 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_very_happy__3dfaf8a',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value: '6. เธอรู้สึกอย่างไรเวลาที่นั่งกินอาหารเย็นกับครอบครัว?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_are_having_dinner_with_your_family__a114ee3',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value: '7. เธอรู้สึกอย่างไรเวลาเข้านอนตอนกลางคืน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_do_you_feel_when_you_go_to_bed_at_night__ecfdd90',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_think_of__name_of_primary_caregiver_in_plh_programme___8aa2de6',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_play_with_name_of_primary_caregiver_in_plh_programme___5ef3917',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when__name_of_primary_caregiver_in_plh_programme__mentions_you__93c6ed1',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 1,
+          value:
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when___name_of_primary_caregiver_in_plh_programme__tells_you_what_to_do__87aa7da',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'date',
+          description: 'CQ1 14th assessment date',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value: '',
+        },
+        destination: {
+          type: 'date',
+          value: 'assessment_date_5f07c55',
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'CQ1',
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value: '1. ฉันชอบตัวเอง',
+        },
+        destination: {
+          type: 'varchar',
+
+          value: 'i_feel_happy_with_myself_6df7af9',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'i_feel_happy_when_i_am_having_dinner_with_my_family_690fd8e',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value:
+            '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_feel_warm_and_safe_when_i_stay_with__name_of_primary_caregiver_in_plh_programme___20801be',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          week: 14,
+          questionnaire_code: 'CQ1',
+          value:
+            '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'i_share_things__snacks_and_toys_with_my_siblings__friends_and_others_4ab19ae',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          week: 14,
+          questionnaire_code: 'CQ1',
+          value:
+            '5. ฉันชอบที่ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] เล่นกับฉัน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_feel_happy_when_i_play_with__name_of_primary_caregiver_in_plh_programme___a2a3ab0',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_want_to_help_others_who_are_suffering__sick_or_poor__ea5ac45',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 14,
+          value:
+            '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_obey__name_of_primary_caregiver_in_plh_programme__and_perform_duties_such_as_going_to_bed_on_time__doing_homework__playing_on_the_phone_at_times__as_he_she_suggest_d41a1c4',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CQ1',
+          week: 1,
+          value:
+            '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'i_do_my_duties__such_as_taking_a_shower__getting_dressed__doing_housework__and_reading__without_anyone_being_warned__e11b601',
+        },
+        ...sharedAnswerCQ1,
+      },
+      {
+        source: {
+          type: 'date',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: 'วันที่ประเมิน',
+        },
+        destination: {
+          type: 'date',
+          value: 'psu_assessment_date_week_1_07d31fa',
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'PSu1',
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '9. ในเดือนที่ผ่านมานี้ คุณมีเงินไม่พอสำหรับใช้ซื้ออาหารหรือของใช้ที่จำเป็นหรือไม่',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'plh_in_the_last_month__did_you_run_out_of_money_for_food_or_essentials__15c7a44',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'sufficient_dfdce7f',
+              1: 'none_sufficient_fa67c4a',
+            },
+            th: {
+              0: 'มีพอ',
+              1: 'มีไม่พอ',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '10. มีผู้ใหญ่คนหนึ่งที่ป่วยหนัก  –  ต้องเข้าโรงพยาบาลหรือนอนติดเตียงเป็นส่วนใหญ่',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_adult_who_is_very_unwell_3258821',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'false',
+              1: 'true',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '11. มีคนดื่มสุราหรือใช้ยาเสพติด',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh__people_drinking_or_taking_drugs_fa8cff1',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'false',
+              1: 'true',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '12. ทะเลาะกันรุนแรงบ่อยถึงกับมีการตะโกนด่าหรือตบตีกัน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_arguments_with_shouting_b8fe218',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'false',
+              1: 'true',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '13. มีเด็กในครอบครัวที่ป่วยหนัก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh__a_child_who_is_very_unwell_a31e10a',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'false',
+              1: 'true',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '14. มีเด็กที่มีปัญหาในการได้ยิน การมองเห็น การสื่อสาร การเดิน หรือมีปัญหาที่โรงเรียน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'plh_a_child_who_has_trouble_hearing__seeing__communicating__walking__or_struggles_at_school_87579c7',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'false',
+              1: 'true',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '15. คุณเล่นกับลูกบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'play_with_child_psu_week_1_03d1ddc',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '16. คุณปล่อยให้ลูกได้พยายามแก้ปัญหาที่เขาน่าจะทำได้ด้วยตัวเองบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stand_back_psu_week_1_f7e5250',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '17. คุณชวนให้ลูกเล่นเกมด้วยกันหรือทำกิจกรรมสนุกร่วมกันบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'invite_to_play_psu_week_1_8eb04b9',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '18. คุณสังเกตเห็นและชมพฤติกรรมที่ดีของลูกบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'praise_child_psu_week_1_4659604',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '19. คุณสอนให้ลูกทำอะไรใหม่ๆบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'teach_new_skills_psu_week_1_19f590d',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '20. คุณช่วยให้ลูกมีส่วนร่วมในการทำงานบ้านบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'involve_in_household_chores_psu_week_1_2ecd4c1',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '21. คุณให้รางวัลลูกบ่อยแค่ไหน เมื่อเขาทำอะไรได้ดีหรือแสดงให้เห็นว่าทำอะไรใหม่ๆ ได้',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'reward_child_psu_week_1_5386147',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '22. บ่อยแค่ไหนที่คุณยึดถือตามกฎและไม่เปลี่ยนใจ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stick_to_your_rules_psu_week_1_84715c7',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '23. บ่อยแค่ไหนที่คุณพูดกับลูกอย่างสงบเมื่อคุณโกรธหรือหงุดหงิดกับเขา',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'speak_calmly_psu_week_1_9bd7ba8',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '24. บ่อยแค่ไหนที่คุณอธิบายว่าคุณต้องการอะไรให้ลูกฟังอย่างง่ายๆ และชัดเจน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'explain_what_you_wanted_psu_week_1_4ca4f06',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '25. บ่อยแค่ไหนที่คุณบอกลูกว่าคุณต้องการให้เขาทำอะไร แทนที่จะบอกเขาว่าให้หยุดทำอะไร',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'tell_your_child_what_you_wanted_psu_week_1_a30469f',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '26. บ่อยแค่ไหนที่คุณบอกลูกว่าคุณคาดหวังว่าเขาจะต้องทำตัวอย่างไร',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_you_expected_them_to_behave_psu_week_1_f5a3f3f',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '27. บ่อยแค่ไหนที่คุณตั้งกฎเกี่ยวกับพฤติกรรมของลูกและคุณสามารถบังคับให้เขาทำตามนั้นได้',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'set_rules_psu_week_1_fb107e2',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '28. บ่อยแค่ไหนที่คุณคอยติดตามตรวจสอบดูว่าลูกได้ทำตามกฎที่คุณตั้งไว้ตลอดเวลาหรือเกือบตลอดเวลา',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'child_followed_the_rules_psu_week_1_72f9ab2',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '29. ลูกของคุณมักเล่นอยู่คนเดียว',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'play_alone_psu_week_1_e7afc28',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '30. ลูกของคุณมักเชื่อฟังและทำตามที่ผู้ใหญ่บอก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'obedient_psu_week_1_ce097ef',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '31. ลูกของคุณมักมีท่าทางเหมือนกังวลใจ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'worried_psu_week_1_e7d30db',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '32. ถ้ามีใครบาดเจ็บ ไม่สบายใจ หรือรู้สึกไม่สบาย ลูกของคุณจะพยายามช่วยเหลือ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'helpful_psu_week_1_65f4d54',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '33. ลูกของคุณจะขยุกขยิกหรือนั่งบิดตัวไปมาไม่ยอมนิ่งอยู่ตลอดเวลา',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'fidgeting_psu_week_1_1ab6dec',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '34. ใน 4 สัปดาห์ที่ผ่านมานี้ บ่อยแค่ไหนที่คุณสั่งสอนลูกด้วยการใช้มือตี ตบ หรือทุบ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'spanking_psu_week_1_c6e0774',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '35. ใน 4 สัปดาห์ที่ผ่านมานี้ บ่อยแค่ไหนที่คุณสั่งสอนลูกด้วยการตีด้วยสิ่งของเช่นไม้เรียวหรือเข็มขัด',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stick_belt_psu_week_1_c983507',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '36. ใน 4 สัปดาห์ที่ผ่านมานี้ บ่อยแค่ไหนที่คุณตะโกนดุด่าหรือกรีดร้องใส่ลูก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'shout_psu_week_1_d9be098',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '37. ใน 4 สัปดาห์ที่ผ่านมานี้ บ่อยแค่ไหนที่ คุณพูดแรงๆกับลูกจนทำให้เขาไม่สบายใจ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'say_mean_things_psu_week_1_4f029c0',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '38. การที่จะเลี้ยงดูหรืออบรมสั่งสอนลูกให้ได้อย่างเหมาะสม เด็กจำเป็นต้องถูกตีหรือลงโทษทางร่างกายบ้าง',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'needs_physically_punished_psu_week_1_19af643',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'strongly_disagree_3f7bce1',
+              1: 'disagree_3cddf20',
+              2: 'not_sure_7dc471c',
+              3: 'agree_8374b44',
+              4: 'strongly_agree_ccbfaca',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '39. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเศร้าบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'felt_depressed_psu_week_1_3bea0b2',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '40. ในสัปดาห์ที่ผ่านมา คุณรู้สึกว่าต้องใช้ความพยายามมากไม่ว่าจะทำอะไรบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'was_an_effort_psu_week_1_6608b52',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '41. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเหงาบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'felt_lonely_psu_week_1_a875e4e',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '42. ขณะนี้ลูกของคุณเข้าเรียนในโรงเรียนใช่หรือไม่',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'enrolled_in_school_psu_week_1_6849751',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '43. ฉันชมลูกที่ตั้งใจเรียนดี',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'praise_for_working_hard_psu_week_1_5584f66',
+        },
+        ...sharedAnswerPSu1_3,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '44. ฉันพยายามทำทุกอย่างที่ทำได้เพื่อสนับสนุนการเรียนของลูก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'support_schoolwork_psu_week_1_1374138',
+        },
+        ...sharedAnswerPSu1_3,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '1. ในเดือนที่ผ่านมานี้ คุณมีเงินไม่พอสำหรับใช้ซื้ออาหารหรือของใช้ที่จำเป็นหรือไม่',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'plh2_in_the_last_month__did_you_run_out_of_money_for_food_or_essentials_a07d96f',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'sufficient_dfdce7f',
+              1: 'none_sufficient_fa67c4a',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '2. มีผู้ใหญ่คนหนึ่งที่ป่วยหนัก  –  ต้องเข้าโรงพยาบาลหรือนอนติดเตียงเป็นส่วนใหญ่',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh2_an_adult_who_is_very_unwell_0a2246f',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '3. มีคนดื่มสุราหรือใช้ยาเสพติด',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh2_people_drinking_or_taking_drugs_887f893',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '4. ทะเลาะกันรุนแรงบ่อยถึงกับมีการตะโกนด่าหรือตบตีกัน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh2_arguments_with_shouting_6114d9c',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '5. มีเด็กที่ไม่สบายมาก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh2_a_child_who_is_very_unwell_fcddb95',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '6. มีเด็กที่มีปัญหาในการได้ยิน การมองเห็น การสื่อสาร การเดิน หรือมีปัญหาที่โรงเรียน',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'plh2_a_child_who_has_trouble_hearing__seeing__communicating__walking__or_struggles_at_school_eb46359',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '1. คุณเล่นกับลูกบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'play_with_child_week_14_3857a65',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '2. คุณปล่อยให้ลูกได้พยายามแก้ปัญหาที่เขาน่าจะทำได้ด้วยตัวเองบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stand_back_psu_week_14_d075b6f',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '3. คุณชวนให้ลูกเล่นเกมด้วยกันหรือทำกิจกรรมสนุกร่วมกันบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'invite_to_play_psu_week_14_f46ec6b',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '4. คุณสังเกตเห็นและชมพฤติกรรมที่ดีของลูกบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'praise_child_psu_week_14_0298ec0',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '5. คุณสอนทักษะใหม่ ๆ ให้ลูกคุณบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'teach_new_skills_psu_week_14_368c375',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '6. คุณช่วยให้ลูกมีส่วนร่วมในการทำงานบ้านบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'involve_in_household_chores_psu_week_14_04da913',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '7. คุณให้รางวัลลูกบ่อยแค่ไหน เมื่อเขาทำอะไรได้ดีหรือแสดงให้เห็นว่าทำอะไรใหม่ๆ ได้',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'reward_psu_week_14_925500d',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '8. คุณยึดถือตามกฎและไม่เปลี่ยนใจบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stick_to_your_rules_psu_week_14_231fb39',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '9. คุณพูดกับลูกอย่างสงบเมื่อคุณโกรธหรือหงุดหงิดกับเขาบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'speak_calmly_psu_week_14_4cfef23',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '10. คุณอธิบายว่าคุณต้องการอะไรให้ลูกฟังอย่างง่าย ๆ และชัดเจนบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'explain_what_you_wanted_psu_week_14_54840e7',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '11. คุณบอกลูกว่าคุณต้องการให้เขาทำอะไร แทนที่จะบอกเขาว่าให้หยุดทำอะไรบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'what_you_wanted_them_to_do_psu_week_14_2bf988e',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '12. คุณบอกลูกว่าคุณคาดหวังว่าเขาจะต้องทำตัวอย่างไรบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_you_expected_them_to_behave_psu_week_14_2d1b58e',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '13. คุณตั้งกฎเกี่ยวกับพฤติกรรมของลูกและคุณสามารถบังคับให้เขาทำตามนั้นได้บ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'set_rules_psu_week_14_8afeac4',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '14.คุณคอยติดตามตรวจสอบดูว่าลูกได้ทำตามกฎที่คุณตั้งไว้ตลอดเวลาหรือเกือบตลอดเวลาบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'child_followed_the_rules_psu_week_14_73af1a1',
+        },
+        ...sharedAnswerPSu1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '1. ลูกของคุณมักเล่นอยู่คนเดียว',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'play_alone_psu_week_14_091e606',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '2. ลูกของคุณมักเชื่อฟังและทำตามที่ผู้ใหญ่บอก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'obedient_psu_week_14_08658e3',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '3. ลูกของคุณมักมีท่าทางเหมือนกังวลใจ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'worried_psu_week_14_2f59a0f',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '4. ถ้ามีใครบาดเจ็บ ไม่สบายใจ หรือรู้สึกไม่สบาย ลูกของคุณจะพยายามช่วยเหลือ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'helpful_psu_week_14_bb86b58',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '5. ลูกของคุณจะขยุกขยิกหรือนั่งบิดตัวไปมาไม่ยอมนิ่งอยู่ตลอดเวลา',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'fidgeting_psu_week_14_40e94c3',
+        },
+        ...sharedAnswerPSu1_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '1. ใน 1 เดือนที่ผ่านมา คุณสั่งสอนลูกด้วยการใช้มือตี ตบ หรือทุบบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'spanking_psu_week_14_9e50568',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '2. ใน 1 เดือนที่ผ่านมา คุณสั่งสอนลูกด้วยการตีด้วยสิ่งของเช่นไม้เรียวหรือเข็มขัดบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'stick_or_a_belt_psu_week_14_5504709',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '3. ใน 1 เดือนที่ผ่านมา คุณตะโกนดุด่าหรือกรีดร้องใส่ลูกบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'shout_psu_week_14_c252c64',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '4. ใน 1 เดือนที่ผ่านมา คุณพูดแรง ๆกับลูกจนทำให้เขาไม่สบายใจบ่อยแค่ไหน',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'say_mean_things_psu_week_14_ea63b59',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '5. การที่จะเลี้ยงดูหรืออบรมสั่งสอนลูกให้ได้อย่างเหมาะสม เด็กจำเป็นต้องถูกตีหรือลงโทษทางร่างกายบ้าง',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'needs_physically_punished_psu_week_14_18da4c4',
+        },
+        ...sharedAnswerPSu1_1,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '1. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเศร้าบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'felt_depressed_psu_week_14_772fae9',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value:
+            '2. ในสัปดาห์ที่ผ่านมา คุณรู้สึกว่าต้องใช้ความพยายามมากไม่ว่าจะทำอะไรบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'was_an_effort_psu_week_14_7c63447',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '3. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเหงาบ่อยแค่ไหน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'felt_lonely_psu_week_14_2e6af4f',
+        },
+        ...sharedAnswerPSu1_2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '1. ขณะนี้ลูกของคุณเข้าเรียนในโรงเรียนใช่หรือไม่',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'enrolled_in_school_psu_week_14_440dc25',
+        },
+        ...sharedAnswerTrueorFalse,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '2. ฉันชมลูกที่ตั้งใจเรียนดี',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'praise_child_psu_week_14_01d7af8',
+        },
+        ...sharedAnswerPSu1_3,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '3. ฉันพยายามทำทุกอย่างที่ทำได้เพื่อสนับสนุนการเรียนของลูก',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'support_schoolwork_psu_week_14_38c0fd2',
+        },
+        ...sharedAnswerPSu1_3,
       },
     ];
 
@@ -412,15 +2056,17 @@ each(
         .map(activity => activity.questionnaire)
         .flat();
 
-      const getQuestionnaireByWeek = week => {
-        return questionnaires.reduce((prev, curr) => {
-          if (week === 14) {
-            return prev.date > curr.date ? prev : curr;
-          }
-          if (week === 1) {
-            return prev.date > curr.date ? curr : prev;
-          }
-        });
+      const getQuestionnaire = (questionnaire_code, week) => {
+        return questionnaires
+          .filter(qnare => qnare.questionnaire_code === questionnaire_code)
+          .reduce((prev, curr) => {
+            if (week === 14) {
+              return prev.date > curr.date ? prev : curr;
+            }
+            if (week === 1) {
+              return prev.date > curr.date ? curr : prev;
+            }
+          });
       };
 
       return mappingSpecForPLH
@@ -428,25 +2074,325 @@ each(
           switch (item.answers.type) {
             case 'select':
               // find question
-              const question = getQuestionnaireByWeek(
-                item.destination.week
-              ).questionsList.filter(qn => qn.question === item.source.value);
+              const questionnaire = getQuestionnaire(
+                item.source.questionnaire_code,
+                item.source.week
+              );
+              const question =
+                questionnaire.questionsList &&
+                questionnaire.questionsList
+                  .map(qn => {
+                    if (qn.groupQuestionsList) {
+                      return qn.groupQuestionsList.filter(
+                        gqn => gqn.question === item.source.value
+                      );
+                    }
+                    if (qn.question === item.source.value) return qn;
+                    return [];
+                  })
+                  .flat()
+                  .reduce((a, v) => ({ ...a, ...v }), {});
 
-              const answer = Array.isArray(question[0].answersList)
-                ? question[0].answersList.filter(ans => ans.checked === true)[0]
-                    .answer
-                : question[0].answersList;
+              // console.log(item.source.value);
+
+              // console.log(
+              //   Array.isArray(question.answersList) &&
+              //     question.answersList.filter(ans => ans.checked === true)[0],
+              //   item.source.value
+              // );
+              const checkIfAnswerExist = question.answersList
+                ? question.answersList
+                : null;
+              const answer = Array.isArray(question.answersList)
+                ? item.answers.value.score[
+                    question.answersList.filter(ans => ans.checked === true)[0]
+                      .score
+                  ]
+                : checkIfAnswerExist;
               return {
-                [item.destination.value]: item.answers.value.th[answer],
+                [item.destination.value]: answer,
               };
             // break;
             case 'date':
               return {
-                [item.destination.value]: getQuestionnaireByWeek(
-                  item.destination.week
+                [item.destination.value]: getQuestionnaire(
+                  item.source.questionnaire_code,
+                  item.source.week
                 ).date,
               };
             // break;
+            default:
+          }
+        })
+        .flat();
+    };
+
+    const sharedAnswerRiskmodel = {
+      answers: {
+        type: 'select',
+        value: {
+          en: {
+            L: 'low_7b4ad2c',
+            M: 'medium_f0c92f7',
+            H: 'high_b15acc5',
+            N: 'none_83815b2',
+          },
+        },
+      },
+    };
+
+    const mappingSpecForRiskmodel = [
+      {
+        source: {
+          type: 'multi-selector',
+          value: 'severityType',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'severity_type_323dfc7',
+        },
+        answers: {
+          type: 'array',
+          value: {
+            th: {
+              ทางร่างกาย: 'physical_2529d27',
+              ทางเพศ: 'sexual_ea92fba',
+              ทางจิตใจ: 'mental_e6a1980',
+              ทอดทิ้ง: 'forsake_ca4e172',
+              ล่อลวง: 'beguile_bb276e6',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'mental',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'mental_37b1218',
+        },
+        ...sharedAnswerRiskmodel,
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'physical',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'physical_dd0399d',
+        },
+        ...sharedAnswerRiskmodel,
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'sexual',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'sexual_b54b18b',
+        },
+        ...sharedAnswerRiskmodel,
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'import_no',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'import_number_a1a204c',
+        },
+        answers: {
+          type: 'string',
+          value: 'import_no',
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'caseStatus',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'child_shield_case_status_47a0eef',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            en: {
+              new: 'new_df8b394',
+              renew: 'renew_35576a6',
+              assignedTeam: 'assigned_team_04c3f8e',
+              assignedOfficer: 'assigned_officer_eff421f',
+              recievedCase: 'received_case_94a86d4',
+              sentCM: 'sent_cm_e29bdb2',
+              completed: 'completed_785e390',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'osccTeamId',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'oscc_team_id_d16244c',
+        },
+        answers: {
+          type: 'string',
+          value: 'osccTeamId',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'officerId',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'officer_id_a575aac',
+        },
+        answers: {
+          type: 'string',
+          value: 'officerId',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'careGiverUser',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'care_giver_user_b93a5bd',
+        },
+        answers: {
+          type: 'string',
+          value: 'careGiverUser',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'caseStatusBeforeRemove',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'case_status_before_remove_58dd4e2',
+        },
+        answers: {
+          type: 'string',
+          value: 'caseStatusBeforeRemove',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          value: 'caseUserId',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'case_user_id_54c9fa6',
+        },
+        answers: {
+          type: 'string',
+          value: 'caseUserId',
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'riskLevel',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'risk_level_from_child_shield_system_2df7bf4',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            en: {
+              low: 'low_c8318d2',
+              medium: 'medium_2c2d8b1',
+              high: 'high_8df42a5',
+              victim: 'victim_8d3885e',
+              others: 'others_b99020f',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'summaryRiskLevel',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'summary_risk_level_70cca8c',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            en: {
+              low: 'low_c8318d2',
+              medium: 'medium_2c2d8b1',
+              high: 'high_8df42a5',
+              victim: 'victim_8d3885e',
+              others: 'others_b99020f',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          value: 'improveLevel',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'improve_level_ac512e2',
+        },
+        answers: {
+          type: 'select',
+          value: {
+            en: {
+              improved: 'improved_2bae6c9',
+              unchanged: 'unchanged_f10da80',
+              worse: 'worse_4c8552c',
+            },
+          },
+        },
+      },
+    ];
+
+    const magicallyBuildMappingForRiskModel = rsm => {
+      return mappingSpecForRiskmodel
+        .map(item => {
+          switch (item.answers.type) {
+            case 'select':
+              const ans = rsm[item.source.value]
+                ? item.answers.value.en[rsm[item.source.value]]
+                : null;
+              return {
+                [item.destination.value]: ans,
+              };
+            case 'string':
+              return {
+                [item.destination.value]: rsm[item.answers.value],
+              };
+            case 'array':
+              // TODO: Pluck answers from [item.answers.value.th];
+              const answer = rsm[item.source.value];
+              return {
+                [item.destination.value]: answer,
+              };
+
             default:
           }
         })
@@ -538,6 +2484,8 @@ each(
       operation_room_procedure_bb7cffa: '',
       // ====================================================================
     };
+    // PLH mapping
+    const mappingForPLH = [];
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
     const physical_check_2 = [];
     const new_pregnancy = [];
@@ -558,6 +2506,10 @@ each(
     const labOrderResultObj = {};
     for (let type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
 
+    const mappingForRiskmodel = magicallyBuildMappingForRiskModel(
+      patient.riskmodel
+    );
+
     patient.interventions.forEach(intervention => {
       const { assessment, laboratory, anc, homeservice } =
         intervention.activities;
@@ -571,9 +2523,9 @@ each(
         20
       )}-${unique_id.substring(20)}`;
 
-      const mappingForPLH = magicallyBuildMapping(homeservice);
+      const buildPLH = magicallyBuildMapping(homeservice);
 
-      console.log(mappingForPLH);
+      mappingForPLH.push(...buildPLH);
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
@@ -727,8 +2679,22 @@ each(
     }
     // });
     // ====================================================================
+    // console.log(mappingForRiskmodel.reduce((a, v) => ({ ...a, ...v }), {}));
+    const flattenMappingForPLH = mappingForPLH.reduce(
+      (a, v) => ({ ...a, ...v }),
+      {}
+    );
+    const flattenMappingForRiskModel = mappingForRiskmodel.reduce(
+      (a, v) => ({ ...a, ...v }),
+      {}
+    );
 
-    data = { ...data, ...diagnosisObj };
+    data = {
+      ...data,
+      ...diagnosisObj,
+      ...flattenMappingForPLH,
+      ...flattenMappingForRiskModel,
+    };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
     // return state;
