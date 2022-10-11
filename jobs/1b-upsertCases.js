@@ -308,15 +308,19 @@ each(
 
     const recentIntervention =
       patient.interventions.length > 0
-        ? patient.interventions.reduce((prev, curr) => {
-            return prev.vstdate > curr.vstdate ? prev : curr;
-          })
+        ? patient.interventions
+            .filter(intervention => intervention.vstdate)
+            .reduce((prev, curr) => {
+              return prev.vstdate > curr.vstdate ? prev : curr;
+            })
         : {};
 
     const ifvstTime = recentIntervention.vsttime
       ? `${recentIntervention.vstdate} ${recentIntervention.vsttime}`
       : `${recentIntervention.vstdate}`;
     const vstDateTime = !isEmpty(recentIntervention) ? ifvstTime : null;
+
+    // console.log(vstDateTime);
 
     const national_id_no = `${patient.cid}`; //Remove national_id formatting
     // const national_id_no = `${patient.cid.substring(
@@ -2523,9 +2527,10 @@ each(
         20
       )}-${unique_id.substring(20)}`;
 
-      const buildPLH = magicallyBuildMapping(homeservice);
-
-      mappingForPLH.push(...buildPLH);
+      if (typeof homeservice != 'undefined') {
+        const buildPLH = magicallyBuildMapping(homeservice);
+        return mappingForPLH.push(...buildPLH);
+      }
 
       const assessmentObj = {
         description_of_physical_examination_observations_1:
