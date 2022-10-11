@@ -2387,8 +2387,11 @@ each(
                 [item.destination.value]: ans,
               };
             case 'string':
+              const strAns = Array.isArray(rsm[item.answers.value])
+                ? rsm[item.answers.value][0]
+                : rsm[item.answers.value];
               return {
-                [item.destination.value]: rsm[item.answers.value],
+                [item.destination.value]: strAns,
               };
             case 'array':
               // TODO: Pluck answers from [item.answers.value.th];
