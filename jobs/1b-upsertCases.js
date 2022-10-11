@@ -541,7 +541,382 @@ each(
       },
     };
 
+    const sharedAnswerCC = {
+      answers: {
+        type: 'select',
+        value: {
+          score: {
+            0: 'never_happened__to_be_angry_or_displeased__7bae11d',
+            1: '1_time__to_get_angry_or_resentful__61f31f3',
+            2: '2_3_times__to_get_angry_or_resentful__4f0da6f',
+            3: 'many_times__to_get_angry_or_resentful__d7ea22f',
+            4: 'every_times__to_get_angry_or_resentful__ea8676b',
+          },
+        },
+      },
+    };
+
     const mappingSpecForPLH = [
+      {
+        source: {
+          type: 'date',
+          description: 'CC First assessment date',
+          questionnaire_code: 'CC',
+          week: 1,
+          value: '',
+        },
+        destination: {
+          type: 'date',
+          value: 'assessment_date_2eb4573',
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'CC',
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '1. การจับตัวเด็กเขย่า: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] จับตัว [[(ชื่อเด็ก):caseFullName]] เขย่ากี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__name_of_the_child_s_primary_caregiver__how_many_times_did_you_shake__child_s_name___e9ccdbd',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '2. ตะคอก ตะโกนดุด่า หรือกรีดร้องใส่เด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตะคอก ตะโกนดุด่า หรือกรีดร้องใส่ [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_10d28bd',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '4. ใช้คำพูดที่ไม่ดีกับเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้คำพูดที่ไม่ดีกับ [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__4e0da86',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] บอก [[(ชื่อเด็ก):caseFullName]] ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ขู่ว่าจะตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__607f5ec',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้ฝ่ามือฟาด [[(ชื่อเด็ก):caseFullName]] ที่ มือ แขน หรือขากี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__a01eac4',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] หยิก [[(ชื่อเด็ก):caseFullName]] เมื่อเธอทำอะไรผิดกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ด่าว่า [[(ชื่อเด็ก):caseFullName]] โง่หรือขี้เกียจกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__f7f7a1f',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 1,
+          value:
+            '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตบหน้า [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__df0b8d7',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'date',
+          description: 'CC 14th assessment date',
+          questionnaire_code: 'CC',
+          week: 14,
+          value: '',
+        },
+        destination: {
+          type: 'date',
+          value: 'assessment_date_2eb4573',
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'CC',
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '1. การจับตัวเด็กเขย่า: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] จับตัว [[(ชื่อเด็ก):caseFullName]] เขย่ากี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__name_of_the_child_s_primary_caregiver__how_many_times_did_you_shake__child_s_name___1f21322',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '2. ตะคอก ตะโกนดุด่า หรือกรีดร้องใส่เด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตะคอก ตะโกนดุด่า หรือกรีดร้องใส่ [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_10d28bd',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '4. ใช้คำพูดที่ไม่ดีกับเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้คำพูดที่ไม่ดีกับ [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__4e0da86',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] บอก [[(ชื่อเด็ก):caseFullName]] ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ขู่ว่าจะตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__607f5ec',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้ฝ่ามือฟาด [[(ชื่อเด็ก):caseFullName]] ที่ มือ แขน หรือขากี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__a01eac4',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] หยิก [[(ชื่อเด็ก):caseFullName]] เมื่อเธอทำอะไรผิดกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ด่าว่า [[(ชื่อเด็ก):caseFullName]] โง่หรือขี้เกียจกี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__f7f7a1f',
+        },
+        ...sharedAnswerCC,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'CC',
+          week: 14,
+          value:
+            '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตบหน้า [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
+        },
+        destination: {
+          type: 'varchar',
+
+          value:
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__df0b8d7',
+        },
+        ...sharedAnswerCC,
+      },
       {
         source: {
           type: 'date',
@@ -849,6 +1224,174 @@ each(
       },
       {
         source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '1. บางครั้งเธอรู้สึก ... (จากภาพด้านล่าง ขอให้เลือกเพียงคำตอบเดียว และระบุเหตุผลด้วยว่าเพราะอะไรจึงรู้สึกเช่นนั้น)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_do_you_feel__488a6cb',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value: 'จากภาพที่เลือกด้านบนนั้น จงบอกว่าเพราะอะไรจึงรู้สึกเช่นนั้น',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plase_describe_the_reason_from_above_question_d21b8db',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '2. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_not_happy_at_all_eca6d98',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_unhappy_bef4677',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมaายเลข 3 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_happy_ac44b67',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value: '5. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุขมาก (ตามภาพหมายเลข 4 นี้)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_often_do_you_feel_very_happy_0f8c058',
+        },
+        ...sharedAnswerAUQUEI_CQ2_0,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value: '6. เธอรู้สึกอย่างไรเวลาที่นั่งกินอาหารเย็นกับครอบครัว?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_are_having_dinner_with_your_family_426c432',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value: '7. เธอรู้สึกอย่างไรเวลาเข้านอนตอนกลางคืน?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'how_do_you_feel_when_you_go_to_bed_at_night_e2851ec',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_think_of__name_of_primary_caregiver_in_plh_programme___c5c225b',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when_you_play_with_name_of_primary_caregiver_in_plh_programme___5e1d546',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when__name_of_primary_caregiver_in_plh_programme__mentions_you__f8e280b',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'AUQUEI_CQ2',
+          week: 14,
+          value:
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+        },
+        destination: {
+          type: 'varchar',
+          value:
+            'how_do_you_feel_when___name_of_primary_caregiver_in_plh_programme__tells_you_what_to_do__227f1d5',
+        },
+        ...sharedAnswerAUQUEI_CQ2,
+      },
+      {
+        source: {
           type: 'date',
           description: 'CQ1 14th assessment date',
           questionnaire_code: 'CQ1',
@@ -1005,6 +1548,190 @@ each(
       },
       {
         source: {
+          type: 'string',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: 'ชื่อของคุณ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_caregiver_first_name_93f7d52',
+        },
+        answers: {
+          type: 'string',
+          description: 'First name',
+          value: '',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: 'นามสกุล',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_caregiver_last_name_1215238',
+        },
+        answers: {
+          type: 'string',
+          description: 'Last name',
+          value: '',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: 'ที่อยู่',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_caregiver_address_39fa009',
+        },
+        answers: {
+          type: 'string',
+          description: 'Street Address',
+          value: '',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: 'เบอร์โทรศัพท์',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_caregiver_contact_c216042',
+        },
+        answers: {
+          type: 'string',
+          description: 'Contact Number',
+          value: '',
+        },
+      },
+      {
+        source: {
+          type: 'int',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '1. คุณมีอายุเท่าใด',
+        },
+        destination: {
+          type: 'int',
+          value: 'age_60ee953',
+        },
+        answers: {
+          type: 'int',
+          description: 'Age',
+          value: '',
+        },
+      },
+      {
+        source: {
+          type: 'string',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '2. เพศ',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'plh_caregiver_sex_965ffd1',
+        },
+        answers: {
+          type: 'select',
+          description: 'Sex',
+          value: {
+            score: {
+              0: 'Female',
+              1: 'Male',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value:
+            '6. คุณมีความสัมพันธ์หรือเกี่ยวข้องกับเด็กอย่างไร (โปรดเลือกจากด้านล่าง)',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'what_is_your_relationship_with_the_child__29056fb',
+        },
+        answers: {
+          type: 'select',
+          description: 'Relationship with child',
+          value: {
+            score: {
+              1: 'mother_d7c92a0',
+              2: 'father_7d4a7d8',
+              3: 'stepfather_stepmother_a6d89ef',
+              4: 'sister_brother_stepsister_stepbrother_f932b74',
+              5: 'grandfather_grandmother_316381d',
+              6: 'great_grandfather_great_grandmother_a011466',
+              7: 'uncle_aunt_ce71116',
+              8: 'cousin_b50320c',
+              9: 'foster_parent_d7ba487',
+              10: 'other_165616b',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '7. พ่อของเด็กอาศัยอยู่ในบ้านเดียวกันกับคุณหรือไม่?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'does_the_child_s_father_live_in_your_household__f3d9a78',
+        },
+        answers: {
+          type: 'select',
+          description: 'Father_lives_in_same_house',
+          value: {
+            score: {
+              0: 'yes_bdaebfa',
+              1: 'no__passed_away_c59f21f',
+              2: 'no__lives_elsewhere_f353313',
+            },
+          },
+        },
+      },
+      {
+        source: {
+          type: 'select',
+          questionnaire_code: 'PSu1',
+          week: 1,
+          value: '8. แม่ของเด็กอาศัยอยู่ในบ้านเดียวกันกับคุณหรือไม่?',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'does_the_child_s_mother_live_in_your_household__05fc174',
+        },
+        answers: {
+          type: 'select',
+          description: 'Mother_lives_in_same_house',
+          value: {
+            score: {
+              0: 'yes_bdaebfa',
+              1: 'no__passed_away_c59f21f',
+              2: 'no__lives_elsewhere_f353313',
+            },
+          },
+        },
+      },
+      {
+        source: {
           type: 'select',
           questionnaire_code: 'PSu1',
           week: 1,
@@ -1084,15 +1811,7 @@ each(
           type: 'varchar',
           value: 'plh_arguments_with_shouting_b8fe218',
         },
-        answers: {
-          type: 'select',
-          value: {
-            score: {
-              0: 'false',
-              1: 'true',
-            },
-          },
-        },
+        ...sharedAnswerTrueorFalse,
       },
       {
         source: {
@@ -1105,15 +1824,7 @@ each(
           type: 'varchar',
           value: 'plh__a_child_who_is_very_unwell_a31e10a',
         },
-        answers: {
-          type: 'select',
-          value: {
-            score: {
-              0: 'false',
-              1: 'true',
-            },
-          },
-        },
+        ...sharedAnswerTrueorFalse,
       },
       {
         source: {
@@ -1128,15 +1839,7 @@ each(
           value:
             'plh_a_child_who_has_trouble_hearing__seeing__communicating__walking__or_struggles_at_school_87579c7',
         },
-        answers: {
-          type: 'select',
-          value: {
-            score: {
-              0: 'false',
-              1: 'true',
-            },
-          },
-        },
+        ...sharedAnswerTrueorFalse,
       },
       {
         source: {
@@ -1171,7 +1874,7 @@ each(
           questionnaire_code: 'PSu1',
           week: 1,
           value:
-            '17. คุณชวนให้ลูกเล่นเกมด้วยกันหรือทำกิจกรรมสนุกร่วมกันบ่อยแค่ไหน',
+            '17. คุณชวนให้ลูกเล่นเกมด้วยกันหรือทำกิจกรรมสนุกร่วมกันบ่อยแค่ไหน?',
         },
         destination: {
           type: 'varchar',
@@ -1555,6 +2258,26 @@ each(
           value: 'support_schoolwork_psu_week_1_1374138',
         },
         ...sharedAnswerPSu1_3,
+      },
+      {
+        source: {
+          type: 'date',
+          description: 'PSu2 14th assessment date',
+          questionnaire_code: 'PSu2',
+          week: 14,
+          value: '',
+        },
+        destination: {
+          type: 'date',
+          value: 'psu_assessment_date_week_14_098ffac',
+        },
+        answers: {
+          type: 'date',
+          format: 'YYYY-MM-DD',
+          value: {
+            questionnaire_code: 'PSu2',
+          },
+        },
       },
       {
         source: {
@@ -2075,38 +2798,40 @@ each(
 
       return mappingSpecForPLH
         .map(item => {
+          // find question
+          const questionnaire = getQuestionnaire(
+            item.source.questionnaire_code,
+            item.source.week
+          );
+          const question =
+            questionnaire.questionsList &&
+            questionnaire.questionsList
+              .map(qn => {
+                if (qn.groupQuestionsList) {
+                  return qn.groupQuestionsList.filter(
+                    gqn => gqn.question.trim() === item.source.value
+                  );
+                }
+                if (qn.question === item.source.value) return qn;
+                return [];
+              })
+              .flat()
+              .reduce((a, v) => ({ ...a, ...v }), {});
+
+          const checkIfAnswerExist = question.answersList
+            ? question.answersList
+            : null;
+
           switch (item.answers.type) {
+            case 'int':
+              return {
+                [item.destination.value]: parseInt(checkIfAnswerExist),
+              };
+            case 'string':
+              return {
+                [item.destination.value]: checkIfAnswerExist,
+              };
             case 'select':
-              // find question
-              const questionnaire = getQuestionnaire(
-                item.source.questionnaire_code,
-                item.source.week
-              );
-              const question =
-                questionnaire.questionsList &&
-                questionnaire.questionsList
-                  .map(qn => {
-                    if (qn.groupQuestionsList) {
-                      return qn.groupQuestionsList.filter(
-                        gqn => gqn.question === item.source.value
-                      );
-                    }
-                    if (qn.question === item.source.value) return qn;
-                    return [];
-                  })
-                  .flat()
-                  .reduce((a, v) => ({ ...a, ...v }), {});
-
-              // console.log(item.source.value);
-
-              // console.log(
-              //   Array.isArray(question.answersList) &&
-              //     question.answersList.filter(ans => ans.checked === true)[0],
-              //   item.source.value
-              // );
-              const checkIfAnswerExist = question.answersList
-                ? question.answersList
-                : null;
               const answer = Array.isArray(question.answersList)
                 ? item.answers.value.score[
                     question.answersList.filter(ans => ans.checked === true)[0]
@@ -2119,10 +2844,7 @@ each(
             // break;
             case 'date':
               return {
-                [item.destination.value]: getQuestionnaire(
-                  item.source.questionnaire_code,
-                  item.source.week
-                ).date,
+                [item.destination.value]: questionnaire.date,
               };
             // break;
             default:
@@ -2146,6 +2868,20 @@ each(
     };
 
     const mappingSpecForRiskmodel = [
+      {
+        source: {
+          type: 'string',
+          value: 'id',
+        },
+        destination: {
+          type: 'varchar',
+          value: 'child_shield_case_id_95aaf33',
+        },
+        answers: {
+          type: 'string',
+          value: 'id',
+        },
+      },
       {
         source: {
           type: 'multi-selector',
@@ -2380,11 +3116,11 @@ each(
         .map(item => {
           switch (item.answers.type) {
             case 'select':
-              const ans = rsm[item.source.value]
+              const selectAns = rsm[item.source.value]
                 ? item.answers.value.en[rsm[item.source.value]]
                 : null;
               return {
-                [item.destination.value]: ans,
+                [item.destination.value]: selectAns,
               };
             case 'string':
               const strAns = Array.isArray(rsm[item.answers.value])
@@ -2395,9 +3131,9 @@ each(
               };
             case 'array':
               // TODO: Pluck answers from [item.answers.value.th];
-              const answer = rsm[item.source.value];
+              const arrAns = rsm[item.source.value];
               return {
-                [item.destination.value]: answer,
+                [item.destination.value]: arrAns,
               };
 
             default:
@@ -2705,7 +3441,7 @@ each(
     };
 
     console.log('Upserting case', JSON.stringify(data, null, 2));
-    // return state;
+    // return { ...state, data };
     return upsertCase(
       {
         externalIds: ['record_id'],
