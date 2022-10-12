@@ -157,13 +157,14 @@ fn(state => {
 });
 
 // get forms from Primero
-get('/api/v2/forms');
+// get('/api/v2/forms');
+getForms();
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
   const { selectFields } = state;
-  const forms = state.data.data;
+  const forms = state.data;
   const fieldNames = forms
     .map(form => form.fields.map(field => field.name))
     .flat();
@@ -234,12 +235,13 @@ fn(state => {
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
-get('/api/v2/lookups?per=1000000&page=1');
+// get('/api/v2/lookups?per=1000000&page=1');
+getLookups({ per: 1000000, page: 1 });
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
   const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
-  const lookups = state.data.data;
+  const lookups = state.data;
 
   const translations = uniqueExternallyDefinedOptionSets
     .map(s => {
@@ -286,11 +288,12 @@ fn(state => {
 });
 
 // Get locations translations
-get('/api/v2/locations?per=1000000');
+// get('/api/v2/locations?per=1000000');
+getLocations({ per: 1000000 });
 
 // location translations mapping
 fn(state => {
-  const locations = state.data.data;
+  const locations = state.data;
   const { filteredCases, translations, sfToLookupMap } = state;
 
   const locationsMap = locations.reduce((acc, curr) => {
