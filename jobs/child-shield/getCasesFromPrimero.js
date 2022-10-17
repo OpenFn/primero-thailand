@@ -49,7 +49,7 @@ fn(state => {
     )
     .flat();
 
-  console.log('FILTERED CASES:');
+  console.log('CASES WHICH WILL BE SYNCED TO CHILD SHIELD :');
   console.log(filteredCases.length);
   console.log(JSON.stringify(filteredCases, null, 4));
   return { ...state, filteredCases };
