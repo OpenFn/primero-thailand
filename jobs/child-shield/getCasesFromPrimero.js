@@ -59,6 +59,7 @@ fn(state => {
 fn(state => {
   const { filteredCases } = state;
   const noop = filteredCases.length > 0 ? false : true;
+  console.log('No data to sync? :', noop);
   let lastRunDateTime = filteredCases
     .map(c => c.last_updated_at)
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
