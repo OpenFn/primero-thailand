@@ -1,15 +1,21 @@
 // operation 1 is a post, to get an access token
-post(`${state.configuration.url}/Users/login`, {
-  agentOptions: { rejectUnauthorized: false },
-  headers: { 'content-type': 'application/json' },
-  body: {
-    email: state.configuration.email,
-    password: state.configuration.password,
-  },
+fn(state => {
+  if (state.noop) return state;
+
+  post(`${state.configuration.url}/Users/login`, {
+    agentOptions: { rejectUnauthorized: false },
+    headers: { 'content-type': 'application/json' },
+    body: {
+      email: state.configuration.email,
+      password: state.configuration.password,
+    },
+  });
 });
 
 // Prepare helper functions for finding, updating and creating interventions
 fn(state => {
+  if (state.noop) return state;
+
   const access_token = state.data.id;
   console.log('Authentication done...');
 
@@ -128,7 +134,9 @@ fn(state => {
   };
 });
 // To update when spec for Flow 1 , job #3 submitted
-alterState(state => {
+fn(state => {
+  if (state.noop) return state;
+
   const {
     filteredCases,
     translations,
@@ -1336,7 +1344,9 @@ alterState(state => {
 });
 
 // Update interventions
-alterState(state => {
+fn(state => {
+  if (state.noop) return state;
+
   const { interventionsToBeUpdate, updateInterventions } = state;
 
   const updateInterventionsPromise = async () => {
@@ -1360,7 +1370,9 @@ alterState(state => {
 });
 
 // Find person for missing interventions
-alterState(state => {
+fn(state => {
+  if (state.noop) return state;
+
   const { notFoundInterventions, getPeopleByCid } = state;
 
   const checkPersonForMissingIntervention = async () => {
@@ -1395,7 +1407,9 @@ alterState(state => {
 });
 
 // Create interventions for person founded
-alterState(state => {
+fn(state => {
+  if (state.noop) return state;
+
   const { createInterventions, interventionToBeCreated } = state;
   const createInterventionsPromise = async () => {
     return Promise.all(
