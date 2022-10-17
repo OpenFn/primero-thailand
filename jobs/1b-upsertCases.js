@@ -3229,6 +3229,7 @@ each(
     };
     // PLH mapping
     const mappingForPLH = [];
+    const mappingForRiskmodel = [];
     // PHYSICAL EXAMINATION IDENTIFICATION ================================
     const physical_check_2 = [];
     const new_pregnancy = [];
@@ -3249,9 +3250,12 @@ each(
     const labOrderResultObj = {};
     for (let type in labOrderType) labOrderResultObj[labOrderType[type]] = '';
 
-    const mappingForRiskmodel = magicallyBuildMappingForRiskModel(
-      patient.riskmodel
-    );
+    if (typeof patient.riskmodel != 'undefined') {
+      const buildRiskmodel = magicallyBuildMappingForRiskModel(
+        patient.riskmodel
+      );
+      mappingForRiskmodel.push(...buildRiskmodel);
+    }
 
     patient.interventions.forEach(intervention => {
       const { assessment, laboratory, anc, homeservice } =
