@@ -164,14 +164,18 @@ fn(state => {
 // get forms from Primero
 // get('/api/v2/forms');
 fn(state => {
-  if (state.noop) return state;
-
-  getForms();
+  if (state.noop) {
+    return state;
+  } else {
+    // console.log(state.noop);
+    return getForms();
+  }
 });
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
+  console.log(state.noop);
   if (state.noop) return state;
 
   const { selectFields } = state;
