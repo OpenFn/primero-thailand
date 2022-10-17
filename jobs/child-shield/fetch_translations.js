@@ -18,6 +18,8 @@
 
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
+  if (state.noop) return state;
+
   const selectFields = [
     //'location_current',
     'occupation_1',
@@ -157,11 +159,17 @@ fn(state => {
 });
 
 // get forms from Primero
-get('/api/v2/forms');
+fn(state => {
+  if (state.noop) return state;
+
+  get('/api/v2/forms');
+});
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
+  if (state.noop) return state;
+
   const { selectFields } = state;
   const forms = state.data.data;
   const fieldNames = forms
@@ -234,10 +242,16 @@ fn(state => {
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
-get('/api/v2/lookups?per=1000000&page=1');
+fn(state => {
+  if (state.noop) return state;
+
+  get('/api/v2/lookups?per=1000000&page=1');
+});
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
+  if (state.noop) return state;
+
   const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
   const lookups = state.data.data;
 
@@ -285,11 +299,19 @@ fn(state => {
   return { ...state, translations };
 });
 
+// but THIS needs changes... because it doesn't currenlty care whether or not you have cases in an array.
 // Get locations translations
-get('/api/v2/locations?per=1000000');
+fn(state => {
+  if (state.noop) return state;
+  return get('/api/v2/locations?per=1000000')(state);
+});
 
+// NEEDS NO CHANGES............ you would have already written this to only take action on that array.
 // location translations mapping
 fn(state => {
+  if (state.noop) return state;
+
+  // else do the rest of the operation...
   const locations = state.data.data;
   const { filteredCases, translations, sfToLookupMap } = state;
 
