@@ -1,6 +1,9 @@
 // operation 1 is a post, to get an access token
 fn(state => {
-  if (state.noop) return state;
+  if (state.noop) {
+    console.log('No data to process; logic in this workflow step is skipped');
+    return state;
+  }
 
   post(`${state.configuration.url}/Users/login`, {
     agentOptions: { rejectUnauthorized: false },

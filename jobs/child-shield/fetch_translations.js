@@ -18,7 +18,10 @@
 
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
-  if (state.noop) return state;
+  if (state.noop) {
+    console.log('No data to process; logic in this workflow step is skipped');
+    return state;
+  }
 
   const selectFields = [
     //'location_current',
