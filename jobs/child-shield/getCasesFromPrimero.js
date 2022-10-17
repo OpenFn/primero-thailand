@@ -58,7 +58,7 @@ fn(state => {
 // After job completes successfully, update cursor
 fn(state => {
   const { filteredCases } = state;
-  const noop = filteredCases.length > 0 ? true : false;
+  const noop = filteredCases.length > 0 ? false : true;
   let lastRunDateTime = filteredCases
     .map(c => c.last_updated_at)
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
