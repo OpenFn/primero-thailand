@@ -96,16 +96,13 @@ fn(state => {
       query: { access_token },
       agentOptions: { rejectUnauthorized: false },
     })(state).catch(error => {
-      const safeError = error;
-      safeError.config = '***';
-      safeError.request = '***';
-      safeError.response = {
+      const safeError = {
         config: '***',
         request: '***',
-        ...safeError.response.status,
-        statusText: safeError.response.statusText,
-        ...safeError.response.name,
-        ...safeError.response.data.error,
+        ...error.response.status,
+        statusText: error.response.statusText,
+        ...error.response.name,
+        ...error.response.data.error,
       };
       console.log('Update interventions failed');
       throw safeError;
