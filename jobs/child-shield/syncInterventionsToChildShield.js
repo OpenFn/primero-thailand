@@ -90,12 +90,26 @@ fn(state => {
       [`activities.primeroservice.${todaysDate}`]: formMap,
     };
 
-    console.log('Updating interventions ::', JSON.stringify(payload, null, 2));
+    // console.log('Updating interventions ::', JSON.stringify(payload, null, 2));
     return patch(`${state.configuration.url}/interventions/${id}`, {
       body: { ...payload },
       query: { access_token },
       agentOptions: { rejectUnauthorized: false },
-    })(state);
+    })(state).catch(error => {
+      const safeError = error;
+      safeError.config = '***';
+      safeError.request = '***';
+      safeError.response = {
+        config: '***',
+        request: '***',
+        ...safeError.response.status,
+        statusText: safeError.response.statusText,
+        ...safeError.response.name,
+        ...safeError.response.data.error,
+      };
+      console.log('Update interventions failed');
+      throw safeError;
+    });
   };
 
   const createInterventions = async (person, formMap) => {
@@ -1357,7 +1371,6 @@ fn(state => {
       return Promise.all(
         [
           ...interventionsToBeUpdate.map(intervention => {
-            console.log('Updating intervention...');
             return updateInterventions(
               Object.keys(intervention),
               Object.values(intervention)
