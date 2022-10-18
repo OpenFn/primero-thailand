@@ -90,7 +90,7 @@ fn(state => {
       [`activities.primeroservice.${todaysDate}`]: formMap,
     };
 
-    // console.log('Updating interventions ::', JSON.stringify(payload, null, 2));
+    console.log('Updating interventions ::', JSON.stringify(payload, null, 2));
     return patch(`${state.configuration.url}/interventions/${id}`, {
       body: { ...payload },
       query: { access_token },
