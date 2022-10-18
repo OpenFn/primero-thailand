@@ -3437,7 +3437,7 @@ each(
       {}
     );
 
-    data = {
+    state.data = {
       ...data,
       ...diagnosisObj,
       ...flattenMappingForPLH,
