@@ -5,14 +5,14 @@ fn(state => {
     return state;
   }
 
-  post(`${state.configuration.url}/Users/login`, {
+  return post(`${state.configuration.url}/Users/login`, {
     agentOptions: { rejectUnauthorized: false },
     headers: { 'content-type': 'application/json' },
     body: {
       email: state.configuration.email,
       password: state.configuration.password,
     },
-  });
+  })(state);
 });
 
 // Prepare helper functions for finding, updating and creating interventions
