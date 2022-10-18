@@ -164,18 +164,14 @@ fn(state => {
 // get forms from Primero
 // get('/api/v2/forms');
 fn(state => {
-  if (state.noop) {
-    return state;
-  } else {
-    // console.log(state.noop);
-    return getForms();
-  }
+  if (state.noop) return state;
+
+  return getForms()(state);
 });
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
-  console.log(state.noop);
   if (state.noop) return state;
 
   const { selectFields } = state;
@@ -254,7 +250,7 @@ fn(state => {
 fn(state => {
   if (state.noop) return state;
 
-  getLookups({ per: 1000000, page: 1 });
+  return getLookups({ per: 1000000, page: 1 })(state);
 });
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
@@ -314,7 +310,7 @@ fn(state => {
 fn(state => {
   if (state.noop) return state;
 
-  getLocations({ per: 1000000 });
+  return getLocations({ per: 1000000 })(state);
 });
 
 // NEEDS NO CHANGES............ you would have already written this to only take action on that array.
