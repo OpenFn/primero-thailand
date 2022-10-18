@@ -317,7 +317,7 @@ fn(state => {
 
   // else do the rest of the operation...
   const locations = state.data.data;
-  const { filteredCases, translations, sfToLookupMap } = state;
+  const { filteredCases, translations, sfToLookupMap, noop } = state;
 
   const locationsMap = locations.reduce((acc, curr) => {
     acc[curr.code] = curr.name.th;
@@ -325,6 +325,7 @@ fn(state => {
   }, {});
 
   return {
+    noop,
     filteredCases,
     translations,
     locationsMap,
