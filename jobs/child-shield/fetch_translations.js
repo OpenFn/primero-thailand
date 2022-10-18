@@ -18,7 +18,7 @@
 
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
-  if (state && state.noop) {
+  if (state.noop) {
     console.log('No data to process; logic in this workflow step is skipped');
     return state;
   }
@@ -163,15 +163,15 @@ fn(state => {
 
 // get forms from Primero
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
 
-  get('/api/v2/forms');
+  return get('/api/v2/forms')(state);
 });
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
 
   const { selectFields } = state;
   const forms = state.data.data;
@@ -246,14 +246,14 @@ fn(state => {
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
 
-  get('/api/v2/lookups?per=1000000&page=1');
+  return get('/api/v2/lookups?per=1000000&page=1')(state);
 });
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
 
   const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
   const lookups = state.data.data;
@@ -305,14 +305,15 @@ fn(state => {
 // but THIS needs changes... because it doesn't currenlty care whether or not you have cases in an array.
 // Get locations translations
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
+
   return get('/api/v2/locations?per=1000000')(state);
 });
 
 // NEEDS NO CHANGES............ you would have already written this to only take action on that array.
 // location translations mapping
 fn(state => {
-  if (state && state.noop) return state;
+  if (state.noop) return state;
 
   // else do the rest of the operation...
   const locations = state.data.data;
