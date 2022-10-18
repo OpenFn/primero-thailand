@@ -172,6 +172,7 @@ fn(state => {
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
+  console.log(state.noop);
   if (state.noop) return state;
 
   const { selectFields } = state;
