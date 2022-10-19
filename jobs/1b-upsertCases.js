@@ -3458,3 +3458,19 @@ each(
     )(state);
   })
 );
+
+// fn(state => {
+//   const { data } = state;
+//   console.log('Upserting case', JSON.stringify(data, null, 2));
+//   console.log(state['record_id']);
+//   return upsertCase(
+//     {
+//       externalIds: ['record_id'],
+//       data,
+//     },
+//     state => {
+//       console.log(state.data);
+//       return state;
+//     }
+//   )(state);
+// });
