@@ -86,7 +86,7 @@ alterState(state => {
     236: 'estonia',
     '075': 'ethiopia',
     111: 'fiji',
-    013: 'finland',
+    '013': 'finland',
     '005': 'france',
     142: 'gabon',
     143: 'gambia',
@@ -99,7 +99,7 @@ alterState(state => {
     '078': 'guinea',
     192: 'guyana',
     182: 'haiti',
-    082: 'hmong_ab4f799',
+    '082': 'hmong_ab4f799',
     183: 'honduras',
     '019': 'hungary',
     122: 'iceland',
@@ -222,7 +222,7 @@ alterState(state => {
     '058': 'sri_lanka',
     186: 'st_kitts_and_nevis',
     187: 'st_lucia',
-    096: 'stateless_b4af0bb',
+    '096': 'stateless_b4af0bb',
     163: 'sudan',
     194: 'suriname',
     164: 'swaziland',
@@ -3142,7 +3142,7 @@ each(
         .flat();
     };
 
-    let data = {
+    let caseDetails = {
       mark_synced_status: 'synced',
       //TODO: Move to credentials
       mark_synced_url:
@@ -3380,8 +3380,8 @@ each(
       physical_check_2.push({ ...assessmentObj, ...labOrderResultObj });
     });
 
-    data['physical_check_2'] = physical_check_2;
-    data['new_pregnancy'] = new_pregnancy;
+    caseDetails['physical_check_2'] = physical_check_2;
+    caseDetails['new_pregnancy'] = new_pregnancy;
     // ====================================================================
 
     // CONCLUSION =========================================================
@@ -3437,19 +3437,19 @@ each(
       {}
     );
 
-    state.data = {
-      ...data,
+    const extendedCaseDetails = {
+      ...caseDetails,
       ...diagnosisObj,
       ...flattenMappingForPLH,
       ...flattenMappingForRiskModel,
     };
 
-    console.log('Upserting case', JSON.stringify(data, null, 2));
+    // console.log('Upserting case', JSON.stringify(data, null, 2));
     // return { ...state, data };
     return upsertCase(
       {
         externalIds: ['record_id'],
-        data,
+        data: extendedCaseDetails,
       },
       state => {
         console.log(state.data);
@@ -3458,3 +3458,19 @@ each(
     )(state);
   })
 );
+
+// fn(state => {
+//   const { data } = state;
+//   console.log('Upserting case', JSON.stringify(data, null, 2));
+//   console.log(state['record_id']);
+//   return upsertCase(
+//     {
+//       externalIds: ['record_id'],
+//       data,
+//     },
+//     state => {
+//       console.log(state.data);
+//       return state;
+//     }
+//   )(state);
+// });
