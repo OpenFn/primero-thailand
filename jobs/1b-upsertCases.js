@@ -86,11 +86,7 @@ alterState(state => {
     236: 'estonia',
     '075': 'ethiopia',
     111: 'fiji',
-<<<<<<< HEAD
-    013: 'finland',
-=======
     '013': 'finland',
->>>>>>> 7bea5c7 (wip: update state.data)
     '005': 'france',
     142: 'gabon',
     143: 'gambia',
@@ -3146,7 +3142,7 @@ each(
         .flat();
     };
 
-    let data = {
+    let caseDetails = {
       mark_synced_status: 'synced',
       //TODO: Move to credentials
       mark_synced_url:
@@ -3384,8 +3380,8 @@ each(
       physical_check_2.push({ ...assessmentObj, ...labOrderResultObj });
     });
 
-    data['physical_check_2'] = physical_check_2;
-    data['new_pregnancy'] = new_pregnancy;
+    caseDetails['physical_check_2'] = physical_check_2;
+    caseDetails['new_pregnancy'] = new_pregnancy;
     // ====================================================================
 
     // CONCLUSION =========================================================
@@ -3441,8 +3437,8 @@ each(
       {}
     );
 
-    state.data = {
-      ...data,
+    const extendedCaseDetails = {
+      ...caseDetails,
       ...diagnosisObj,
       ...flattenMappingForPLH,
       ...flattenMappingForRiskModel,
@@ -3453,7 +3449,7 @@ each(
     return upsertCase(
       {
         externalIds: ['record_id'],
-        data,
+        data: extendedCaseDetails,
       },
       state => {
         console.log(state.data);
@@ -3462,19 +3458,3 @@ each(
     )(state);
   })
 );
-
-// fn(state => {
-//   const { data } = state;
-//   console.log('Upserting case', JSON.stringify(data, null, 2));
-//   console.log(state['record_id']);
-//   return upsertCase(
-//     {
-//       externalIds: ['record_id'],
-//       data,
-//     },
-//     state => {
-//       console.log(state.data);
-//       return state;
-//     }
-//   )(state);
-// });
