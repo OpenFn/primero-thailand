@@ -86,7 +86,11 @@ alterState(state => {
     236: 'estonia',
     '075': 'ethiopia',
     111: 'fiji',
+<<<<<<< HEAD
     013: 'finland',
+=======
+    '013': 'finland',
+>>>>>>> 7bea5c7 (wip: update state.data)
     '005': 'france',
     142: 'gabon',
     143: 'gambia',
@@ -99,7 +103,7 @@ alterState(state => {
     '078': 'guinea',
     192: 'guyana',
     182: 'haiti',
-    082: 'hmong_ab4f799',
+    '082': 'hmong_ab4f799',
     183: 'honduras',
     '019': 'hungary',
     122: 'iceland',
@@ -222,7 +226,7 @@ alterState(state => {
     '058': 'sri_lanka',
     186: 'st_kitts_and_nevis',
     187: 'st_lucia',
-    096: 'stateless_b4af0bb',
+    '096': 'stateless_b4af0bb',
     163: 'sudan',
     194: 'suriname',
     164: 'swaziland',
@@ -3444,7 +3448,7 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    console.log('Upserting case', JSON.stringify(data, null, 2));
+    // console.log('Upserting case', JSON.stringify(data, null, 2));
     // return { ...state, data };
     return upsertCase(
       {
@@ -3458,3 +3462,19 @@ each(
     )(state);
   })
 );
+
+// fn(state => {
+//   const { data } = state;
+//   console.log('Upserting case', JSON.stringify(data, null, 2));
+//   console.log(state['record_id']);
+//   return upsertCase(
+//     {
+//       externalIds: ['record_id'],
+//       data,
+//     },
+//     state => {
+//       console.log(state.data);
+//       return state;
+//     }
+//   )(state);
+// });
