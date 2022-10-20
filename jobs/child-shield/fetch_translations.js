@@ -172,7 +172,6 @@ fn(state => {
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
-  console.log(state.noop);
   if (state.noop) return state;
 
   const { selectFields } = state;
@@ -320,7 +319,7 @@ fn(state => {
   if (state.noop) return state;
 
   // else do the rest of the operation...
-  const locations = state.data.data;
+  const locations = state.data;
   const { filteredCases, translations, sfToLookupMap, noop } = state;
 
   const locationsMap = locations.reduce((acc, curr) => {
