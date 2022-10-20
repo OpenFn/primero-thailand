@@ -67,13 +67,15 @@ fn(state => {
     };
     switch (error.code) {
       case 'EAI_AGAIN':
-        console.log(`DNS lookup for '${safeError.url}' timeout`);
-        console.log('Either network connectivity error or proxy error');
+        console.log(`DNS lookup for '${safeError.url}' has timed out`);
+        console.log(
+          'Either network connectivity error, proxy error or Invalid DNS nameserver response'
+        );
         throw safeError;
       case 'ENOTFOUND':
-        console.log(`The Url '${safeError.url}'Is invalid`);
+        console.log(`The URL '${safeError.url}' Is invalid`);
         console.log(
-          'Please check the url in configuration and update accordingly'
+          'Please check the URL in the configuration and update it accordingly'
         );
         throw safeError;
       case 'UNABLE_TO_VERIFY_LEAF_SIGNATURE':
