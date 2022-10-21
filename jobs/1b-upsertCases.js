@@ -2784,16 +2784,21 @@ each(
         .flat();
 
       const getQuestionnaire = (questionnaire_code, week) => {
-        return questionnaires
-          .filter(qnare => qnare.questionnaire_code === questionnaire_code)
-          .reduce((prev, curr) => {
+        const qnnaire = questionnaires.filter(
+          qnare => qnare.questionnaire_code === questionnaire_code
+        );
+
+        return (
+          qnnaire.length > 0 &&
+          qnnaire.reduce((prev, curr) => {
             if (week === 14) {
               return prev.date > curr.date ? prev : curr;
             }
             if (week === 1) {
               return prev.date > curr.date ? curr : prev;
             }
-          });
+          })
+        );
       };
 
       return mappingSpecForPLH
@@ -2818,9 +2823,8 @@ each(
               .flat()
               .reduce((a, v) => ({ ...a, ...v }), {});
 
-          const checkIfAnswerExist = question.answersList
-            ? question.answersList
-            : null;
+          const checkIfAnswerExist =
+            question && question.answersList ? question.answersList : null;
 
           switch (item.answers.type) {
             case 'int':
@@ -2832,12 +2836,33 @@ each(
                 [item.destination.value]: checkIfAnswerExist,
               };
             case 'select':
-              const answer = Array.isArray(question.answersList)
-                ? item.answers.value.score[
-                    question.answersList.filter(ans => ans.checked === true)[0]
-                      .score
-                  ]
-                : checkIfAnswerExist;
+              const checkIfAnswerExistChecked =
+                typeof question !== 'undefined' &&
+                Array.isArray(question.answersList) &&
+                question.answersList.filter(
+                  ans => ans.checked && ans.checked === true
+                );
+
+              if (
+                typeof question !== 'undefined' &&
+                Array.isArray(question.answersList) &&
+                !JSON.stringify(question.answersList).includes('checked')
+              ) {
+                console.log(
+                  `answersList for '${question.question}' does not have 'checked'`
+                );
+                console.log(
+                  'answersList',
+                  JSON.stringify(question.answersList, null, 2)
+                );
+              }
+
+              const answer =
+                Array.isArray(checkIfAnswerExistChecked) &&
+                typeof checkIfAnswerExistChecked[0] !== 'undefined'
+                  ? item.answers.value.score[checkIfAnswerExistChecked[0].score]
+                  : null;
+
               return {
                 [item.destination.value]: answer,
               };
