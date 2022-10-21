@@ -3155,10 +3155,16 @@ each(
                 [item.destination.value]: strAns,
               };
             case 'array':
-              // TODO: Pluck answers from [item.answers.value.th];
-              const arrAns = rsm[item.source.value];
+              if (Array.isArray(rsm[item.source.value])) {
+                const arrAns = rsm[item.source.value].map(
+                  ans => item.answers.value.th[ans]
+                );
+                return {
+                  [item.destination.value]: arrAns,
+                };
+              }
               return {
-                [item.destination.value]: arrAns,
+                [item.destination.value]: [],
               };
 
             default:
@@ -3469,7 +3475,7 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    // console.log('Upserting case', JSON.stringify(data, null, 2));
+    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
     // return { ...state, data };
     return upsertCase(
       {
@@ -3483,19 +3489,3 @@ each(
     )(state);
   })
 );
-
-// fn(state => {
-//   const { data } = state;
-//   console.log('Upserting case', JSON.stringify(data, null, 2));
-//   console.log(state['record_id']);
-//   return upsertCase(
-//     {
-//       externalIds: ['record_id'],
-//       data,
-//     },
-//     state => {
-//       console.log(state.data);
-//       return state;
-//     }
-//   )(state);
-// });
