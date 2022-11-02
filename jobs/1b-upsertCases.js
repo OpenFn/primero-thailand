@@ -2695,7 +2695,19 @@ each(
           type: 'varchar',
           value: 'needs_physically_punished_psu_week_14_18da4c4',
         },
-        ...sharedAnswerPSu1_1,
+        //...sharedAnswerPSu1_1,
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'strongly_disagree_3f7bce1',
+              1: 'disagree_3cddf20',
+              2: 'not_sure_7dc471c',
+              3: 'agree_8374b44',
+              4: 'strongly_agree_ccbfaca',
+            },
+          },
+        },
       },
       {
         source: {
