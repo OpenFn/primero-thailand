@@ -17,7 +17,7 @@ fn(state => {
 fn(state => {
   return getCases(
     {
-      remote: true,
+      //remote: true,
       last_updated_at: `${state.cursor}..`,
     },
     state => ({
