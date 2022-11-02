@@ -1284,7 +1284,12 @@ fn(state => {
                   number_of_other_id_document_cddbddb: checkEmptyStr(
                     opd.number_of_other_id_document_cddbddb
                   ),
-                  gender_2dea3c9: checkEmptyStr(opd.gender_2dea3c9),
+                  gender_2dea3c9: opd.gender_2dea3c9
+                    ? objFormatter(
+                        translations[sfToLookupMap['gender_2dea3c9']],
+                        opd.gender_2dea3c9
+                      )
+                    : checkEmptyStr(opd.gender_2dea3c9),
                   age_6587e58: checkEmptyStr(opd.age_6587e58),
                   social_status_7c0989a: opd.social_status_7c0989a
                     ? objFormatter(
@@ -1312,7 +1317,12 @@ fn(state => {
                 translations[sfToLookupMap['nationality_fa822dc']],
                 cs.nationality_fa822dc
               ),
-              gender_4e8704a: checkEmptyStr(cs.gender_4e8704a),
+              gender_4e8704a: cs.gender_4e8704a
+                ? objFormatter(
+                    translations[sfToLookupMap['gender_4e8704a']],
+                    cs.gender_4e8704a
+                  )
+                : checkEmptyStr(cs.gender_4e8704a),
               age_21cbe0d: checkEmptyStr(cs.age_21cbe0d),
               national_id_number_7dd2e74: checkEmptyStr(
                 cs.national_id_number_7dd2e74
