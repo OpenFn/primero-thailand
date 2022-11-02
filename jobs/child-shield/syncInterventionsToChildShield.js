@@ -714,8 +714,54 @@ fn(state => {
               cs.services_section &&
               cs.services_section
                 .map(ss => ({
+                  unique_id: checkEmptyStr(ss.unique_id),
+                  service_type: ss.service_type
+                    ? objFormatter(
+                        translations[sfToLookupMap['service_type']],
+                        ss.service_type
+                      )
+                    : null,
+                  service_referral: ss.service_referral
+                    ? objFormatter(
+                        translations[sfToLookupMap['service_referral']],
+                        ss.service_referral
+                      )
+                    : null,
+                  service_response_type: ss.service_response_type
+                    ? objFormatter(
+                        translations[sfToLookupMap['service_response_type']],
+                        ss.service_response_type
+                      )
+                    : null,
+                  service_response_timeframe: ss.service_response_timeframe
+                    ? objFormatter(
+                        translations[
+                          sfToLookupMap['service_response_timeframe']
+                        ],
+                        ss.service_response_timeframe
+                      )
+                    : null,
+                  service_location: checkEmptyStr(ss.service_location),
+                  service_referral_notes: checkEmptyStr(
+                    ss.service_referral_notes
+                  ),
+                  service_response_day_time: checkEmptyStr(
+                    ss.service_response_day_time
+                  ),
+                  follow_up_comments_ba1ccd1: checkEmptyStr(
+                    ss.follow_up_comments_ba1ccd1
+                  ),
                   follow_up_date_71b7f60: checkEmptyStr(
                     ss.follow_up_date_71b7f60
+                  ),
+                  service_implementing_agency: checkEmptyStr(
+                    ss.service_implementing_agency
+                  ),
+                  service_implemented_day_time: checkEmptyStr(
+                    ss.service_implemented_day_time
+                  ),
+                  appointment_date_and_time_ece9c5a: checkEmptyStr(
+                    ss.appointment_date_and_time_ece9c5a
                   ),
                   service_external_referral: checkEmptyStr(
                     ss.service_external_referral
