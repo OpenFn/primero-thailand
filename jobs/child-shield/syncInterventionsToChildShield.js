@@ -346,9 +346,18 @@ fn(state => {
               cs.family_details_section
                 .map(fds => ({
                   is_this_person_living_in_the_same_household_as_patient_7d39e1d:
-                    checkEmptyStr(
-                      fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
-                    ),
+                    fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
+                      ? objFormatter(
+                          translations[
+                            sfToLookupMap[
+                              'is_this_person_living_in_the_same_household_as_patient_7d39e1d'
+                            ]
+                          ],
+                          fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
+                        )
+                      : checkEmptyStr(
+                          fds.is_this_person_living_in_the_same_household_as_patient_7d39e1d
+                        ),
                   relation: fds.relation
                     ? objFormatter(
                         translations[sfToLookupMap['relation']],
