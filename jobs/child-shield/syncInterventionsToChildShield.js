@@ -1161,9 +1161,12 @@ fn(state => {
                       cs.specify_physical_interaction_d13d273
                     )
                   : checkEmptyStr(cs.specify_physical_interaction_d13d273),
-              sexual_intercourse_a1585d0: checkEmptyStr(
-                cs.sexual_intercourse_a1585d0
-              ),
+              sexual_intercourse_a1585d0: cs.sexual_intercourse_a1585d0
+                ? objFormatter(
+                    translations[sfToLookupMap['sexual_intercourse_a1585d0']],
+                    cs.sexual_intercourse_a1585d0
+                  )
+                : checkEmptyStr(cs.sexual_intercourse_a1585d0),
               if_no_physical_touch__please_specify_1159dde:
                 cs.if_no_physical_touch__please_specify_1159dde
                   ? objFormatter(
