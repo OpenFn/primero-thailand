@@ -475,7 +475,7 @@ each(
             5: '5_times_aabeeb5',
             6: '6_times_47383b9',
             7: '7_times_9ec7602',
-            8: '8_times__bf866db',
+            '8+': '8_times__bf866db',
           },
           en: {
             Never: 'never_0e6461d',
@@ -1079,7 +1079,12 @@ each(
           type: 'varchar',
           value: 'plase_describe_the_reason_from_above_question_51a384e',
         },
-        ...sharedAnswerAUQUEI_CQ2,
+        answers: {
+          type: 'string',
+          description:
+            'AUQUEI1_CQ2 - Plase describe the reason from above question',
+          value: '',
+        },
       },
       {
         source: {
@@ -1101,7 +1106,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-            '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
+            '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุข (ตามภาพหมายเลข 2 นี้)',
         },
         destination: {
           type: 'varchar',
@@ -1114,7 +1119,7 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
-          value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมaายเลข 3 นี้)',
+          value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมายเลข 3 นี้)',
         },
         destination: {
           type: 'varchar',
@@ -1168,7 +1173,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
         },
         destination: {
           type: 'varchar',
@@ -1183,7 +1188,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
         },
         destination: {
           type: 'varchar',
@@ -1198,7 +1203,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
         },
         destination: {
           type: 'varchar',
@@ -1213,7 +1218,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
         },
         destination: {
           type: 'varchar',
@@ -1247,7 +1252,12 @@ each(
           type: 'varchar',
           value: 'plase_describe_the_reason_from_above_question_d21b8db',
         },
-        ...sharedAnswerAUQUEI_CQ2,
+        answers: {
+          type: 'string',
+          description:
+            'AUQUEI1_CQ2 - Plase describe the reason from above question',
+          value: '',
+        },
       },
       {
         source: {
@@ -1336,7 +1346,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
           value:
-            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+            '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
         },
         destination: {
           type: 'varchar',
@@ -1351,7 +1361,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
           value:
-            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
         },
         destination: {
           type: 'varchar',
@@ -1366,7 +1376,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
           value:
-            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
         },
         destination: {
           type: 'varchar',
@@ -1381,7 +1391,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
           value:
-            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
         },
         destination: {
           type: 'varchar',
@@ -2760,16 +2770,7 @@ each(
           type: 'varchar',
           value: 'enrolled_in_school_psu_week_14_440dc25',
         },
-        //...sharedAnswerTrueorFalse,
-        answers: {
-          type: 'select',
-          value: {
-            score: {
-              0: 'true',
-              1: 'falsee',
-            },
-          },
-        },
+        ...sharedAnswerTrueorFalse,
       },
       {
         source: {
@@ -3165,6 +3166,7 @@ each(
               const selectAns = rsm[item.source.value]
                 ? item.answers.value.en[rsm[item.source.value]]
                 : null;
+
               return {
                 [item.destination.value]: selectAns,
               };
@@ -3306,6 +3308,7 @@ each(
       const buildRiskmodel = magicallyBuildMappingForRiskModel(
         patient.riskmodel
       );
+
       mappingForRiskmodel.push(...buildRiskmodel);
     }
 
