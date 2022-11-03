@@ -932,10 +932,7 @@ fn(state => {
                     np.support_needed_1
                   ),
                   additional_support: checkEmptyStr(np.additional_support),
-                  source_of_information_647b9db: objFormatter(
-                    translations[
-                      sfToLookupMap['source_of_information_647b9db']
-                    ],
+                  source_of_information_647b9db: checkEmptyStr(
                     np.source_of_information_647b9db
                   ),
                 }))
