@@ -1052,12 +1052,15 @@ fn(state => {
                     pc2.anti_infectious_diseases_medication
                   ),
                   anti_hiv_medication: checkEmptyStr(pc2.anti_hiv_medication),
-                  source_of_information_44cac9a: objFormatter(
-                    translations[
-                      sfToLookupMap['source_of_information_44cac9a']
-                    ],
-                    pc2.source_of_information_44cac9a
-                  ),
+                  source_of_information_44cac9a:
+                    pc2.source_of_information_44cac9a !== 'his'
+                      ? objFormatter(
+                          translations[
+                            sfToLookupMap['source_of_information_44cac9a']
+                          ],
+                          pc2.source_of_information_44cac9a
+                        )
+                      : null,
                 }))
                 .flat(),
             preliminary_observations_2:
