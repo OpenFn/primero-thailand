@@ -1643,7 +1643,8 @@ each(
       },
       {
         source: {
-          type: 'string',
+          //type: 'string',
+          type: 'select',
           questionnaire_code: 'PSu1',
           week: 1,
           value: '2. เพศ',
