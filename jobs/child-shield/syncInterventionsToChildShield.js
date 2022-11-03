@@ -949,130 +949,120 @@ fn(state => {
                 cs.history_of_abortion__if_any_
               ),
             },
-            physical_check_2:
-              cs.physical_check_2 &&
-              cs.physical_check_2.find(
-                pc2 => pc2.source_of_information_44cac9a === 'his'
-              )
-                ? []
-                : cs.physical_check_2
-                    .map(pc2 => ({
-                      description_of_physical_examination_observations_1:
-                        checkEmptyStr(
-                          pc2.description_of_physical_examination_observations_1
-                        ),
-                      patient_s_weight: checkEmptyStr(pc2.patient_s_weight),
-                      patient_s_height: checkEmptyStr(pc2.patient_s_height),
-                      date_of_last_period_menstruation: checkEmptyStr(
-                        pc2.date_of_last_period_menstruation
+            physical_check_2: cs.physical_check_2
+              ? cs.physical_check_2
+                  .filter(pc2 => pc2.source_of_information_44cac9a !== 'his')
+                  .map(pc2 => ({
+                    description_of_physical_examination_observations_1:
+                      checkEmptyStr(
+                        pc2.description_of_physical_examination_observations_1
                       ),
-                      general_examination_results: checkEmptyStr(
-                        pc2.general_examination_results
-                      ),
-                      general_description_of_genitalia_examination:
-                        checkEmptyStr(
-                          pc2.general_description_of_genitalia_examination
-                        ),
-                      labia_minora_details: checkEmptyStr(
-                        pc2.labia_minora_details
-                      ),
-                      introitus_details: checkEmptyStr(pc2.introitus_details),
-                      hymen_details_3538ed4: checkEmptyStr(
-                        pc2.hymen_details_3538ed4
-                      ),
-                      if_teared__please_estimate_date: checkEmptyStr(
-                        pc2.if_teared__please_estimate_date
-                      ),
-                      vagina_details: checkEmptyStr(pc2.vagina_details),
-                      if_abnormal__please_specify: checkEmptyStr(
-                        pc2.if_abnormal__please_specify
-                      ),
-                      if_abnormal__please_specify_1: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_1
-                      ),
-                      discharge_details: checkEmptyStr(pc2.discharge_details),
-                      if_abnormal__please_specify_2: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_2
-                      ),
-                      uterus_details: checkEmptyStr(pc2.uterus_details),
-                      if_abnormal__please_specify_3: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_3
-                      ),
-                      general_description_b738274: checkEmptyStr(
-                        pc2.general_description_b738274
-                      ),
-                      penis_details_79f31be: checkEmptyStr(
-                        pc2.penis_details_79f31be
-                      ),
-                      if_abnormal__please_specify_d03f913: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_d03f913
-                      ),
-                      urethra_and_discharge_60eb64e: checkEmptyStr(
-                        pc2.urethra_and_discharge_60eb64e
-                      ),
-                      if_abnormal__please_specify_f3f0782: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_f3f0782
-                      ),
-                      scrotal_sac_f93e04a: checkEmptyStr(
-                        pc2.scrotal_sac_f93e04a
-                      ),
-                      if_abnormal__please_specify_899040a: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_899040a
-                      ),
-                      anus_and_rectum_eaf3784: checkEmptyStr(
-                        pc2.anus_and_rectum_eaf3784
-                      ),
-                      if_abnormal__please_specify_ab4be7b: checkEmptyStr(
-                        pc2.if_abnormal__please_specify_ab4be7b
-                      ),
-                      pregnancy_test_21c37e2: checkEmptyStr(
-                        pc2.pregnancy_test_21c37e2
-                      ),
-                      sperm_check_2612983: checkEmptyStr(
-                        pc2.sperm_check_2612983
-                      ),
-                      if_positive__please_specify_location_s: checkEmptyStr(
-                        pc2.if_positive__please_specify_location_s
-                      ),
-                      acid_phosphates_118c999: checkEmptyStr(
-                        pc2.acid_phosphates_118c999
-                      ),
-                      hiv_ab_8c67abf: checkEmptyStr(pc2.hiv_ab_8c67abf),
-                      vag__smeargram_strain_fce21b2: checkEmptyStr(
-                        pc2.vag__smeargram_strain_fce21b2
-                      ),
-                      vag__parasite_7504774: checkEmptyStr(
-                        pc2.vag__parasite_7504774
-                      ),
-                      vdrl_aa8c121: checkEmptyStr(pc2.vdrl_aa8c121),
-                      hbv_ab__ag_f13b335: checkEmptyStr(pc2.hbv_ab__ag_f13b335),
-                      hcv_ab_945585c: checkEmptyStr(pc2.hcv_ab_945585c),
-                      other_exams_results__please_specify: checkEmptyStr(
-                        pc2.other_exams_results__please_specify
-                      ),
-                      date_6: checkEmptyStr(pc2.date_6),
-                      department_d8ec3cb: checkEmptyStr(pc2.department_d8ec3cb),
-                      description_1: checkEmptyStr(pc2.description_1),
-                      immediate_treatment_plan: checkEmptyStr(
-                        pc2.immediate_treatment_plan
-                      ),
-                      pregnancy_prevention_medication: checkEmptyStr(
-                        pc2.pregnancy_prevention_medication
-                      ),
-                      anti_infectious_diseases_medication: checkEmptyStr(
-                        pc2.anti_infectious_diseases_medication
-                      ),
-                      anti_hiv_medication: checkEmptyStr(
-                        pc2.anti_hiv_medication
-                      ),
-                      source_of_information_44cac9a: objFormatter(
-                        translations[
-                          sfToLookupMap['source_of_information_44cac9a']
-                        ],
-                        pc2.source_of_information_44cac9a
-                      ),
-                    }))
-                    .flat(),
+                    patient_s_weight: checkEmptyStr(pc2.patient_s_weight),
+                    patient_s_height: checkEmptyStr(pc2.patient_s_height),
+                    date_of_last_period_menstruation: checkEmptyStr(
+                      pc2.date_of_last_period_menstruation
+                    ),
+                    general_examination_results: checkEmptyStr(
+                      pc2.general_examination_results
+                    ),
+                    general_description_of_genitalia_examination: checkEmptyStr(
+                      pc2.general_description_of_genitalia_examination
+                    ),
+                    labia_minora_details: checkEmptyStr(
+                      pc2.labia_minora_details
+                    ),
+                    introitus_details: checkEmptyStr(pc2.introitus_details),
+                    hymen_details_3538ed4: checkEmptyStr(
+                      pc2.hymen_details_3538ed4
+                    ),
+                    if_teared__please_estimate_date: checkEmptyStr(
+                      pc2.if_teared__please_estimate_date
+                    ),
+                    vagina_details: checkEmptyStr(pc2.vagina_details),
+                    if_abnormal__please_specify: checkEmptyStr(
+                      pc2.if_abnormal__please_specify
+                    ),
+                    if_abnormal__please_specify_1: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_1
+                    ),
+                    discharge_details: checkEmptyStr(pc2.discharge_details),
+                    if_abnormal__please_specify_2: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_2
+                    ),
+                    uterus_details: checkEmptyStr(pc2.uterus_details),
+                    if_abnormal__please_specify_3: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_3
+                    ),
+                    general_description_b738274: checkEmptyStr(
+                      pc2.general_description_b738274
+                    ),
+                    penis_details_79f31be: checkEmptyStr(
+                      pc2.penis_details_79f31be
+                    ),
+                    if_abnormal__please_specify_d03f913: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_d03f913
+                    ),
+                    urethra_and_discharge_60eb64e: checkEmptyStr(
+                      pc2.urethra_and_discharge_60eb64e
+                    ),
+                    if_abnormal__please_specify_f3f0782: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_f3f0782
+                    ),
+                    scrotal_sac_f93e04a: checkEmptyStr(pc2.scrotal_sac_f93e04a),
+                    if_abnormal__please_specify_899040a: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_899040a
+                    ),
+                    anus_and_rectum_eaf3784: checkEmptyStr(
+                      pc2.anus_and_rectum_eaf3784
+                    ),
+                    if_abnormal__please_specify_ab4be7b: checkEmptyStr(
+                      pc2.if_abnormal__please_specify_ab4be7b
+                    ),
+                    pregnancy_test_21c37e2: checkEmptyStr(
+                      pc2.pregnancy_test_21c37e2
+                    ),
+                    sperm_check_2612983: checkEmptyStr(pc2.sperm_check_2612983),
+                    if_positive__please_specify_location_s: checkEmptyStr(
+                      pc2.if_positive__please_specify_location_s
+                    ),
+                    acid_phosphates_118c999: checkEmptyStr(
+                      pc2.acid_phosphates_118c999
+                    ),
+                    hiv_ab_8c67abf: checkEmptyStr(pc2.hiv_ab_8c67abf),
+                    vag__smeargram_strain_fce21b2: checkEmptyStr(
+                      pc2.vag__smeargram_strain_fce21b2
+                    ),
+                    vag__parasite_7504774: checkEmptyStr(
+                      pc2.vag__parasite_7504774
+                    ),
+                    vdrl_aa8c121: checkEmptyStr(pc2.vdrl_aa8c121),
+                    hbv_ab__ag_f13b335: checkEmptyStr(pc2.hbv_ab__ag_f13b335),
+                    hcv_ab_945585c: checkEmptyStr(pc2.hcv_ab_945585c),
+                    other_exams_results__please_specify: checkEmptyStr(
+                      pc2.other_exams_results__please_specify
+                    ),
+                    date_6: checkEmptyStr(pc2.date_6),
+                    department_d8ec3cb: checkEmptyStr(pc2.department_d8ec3cb),
+                    description_1: checkEmptyStr(pc2.description_1),
+                    immediate_treatment_plan: checkEmptyStr(
+                      pc2.immediate_treatment_plan
+                    ),
+                    pregnancy_prevention_medication: checkEmptyStr(
+                      pc2.pregnancy_prevention_medication
+                    ),
+                    anti_infectious_diseases_medication: checkEmptyStr(
+                      pc2.anti_infectious_diseases_medication
+                    ),
+                    anti_hiv_medication: checkEmptyStr(pc2.anti_hiv_medication),
+                    source_of_information_44cac9a: objFormatter(
+                      translations[
+                        sfToLookupMap['source_of_information_44cac9a']
+                      ],
+                      pc2.source_of_information_44cac9a
+                    ),
+                  }))
+                  .flat()
+              : [],
             preliminary_observations_2:
               cs.preliminary_observations_2 &&
               cs.preliminary_observations_2
