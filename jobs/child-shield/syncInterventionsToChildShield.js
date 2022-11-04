@@ -742,14 +742,12 @@ fn(state => {
                         ss.service_response_type
                       )
                     : null,
-                  // service_response_timeframe: ss.service_response_timeframe
-                  //   ? objFormatter(
-                  //       translations[
-                  //         sfToLookupMap['service_response_timeframe']
-                  //       ],
-                  //       ss.service_response_timeframe
-                  //     )
-                  //   : null,
+                  service_response_timeframe: ss.service_response_timeframe
+                    ? objFormatter(
+                        translations['service_response_timeframe'],
+                        ss.service_response_timeframe
+                      )
+                    : null,
                   service_location: checkEmptyStr(ss.service_location),
                   service_referral_notes: checkEmptyStr(
                     ss.service_referral_notes
