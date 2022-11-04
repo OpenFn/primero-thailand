@@ -1611,6 +1611,7 @@ each(
         source: {
           type: 'string',
           questionnaire_code: 'PSu1',
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',
           week: 1,
           value: 'เบอร์โทรศัพท์',
         },
@@ -2770,7 +2771,15 @@ each(
           type: 'varchar',
           value: 'enrolled_in_school_psu_week_14_440dc25',
         },
-        ...sharedAnswerTrueorFalse,
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'Yes',
+              1: 'No',
+            },
+          },
+        },
       },
       {
         source: {
@@ -2835,9 +2844,15 @@ each(
             questionnaire.questionsList
               .map(qn => {
                 if (qn.groupQuestionsList) {
-                  return qn.groupQuestionsList.filter(
-                    gqn => gqn.question.trim() === item.source.value
-                  );
+                  return qn.groupQuestionsList.filter(gqn => {
+                    if (item.source.groupDescription) {
+                      return (
+                        item.source.groupDescription === qn.groupDescription &&
+                        gqn.question.trim() === item.source.value
+                      );
+                    }
+                    return gqn.question.trim() === item.source.value;
+                  });
                 }
                 if (qn.question === item.source.value) return qn;
                 return [];
@@ -3499,7 +3514,7 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
+    console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
     // return { ...state, extendedCaseDetails };
     return upsertCase(
       {
