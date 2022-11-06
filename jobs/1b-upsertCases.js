@@ -2772,16 +2772,16 @@ each(
           type: 'varchar',
           value: 'enrolled_in_school_psu_week_14_440dc25',
         },
-        // answers: {
-        //   type: 'select',
-        //   value: {
-        //     score: {
-        //       0: 'Yes',
-        //       1: 'No',
-        //     },
-        //   },
-        // },
-        ...sharedAnswerTrueorFalse,
+        answers: {
+          type: 'select',
+          value: {
+            score: {
+              0: 'true',
+              1: 'false',
+            },
+          },
+        },
+        //...sharedAnswerTrueorFalse,
       },
       {
         source: {
