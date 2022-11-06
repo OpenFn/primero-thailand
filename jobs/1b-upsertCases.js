@@ -1659,8 +1659,10 @@ each(
           description: 'Sex',
           value: {
             score: {
-              0: 'Female',
-              1: 'Male',
+              // 0: 'Female',
+              // 1: 'Male',
+              0: 'female',
+              1: 'male',
             },
           },
         },
