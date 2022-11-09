@@ -1,5 +1,5 @@
+// operation 1 is a post, to get an access token
 fn(state => {
-  // operation 1 is a post, to get an access token
   return post(
     `${state.configuration.url}/Users/login`,
     {
@@ -42,18 +42,7 @@ fn(state => {
           },
         ],
       };
-      console.log('filter', JSON.stringify(filter, null, 2));
-      return get(
-        `${state.configuration.url}/people/findOne`,
-        {
-          query: { filter, access_token },
-          agentOptions: { rejectUnauthorized: false },
-        },
-        state => {
-          console.log(JSON.stringify(state.data, null, 4));
-          return { ...state, record_id: state.references[0].data.record_id };
-        }
-      )(state);
+      return { ...state, filter, access_token };
     }
   )(state).catch(error => {
     const safeData = JSON.parse(error.config.data);
@@ -91,5 +80,31 @@ fn(state => {
       default:
         throw error;
     }
+  });
+});
+
+fn(state => {
+  const { filter, access_token } = state;
+  console.log('filter', JSON.stringify(filter, null, 2));
+
+  return get(
+    `${state.configuration.url}/people/findOne`,
+    {
+      query: { filter, access_token },
+      agentOptions: { rejectUnauthorized: false },
+    },
+    state => {
+      // console.log(JSON.stringify(state.data, null, 4));
+      return { ...state, record_id: state.references[0].data.record_id };
+    }
+  )(state).catch(error => {
+    const safeError = error.response.data;
+    delete safeError.error.stack;
+
+    console.log(
+      `${safeError.error.name} with statusCode ${safeError.error.statusCode}`
+    );
+
+    throw safeError;
   });
 });
