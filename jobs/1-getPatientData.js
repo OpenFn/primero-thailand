@@ -57,7 +57,7 @@ fn(state => {
     }
   )(state).catch(error => {
     const safeData = JSON.parse(error.config.data);
-    safeData['password'] = '******';
+    // safeData['password'] = '******';
     const safeError = {
       hostname: error.hostname,
       url: error.config.url,
