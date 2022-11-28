@@ -1425,8 +1425,8 @@ each(
           type: 'select',
           questionnaire_code: 'CQ1',
           week: 14,
-         // value: '1. ฉันชอบตัวเอง',
-          value: '1. เธอชอบตัวเอง',//Updated per Tipp's request
+          // value: '1. ฉันชอบตัวเอง',
+          value: '1. เธอชอบตัวเอง', //Updated per Tipp's request
         },
         destination: {
           type: 'varchar',
@@ -1441,7 +1441,7 @@ each(
           questionnaire_code: 'CQ1',
           week: 14,
           //value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
-          value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว',// Updated per Tipp's mappings in green
+          value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว', // Updated per Tipp's mappings in green
         },
         destination: {
           type: 'varchar',
@@ -1456,7 +1456,7 @@ each(
           week: 14,
           value:
             //'3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
-              '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]',// Updated per Tipp's mappings in green
+            '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green
         },
         destination: {
           type: 'varchar',
@@ -1472,7 +1472,7 @@ each(
           questionnaire_code: 'CQ1',
           value:
             //'4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
-            '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',// Updated as per Tipp's mappings in green
+            '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green
         },
         destination: {
           type: 'varchar',
@@ -2868,8 +2868,13 @@ each(
               .flat()
               .reduce((a, v) => ({ ...a, ...v }), {});
 
+          const checkIfAnswerIsEmptyArray =
+            Array.isArray(question.answersList) && !question.answersList.length
+              ? null
+              : question.answersList;
+
           const checkIfAnswerExist =
-            question && question.answersList ? question.answersList : null;
+            question && question.answersList ? checkIfAnswerIsEmptyArray : null;
 
           switch (item.answers.type) {
             case 'int':
