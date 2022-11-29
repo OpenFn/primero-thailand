@@ -2985,7 +2985,7 @@ each(
       },
       {
         source: {
-          type: 'select',
+          type: 'string',
           value: 'mental',
         },
         destination: {
@@ -2996,7 +2996,7 @@ each(
       },
       {
         source: {
-          type: 'select',
+          type: 'string',
           value: 'physical',
         },
         destination: {
@@ -3007,7 +3007,7 @@ each(
       },
       {
         source: {
-          type: 'select',
+          type: 'string',
           value: 'sexual',
         },
         destination: {
