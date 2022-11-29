@@ -3007,8 +3007,7 @@ each(
       },
       {
         source: {
-         // type: 'string',
-          type: 'float', //testing if it should be float
+          type: 'string',
           value: 'sexual',
         },
         destination: {
