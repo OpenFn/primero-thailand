@@ -2929,16 +2929,20 @@ each(
     };
 
     const sharedAnswerRiskmodel = {
+      // answers: {
+      //   type: 'select',
+      //   value: {
+      //     en: {
+      //       L: 'low_7b4ad2c',
+      //       M: 'medium_f0c92f7',
+      //       H: 'high_b15acc5',
+      //       N: 'none_83815b2',
+      //     },
+      //   },
+      // },
       answers: {
-        type: 'select',
-        value: {
-          en: {
-            L: 'low_7b4ad2c',
-            M: 'medium_f0c92f7',
-            H: 'high_b15acc5',
-            N: 'none_83815b2',
-          },
-        },
+        type: 'string',
+        value: '',
       },
     };
 
