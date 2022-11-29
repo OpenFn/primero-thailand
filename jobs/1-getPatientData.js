@@ -94,7 +94,7 @@ fn(state => {
       agentOptions: { rejectUnauthorized: false },
     },
     state => {
-      // console.log(JSON.stringify(state.data, null, 4));
+       console.log(JSON.stringify(state.data, null, 4));
       return { ...state, record_id: state.references[0].data.record_id };
     }
   )(state).catch(error => {
