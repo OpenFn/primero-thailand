@@ -3210,7 +3210,7 @@ each(
                 };
               }
               return {
-                [item.destination.value]: [],
+                [item.destination.value]: null,
               };
 
             default:
