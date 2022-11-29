@@ -3196,7 +3196,7 @@ each(
             case 'string':
               const strAns = Array.isArray(rsm[item.answers.value])
                 ? rsm[item.answers.value][0]
-                : rsm[item.answers.value];
+                : `${rsm[item.answers.value]}`;
               return {
                 [item.destination.value]: strAns,
               };
