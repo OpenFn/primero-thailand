@@ -2972,7 +2972,7 @@ each(
         },
         destination: {
           type: 'varchar',
-          value: 'mental_37b1218',
+          value: 'mental_d2e118d',
         },
         answers: {
           type: 'string',
@@ -2986,7 +2986,7 @@ each(
         },
         destination: {
           type: 'varchar',
-          value: 'physical_dd0399d',
+          value: 'physical_aa3d640',
         },
         answers: {
           type: 'string',
@@ -3000,7 +3000,7 @@ each(
         },
         destination: {
           type: 'varchar',
-          value: 'sexual_b54b18b',
+          value: 'sexual_b2b5d48',
         },
         answers: {
           type: 'string',
