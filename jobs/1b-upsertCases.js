@@ -2928,24 +2928,6 @@ each(
         .flat();
     };
 
-    const sharedAnswerRiskmodel = {
-      // answers: {
-      //   type: 'select',
-      //   value: {
-      //     en: {
-      //       L: 'low_7b4ad2c',
-      //       M: 'medium_f0c92f7',
-      //       H: 'high_b15acc5',
-      //       N: 'none_83815b2',
-      //     },
-      //   },
-      // },
-      answers: {
-        type: 'string',
-        value: '',
-      },
-    };
-
     const mappingSpecForRiskmodel = [
       {
         source: {
@@ -2992,7 +2974,10 @@ each(
           type: 'varchar',
           value: 'mental_37b1218',
         },
-        ...sharedAnswerRiskmodel,
+        answers: {
+          type: 'string',
+          value: 'mental',
+        },
       },
       {
         source: {
@@ -3003,7 +2988,10 @@ each(
           type: 'varchar',
           value: 'physical_dd0399d',
         },
-        ...sharedAnswerRiskmodel,
+        answers: {
+          type: 'string',
+          value: 'physical',
+        },
       },
       {
         source: {
@@ -3014,7 +3002,10 @@ each(
           type: 'varchar',
           value: 'sexual_b54b18b',
         },
-        ...sharedAnswerRiskmodel,
+        answers: {
+          type: 'string',
+          value: 'sexual',
+        },
       },
       {
         source: {
