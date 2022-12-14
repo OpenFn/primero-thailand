@@ -618,7 +618,7 @@ each(
           week: 1,
           value:
             //'3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
-            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง',
+            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -797,7 +797,8 @@ each(
           type: 'varchar',
 
           value:
-            'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
+           // 'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
+              'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___cd04e17',
         },
         ...sharedAnswerCC,
       },
@@ -808,13 +809,14 @@ each(
           week: 14,
           value:
             //'3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
-            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง',
+            '3. ตีก้นเด็กหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
-            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_10d28bd',
+            //'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_10d28bd',
+              'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_e23f043',
         },
         ...sharedAnswerCC,
       },
@@ -831,7 +833,8 @@ each(
           type: 'varchar',
 
           value:
-            'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__4e0da86',
+            //'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__4e0da86',
+              'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__5c20fe8',
         },
         ...sharedAnswerCC,
       },
@@ -848,7 +851,8 @@ each(
           type: 'varchar',
 
           value:
-            'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
+           // 'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
+              'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__3a26160',
         },
         ...sharedAnswerCC,
       },
@@ -865,7 +869,8 @@ each(
           type: 'varchar',
 
           value:
-            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__607f5ec',
+            //'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__607f5ec',
+              'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__cd7d9f8',
         },
         ...sharedAnswerCC,
       },
@@ -882,7 +887,8 @@ each(
           type: 'varchar',
 
           value:
-            'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__a01eac4',
+            //'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__a01eac4',
+              'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__8e37a1e',
         },
         ...sharedAnswerCC,
       },
@@ -899,7 +905,8 @@ each(
           type: 'varchar',
 
           value:
-            'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
+           // 'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
+              'this_past_week__how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__8ee6720',
         },
         ...sharedAnswerCC,
       },
@@ -916,7 +923,8 @@ each(
           type: 'varchar',
 
           value:
-            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__f7f7a1f',
+            //'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__f7f7a1f',
+              'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__7624a3c',
         },
         ...sharedAnswerCC,
       },
@@ -933,7 +941,8 @@ each(
           type: 'varchar',
 
           value:
-            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__df0b8d7',
+            //'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__df0b8d7',
+              'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__46ddcc2',
         },
         ...sharedAnswerCC,
       },
