@@ -652,7 +652,7 @@ each(
           week: 1,
           value:
             //'5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] บอก [[(ชื่อเด็ก):caseFullName]] ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
-              '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) บอก(ชื่อเด็ก)ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
+            '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) บอก(ชื่อเด็ก)ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -669,7 +669,7 @@ each(
           week: 1,
           value:
             //'6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ขู่ว่าจะตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
-             '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ขู่ว่าจะตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
+            '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ขู่ว่าจะตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -686,7 +686,7 @@ each(
           week: 1,
           value:
             //'7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้ฝ่ามือฟาด [[(ชื่อเด็ก):caseFullName]] ที่ มือ แขน หรือขากี่ครั้ง?',
-              '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้ฝ่ามือฟาด(ชื่อเด็ก)ที่ มือ แขน หรือขากี่ครั้ง?',
+            '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้ฝ่ามือฟาด(ชื่อเด็ก)ที่ มือ แขน หรือขากี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -703,7 +703,7 @@ each(
           week: 1,
           value:
             //'8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] หยิก [[(ชื่อเด็ก):caseFullName]] เมื่อเธอทำอะไรผิดกี่ครั้ง?',
-              '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) หยิก(ชื่อเด็ก)เมื่อเธอทำอะไรผิดกี่ครั้ง?',
+            '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) หยิก(ชื่อเด็ก)เมื่อเธอทำอะไรผิดกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -720,7 +720,7 @@ each(
           week: 1,
           value:
             //'9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ด่าว่า [[(ชื่อเด็ก):caseFullName]] โง่หรือขี้เกียจกี่ครั้ง?',
-              '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ด่าว่า(ชื่อเด็ก)โง่หรือขี้เกียจกี่ครั้ง?',
+            '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ด่าว่า(ชื่อเด็ก)โง่หรือขี้เกียจกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -737,7 +737,7 @@ each(
           week: 1,
           value:
             //'10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตบหน้า [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
-              '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตบหน้า(ชื่อเด็ก)กี่ครั้ง?',
+            '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตบหน้า(ชื่อเด็ก)กี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
@@ -798,8 +798,8 @@ each(
           type: 'varchar',
 
           value:
-           // 'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
-              'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___cd04e17',
+            // 'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___4166520',
+            'this_past_week_how_many_times_does__child_s_name__yell_or_scream_at__child_s_name___cd04e17',
         },
         ...sharedAnswerCC,
       },
@@ -817,7 +817,7 @@ each(
 
           value:
             //'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_10d28bd',
-              'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_e23f043',
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__spanked___child_s_name__butt_or_somewhere_else_e23f043',
         },
         ...sharedAnswerCC,
       },
@@ -828,14 +828,14 @@ each(
           week: 14,
           value:
             //'4. ใช้คำพูดที่ไม่ดีกับเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้คำพูดที่ไม่ดีกับ [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
-             '4. ใช้คำพูดที่ไม่ดีกับเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้คำพูดที่ไม่ดีกับ(ชื่อเด็ก)กี่ครั้ง?',
+            '4. ใช้คำพูดที่ไม่ดีกับเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้คำพูดที่ไม่ดีกับ(ชื่อเด็ก)กี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
             //'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__4e0da86',
-              'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__5c20fe8',
+            'this_week_how_many_times_does__child_s_primary_caregiver__use_bad_words_to__child_s_name__5c20fe8',
         },
         ...sharedAnswerCC,
       },
@@ -846,14 +846,14 @@ each(
           week: 14,
           value:
             //'5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] บอก [[(ชื่อเด็ก):caseFullName]] ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
-              '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) บอก(ชื่อเด็ก)ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
+            '5. บอกเด็กว่าจะส่งไปอยู่ที่อื่นหรือไล่ออกจากบ้าน: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) บอก(ชื่อเด็ก)ว่าจะส่งไปอยู่ที่อื่นหรือไล่(ชื่อเด็ก)ออกจากบ้านกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
-           // 'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
-              'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__3a26160',
+            // 'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__36f26ec',
+            'during_the_past_week___name_of_primary_caregivers__told__child_s_name__that_s_he_will_be_sent_to_leave_in_other_places_or_kicked__child_s_name__out_of_the_house__3a26160',
         },
         ...sharedAnswerCC,
       },
@@ -864,14 +864,14 @@ each(
           week: 14,
           value:
             //'6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ขู่ว่าจะตีก้น [[(ชื่อเด็ก):caseFullName]] หรือตีที่อื่นกี่ครั้ง?',
-              '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ขู่ว่าจะตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
+            '6. ขู่เด็กว่าจะตีก้นหรือตีที่อื่น: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ขู่ว่าจะตีก้น(ชื่อเด็ก)หรือตีที่อื่นกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
             //'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__607f5ec',
-              'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__cd7d9f8',
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caregiver__threatening_to_spank__child_s_name__or_hit_somewhere_else__cd7d9f8',
         },
         ...sharedAnswerCC,
       },
@@ -882,14 +882,14 @@ each(
           week: 14,
           value:
             //'7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ใช้ฝ่ามือฟาด [[(ชื่อเด็ก):caseFullName]] ที่ มือ แขน หรือขากี่ครั้ง?',
-              '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้ฝ่ามือฟาด(ชื่อเด็ก)ที่ มือ แขน หรือขากี่ครั้ง?',
+            '7. ใช้ฝ่ามือฟาดเด็กที่มือ แขน หรือขา: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ใช้ฝ่ามือฟาด(ชื่อเด็ก)ที่ มือ แขน หรือขากี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
             //'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__a01eac4',
-              'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__8e37a1e',
+            'during_the_past_week__how_many_times_has__name_of_primary_caregiver__used_his_her_palm_to_hit__child_s_name__s_arm_or_leg__8e37a1e',
         },
         ...sharedAnswerCC,
       },
@@ -900,14 +900,14 @@ each(
           week: 14,
           value:
             //'8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] หยิก [[(ชื่อเด็ก):caseFullName]] เมื่อเธอทำอะไรผิดกี่ครั้ง?',
-              '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) หยิก(ชื่อเด็ก)เมื่อเธอทำอะไรผิดกี่ครั้ง?',
+            '8. หยิกเด็กเมื่อเขาทำอะไรผิด: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) หยิก(ชื่อเด็ก)เมื่อเธอทำอะไรผิดกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
-           // 'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
-              'this_past_week__how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__8ee6720',
+            // 'how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__c8b92bc',
+            'this_past_week__how_many_times_does__child_s_primary_caregiver_s_name__pinch__child_s_name__when_he_she_does_something_wrong__8ee6720',
         },
         ...sharedAnswerCC,
       },
@@ -918,14 +918,14 @@ each(
           week: 14,
           value:
             //'9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ด่าว่า [[(ชื่อเด็ก):caseFullName]] โง่หรือขี้เกียจกี่ครั้ง?',
-              '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ด่าว่า(ชื่อเด็ก)โง่หรือขี้เกียจกี่ครั้ง?',
+            '9. ด่าว่าเด็กโง่หรือขี้เกียจ: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ด่าว่า(ชื่อเด็ก)โง่หรือขี้เกียจกี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
             //'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__f7f7a1f',
-              'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__7624a3c',
+            'this_past_week__how_many_times_have__name_of_the_child_s_primary_caretaker__scolding__child_s_name__stupid_or_lazy__7624a3c',
         },
         ...sharedAnswerCC,
       },
@@ -936,14 +936,14 @@ each(
           week: 14,
           value:
             //'10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] ตบหน้า [[(ชื่อเด็ก):caseFullName]] กี่ครั้ง?',
-              '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตบหน้า(ชื่อเด็ก)กี่ครั้ง?',
+            '10. ตบหน้าเด็ก: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) ตบหน้า(ชื่อเด็ก)กี่ครั้ง?',
         },
         destination: {
           type: 'varchar',
 
           value:
             //'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__df0b8d7',
-              'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__46ddcc2',
+            'this_past_week__how_many_times_has__name_of_the_child_s_primary_caregiver__slapped__child_s_name__face__46ddcc2',
         },
         ...sharedAnswerCC,
       },
@@ -1220,7 +1220,7 @@ each(
           week: 1,
           value:
             //'9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
-          '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
+            '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
         },
         destination: {
           type: 'varchar',
@@ -1235,8 +1235,8 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-           // '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
-          '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+            // '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
         },
         destination: {
           type: 'varchar',
@@ -1251,8 +1251,8 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
           value:
-           // '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
-          '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+            // '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
         },
         destination: {
           type: 'varchar',
@@ -1380,7 +1380,7 @@ each(
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
           value:
-           // '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
+            // '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
             '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
         },
         destination: {
@@ -1413,7 +1413,7 @@ each(
           week: 14,
           value:
             //'10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
-              '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
+            '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
         },
         destination: {
           type: 'varchar',
@@ -1429,7 +1429,7 @@ each(
           week: 14,
           value:
             //'11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
-             '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
+            '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
         },
         destination: {
           type: 'varchar',
@@ -1463,7 +1463,7 @@ each(
           type: 'select',
           questionnaire_code: 'CQ1',
           week: 14,
-           value: '1. ฉันชอบตัวเอง',
+          value: '1. ฉันชอบตัวเอง',
           //value: '1. เธอชอบตัวเอง', //Updated per Tipp's request in green  //Reverting to original upon Tipp's review
         },
         destination: {
@@ -1492,7 +1492,8 @@ each(
           type: 'select',
           questionnaire_code: 'CQ1',
           week: 14,
-          value: '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
+          value:
+            '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
           //value: '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green  //Reverting to original upon Tipp's review
         },
         destination: {
@@ -1507,8 +1508,9 @@ each(
           type: 'select',
           week: 14,
           questionnaire_code: 'CQ1',
-          value: '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
-            //value: '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          value:
+            '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
+          //value: '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
         },
         destination: {
           type: 'varchar',
@@ -2338,7 +2340,8 @@ each(
           type: 'select',
           questionnaire_code: 'PSu2',
           //JS adding group description to narrow down selected question
-          groupDescription: 'ส่วนที่ 1 รายละเอียดเกี่ยวกับภูมิหลังของคุณ (6 ข้อ)',
+          groupDescription:
+            'ส่วนที่ 1 รายละเอียดเกี่ยวกับภูมิหลังของคุณ (6 ข้อ)',
           week: 14,
           value:
             '1. ในเดือนที่ผ่านมานี้ คุณมีเงินไม่พอสำหรับใช้ซื้ออาหารหรือของใช้ที่จำเป็นหรือไม่',
@@ -2913,21 +2916,22 @@ each(
           //     ? null
           //     : question.answersList;
 
-         const existingQuestion =
-              question &&
-              typeof question !== "undefined" &&
-              Object.entries(question).length !== 0
-                ? question
-                : null;
-            
-            const checkIfAnswerIsEmptyArray = (answersList) => {
-              Array.isArray(answersList) && !answersList.length ? null : answersList;
-            };
-            
-            const checkIfAnswerExist = existingQuestion
-              ? checkIfAnswerIsEmptyArray(existingQuestion.answersList)
+          const existingQuestion =
+            question &&
+            typeof question !== 'undefined' &&
+            Object.entries(question).length !== 0
+              ? question
               : null;
 
+          const checkIfAnswerIsEmptyArray = answersList => {
+            Array.isArray(answersList) && !answersList.length
+              ? null
+              : answersList;
+          };
+
+          const checkIfAnswerExist = existingQuestion
+            ? checkIfAnswerIsEmptyArray(existingQuestion.answersList)
+            : null;
 
           switch (item.answers.type) {
             case 'int':
