@@ -2907,11 +2907,11 @@ each(
               .reduce((a, v) => ({ ...a, ...v }), {});
 
           // console.log(question)
-          const checkIfAnswerIsEmptyArray =
-            typeof question !== 'undefined' &&
-                Array.isArray(question.answersList) && !question.answersList.length
-              ? null
-              : question.answersList;
+          // const checkIfAnswerIsEmptyArray =
+          //   typeof question !== 'undefined' &&
+          //       Array.isArray(question.answersList) && !question.answersList.length
+          //     ? null
+          //     : question.answersList;
 
          const checkIfAnswerExist =
   typeof question !== "undefined" && Object.entries(question).length !== 0
