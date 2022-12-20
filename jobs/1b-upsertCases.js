@@ -2913,12 +2913,21 @@ each(
           //     ? null
           //     : question.answersList;
 
-         const checkIfAnswerExist =
-  typeof question !== "undefined" && Object.entries(question).length !== 0
-    ? null
-    : Array.isArray(question.answersList) && !question.answersList.length
-    ? null
-    : question.answersList;
+         const existingQuestion =
+              question &&
+              typeof question !== "undefined" &&
+              Object.entries(question).length !== 0
+                ? question
+                : null;
+            
+            const checkIfAnswerIsEmptyArray = (answersList) => {
+              Array.isArray(answersList) && !answersList.length ? null : answersList;
+            };
+            
+            const checkIfAnswerExist = existingQuestion
+              ? checkIfAnswerIsEmptyArray(existingQuestion.answersList)
+              : null;
+
 
           switch (item.answers.type) {
             case 'int':
