@@ -2913,8 +2913,11 @@ each(
               ? null
               : question.answersList;
 
-          const checkIfAnswerExist =
-            question && question.answersList ? checkIfAnswerIsEmptyArray : null;
+          const checkIfAnswerExist = const checkIfAnswerExist =
+  typeof question !== "undefined" && Object.entries(question).length !== 0;
+Array.isArray(question.answersList) && !question.answersList.length
+  ? null
+  : question.answersList;
 
           switch (item.answers.type) {
             case 'int':
