@@ -2913,8 +2913,8 @@ each(
               ? null
               : question.answersList;
 
-          const checkIfAnswerExist = const checkIfAnswerExist =
-  typeof question !== "undefined" && Object.entries(question).length !== 0;
+         const checkIfAnswerExist =
+  typeof question !== "undefined" && Object.entries(question).length !== 0
 Array.isArray(question.answersList) && !question.answersList.length
   ? null
   : question.answersList;
