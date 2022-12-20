@@ -2908,7 +2908,8 @@ each(
 
           console.log(question)
           const checkIfAnswerIsEmptyArray =
-            question && Array.isArray(question.answersList) && !question.answersList.length
+            typeof question !== 'undefined' &&
+                Array.isArray(question.answersList) && !question.answersList.length
               ? null
               : question.answersList;
 
