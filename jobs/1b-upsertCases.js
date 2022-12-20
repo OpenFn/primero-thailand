@@ -2337,6 +2337,8 @@ each(
         source: {
           type: 'select',
           questionnaire_code: 'PSu2',
+          //JS adding group description to narrow down selected question
+          groupDescription: 'ส่วนที่ 1 รายละเอียดเกี่ยวกับภูมิหลังของคุณ (6 ข้อ)',
           week: 14,
           value:
             '1. ในเดือนที่ผ่านมานี้ คุณมีเงินไม่พอสำหรับใช้ซื้ออาหารหรือของใช้ที่จำเป็นหรือไม่',
