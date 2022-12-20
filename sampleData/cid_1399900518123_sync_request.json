@@ -1,0 +1,35 @@
+{
+  "__query_params": {},
+  "data": {
+    "alert_count": 0,
+    "associated_user_names": [
+      "primero_cp"
+    ],
+    "case_id": "9562c09a-c262-4643-9d4a-442a77e9d5a5",
+    "case_id_display": "7e9d5a5",
+    "consent_for_services": true,
+    "created_at": "2022-12-19T03:55:27.812Z",
+    "created_by": "primero_cp",
+    "created_organization": "UNICEF",
+    "disclosure_other_orgs": true,
+    "hostname": "demo-care-thai-kids.primero.org",
+    "last_updated_at": "2022-12-19T10:01:37.606Z",
+    "last_updated_by": "open_function",
+    "module_id": "primeromodule-cp",
+    "national_id_no": "1399900518123",
+    "owned_by": "primero_cp",
+    "owned_by_agency_id": "UNICEF",
+    "owned_by_groups": [
+      "usergroup-primero-cp"
+    ],
+    "record_id": "e49e4bf1-c0e0-4f48-abf7-41a4033835f0",
+    "record_in_scope": false,
+    "record_state": true,
+    "record_type": "case",
+    "registration_date": "2022-12-19",
+    "reopened_logs": [],
+    "short_id": "7e9d5a5",
+    "status": "open",
+    "workflow": "new"
+  }
+}
