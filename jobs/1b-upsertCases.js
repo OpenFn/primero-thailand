@@ -2906,7 +2906,7 @@ each(
               .flat()
               .reduce((a, v) => ({ ...a, ...v }), {});
 
-          consol.log(question)
+          console.log(question)
           const checkIfAnswerIsEmptyArray =
             Array.isArray(question.answersList) && !question.answersList.length
               ? null
