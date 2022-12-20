@@ -2906,7 +2906,7 @@ each(
               .flat()
               .reduce((a, v) => ({ ...a, ...v }), {});
 
-          console.log(question)
+          // console.log(question)
           const checkIfAnswerIsEmptyArray =
             typeof question !== 'undefined' &&
                 Array.isArray(question.answersList) && !question.answersList.length
