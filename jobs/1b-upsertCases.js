@@ -2908,7 +2908,7 @@ each(
 
           console.log(question)
           const checkIfAnswerIsEmptyArray =
-            Array.isArray(question.answersList) && !question.answersList.length
+            question && Array.isArray(question.answersList) && !question.answersList.length
               ? null
               : question.answersList;
 
