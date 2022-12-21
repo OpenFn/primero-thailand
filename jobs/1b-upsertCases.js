@@ -2888,6 +2888,15 @@ each(
             item.source.questionnaire_code,
             item.source.week
           );
+
+          // Log missing questinare data for a given question
+          if (typeof questionnaire === 'boolean' && !questionnaire) {
+            console.log(`For question "${item.source.value}"`);
+            console.log(
+              `Missing week "${item.source.week}" questionare data for questionnaire_code" ${item.source.questionnaire_code}\n`
+            );
+          }
+
           const question =
             questionnaire.questionsList &&
             questionnaire.questionsList
@@ -3579,8 +3588,8 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
-    // return { ...state, extendedCaseDetails };
+    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
+    return { ...state, extendedCaseDetails };
     return upsertCase(
       {
         externalIds: ['record_id'],
