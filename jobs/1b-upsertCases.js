@@ -3588,8 +3588,8 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
-    return { ...state, extendedCaseDetails };
+    console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
+    // return { ...state, extendedCaseDetails };
     return upsertCase(
       {
         externalIds: ['record_id'],
