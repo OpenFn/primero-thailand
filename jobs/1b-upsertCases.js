@@ -595,26 +595,6 @@ each(
         },
         ...sharedAnswerCC,
       },
-        //Start of repeat
-       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CC',
-          week: 1,
-          value:
-            '1. การจับตัวเด็กเขย่า: ในสัปดาห์ที่ผ่านมานี้ [[(ชื่อผู้ดูแลหลักของเด็ก):careGiverFullName]] จับตัว [[(ชื่อเด็ก):caseFullName]] เขย่ากี่ครั้ง?',
-            //'1. การจับตัวเด็กเขย่า: ในสัปดาห์ที่ผ่านมานี้ (ชื่อผู้ดูแลหลักของเด็ก) จับตัว(ชื่อเด็ก)เขย่ากี่ครั้ง?',
-          
-        },
-        destination: {
-          type: 'varchar',
-
-          value:
-            'this_past_week__name_of_the_child_s_primary_caregiver__how_many_times_did_you_shake__child_s_name___e9ccdbd',
-        },
-        ...sharedAnswerCC,
-      },
-        //End of repeat
       {
         source: {
           type: 'select',
