@@ -1571,7 +1571,8 @@ each(
         source: {
           type: 'select',
           questionnaire_code: 'CQ1',
-          week: 1,
+          //week: 1, //To fix errors observed
+          week: 14, 
           value:
             '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
         },
