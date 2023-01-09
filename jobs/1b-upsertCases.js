@@ -1608,8 +1608,8 @@ each(
           questionnaire_code: 'PSu1',
           groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
-          //value: 'ชื่อของคุณ',
-            value: 'ชื่อของ',
+          value: 'ชื่อของคุณ',  //Uncommented to test cid 1419902698527
+          //value: 'ชื่อของ',
         },
         destination: {
           type: 'varchar',
@@ -1627,8 +1627,8 @@ each(
           questionnaire_code: 'PSu1',
           groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
-          //value: 'นามสกุล',
-            value: 'นามสกุ',
+          value: 'นามสกุล', //uncommented to test cid 1419902698527
+          //value: 'นามสกุ',
         },
         destination: {
           type: 'varchar',
