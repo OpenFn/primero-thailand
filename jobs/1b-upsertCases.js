@@ -1607,7 +1607,8 @@ each(
           type: 'string',
           questionnaire_code: 'PSu1',
           week: 1,
-          value: 'ชื่อของคุณ',
+          //value: 'ชื่อของคุณ',
+            value: 'ชื่อของ',
         },
         destination: {
           type: 'varchar',
@@ -1624,7 +1625,8 @@ each(
           type: 'string',
           questionnaire_code: 'PSu1',
           week: 1,
-          value: 'นามสกุล',
+          //value: 'นามสกุล',
+            value: 'นามสกุ',
         },
         destination: {
           type: 'varchar',
@@ -1641,7 +1643,8 @@ each(
           type: 'string',
           questionnaire_code: 'PSu1',
           week: 1,
-          value: 'ที่อยู่',
+          //value: 'ที่อยู่',
+            value: 'ที่อยู่ ',
         },
         destination: {
           type: 'varchar',
@@ -1659,7 +1662,8 @@ each(
           questionnaire_code: 'PSu1',
           groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',
           week: 1,
-          value: 'เบอร์โทรศัพท์',
+          //value: 'เบอร์โทรศัพท์',
+            value: 'เบอร์โทรศัพท ',
         },
         destination: {
           type: 'varchar',
@@ -1673,10 +1677,12 @@ each(
       },
       {
         source: {
-          type: 'int',
+          //type: 'int',
+          type: 'string', //suspected string
           questionnaire_code: 'PSu1',
           week: 1,
-          value: '1. คุณมีอายุเท่าใด',
+          //value: '1. คุณมีอายุเท่าใด',
+            value: '1. คุณมีอายุเท่าใด',
         },
         destination: {
           type: 'int',
