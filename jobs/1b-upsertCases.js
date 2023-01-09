@@ -1606,6 +1606,7 @@ each(
         source: {
           type: 'string',
           questionnaire_code: 'PSu1',
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
           //value: 'ชื่อของคุณ',
             value: 'ชื่อของ',
@@ -1624,6 +1625,7 @@ each(
         source: {
           type: 'string',
           questionnaire_code: 'PSu1',
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
           //value: 'นามสกุล',
             value: 'นามสกุ',
@@ -1642,6 +1644,7 @@ each(
         source: {
           type: 'string',
           questionnaire_code: 'PSu1',
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
           //value: 'ที่อยู่',
             value: 'ที่อยู่ ',
@@ -1678,8 +1681,8 @@ each(
       {
         source: {
           //type: 'int',
-          type: 'string', //suspected string
           questionnaire_code: 'PSu1',
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',   //JS added to narrow down question
           week: 1,
           //value: '1. คุณมีอายุเท่าใด',
             value: '1. คุณมีอายุเท่าใด',
