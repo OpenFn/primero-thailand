@@ -1603,6 +1603,7 @@ each(
           type: 'string',
           questionnaire_code: 'PSu1',
           week: 1,
+          groupDescription: 'ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ',
           value: 'ชื่อของคุณ',
         },
         destination: {
@@ -2932,24 +2933,35 @@ each(
               ? question
               : null;
 
-          const checkIfAnswerIsEmptyArray = answersList => {
-            Array.isArray(answersList) && !answersList.length
-              ? null
-              : answersList;
+          const checkIfAnswerExist = () => {
+            if (
+              existingQuestion &&
+              existingQuestion.hasOwnProperty('answersList')
+            ) {
+              // console.log(typeof existingQuestion.answersList);
+              switch (typeof existingQuestion.answersList) {
+                case 'object':
+                  return Array.isArray(existingQuestion.answersList) &&
+                    !existingQuestion.answersList.length
+                    ? null
+                    : existingQuestion.answersList;
+                case 'string':
+                  return existingQuestion.answersList
+                    ? existingQuestion.answersList
+                    : null;
+                default:
+              }
+            }
           };
-
-          const checkIfAnswerExist = existingQuestion
-            ? checkIfAnswerIsEmptyArray(existingQuestion.answersList)
-            : null;
 
           switch (item.answers.type) {
             case 'int':
               return {
-                [item.destination.value]: parseInt(checkIfAnswerExist),
+                [item.destination.value]: parseInt(checkIfAnswerExist()),
               };
             case 'string':
               return {
-                [item.destination.value]: checkIfAnswerExist,
+                [item.destination.value]: checkIfAnswerExist(),
               };
             case 'select':
               const checkIfAnswerExistChecked =
@@ -3588,7 +3600,7 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
+    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
     // return { ...state, extendedCaseDetails };
     return upsertCase(
       {
