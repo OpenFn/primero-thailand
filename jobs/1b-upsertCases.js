@@ -2930,13 +2930,6 @@ each(
               .flat()
               .reduce((a, v) => ({ ...a, ...v }), {});
 
-          // console.log(question)
-          // const checkIfAnswerIsEmptyArray =
-          //   typeof question !== 'undefined' &&
-          //       Array.isArray(question.answersList) && !question.answersList.length
-          //     ? null
-          //     : question.answersList;
-
           const existingQuestion =
             question &&
             typeof question !== 'undefined' &&
@@ -3612,7 +3605,7 @@ each(
     };
 
     console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
-    return { ...state, extendedCaseDetails };
+    // return { ...state, extendedCaseDetails };
     return upsertCase(
       {
         externalIds: ['record_id'],
