@@ -3612,7 +3612,7 @@ each(
       ...flattenMappingForRiskModel,
     };
 
-    // console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
+    console.log('Upserting case', JSON.stringify(extendedCaseDetails, null, 2));
     // return { ...state, extendedCaseDetails };
     return upsertCase(
       {
