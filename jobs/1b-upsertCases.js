@@ -951,7 +951,7 @@ each(
         source: {
           type: 'date',
           description: 'CQ1 First assessment date',
-          questionnaire_code: 'CQ1',
+          questionnaire_code: 'CQ1 || AUQUEI_CQ2',
           week: 1,
           value: '',
         },
@@ -1444,7 +1444,7 @@ each(
         source: {
           type: 'date',
           description: 'CQ1 14th assessment date',
-          questionnaire_code: 'CQ1',
+          questionnaire_code: 'CQ1 || AUQUEI_CQ2',
           week: 14,
           value: '',
         },
@@ -2875,10 +2875,20 @@ each(
         .map(activity => activity.questionnaire)
         .flat();
 
-      const getQuestionnaire = (questionnaire_code, week) => {
-        const qnnaire = questionnaires.filter(
-          qnare => qnare.questionnaire_code === questionnaire_code
+      const checkQC = c =>
+        questionnaires.filter(
+          qnare => qnare.questionnaire_code === c.replace(/\s/g, '')
         );
+
+      const getQuestionnaire = (questionnaire_code, week) => {
+        const qc = questionnaire_code.split('||');
+
+        // If we have two questionare check the first questionare
+        // If no 1st questinare then use the second questionare
+        const qnnaire =
+          qc.length > 1 && checkQC(qc[0]).length === 0
+            ? checkQC(qc[1])
+            : checkQC(qc[0]);
 
         return (
           qnnaire.length > 0 &&
@@ -3000,6 +3010,7 @@ each(
               };
             // break;
             case 'date':
+              // console.log(item.destination.value, questionnaire.date);
               return {
                 [item.destination.value]: questionnaire.date,
               };
