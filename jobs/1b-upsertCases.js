@@ -1089,6 +1089,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             '1. บางครั้งเธอรู้สึก ... (จากภาพด้านล่าง ขอให้เลือกเพียงคำตอบเดียว และระบุเหตุผลด้วยว่าเพราะอะไรจึงรู้สึกเช่นนั้น)',
         },
@@ -1103,6 +1105,8 @@ each(
           type: 'string',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: 'จากภาพที่เลือกด้านบนนั้น จงบอกว่าเพราะอะไรจึงรู้สึกเช่นนั้น',
         },
         destination: {
@@ -1121,6 +1125,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             '2. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
         },
@@ -1135,6 +1141,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุข (ตามภาพหมายเลข 2 นี้)',
         },
@@ -1149,6 +1157,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมายเลข 3 นี้)',
         },
         destination: {
@@ -1162,6 +1172,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: '5. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุขมาก (ตามภาพหมายเลข 4 นี้)',
         },
         destination: {
@@ -1175,6 +1187,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: '6. เธอรู้สึกอย่างไรเวลาที่นั่งกินอาหารเย็นกับครอบครัว?',
         },
         destination: {
@@ -1189,6 +1203,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: '7. เธอรู้สึกอย่างไรเวลาเข้านอนตอนกลางคืน?',
         },
         destination: {
@@ -1202,6 +1218,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
             '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
@@ -1218,6 +1236,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
             '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
@@ -1234,6 +1254,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             // '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
             '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
@@ -1250,6 +1272,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 1,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             // '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
             '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
@@ -1266,6 +1290,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             '1. บางครั้งเธอรู้สึก ... (จากภาพด้านล่าง ขอให้เลือกเพียงคำตอบเดียว และระบุเหตุผลด้วยว่าเพราะอะไรจึงรู้สึกเช่นนั้น)',
         },
@@ -1280,6 +1306,8 @@ each(
           type: 'string',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: 'จากภาพที่เลือกด้านบนนั้น จงบอกว่าเพราะอะไรจึงรู้สึกเช่นนั้น',
         },
         destination: {
@@ -1298,6 +1326,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             '2. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
         },
@@ -1312,6 +1342,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุขเลย (ตามภาพหมายเลข 1 นี้)',
             '3. บ่อยแค่ไหนที่เธอรู้สึก...ไม่มีความสุข (ตามภาพหมายเลข 2 นี้)',
@@ -1327,6 +1359,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           //value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมaายเลข 3 นี้)',
           value: '4. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุข (ตามภาพหมายเลข 3 นี้)',
         },
@@ -1340,6 +1374,8 @@ each(
         source: {
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           week: 14,
           value: '5. บ่อยแค่ไหนที่เธอรู้สึก…มีความสุขมาก (ตามภาพหมายเลข 4 นี้)',
         },
@@ -1353,6 +1389,8 @@ each(
         source: {
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           week: 14,
           value: '6. เธอรู้สึกอย่างไรเวลาที่นั่งกินอาหารเย็นกับครอบครัว?',
         },
@@ -1368,6 +1406,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value: '7. เธอรู้สึกอย่างไรเวลาเข้านอนตอนกลางคืน?',
         },
         destination: {
@@ -1381,6 +1421,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             // '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
             '8. เธอรู้สึกอย่างไรเวลาที่เธอคิดถึง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
@@ -1397,6 +1439,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]]?',
             '9. เธอรู้สึกอย่างไรเวลาที่เธอเล่นกับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]?',
@@ -1413,6 +1457,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] พูดถึงเธอ?',
             '10. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] พูดถึงเธอ?',
@@ -1429,6 +1475,8 @@ each(
           type: 'select',
           questionnaire_code: 'AUQUEI_CQ2',
           week: 14,
+          groupDescription:
+            'ส่วนที่ 1: แบบสอบถามคุณภาพชีวิต (AUQUEI) จำนวน 11 ข้อ',
           value:
             //'11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverName]] บอกให้เธอทำอะไรต่างๆ?',
             '11. เธอรู้สึกอย่างไรเวลาที่ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] บอกให้เธอทำอะไรต่างๆ?',
@@ -1460,14 +1508,25 @@ each(
           },
         },
       },
+
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 14,
-          value: '1. ฉันชอบตัวเอง',
-          //value: '1. เธอชอบตัวเอง', //Updated per Tipp's request in green  //Reverting to original upon Tipp's review
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            week: 14,
+            value: '1. เธอชอบตัวเอง',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 14,
+            value: '1. ฉันชอบตัวเอง',
+            //value: '1. เธอชอบตัวเอง', //Updated per Tipp's request in green  //Reverting to original upon Tipp's review
+          },
+        ],
         destination: {
           type: 'varchar',
 
@@ -1476,13 +1535,23 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 14,
-          value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
-          //value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว', // Updated per Tipp's mappings in green //Reverting to original upon Tipp's review
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 14,
+            value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
+            //value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว', // Updated per Tipp's mappings in green //Reverting to original upon Tipp's review
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว',
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+          },
+        ],
         destination: {
           type: 'varchar',
           value: 'i_feel_happy_when_i_am_having_dinner_with_my_family_690fd8e',
@@ -1490,14 +1559,25 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 14,
-          value:
-            '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
-          //value: '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green  //Reverting to original upon Tipp's review
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 14,
+            value:
+              '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
+            //value: '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1506,14 +1586,25 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          week: 14,
-          questionnaire_code: 'CQ1',
-          value:
-            '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
-          //value: '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
-        },
+        source: [
+          {
+            type: 'select',
+            week: 14,
+            questionnaire_code: 'CQ1',
+            value:
+              '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
+            //value: '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+        ],
         destination: {
           type: 'varchar',
 
@@ -1538,12 +1629,22 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 14,
-          value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 14,
+            value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value: '5. เธออยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1552,13 +1653,24 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 14,
-          value:
-            '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 14,
+            value:
+              '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '6. เธอเชื่อฟัง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1567,14 +1679,25 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          //week: 1, //To fix errors observed
-          week: 14,
-          value:
-            '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            //week: 1, //To fix errors observed
+            week: 14,
+            value:
+              '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 14,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '7. เธอทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -2905,36 +3028,47 @@ each(
 
       return mappingSpecForPLH
         .map(item => {
-          // find question
+          const source = {};
+          if (Array.isArray(item.source)) {
+            item.source.forEach(src => {
+              if (getQuestionnaire(src.questionnaire_code, src.week)) {
+                return Object.assign(source, src);
+              }
+            });
+          } else {
+            Object.assign(source, item.source);
+          }
+
+          // find questionnaire
           const questionnaire = getQuestionnaire(
-            item.source.questionnaire_code,
-            item.source.week
+            source.questionnaire_code,
+            source.week
           );
 
           // Log missing questinare data for a given question
           if (typeof questionnaire === 'boolean' && !questionnaire) {
-            console.log(`For question "${item.source.value}"`);
+            console.log(`For question "${source.value}"`);
             console.log(
-              `Missing week "${item.source.week}" questionare data for questionnaire_code" ${item.source.questionnaire_code}\n`
+              `Missing week "${source.week}" questionare data for questionnaire_code" ${source.questionnaire_code}\n`
             );
           }
-
+          // find question
           const question =
             questionnaire.questionsList &&
             questionnaire.questionsList
               .map(qn => {
                 if (qn.groupQuestionsList) {
                   return qn.groupQuestionsList.filter(gqn => {
-                    if (item.source.groupDescription) {
+                    if (source.groupDescription) {
                       return (
-                        item.source.groupDescription === qn.groupDescription &&
-                        gqn.question.trim() === item.source.value
+                        source.groupDescription === qn.groupDescription &&
+                        gqn.question.trim() === source.value
                       );
                     }
-                    return gqn.question.trim() === item.source.value;
+                    return gqn.question.trim() === source.value;
                   });
                 }
-                if (qn.question === item.source.value) return qn;
+                if (qn.question === source.value) return qn;
                 return [];
               })
               .flat()
