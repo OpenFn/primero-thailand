@@ -968,12 +968,24 @@ each(
         },
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value: '1. ฉันชอบตัวเอง',
-        },
+        source: [
+          {
+            type: 'select',
+            week: 1,
+            questionnaire_code: 'AUQUEI_CQ2',
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            week: 1,
+            value: '1. เธอชอบตัวเอง',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value: '1. ฉันชอบตัวเอง',
+          },
+        ],
+
         destination: {
           type: 'varchar',
 
@@ -982,12 +994,22 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value: '2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            value: '2. เธอมีความสุขที่ได้กินข้าวกับครอบครัว',
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+          },
+        ],
         destination: {
           type: 'varchar',
           value: 'i_feel_happy_when_i_am_having_dinner_with_my_family_f8a8d82',
@@ -995,13 +1017,24 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value:
-            '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value:
+              '3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]]',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '3. เธอรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]]', // Updated per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1010,13 +1043,24 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          week: 1,
-          questionnaire_code: 'CQ1',
-          value:
-            '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
-        },
+        source: [
+          {
+            type: 'select',
+            week: 1,
+            questionnaire_code: 'CQ1',
+            value:
+              '4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '4. เธอแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น', // Updated as per Tipp's mappings in green  //Reverting to original upon Tipp's review
+          },
+        ],
         destination: {
           type: 'varchar',
 
@@ -1041,12 +1085,22 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value: '6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value: '5. เธออยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1055,13 +1109,24 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value:
-            '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value:
+              '7. ฉันเชื่อฟัง [[(ระบุชื่อผู้เข้าอบรม PLH):careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '6. เธอเชื่อฟัง [[ผู้ดูแลที่เข้าร่วมอบรม:careGiverCalledName]] และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
@@ -1070,13 +1135,24 @@ each(
         ...sharedAnswerCQ1,
       },
       {
-        source: {
-          type: 'select',
-          questionnaire_code: 'CQ1',
-          week: 1,
-          value:
-            '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
-        },
+        source: [
+          {
+            type: 'select',
+            questionnaire_code: 'CQ1',
+            week: 1,
+            value:
+              '8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+          },
+          {
+            type: 'select',
+            questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
+            groupDescription:
+              'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
+            value:
+              '7. เธอทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน',
+          },
+        ],
         destination: {
           type: 'varchar',
           value:
