@@ -3235,10 +3235,9 @@ each(
 
               const answer = ans => {
                 if (isValidAnswer && Array.isArray(ans)) {
+                  // console.log(question.answersList);
                   const filterAns =
-                    checkIfAnswerExistChecked[0].score === '3'
-                      ? ans[0]
-                      : ans[1];
+                    question.answersList.length === 4 ? ans[0] : ans[1];
 
                   // console.log(filterAns);
 
