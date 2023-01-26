@@ -1000,6 +1000,7 @@ each(
           {
             type: 'select',
             questionnaire_code: 'AUQUEI_CQ2',
+            week: 1,
             groupDescription:
               'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
             value: '1. เธอชอบตัวเอง',
