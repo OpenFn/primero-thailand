@@ -993,17 +993,16 @@ each(
         source: [
           {
             type: 'select',
+            questionnaire_code: 'CQ1',
             week: 1,
+            value: '1. ฉันชอบตัวเอง',
+          },
+          {
+            type: 'select',
             questionnaire_code: 'AUQUEI_CQ2',
             groupDescription:
               'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
             value: '1. เธอชอบตัวเอง',
-          },
-          {
-            type: 'select',
-            questionnaire_code: 'CQ1',
-            week: 1,
-            value: '1. ฉันชอบตัวเอง',
           },
         ],
 
