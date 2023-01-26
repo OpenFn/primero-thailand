@@ -343,23 +343,45 @@ each(
     const sharedAnswerCQ1 = {
       answers: {
         type: 'select',
-        value: {
-          score: {
-            2: 'all_true_5a417ab',
-            1: 'partially_true_35fa7e6',
-            0: 'not_true_5c4d297',
+        value: [
+          {
+            score: {
+              3: 'all_true_5a417ab',
+              2: 'mostly_true_1d991b0',
+              1: 'partially_true_35fa7e6',
+              0: 'not_true_5c4d297',
+            },
+            th: {
+              เป็นจริงทั้งหมด: 'all_true_5a417ab',
+              เป็นจริงส่วนใหญ่: 'mostly_true_1d991b0',
+              เป็นจริงบางส่วน: 'partially_true_35fa7e6',
+              ไม่จริงเลย: 'not_true_5c4d297',
+            },
+            en: {
+              'All true': 'all_true_5a417ab',
+              'Mostly true': 'mostly_true_1d991b0',
+              'Partially true': 'partially_true_35fa7e6',
+              'Not true': 'not_true_5c4d297',
+            },
           },
-          th: {
-            เป็นจริงทั้งหมด: 'all_true_5a417ab',
-            เป็นจริงบางส่วน: 'partially_true_35fa7e6',
-            ไม่จริงเลย: 'not_true_5c4d297',
+          {
+            score: {
+              2: 'all_true_5a417ab',
+              1: 'partially_true_35fa7e6',
+              0: 'not_true_5c4d297',
+            },
+            th: {
+              เป็นจริงทั้งหมด: 'all_true_5a417ab',
+              เป็นจริงบางส่วน: 'partially_true_35fa7e6',
+              ไม่จริงเลย: 'not_true_5c4d297',
+            },
+            en: {
+              'All true': 'all_true_5a417ab',
+              'Partially true': 'partially_true_35fa7e6',
+              'Not true': 'not_true_5c4d297',
+            },
           },
-          en: {
-            'All true': 'all_true_5a417ab',
-            'Partially true': 'partially_true_35fa7e6',
-            'Not true': 'not_true_5c4d297',
-          },
-        },
+        ],
       },
     };
 
@@ -975,7 +997,6 @@ each(
             questionnaire_code: 'AUQUEI_CQ2',
             groupDescription:
               'ส่วนที่ 2: แบบสอบถามคุณภาพชีวิตฉบับเพิ่มเติม (CQ2) จำนวน 7 ข้อ',
-            week: 1,
             value: '1. เธอชอบตัวเอง',
           },
           {
@@ -988,7 +1009,6 @@ each(
 
         destination: {
           type: 'varchar',
-
           value: 'i_feel_happy_with_myself_d73ec12',
         },
         ...sharedAnswerCQ1,
@@ -3209,14 +3229,30 @@ each(
                 );
               }
 
-              const answer =
+              const isValidAnswer =
                 Array.isArray(checkIfAnswerExistChecked) &&
-                typeof checkIfAnswerExistChecked[0] !== 'undefined'
-                  ? item.answers.value.score[checkIfAnswerExistChecked[0].score]
-                  : null;
+                typeof checkIfAnswerExistChecked[0] !== 'undefined';
 
+              const answer = ans => {
+                if (isValidAnswer && Array.isArray(ans)) {
+                  const filterAns = ans.filter(
+                    src =>
+                      typeof src.score[checkIfAnswerExistChecked[0].score] !==
+                      'undefined'
+                  );
+
+                  return filterAns
+                    ? filterAns[0].score[checkIfAnswerExistChecked[0].score]
+                    : null;
+                } else {
+                  return isValidAnswer
+                    ? ans.score[checkIfAnswerExistChecked[0].score]
+                    : null;
+                }
+              };
+              // console.log(item.destination.value, answer(item.answers.value));
               return {
-                [item.destination.value]: answer,
+                [item.destination.value]: answer(item.answers.value),
               };
             // break;
             case 'date':
