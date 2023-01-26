@@ -3235,14 +3235,15 @@ each(
 
               const answer = ans => {
                 if (isValidAnswer && Array.isArray(ans)) {
-                  const filterAns = ans.filter(
-                    src =>
-                      typeof src.score[checkIfAnswerExistChecked[0].score] !==
-                      'undefined'
-                  );
+                  const filterAns =
+                    checkIfAnswerExistChecked[0].score === '3'
+                      ? ans[0]
+                      : ans[1];
 
-                  return filterAns
-                    ? filterAns[0].score[checkIfAnswerExistChecked[0].score]
+                  // console.log(filterAns);
+
+                  return isValidAnswer
+                    ? filterAns.score[checkIfAnswerExistChecked[0].score]
                     : null;
                 } else {
                   return isValidAnswer
