@@ -4,7 +4,6 @@ fn(state => {
     console.log('No data to process; logic in this workflow step is skipped');
     return state;
   }
-
   const selectFields = [
     //'location_current',
     'occupation_1',
@@ -140,6 +139,7 @@ fn(state => {
     'closure_reason',
   ];
 
+  console.log('20', new Date().toUTCString());
   return { ...state, selectFields };
 });
 
@@ -161,12 +161,23 @@ fn(state => {
   const fieldNames = forms
     .map(form => form.fields.map(field => field.name))
     .flat();
-
   // Check if select field exist in forms response
   selectFields.map(str => {
     if (!fieldNames.includes(str))
       console.log(`Error: select field ${str} not found in forms response`);
+  // Check if we have a missing select field from forms response
+  console.log('178', new Date().toUTCString());
+  selectFields.map(sf => {
+    if (JSON.stringify(forms).includes(sf)) {
+      // Filter missing select fields from forms
+      filteredForms.push(
+        forms.find(form => JSON.stringify(form.fields).includes(sf))
+      );
+    } else {
+      console.log(`Error: select field ${sf} not found in forms response`);
+    }
   });
+  console.log('189', new Date().toUTCString());
 
   const externallyDefinedOptionSets = forms
     .map(form =>
@@ -183,11 +194,13 @@ fn(state => {
         .flat()
     )
     .flat();
+  console.log('206', new Date().toUTCString());
 
   // Clean up duplicates keys in externallyDefinedOptionSets to get uniqueExternallyDefinedOptionSets
   const uniqueExternallyDefinedOptionSets = [
     ...new Set(externallyDefinedOptionSets),
   ];
+  console.log('212', new Date().toUTCString());
 
   // select fields lookup mapping
   const sfToLookupMap = forms
@@ -241,7 +254,12 @@ fn(state => {
 
   const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
   const lookups = state.data;
+  console.log('222', new Date().toUTCString());
+  const { uniqueExternallyDefinedOptionSets } = state;
+  const lookups = state.data.data;
+  const filteredForms = state.filteredForms;
 
+  console.log('227', new Date().toUTCString());
   const translations = uniqueExternallyDefinedOptionSets
     .map(s => {
       if (typeof s == 'object') return s;
@@ -250,6 +268,7 @@ fn(state => {
         // Let's find out which field.name from forms response is missing a lookup
         const selectFieldsForMissingLookup = forms
           .map(form => {
+            console.log('240', new Date().toUTCString());
             return form.fields
               .filter(field => selectFields.includes(field.name))
               .filter(field => field.option_strings_source == s)
@@ -258,20 +277,24 @@ fn(state => {
           })
           .flat();
 
+        console.log('248', new Date().toUTCString());
         const uniqueselectFieldsForMissingLookup = [
           ...new Set(selectFieldsForMissingLookup),
         ];
 
+        console.log('253', new Date().toUTCString());
         console.log(`Could not find translations for: ${s} on lookups`);
 
         uniqueselectFieldsForMissingLookup.map(sf => {
           console.log(`Select field for a missing lookup :${s} is :${sf}`);
         });
+        console.log('259', new Date().toUTCString());
       }
       return lookup;
     })
     .filter(s => s)
     .reduce((acc, v) => {
+      console.log('265', new Date().toUTCString());
       return {
         ...acc,
         [v.unique_id]: v.values
@@ -282,13 +305,11 @@ fn(state => {
           }, {}),
       };
     }, {});
-
+  console.log('276', new Date().toUTCString());
   return { ...state, translations };
 });
 
-// but THIS needs changes... because it doesn't currenlty care whether or not you have cases in an array.
-// Get locations translations
-// get('/api/v2/locations?per=1000000');
+
 fn(state => {
   if (state.noop) return state;
 
@@ -319,6 +340,35 @@ fn(state => {
     interventionsToBeUpdate: [],
     notFoundInterventions: [],
   };
+=======
+// Get locations translations
+get('/api/v2/locations?per=1000000');
+
+// location translations mapping
+fn(state => {
+  console.log('285', new Date().toUTCString());
+  const locations = state.data.data;
+
+  const locationsMap = locations.reduce((acc, v) => {
+    return { ...acc, [v.name.en]: v.name.th };
+  }, {});
+
+  console.log('292', new Date().toUTCString());
+  return { ...state, locationsMap };
+});
+
+// Post the translation to OpenFn Inbox
+post(`${state.configuration.openFnInboxURL}`, {
+  headers: { 'x-api-key': state.configuration.xApiKey },
+  body: state => {
+    const { translations, locationsMap } = state;
+    return { translations, locationsMap };
+  },
+});
+
+fn(state => {
+  console.log('305', new Date().toUTCString());
+  return state;
 });
 
 // Post the translation to OpenFn Inbox

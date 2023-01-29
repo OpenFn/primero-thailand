@@ -1,6 +1,7 @@
 // Set up a manual cursor
 fn(state => {
   console.log('Last sync end date:', state.lastRunDateTime);
+  
   const manualCursor = '2022-11-02T00:25:04.177Z';
 
   const cursor =
