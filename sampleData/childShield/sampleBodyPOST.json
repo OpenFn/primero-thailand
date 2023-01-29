@@ -8,18 +8,7 @@
     "activities": {
         "primeroservice": {
             "serviceType": "primero",
-            "28-09-2022": {
-                "basic_identity": {
-                    "national_id_no": "435678976",
-                    "registration_date": "2022-08-17", 
-                    "case_id_display": "9b65968",
-                    "physical_characteristics": "mole on left cheek",
-                    "other_id_no": "2821382138",
-                    "other_id_type": "passport",
-                    "location_current": {"TH100109": "Thailand:Bangkok:Khet Phra Nakhon:Khwaeng Chana Songkhram"},
-                    "address_of_accomodation__foreigners_only_": null,
-                    "assessment_due_date": "2022-10-28",
-                },
+            "24-08-2022": {
                 "formsection-patient-education-and-career-6d53ca5": {
                     "email_address": "test@openfn.org",
                     "occupation_1": {
@@ -35,4 +24,5 @@
             }
         }
     }
+}
 }

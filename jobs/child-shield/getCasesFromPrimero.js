@@ -1,13 +1,14 @@
 // Set up a manual cursor
 fn(state => {
   console.log('Last sync end date:', state.lastRunDateTime);
-  const manualCursor = '2022-09-28T00:43:07.000Z';
+  
+  const manualCursor = '2022-11-02T00:25:04.177Z';
 
   const cursor =
     state.lastRunDateTime != null && state.lastRunDateTime != ''
       ? state.lastRunDateTime
       : manualCursor;
-  
+
   console.log(`Cursor is at ${cursor}`);
 
   return { ...state, cursor };
@@ -17,7 +18,7 @@ fn(state => {
 fn(state => {
   return getCases(
     {
-      remote: true,
+      //remote: true,
       last_updated_at: `${state.cursor}..`,
     },
     state => ({
@@ -34,6 +35,10 @@ fn(state => {
 
   console.log('Last sync end date:', cursor);
 
+  console.log('ALL CASES:');
+  console.log(cases.length);
+  console.log(JSON.stringify(cases, null, 4));
+
   const filteredCases = cases
     .filter(
       c =>
@@ -45,14 +50,18 @@ fn(state => {
     )
     .flat();
 
-  console.log('FILTERED CASES:');
+  console.log('CASES WHICH WILL BE SYNCED TO CHILD SHIELD :');
   console.log(filteredCases.length);
+  console.log(JSON.stringify(filteredCases, null, 4));
   return { ...state, filteredCases };
 });
 
 // After job completes successfully, update cursor
 fn(state => {
-  let lastRunDateTime = state.filteredCases
+  const { filteredCases } = state;
+  const noop = filteredCases.length > 0 ? false : true;
+  console.log('No data to sync? :', noop);
+  let lastRunDateTime = filteredCases
     .map(c => c.last_updated_at)
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
@@ -62,5 +71,5 @@ fn(state => {
       : new Date().toISOString();
 
   console.log('Next sync start date:', lastRunDateTime);
-  return { ...state, data: {}, references: [], lastRunDateTime };
+  return { ...state, data: {}, references: [], lastRunDateTime, noop };
 });

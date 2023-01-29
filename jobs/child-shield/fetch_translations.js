@@ -1,24 +1,11 @@
-// =============================================================================
-// === THE GOOGLE SHEETS OPTION ================================================
-// // Get selected fields in google sheets
-// get(
-//   `${state.configuration.spreedsheetUrl}/${state.configuration.spreedsheetId}/values/Select%20Fields?majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=${state.configuration.googleApiKey} `
-// );
-
-// // Set selected fields to be used on Premiro job
-// fn(state => {
-//   const selectFields = state.data.values.flat();
-//   selectFields.splice(selectFields.indexOf('SELECT FIELDS '), 1);
-
-//   return { ...state, selectFields };
-// });
-// =============================================================================
-
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
-  console.log('19', new Date().toUTCString());
+  if (state.noop) {
+    console.log('No data to process; logic in this workflow step is skipped');
+    return state;
+  }
   const selectFields = [
-    'location_current',
+    //'location_current',
     'occupation_1',
     'if_out_of_school__specify_reason',
     'nationality_fa822dc',
@@ -36,7 +23,7 @@ fn(state => {
     'gender_2dea3c9',
     'social_status_7c0989a',
     'occupation_c4d6420',
-    'location_of_the_incident_885fe8c',
+    //'location_of_the_incident_885fe8c',
     'sender_s_gender_b83c931',
     'sender_s_occupation_3ed671e',
     'type_of_place_where_the_incident_occurred_bdc967d',
@@ -103,7 +90,7 @@ fn(state => {
     'relation_is_alive',
     'relation_nationality',
     'occupation_3',
-    'relation_location_current',
+    //'relation_location_current',
     'reason_for_unexpected_pregnancy',
     'specify_contraception_problem',
     'specify_legal_offenses',
@@ -119,15 +106,12 @@ fn(state => {
     'source_of_information_647b9db',
     'is_the_subject_given_the_benefit_of_the_doubt_',
     'assessment_method',
-    'urgent_protection_concern',
     'protection_concerns',
-    'risk_level',
     'conference_type',
     'conference_reason',
     'conference_case_status',
     'conference_case_transfer_reason',
     'relation_to_the_child_37c30dc',
-    'protection_concerns',
     'sex_check_and_evaluation',
     'physical',
     'mental',
@@ -140,14 +124,11 @@ fn(state => {
     'service_response_type',
     'service_type',
     'service_response_timeframe',
-    'service_implementing_agency',
-    'service_implementing_agency_individual',
+    //'service_implementing_agency',
+    //'service_implementing_agency_individual',
     'service_referral',
     'service_implemented',
-    'service_delivery_location',
-    'status_of_treatment_plan_a8ca0e8',
-    'protection_concerns',
-    'risk_level',
+    //'service_delivery_location',
     'followup_type',
     'child_was_seen',
     'reason_child_not_seen',
@@ -155,7 +136,7 @@ fn(state => {
     'need_follow_up_visit',
     'recommend_case_closed',
     'status',
-    'closure_reason'
+    'closure_reason',
   ];
 
   console.log('20', new Date().toUTCString());
@@ -163,16 +144,27 @@ fn(state => {
 });
 
 // get forms from Primero
-get('/api/v2/forms');
+// get('/api/v2/forms');
+fn(state => {
+  if (state.noop) return state;
+
+  return getForms()(state);
+});
 
 // Get a list of selected externallyDefinedOptionSets (as objects that either
 // HAVE or don't have values... yet.)
 fn(state => {
-  console.log('172', new Date().toUTCString());
-  const { selectFields } = state;
-  const forms = state.data.data;
-  const filteredForms = [];
+  if (state.noop) return state;
 
+  const { selectFields } = state;
+  const forms = state.data;
+  const fieldNames = forms
+    .map(form => form.fields.map(field => field.name))
+    .flat();
+  // Check if select field exist in forms response
+  selectFields.map(str => {
+    if (!fieldNames.includes(str))
+      console.log(`Error: select field ${str} not found in forms response`);
   // Check if we have a missing select field from forms response
   console.log('178', new Date().toUTCString());
   selectFields.map(sf => {
@@ -187,7 +179,7 @@ fn(state => {
   });
   console.log('189', new Date().toUTCString());
 
-  const externallyDefinedOptionSets = filteredForms
+  const externallyDefinedOptionSets = forms
     .map(form =>
       form.fields
         .filter(field => selectFields.includes(field.name))
@@ -210,14 +202,58 @@ fn(state => {
   ];
   console.log('212', new Date().toUTCString());
 
-  return { ...state, filteredForms, uniqueExternallyDefinedOptionSets };
+  // select fields lookup mapping
+  const sfToLookupMap = forms
+    .map(form =>
+      form.fields
+        .filter(field => selectFields.includes(field.name))
+        .map(field =>
+          field.hasOwnProperty('option_strings_source')
+            ? {
+                [field.name]: field.option_strings_source.replace(
+                  'lookup ',
+                  ''
+                ),
+              }
+            : {
+                [field.name]: {
+                  unique_id: field.name,
+                  values: field.option_strings_text,
+                },
+              }
+        )
+        .flat()
+    )
+    .flat()
+    .map(sf => sf)
+    .reduce((acc, curr) => {
+      const [[k, v]] = Object.entries(curr);
+      return { ...acc, [k]: v };
+    }, {});
+
+  return {
+    ...state,
+    forms,
+    selectFields,
+    sfToLookupMap,
+    uniqueExternallyDefinedOptionSets,
+  };
 });
 
 // Get _all_ of the actual values for externallyDefinedOptionSets in Primero (they call these "lookups")
-get('/api/v2/lookups?per=1000000&page=1');
+// get('/api/v2/lookups?per=1000000&page=1');
+fn(state => {
+  if (state.noop) return state;
+
+  return getLookups({ per: 1000000, page: 1 })(state);
+});
 
 // Using the uniqueExternallyDefinedOptionSets, get the option values for each set.
 fn(state => {
+  if (state.noop) return state;
+
+  const { uniqueExternallyDefinedOptionSets, forms, selectFields } = state;
+  const lookups = state.data;
   console.log('222', new Date().toUTCString());
   const { uniqueExternallyDefinedOptionSets } = state;
   const lookups = state.data.data;
@@ -228,16 +264,13 @@ fn(state => {
     .map(s => {
       if (typeof s == 'object') return s;
       const lookup = lookups.find(l => l.unique_id === s);
-      console.log('232', new Date().toUTCString());
-      // TODO: @Mtuchi & @Aicha, do you want to throw an error here?
-      // TODO: @Taylor is there a better way to optimize this logic ?
       if (!lookup) {
         // Let's find out which field.name from forms response is missing a lookup
-        const selectFieldsForMissingLookup = filteredForms
-          .filter(form => JSON.stringify(form.fields).includes(s))
+        const selectFieldsForMissingLookup = forms
           .map(form => {
             console.log('240', new Date().toUTCString());
             return form.fields
+              .filter(field => selectFields.includes(field.name))
               .filter(field => field.option_strings_source == s)
               .map(field => field.name)
               .flat();
@@ -276,6 +309,38 @@ fn(state => {
   return { ...state, translations };
 });
 
+
+fn(state => {
+  if (state.noop) return state;
+
+  return getLocations({ per: 1000000 })(state);
+});
+
+// NEEDS NO CHANGES............ you would have already written this to only take action on that array.
+// location translations mapping
+fn(state => {
+  if (state.noop) return state;
+
+  // else do the rest of the operation...
+  const locations = state.data;
+  const { filteredCases, translations, sfToLookupMap, noop } = state;
+
+  const locationsMap = locations.reduce((acc, curr) => {
+    acc[curr.code] = curr.name.th;
+    return acc;
+  }, {});
+
+  return {
+    noop,
+    filteredCases,
+    translations,
+    locationsMap,
+    sfToLookupMap,
+    interventionToBeCreated: [],
+    interventionsToBeUpdate: [],
+    notFoundInterventions: [],
+  };
+=======
 // Get locations translations
 get('/api/v2/locations?per=1000000');
 
@@ -305,3 +370,25 @@ fn(state => {
   console.log('305', new Date().toUTCString());
   return state;
 });
+
+// Post the translation to OpenFn Inbox
+// post(`${state.configuration.openFnInboxURL}`, {
+//   headers: { 'x-api-key': state.configuration.xApiKey },
+//   body: state => {
+//     const { translations, locationsMap } = state;
+//     return { translations, locationsMap };
+//   },
+// });
+
+// For perfomance debugging, you can use this trick here
+// const before = new Date();
+// Then start of your operations
+// const locationsMap = locations.reduce((acc, v) => {
+//   return { ...acc, [v.name.en]: v.name.th };
+// }, {});
+// End of your operation
+// const after = new Date();
+// console.log(
+//   'locations.reduce (line 280) duration was:',
+//   (after - before) / 1000
+// );
