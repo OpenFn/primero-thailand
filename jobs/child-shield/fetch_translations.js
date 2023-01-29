@@ -1,21 +1,3 @@
-// =============================================================================
-// === THE GOOGLE SHEETS OPTION ================================================
-// Get selected fields in google sheets
-// get(
-//   `${state.configuration.spreedsheetUrl}/${state.configuration.spreedsheetId}/values/Select%20Fields?majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=${state.configuration.googleApiKey} `
-// );
-
-// Set selected fields to be used on Premiro job
-// fn(state => {
-//   const selectFields = state.data.values.flat();
-//   selectFields.splice(selectFields.indexOf('SELECT FIELDS '), 1);
-
-//   const uniqueSelectFields = [...new Set(selectFields)];
-
-//   return { ...state, uniqueSelectFields };
-// });
-// =============================================================================
-
 // Get Select Fields values from Googlesheet UNICEF Thailand & MOPH Interoperability Mapping [MASTER]
 fn(state => {
   if (state.noop) {
