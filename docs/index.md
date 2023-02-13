@@ -7,7 +7,7 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 
 ## (1) Functional Requirements
 The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display. The solution has also been extended to fetch risk model data and home service questionnaire data for better case understanding and management.
-![Solution](./solution-overview.png))
+![Solution](../solution-overview.png)
 
 _**Flow 1: MOPH referrals --> Primero**_
 * Key User Story: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
@@ -42,7 +42,7 @@ _**Flow 1: Primero --> MOHS API**_
 2. `2. Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
 3. `3. Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
 
-![Integration Flow 1](./primero-his-integration-flow-phase1.png)
+![Integration Flow 1](../primero-his-integration-flow-phase1.png)
 
 _**Flow 2: MOPH API --> Primero**_
 1. `1. Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
@@ -50,7 +50,7 @@ _**Flow 2: MOPH API --> Primero**_
 3. `3. Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
 4. `4. Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
-![Integration Flow 2](./primero-his-integration-flow-2.png)
+![Integration Flow 2](../primero-his-integration-flow-2.png)
 
 
 
