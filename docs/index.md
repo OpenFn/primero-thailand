@@ -7,7 +7,7 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 
 ## (1) Functional Requirements
 The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display. The solution has also been extended to fetch risk model data and home service questionnaire data for better case understanding and management.
-![Solution](../solution-overview.png)
+![Solution](./solution-overview.png)
 
 _**Flow 1: MOPH referrals --> Primero**_
 * Key User Story: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
@@ -21,10 +21,6 @@ _**Flow 2: Child Shield --> Primero**_
 The API uses `Basic authentication` for login and the `record_id` for upserting cases.
 
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
-```
-Login: curl --request POST 'https://cloud1.r8way.moph.go.th:3010/api/Users/login' --data-raw '{"email":"email", "password":"password"}'
-Get patient: curl --location --request GET 'https://cloud1.r8way.moph.go.th:3010/api/people/findOne?access_token=xxx&filter={%22where%22:{%22cid%22:%22111%22}, %20%22include%22:%20%22interventions%22}'
-```
 
 Behavior: 
 1. [sample record](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpoint14April.json)
@@ -63,10 +59,7 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 1. This integration was configured according to the mapping specifications finalized in October 2022. 
 2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
 3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `SYNC` button. 
-<!--1. **Data Sharing**: ... 
-2. **Unique Identifiers**: `national_id` for identifying patients in HIS, `record_id` for identifying Primero cases.
-3. **Services**: ...
-4. **Primero Case Owner Assignment**: ... -->
+
 
 ## (5) Data Element Mappings & Transformations
 1. For Flow 1, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
