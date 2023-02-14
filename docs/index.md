@@ -69,7 +69,7 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 
 ## (5) Data Element Mappings & Transformations
 1. For Flow 1, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
-2. For Flow 2, [See this table]([https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=187709131](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1877091315) for the integration mapping specifications. 
+2. For Flow 2, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1877091315) for the integration mapping specifications. 
 
 The Forms that are updated in Flow 2 are:
 * Child’s Quality of Life Questionnaire (CQ1)
