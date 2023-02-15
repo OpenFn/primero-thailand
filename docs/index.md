@@ -21,9 +21,9 @@ The API uses `Basic authentication` for login and the `record_id` for upserting 
 
 * MOPH systems: [API endpoint](https://cloud1.r8way.moph.go.th:3010/api)
 
-Behavior: 
-1. [sample record](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpoint14April.json)
-2. [no record found](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpointNotFound.json)
+Sample Data: 
+1. When a record is found: [sample record](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpoint14April.json)
+2. When no records are found: [no record found](https://github.com/OpenFn/primero-thailand/blob/master/sampleData/state_HISpersonEndpointNotFound.json)
 
 **OpenFn language-packages** (API adaptors) implemented: 
 * [language-primero](https://github.com/OpenFn/language-primero)
@@ -39,18 +39,18 @@ The various integration jobs for this workflow are listed below, and illustrated
 2. `2. Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
 3. `3. Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
 
-![Integration Flow 1](./primero-his-integration-flow-phase1.png)
+![Integration Flow 1](./primero-workflow-1.png)
 _Figure 1 - Workflow 1: Primero --> MOHS API_
 
 _**Workflow 2: MOPH API --> Primero**_
 
 The various integration jobs for this workflow are listed below, and illustrated in Figure 2 below.
-1. `1. Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
-2. `2. Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
-3. `3. Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
-4. `4. Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
+1. `Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
+2. `Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
+3. `Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
+4. `Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
-![Integration Flow 2](./primero-his-integration-flow-2.png)
+![Integration Flow 2](./primero-workflowflow-2.png)
 _Figure 2 - Workflow 2: MOPH API --> Primero_
 
 
@@ -62,9 +62,9 @@ _Figure 2 - Workflow 2: MOPH API --> Primero_
 For both flows, HIS <> Primero sync is launched when OpenFn receives a sync request notification from Primero.
 
 ### Integration Assumptions 
-1. This integration was configured according to the mapping specifications finalized in October 2022. 
+1. This integration was configured according to the mapping specifications finalized in January 2023. 
 2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
-3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `SYNC` button in Primero. 
+3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `Sync` button in Primero. 
 
 
 ## (5) Data Element Mappings & Transformations
