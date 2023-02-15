@@ -50,7 +50,7 @@ The various integration jobs for this workflow are listed below, and illustrated
 3. `Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
 4. `Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
-![Integration Flow 2](./primero-workflowflow-2.png)
+![Integration Flow 2](./primero-workflow-2.png)
 _Figure 2 - Workflow 2: MOPH API --> Primero_
 
 
