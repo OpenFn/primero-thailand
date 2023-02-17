@@ -9,7 +9,7 @@ The Interoperability Solution enables Primero case workers to consult historical
 ![Solution](./solution-overview.png)
 
 _**Workflow 1: MOPH referrals --> Primero**_
-* Key User Story: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
+* Key User Story: Creating & Updating Interventions, Syncing closed cases in Child Shield. An automated job has been configured to fetch primero cases and then either create or update the cases' intervention status in Child Shield, for both existing and previously closed cases without this information.
 
 _**Workflow 2: Child Shield --> Primero**_
 * Key User Story: Updating cases with Risk Model and other Home Service data. When a case worker refreshes case data in Primero by using the Primero Sync button, the forms under the  Child Shield Section of the Primero case would be popuplated with home service questionnaire data as well as risk level data.
