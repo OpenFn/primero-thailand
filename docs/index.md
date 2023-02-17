@@ -35,9 +35,9 @@ The business process flow diagram can be found [here](https://lucid.app/lucidcha
 _**Workflow 1: Primero --> MOHS API**_
 
 The various integration jobs for this workflow are listed below, and illustrated in Figure 1 below.
-1. `1. Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
-2. `2. Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
-3. `3. Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
+1. `Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
+2. `Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
+3. `Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
 
 ![Integration Flow 1](./primero-workflow-1.png)
 _Figure 1 - Workflow 1: Primero --> MOHS API_
