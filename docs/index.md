@@ -13,7 +13,7 @@ _**Workflow 1: Primero --> Child Shield**_
 
 An automated job has been configured to fetch primero cases and then either create or update the cases' intervention status in Child Shield, for both existing and previously closed cases without this information.
 
-_**Workflow 2: Child Shield --> Primero**_
+_**Workflow 2: HIS/Child Shield --> Primero**_
 * Key User Story: On-demand sync of HIS and Child Shield risk data to inform case plans.
  
 When a case worker refreshes case data in Primero by using the Primero Sync button, the forms under the  Child Shield Section of the Primero case would be popuplated with home service questionnaire data as well as risk level data.
