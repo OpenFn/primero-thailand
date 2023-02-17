@@ -68,6 +68,7 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 1. This integration was configured according to the mapping specifications finalized in January 2023. 
 2. Every case will have a `National Id` that will be used to search for patient records in the HIS. 
 3. The "sync" transaction will be initiated (1) automatically after _create_ of new cases, and (2) whenever a user clicks the `Sync` button in Primero. 
+4. The Flow 2 jobs are confirgured to detect exact matches of the relevant fields in the Child Shield API response. Changes to any of these field names, as well as structure of the JSON response can cause the Primero updates to fail entirely or result in those modified fields not being updated in Primero.
 
 
 ## (5) Data Element Mappings & Transformations
