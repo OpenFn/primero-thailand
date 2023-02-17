@@ -74,17 +74,18 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 1. For Flow 1, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
 2. For Flow 2, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1877091315) for the integration mapping specifications. 
 
-The Forms that are updated in Flow 2 are:
-* Child’s Quality of Life Questionnaire (CQ1)
-* Child’s Quality of Life Questionnaire (CQ2 - AUQUEI1)
-* Caregiver Survey form - PSu1 and PSu2 file
-* Parent-Child Conflict Tactics Scale (CC-CTSPC-R)
-* Risk Model
+
 
 **Note**
 1. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
 2. `Physical examination` subforms are uniquely identified by `intervention ID + patient cid`.
 3. `Unexpected pregnancy` subforms are uniquely identified by `date` and position of subform in list of pregnancy subforms.
+4. The `Child Shield` Forms that are updated in Flow 2 are:
+* Child’s Quality of Life Questionnaire (CQ1)
+* Child’s Quality of Life Questionnaire (CQ2 - AUQUEI1)
+* Caregiver Survey form - PSu1 and PSu2 file
+* Parent-Child Conflict Tactics Scale (CC-CTSPC-R)
+* Risk Model
 
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
