@@ -36,7 +36,7 @@ Sample Data:
 ## (3) Data & Workflows
 The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The technical workflow diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
 
-_**Workflow 1: Primero --> MOHS API**_
+_**Workflow 1: Workflow 1: Primero --> Child Shield**_
 
 The various integration jobs for this workflow are listed below, and illustrated in Figure 1 below.
 1. `Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
@@ -44,9 +44,9 @@ The various integration jobs for this workflow are listed below, and illustrated
 3. `Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
 
 ![Integration Flow 1](./primero-workflow-1.png)
-_Figure 1 - Workflow 1: Primero --> MOHS API_
+_Figure 1 - Workflow 1: Primero --> Child Shield_
 
-_**Workflow 2: MOPH API --> Primero**_
+_**Workflow 2: HIS/Child Shield --> Primero**_
 
 The various integration jobs for this workflow are listed below, and illustrated in Figure 2 below.
 1. `Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
@@ -55,7 +55,7 @@ The various integration jobs for this workflow are listed below, and illustrated
 4. `Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
 ![Integration Flow 2](./primero-workflow-2.png)
-_Figure 2 - Workflow 2: MOPH API --> Primero_
+_Figure 2 - Workflow 2: HIS/Child Shield --> Primero_
 
 
 
