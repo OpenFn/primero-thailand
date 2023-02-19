@@ -49,8 +49,8 @@ _Figure 1 - Functional Workflow 1: Primero --> Child Shield_
 _**Workflow 2: HIS/Child Shield --> Primero**_
 
 The various integration jobs for this workflow are listed below, and illustrated in the Functional Workflow (Figure 2) below.
-1. `Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
-2. `Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
+1. `Get Patient Data from HIS` fetches additional patient information such as risk data and home service information from HIS based on `national_id` received in Primero sync notification.
+2. `Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with status information to re-enable the Sync button.
 3. `Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
 4. `Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
