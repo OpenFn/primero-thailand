@@ -8,11 +8,15 @@ Repository to manage OpenFn jobs to integrate the UNICEF Primero and Thailand Mo
 The Interoperability Solution enables Primero case workers to consult historical patient information stored in the MOPH HIS system by fetching the information and sending it to Primero for display. The solution has also been extended to fetch risk model data and home service questionnaire data for better case understanding and management.
 ![Solution](./solution-overview.png)
 
-_**Workflow 1: MOPH referrals --> Primero**_
-* Key User Story: Requesting MOPH case information from HIS to display it in Primero. When a case worker creates a new case or consults an existing case in Primero, they can request HIS information to be fetched and displayed in Primero by using the Primero Sync button.
+_**Workflow 1: Primero --> Child Shield**_
+* Description: Syncing Primero cases to Child Shield for daily reporting.
 
-_**Workflow 2: Child Shield --> Primero**_
-* Key User Story: Updating cases with Risk Model and other Home Service data. When a case worker refreshes case data in Primero by using the Primero Sync button, the forms under the  Child Shield Section of the Primero case would be popuplated with home service questionnaire data as well as risk level data.
+An automated workflow has been configured to fetch primero cases and then either create or update the cases' intervention status and additional data in Child Shield, for both existing and previously closed cases without this information.
+
+_**Workflow 2: HIS/Child Shield --> Primero**_
+* Description: On-demand sync of HIS and Child Shield risk data to inform case plans.
+ 
+When a case worker refreshes case data in Primero by using the Primero `Sync` button, any available forms (E.g. home service questionnaire, physical check assessment and risk data) for this person saved under the HIS or Child Shield systems are synced back to Primero.
 
 ## (2) System APIs
 **APIs** implemented:
@@ -30,28 +34,28 @@ Sample Data:
 * [language-http](https://github.com/OpenFn/language-http)
 
 ## (3) Data & Workflows
-The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The technical workflow diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
+The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The Technical workflow diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
 
-_**Workflow 1: Primero --> MOHS API**_
+_**Workflow 1: Workflow 1: Primero --> Child Shield**_
 
-The various integration jobs for this workflow are listed below, and illustrated in Figure 1 below.
-1. `1. Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
-2. `2. Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
-3. `3. Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
+The various integration jobs for this workflow are listed below, and illustrated in the Functional Workflow (Figure 1) below.
+1. `Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
+2. `Get Translations from Primero` fetches field translations in Primero and posts them to the OpenFn Inbox
+3. `Map data & sync to ChildShield` maps translated case data & syncs with Child Shield by either creating or updating intervention.
 
 ![Integration Flow 1](./primero-workflow-1.png)
-_Figure 1 - Workflow 1: Primero --> MOHS API_
+_Figure 1 - Functional Workflow 1: Primero --> Child Shield_
 
-_**Workflow 2: MOPH API --> Primero**_
+_**Workflow 2: HIS/Child Shield --> Primero**_
 
-The various integration jobs for this workflow are listed below, and illustrated in Figure 2 below.
-1. `Get Patient Data from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
-2. `Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with information to re-enable the Sync button.
+The various integration jobs for this workflow are listed below, and illustrated in the Functional Workflow (Figure 2) below.
+1. `Get Patient Data from HIS` fetches additional patient information such as risk data and home service information from HIS based on `national_id` received in Primero sync notification.
+2. `Sync Data to Cases in Primero` sends the fetched HIS patient information to be displayed in Primero along with status information to re-enable the Sync button.
 3. `Upsert Failed Cases with Failed Sync Status` re-enables the Sync button in Primero without updating the case, in a situation where no matching patient is found in HIS. If any other error occured during the HIS sync, it will send fail status to re-enable the sync button with a `Sync failed` message.
 4. `Send Primero Failure Status` re-enables the Sync button in Primero and updates the case, in a situation where a matching patient record was found in HIS but the sync failed.
 
 ![Integration Flow 2](./primero-workflow-2.png)
-_Figure 2 - Workflow 2: MOPH API --> Primero_
+_Figure 2 - Functional Workflow 2: HIS/Child Shield --> Primero_
 
 
 
@@ -71,23 +75,25 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 1. For Flow 1, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
 2. For Flow 2, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1877091315) for the integration mapping specifications. 
 
-The Forms that are updated in Flow 2 are:
+
+
+**Note**
+1. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
+2. `Physical examination` subforms are uniquely identified by `intervention ID + patient cid`.
+3. `Unexpected pregnancy` subforms are uniquely identified by `date` and position of subform in list of pregnancy subforms.
+4. The `Child Shield` Forms that are updated in Flow 2 are:
 * Child’s Quality of Life Questionnaire (CQ1)
 * Child’s Quality of Life Questionnaire (CQ2 - AUQUEI1)
 * Caregiver Survey form - PSu1 and PSu2 file
 * Parent-Child Conflict Tactics Scale (CC-CTSPC-R)
 * Risk Model
 
-**Note**
-1. If data synced from HIS is edited in Primero, it will be overwritten with the original value (or blank if there was no value in HIS) at the next sync.
-2. `Physical examination` subforms are uniquely identified by `intervention ID + patient cid`.
-3. `Unexpected pregnancy` subforms are uniquely identified by `date` and position of subform in list of pregnancy subforms.
-
 ## (6) Change Management
 System administrators are responsible for identifying if changes may impact the OpenFn integration. 
 1. If login credentials are changed for either system, the relevant **Credential** must be updated in OpenFn.org. 
 2. If system changes are made to any of the **fields** referenced in the [field mappings](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing), the OpenFn jobs should be reviewed and tested to confirm no impact on the integration. 
 3. If the list of available  **Forms** in either system changes, then the mapping should be reviewed in the [mapping document](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) to confirm no updates are required in the OpenFn jobs.
+4. The Flow 2 jobs are confirgured to detect exact keyword matches of the relevant fields in the Child Shield API response. Changes to any of these field names, as well as structure of the JSON response can cause the Primero updates to fail entirely or result in those modified fields not being updated in Primero.
 
 ## (7) Administration
 ### Provisioning, Hosting, & Maintenance
