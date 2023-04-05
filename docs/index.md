@@ -73,7 +73,7 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 
 ## (5) Data Element Mappings & Transformations
 1. For Flow 1, [See this sheet](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=541136337) for the integration mapping specifications. 
-2. For Flow 2, [See these sheets](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1992480365&range=A11:A14) for the integration mapping specifications. 
+2. For Flow 2, [See these sheets](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1992480365&range=A11:C14) for the integration mapping specifications. 
 
 
 
