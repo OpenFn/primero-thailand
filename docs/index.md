@@ -36,7 +36,7 @@ Sample Data:
 ## (3) Data & Workflows
 The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The Technical workflow diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
 
-_**Workflow 1: Workflow 1: Primero --> Child Shield**_
+_**Workflow 1: Primero --> Child Shield**_
 
 The various integration jobs for this workflow are listed below, and illustrated in the Functional Workflow (Figure 1) below.
 1. `Get Primero Cases from HIS` fetches patient information from HIS based on `national_id` received in Primero sync notification.
@@ -72,8 +72,8 @@ For both flows, HIS <> Primero sync is launched when OpenFn receives a sync requ
 
 
 ## (5) Data Element Mappings & Transformations
-1. For Flow 1, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit?usp=sharing) for the integration mapping specifications. 
-2. For Flow 2, [See this table](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1877091315) for the integration mapping specifications. 
+1. For Flow 1, [See this sheet](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=541136337) for the integration mapping specifications. 
+2. For Flow 2, [See these sheets](https://docs.google.com/spreadsheets/d/1f1fT3qmM4mKT98AaJ0ArlgONQRC-W9ghoa-j4BswwbM/edit#gid=1992480365&range=A11:C14) for the integration mapping specifications. 
 
 
 
