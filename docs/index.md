@@ -34,7 +34,9 @@ Sample Data:
 * [language-http](https://github.com/OpenFn/language-http)
 
 ## (3) Data & Workflows
-The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The Technical workflow diagram describing the integration logic can be found [here](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?page=d.QBHCVmT4rm#).
+The business process flow diagram can be found [here](https://lucid.app/lucidchart/invitations/accept/inv_9f5bf24a-7c45-40b0-8718-42913469fa4b). The Technical workflow diagrams describing the integration logic can be found here:
+* [Phase 1 Technical Workflow](https://lucid.app/lucidchart/fa23aa85-eee5-4172-b735-1b25cac8fbf5/edit?viewport_loc=-315%2C16%2C2731%2C1246%2CM19qSs3c3bse&invitationId=inv_b6bd0c75-5fe3-4e0d-b654-c94c27116510)
+* [Phase 2 Technical Workflow](https://lucid.app/lucidchart/3cf245c5-f943-4587-9b14-720081eefc8d/edit?viewport_loc=-2719%2C-878%2C4980%2C2272%2C0_0&invitationId=inv_82a279db-14ee-46b3-abbb-638ee61711db)
 
 _**Workflow 1: Primero --> Child Shield**_
 
