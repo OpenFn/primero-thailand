@@ -110,7 +110,8 @@ The sync can have 3 statutes in Primero:
 ### Support 
 Primero system administrators will be responsible for ongoing integration monitoring and management.  
 
-Primero System Administrators: Mohan Masarangi Magar <mmmagar@unicef.org> and Tippawan Yaiya <tyaiya@unicef.org>  
+Primero System Administrators: Mohan Masarangi Magar <mmmagar@unicef.org>, Panat Jongsamakkeethaworn <pjong@unicef.org>,  and Nakul Pannoy <npannoy@unicef.org>
+ 
 MOPH System Administrators: Kumpha Brohmsena <king.nkp@gmail.com>, Watcharawan Teerawat <pinklotus1818@hotmail.com>, Choorug Lao-Akra <choorug@yahoo.co.uk>
 
 Contact support@openfn.org with any questions or troubleshooting support. 
