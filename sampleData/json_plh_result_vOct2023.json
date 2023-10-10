@@ -1,0 +1,1574 @@
+
+
+{
+    "_id": ObjectId("612ddc48adf0c565c77aff5f"),
+    "hcode": "11014",
+    "personId": ObjectId("6108eecbcf11000091003bc7"),
+    "planserviceIds": [ ],
+    "vn": "640831143918",
+    "ovstist": "oscc",
+    "ovstist_name": "เยี่ยมบ้าน OSCC",
+    "ovstost": null,
+    "ovstost_name": null,
+    "doctor": null,
+    "doctor_name": null,
+    "pttype_no": null,
+    "hospmain": null,
+    "hospmain_name": null,
+    "hospsub": null,
+    "hospsub_name": null,
+    "spclty": null,
+    "spclty_name": null,
+    "vstdate": "2021-08-31",
+    "vsttime": "14:39:18",
+    "cid": "1209601619115",
+    "hname": "รพ.หนองวัวซอ",
+    "program_provider": "oscc",
+    "version": null,
+    "activities": {
+        "homeservice": [
+            {
+                "serviceType": "oscc",
+                "questionnaire": [
+                    {
+                        "id": "60f8c3a1e75aee59d32c5183",
+                        "questionnaire_type": "global",
+                        "questionnaire_code": "PSu1",
+                        "questionnaire_name": "แบบสำรวจผู้ดูแลเด็ก – แบบสั้น",
+                        "questionsList": [
+                            {
+                                "groupDescription": "ข้อมูลเพื่อติดต่อผู้เข้าร่วมโครงการ",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "ชื่อ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": "ทดสอบ"
+                                    },
+                                    {
+                                        "question": "นามสกุล",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "ที่อยู่ ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "เบอร์โทรศัพท์ ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": "000"
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "คนที่ควรติดต่อในกรณีที่เบอร์ที่ให้ไว้ใช้ไม่ได้",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "ชื่อ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "เบอร์โทรศัพท์ ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "ความสัมพันธ์",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 1 รายละเอียดเกี่ยวกับภูมิหลังของคุณ (14 ข้อ)",
+                                "remark": "โปรดตอบคำถามเกี่ยวกับตัวคุณและครอบครัวที่พักอาศัยอยู่ด้วยกันดังต่อไปนี้ ถ้าคุณมีลูกที่อายุระหว่าง 2-9 ขวบมากกว่าหนึ่งคน ขอให้เลือกเอาหนึ่งคนที่คุณกำลังจัดการลำบากมากที่สุด (เช่น ร้องดิ้นอาละวาด มักไม่ยอมทำตามคำสั่งหรือกฎระเบียบ และ/หรือมักอาละวาดทำลายข้าวของ",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. คุณอายุ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "2. เพศ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "หญิง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ชาย",
+                                                "checked": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. ลูกของคุณอายุ",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "4. เพศ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "หญิง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ชาย"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "5. ลูกของคุณเรียนอยู่ชั้นอะไร",
+                                        "questionType": NumberInt("1"),
+                                        "answersList": [ ]
+                                    },
+                                    {
+                                        "question": "6. คุณมีความสัมพันธ์กับเด็กในฐานะอะไร",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "1",
+                                                "answer": "แม่ผู้ให้กำเนิด",
+                                                "checked": true
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "พ่อผู้ให้กำเนิด",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "แม่เลี้ยง/พ่อเลี้ยง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "พี่หรือน้อง/พี่บุญธรรมหรือน้องบุญธรรม",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "ปู่ ตา / ย่า ยาย",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ทวด",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "7",
+                                                "answer": "ลุง / ป้า / น้า / อา",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "8",
+                                                "answer": "ญาติ",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "9",
+                                                "answer": "พ่อแม่อุปถัมภ์",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "10",
+                                                "answer": "อื่น ๆ  (โปรดระบุ)",
+                                                "checked": false
+                                            }
+                                        ],
+                                        "answerSpecify": ""
+                                    },
+                                    {
+                                        "question": "7. พ่อของเด็กอาศัยอยู่ในบ้านเดียวกันกับคุณหรือไม่?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่ เขาเสียชีวิตไปแล้ว"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ไม่ เขาไปอยู่ที่อื่น"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "8. แม่ของเด็กอาศัยอยู่ในบ้านเดียวกันกับคุณหรือไม่?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่ เขาเสียชีวิตไปแล้ว"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ไม่ เขาไปอยู่ที่อื่น"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "9. ในเดือนที่ผ่านมานี้ คุณมีเงินไม่พอสำหรับใช้ซื้ออาหารหรือของใช้ที่จำเป็นหรือไม่",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "มีพอ"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "มีไม่พอ"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "มีหลายครอบครัวที่ต้องดิ้นรนต่อสู้กับปัญหาหลายอย่าง โปรดบอกเราว่าเรื่องต่อไปนี้เป็นปัญหาสำหรับบางคนในบ้านของคุณหรือไม่:",
+                                "remark": "ขอบคุณมากที่ตอบคำถามข้างต้น",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "10. มีผู้ใหญ่คนหนึ่งที่ป่วยหนัก  –  ต้องเข้าโรงพยาบาลหรือนอนติดเตียงเป็นส่วนใหญ่",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ใช่"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "11. มีคนดื่มสุราหรือใช้ยาเสพติด",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ใช่"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "12. ทะเลาะกันรุนแรงบ่อยถึงกับมีการตะโกนด่าหรือตบตีกัน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่ใช่",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ใช่",
+                                                "checked": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "13. มีเด็กที่ไม่สบายมาก ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ใช่"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "14. มีเด็กที่มีปัญหาในการได้ยิน การมองเห็น การสื่อสาร การเดิน หรือมีปัญหาที่โรงเรียน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ใช่"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 2 ความสัมพันธ์ระหว่างผู้ดูแลกับเด็ก (14 ข้อ)",
+                                "remark": "ต่อไปนี้จะเป็นคำถามเกี่ยวกับความสัมพันธ์ของคุณกับลูกหรือเด็กที่คุณดูแล โปรดบอกว่าตามปกติแล้วสิ่งต่อไปนี้เกิดขึ้นบ่อยแค่ไหนในหนึ่งเดือน (30 วัน) ที่ผ่านมานี้ ขอให้คุณพยายามตอบให้ครบทุกข้อ แม้ว่าบางข้อคุณจะไม่ค่อยแน่ใจก็ตาม สำหรับคำถามแต่ละข้อ ขอให้บอกว่ามันเกิดขึ้นบ่อยแค่ไหน (โปรดเลือกเพียงหนึ่งอย่าง)",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. คุณเล่นกับลูกบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "2. คุณปล่อยให้ลูกได้พยายามแก้ปัญหาที่เขาน่าจะทำได้ด้วยตัวเองบ่อยแค่ไหน ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง",
+                                                "checked": true
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา",
+                                                "checked": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. คุณชวนให้ลูกเล่นเกมด้วยกันหรือทำกิจกรรมสนุกร่วมกันบ่อยแค่ไหน?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "4. คุณสังเกตเห็นและชมพฤติกรรมที่ดีของลูกบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "5. คุณสอนทักษะใหม่ ๆ ให้ลูกคุณบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "6. คุณช่วยให้ลูกมีส่วนร่วมในการทำงานบ้านบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "7. คุณให้รางวัลลูกบ่อยแค่ไหน เมื่อเขาทำอะไรได้ดีหรือแสดงให้เห็นว่าทำอะไรใหม่ๆ ได้",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "8. คุณยึดถือตามกฎและไม่เปลี่ยนใจบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก",
+                                                "checked": true
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา",
+                                                "checked": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "9. คุณพูดกับลูกอย่างสงบเมื่อคุณโกรธหรือหงุดหงิดกับเขาบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "10. คุณอธิบายว่าคุณต้องการอะไรให้ลูกฟังอย่างง่าย ๆ และชัดเจนบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "11. คุณบอกลูกว่าคุณต้องการให้เขาทำอะไร แทนที่จะบอกเขาว่าให้หยุดทำอะไรบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา",
+                                                "checked": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "12. คุณบอกลูกว่าคุณคาดหวังว่าเขาจะต้องทำตัวอย่างไรบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "13. คุณตั้งกฎเกี่ยวกับพฤติกรรมของลูกและคุณสามารถบังคับให้เขาทำตามนั้นได้บ่อยแค่ไหน ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "14. คุณคอยติดตามตรวจสอบดูว่าลูกได้ทำตามกฎที่คุณตั้งไว้ตลอดเวลาหรือเกือบตลอดเวลาบ่อยแค่ไหน ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เคยมาก"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "น้อยครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "นานๆ ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "บ่อยครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "บ่อยมาก"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "ตลอดเวลา"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 3 พฤติกรรมของลูก (5 ข้อ)",
+                                "remark": "คำถามต่อไปนี้จะเกี่ยวกับวิธีที่คุณใช้ตามปกติในการจัดการกับพฤติกรรมของลูก โปรดตอบโดยคิดถึงพฤติกรรมของลูกในหนึ่งเดือน (30 วัน) ที่ผ่านมานี้ สำหรับแต่ละข้อโปรดเลือกตอบว่า ไม่จริง ค่อนข้างจริง จริงมาก (เลือกเพียงอย่างเดียว):",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. ลูกของคุณมักเล่นอยู่คนเดียว ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ค่อนข้างจริง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "จริงมาก"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "2. ลูกของคุณมักเชื่อฟังและทำตามที่ผู้ใหญ่บอก ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ค่อนข้างจริง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "จริงมาก"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. ลูกของคุณมักมีท่าทางเหมือนกังวลใจ ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ค่อนข้างจริง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "จริงมาก"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "4. ถ้ามีใครบาดเจ็บ ไม่สบายใจ หรือรู้สึกไม่สบาย ลูกของคุณจะพยายามช่วยเหลือ",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ค่อนข้างจริง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "จริงมาก"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "5. ลูกของคุณจะขยุกขยิกหรือนั่งบิดตัวไปมาไม่ยอมนิ่งอยู่ตลอดเวลา",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ค่อนข้างจริง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "จริงมาก"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 4 การอบรมสั่งสอนลูกของคุณ (5 ข้อ)",
+                                "remark": "ผู้ใหญ่ทุกคนใช้วิธีการต่าง ๆ ในการอบรมสั่งสอนให้เด็กทำดี หรือหยุดยั้งพฤติกรรมที่ไม่ดีของเด็ก บางครั้งเด็กอาจทำให้เราโมโหหรือไม่สบายใจมากและเราก็อาจทำอะไรบางอย่างกับเขาที่เราคิดว่าไม่น่าทำเลย ขอให้คุณบอกว่า 1 เดือน (30 วัน) ที่ผ่านมานี้ คุณได้ทำสิ่งต่อไปนี้บ่อยแค่ไหน?",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. ใน 1 เดือนที่ผ่านมา คุณสั่งสอนลูกด้วยการใช้มือตี ตบ หรือทุบบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "1 ครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "2 ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "3 ครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "4 ครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "5 ครั้ง"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "6 ครั้ง"
+                                            },
+                                            {
+                                                "score": "7",
+                                                "answer": "7 ครั้ง"
+                                            },
+                                            {
+                                                "score": "8",
+                                                "answer": "8 ครั้ง ขึ้นไป"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "2. ใน 1 เดือนที่ผ่านมา คุณสั่งสอนลูกด้วยการตีด้วยสิ่งของเช่นไม้เรียวหรือเข็มขัดบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "1 ครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "2 ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "3 ครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "4 ครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "5 ครั้ง"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "6 ครั้ง"
+                                            },
+                                            {
+                                                "score": "7",
+                                                "answer": "7 ครั้ง"
+                                            },
+                                            {
+                                                "score": "8",
+                                                "answer": "8 ครั้ง ขึ้นไป"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. ใน 1 เดือนที่ผ่านมา คุณตะโกนดุด่าหรือกรีดร้องใส่ลูกบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "1 ครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "2 ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "3 ครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "4 ครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "5 ครั้ง"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "6 ครั้ง"
+                                            },
+                                            {
+                                                "score": "7",
+                                                "answer": "7 ครั้ง"
+                                            },
+                                            {
+                                                "score": "8",
+                                                "answer": "8 ครั้ง ขึ้นไป"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "4. ใน 1 เดือนที่ผ่านมา คุณพูดแรง ๆกับลูกจนทำให้เขาไม่สบายใจบ่อยแค่ไหน",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่จริง"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "1 ครั้ง"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "2 ครั้ง"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "3 ครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "4 ครั้ง"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "5 ครั้ง"
+                                            },
+                                            {
+                                                "score": "6",
+                                                "answer": "6 ครั้ง"
+                                            },
+                                            {
+                                                "score": "7",
+                                                "answer": "7 ครั้ง"
+                                            },
+                                            {
+                                                "score": "8",
+                                                "answer": "8 ครั้ง ขึ้นไป"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "5. การที่จะเลี้ยงดูหรืออบรมสั่งสอนลูกให้ได้อย่างเหมาะสม เด็กจำเป็นต้องถูกตีหรือลงโทษทางร่างกายบ้าง",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ไม่เห็นด้วยมาก",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่เห็นด้วย",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ไม่แน่ใจ",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "เห็นด้วย",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "เห็นด้วยมาก",
+                                                "checked": true
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 5 ความรู้สึกเศร้า (3 ข้อ)",
+                                "remark": "ในชีวิตของเราจะมีบางครั้งที่เรารู้สึกเศร้าหรือจิตตก บางทีเป็นเพราะอะไร ๆ ไม่เป็นไปตามที่เราคิดไว้ บางครั้งเป็นเพราะมีเรื่องเลวร้ายเกิดขึ้น บางครั้งอาจเป็นเพียงเพราะเราเครียดมาก คำถามต่อไปนี้บางข้ออาจตอบยากจึงขอให้คุณพยายามทำให้ดีที่สุด ไม่มีคำตอบไหนที่ผิดหรือถูก โปรดบอกว่าใน 1 สัปดาห์ (7 วัน) ที่ผ่านมานี้คุณรู้สึกแบบนี้บ่อยแค่ไหน",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเศร้าบ่อยแค่ไหน?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "น้อยมากหรือไม่มีเลย (น้อยกว่า 1 วัน)",
+                                                "checked": true
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "บางครั้งหรือนาน ๆ ครั้ง  (1–2 วัน)",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ปานกลาง   (3–4 วัน)",
+                                                "checked": false
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "เกือบตลอดเวลาหรือตลอดเวลา (5–7 วัน)",
+                                                "checked": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "2. ในสัปดาห์ที่ผ่านมา คุณรู้สึกว่าต้องใช้ความพยายามมากไม่ว่าจะทำอะไรบ่อยแค่ไหน?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "น้อยมากหรือไม่มีเลย (น้อยกว่า 1 วัน)"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "บางครั้งหรือนาน ๆ ครั้ง  (1–2 วัน)"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ปานกลาง   (3–4 วัน)"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "เกือบตลอดเวลาหรือตลอดเวลา (5–7 วัน)"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. ในสัปดาห์ที่ผ่านมา คุณรู้สึกเหงาบ่อยแค่ไหน?",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "น้อยมากหรือไม่มีเลย (น้อยกว่า 1 วัน)"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "บางครั้งหรือนาน ๆ ครั้ง  (1–2 วัน)"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "ปานกลาง   (3–4 วัน)"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "เกือบตลอดเวลาหรือตลอดเวลา (5–7 วัน)"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "ส่วนที่ 6 การสนับสนุนลูกด้านการเรียน (3 ข้อ)",
+                                "remark": "ในส่วนต่อไปนี้จะเป็นเรื่องเกี่ยวกับการเรียนของลูกคุณ",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "1. ขณะนี้ลูกของคุณเข้าเรียนในโรงเรียนใช่หรือไม่",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "0",
+                                                "answer": "ใช่"
+                                            },
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่ใช่"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            },
+                            {
+                                "groupDescription": "โปรดบอกว่าคุณทำสิ่งต่อไปนี้กับลูกบ่อยแค่ไหน",
+                                "remark": "คุณตอบเสร็จแล้ว! ขอบคุณมากที่คุณแบ่งปันข้อมูลที่มีคุณค่ากับพวกเรา  เราชื่นชมคุณมากที่คุณได้มีส่วนร่วมในการสัมภาษณ์ครั้งนี้",
+                                "groupQuestionsList": [
+                                    {
+                                        "question": "2. ฉันชมลูกที่ตั้งใจเรียนดี",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่เคย"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "เกือบไม่เคย"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "ค่อนข้างบ่อย"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "เกือบทุกวัน"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "question": "3. ฉันพยายามทำทุกอย่างที่ทำได้เพื่อสนับสนุนการเรียนของลูก",
+                                        "questionType": NumberInt("2"),
+                                        "answersList": [
+                                            {
+                                                "score": "1",
+                                                "answer": "ไม่เคย"
+                                            },
+                                            {
+                                                "score": "2",
+                                                "answer": "เกือบไม่เคย"
+                                            },
+                                            {
+                                                "score": "3",
+                                                "answer": "บางครั้ง"
+                                            },
+                                            {
+                                                "score": "4",
+                                                "answer": "ค่อนข้างบ่อย"
+                                            },
+                                            {
+                                                "score": "5",
+                                                "answer": "เกือบทุกวัน"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "answersList": ""
+                            }
+                        ],
+                        "osccteam": {
+                            "teamCode": "3f8otd4i1ijl9ae3t6sonfyk",
+                            "teamName": "รพ.สต.บ้านหนองบัวบาน  ต.หนองบัวบาน",
+                            "hcode": "13911"
+                        },
+                        "answerer": {
+                            "answererId": NumberInt("3"),
+                            "answererName": "เจ้าหน้าที่"
+                        },
+                        "planServiceId": "612c4fb0adf0c565c77afdce",
+                        "sumScore": NumberInt("0"),
+                        "sequenceId": NumberInt("1"),
+                        "date": "2021-08-31",
+                        "time": "14:39:18",
+                        "userId": "612b0442adf0c565c77af18f",
+                        "userFullName": "ฑิตยา ปาละศรี"
+                    },
+                    {
+                        "id": "60f7cf59e75aee59d32c516b",
+                        "questionnaire_type": "global",
+                        "questionnaire_code": "CQ2_7-9",
+                        "questionnaire_name": "แบบประเมินคุณภาพชีวิตเด็ก (สำหรับเด็กอายุ 7-9 ปี)",
+                        "questionsList": [
+                            {
+                                "question": "1. ฉันชอบตัวเอง",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": true
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "2. ฉันมีความสุขที่ได้กินข้าวกับครอบครัว",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": true
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "3. ฉันรู้สึกอบอุ่น และปลอดภัยเมื่ออยู่กับ (ระบุชื่อผู้เข้าอบรม PLH)",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": true
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "4. ฉันแบ่งปันสิ่งของ ขนม และของเล่นกับพี่น้อง เพื่อน และคนอื่น",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": true
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "5. ฉันชอบที่ (ระบุชื่อผู้เข้าอบรม PLH) เล่นกับฉัน",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": true
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "6. ฉันอยากช่วยเหลือคนอื่นที่มีความทุกข์ ไม่สบาย หรือยากจน",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "7. ฉันเชื่อฟัง (ระบุชื่อผู้เข้าอบรม PLH) และทำหน้าที่ เช่น เข้านอนตามเวลา ทำการบ้าน เล่นโทรศัพท์เป็นเวลา ตามที่ท่านแนะนำ",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": false
+                                    }
+                                ]
+                            },
+                            {
+                                "question": "8. ฉันทำหน้าที่ของฉัน เช่น อาบน้ำ แต่งตัว งานบ้าน อ่านหนังสือ โดยไม่ต้องมีใครเตือน",
+                                "questionType": "2",
+                                "answersList": [
+                                    {
+                                        "score": "3",
+                                        "answer": "เป็นจริงทั้งหมด",
+                                        "image": "i1.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "2",
+                                        "answer": "เป็นจริงส่วนใหญ่",
+                                        "image": "i4.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "1",
+                                        "answer": "เป็นจริงบางส่วน",
+                                        "image": "i2.png",
+                                        "checked": false
+                                    },
+                                    {
+                                        "score": "0",
+                                        "answer": "ไม่จริงเลย",
+                                        "image": "i3.png",
+                                        "checked": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "osccteam": {
+                            "teamCode": "3f8otd4i1ijl9ae3t6sonfyk",
+                            "teamName": "รพ.สต.บ้านหนองบัวบาน  ต.หนองบัวบาน",
+                            "hcode": "13911"
+                        },
+                        "answerer": {
+                            "answererId": NumberInt("1"),
+                            "answererName": "ผู้รับบริการ"
+                        },
+                        "planServiceId": "612c4fb0adf0c565c77afdce",
+                        "sumScore": NumberInt("12"),
+                        "sequenceId": NumberInt("4"),
+                        "date": "2021-08-31",
+                        "time": "14:39:35",
+                        "userId": "612b0442adf0c565c77af18f",
+                        "userFullName": "ฑิตยา ปาละศรี"
+                    }
+                ]
+            }
+        ]
+    }
+}
